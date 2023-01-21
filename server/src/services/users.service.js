@@ -1,4 +1,4 @@
-const { user } = require("../../../models");
+const { user } = require("../../models");
 
 class UsersService {
     static async createUser({username, firstname, lastname, email, phone_number, age, address, password}) {
