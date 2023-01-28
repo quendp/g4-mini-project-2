@@ -7,13 +7,19 @@ class BookingController {
         userId,
         travel_date,
         duration,
-        starting_location
+        starting_location,
+        agentId,
+        packageId,
+        paymentId
       } = req.body;
       const booking = await BookingService.createBooking({
         userId,
         travel_date,
         duration,
-        starting_location
+        starting_location,
+        agentId,
+        packageId,
+        paymentId
       });
       res.json(booking);
     } catch (e) {
@@ -47,13 +53,13 @@ class BookingController {
         travel_date,
         duration,
         starting_location,
-        booking_status
+        booking_status,
       } = req.body;
       const booking = await BookingService.updateBookingById(id, {
         travel_date,
         duration,
         starting_location,
-        booking_status
+        booking_status,
       });
       res.json(booking);
     } catch (e) {
