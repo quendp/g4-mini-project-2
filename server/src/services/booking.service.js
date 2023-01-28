@@ -5,14 +5,20 @@ class BookingService {
     userId,
     travel_date,
     duration,
-    starting_location
+    starting_location,
+    agentId,
+    packageId,
+    paymentId
   }) {
     try {
       const newBooking = await Booking.create({
         userId,
         travel_date,
         duration,
-        starting_location
+        starting_location,
+        agentId,
+        packageId,
+        paymentId
       });
       return newBooking;
     } catch (err) {
