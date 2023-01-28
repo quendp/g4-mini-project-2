@@ -1,4 +1,4 @@
-const { booking } = require("../../models");
+const { Booking } = require("../../models");
 
 class BookingService {
   static async createBooking({
@@ -8,7 +8,7 @@ class BookingService {
     starting_location
   }) {
     try {
-      const newBooking = await booking.create({
+      const newBooking = await Booking.create({
         userId,
         travel_date,
         duration,
@@ -23,7 +23,7 @@ class BookingService {
 
   static async getAllBooking() {
     try {
-      return booking.findAll();
+      return Booking.findAll();
     } catch (e) {
       console.log(e);
       throw new Error();
@@ -32,7 +32,7 @@ class BookingService {
 
   static async getBookingById(id) {
     try {
-      return booking.findOne({ where: { id } });
+      return Booking.findOne({ where: { id } });
     } catch (e) {
       console.log(e);
       throw new Error();
@@ -49,7 +49,7 @@ class BookingService {
     }
   ) {
     try {
-      const bookingToUpdate = await booking.findOne({ where: { id } });
+      const bookingToUpdate = await Booking.findOne({ where: { id } });
       if (bookingToUpdate) {
         bookingToUpdate.travel_date = travel_date;
         bookingToUpdate.duration = duration;
@@ -67,7 +67,7 @@ class BookingService {
 
   static async deleteBookingById(id) {
     try {
-      const bookingToDelete = await booking.findOne({ where: { id } });
+      const bookingToDelete = await Booking.findOne({ where: { id } });
       if (bookingToDelete) {
         await bookingToDelete.destroy();
         return true;

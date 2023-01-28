@@ -1,4 +1,4 @@
-const { user } = require("../../models");
+const { User } = require("../../models");
 
 class UsersService {
   static async createUser({
@@ -12,7 +12,7 @@ class UsersService {
     password,
   }) {
     try {
-      const newUser = await user.create({
+      const newUser = await User.create({
         username,
         firstname,
         lastname,
@@ -31,7 +31,7 @@ class UsersService {
 
   static async getAllUsers() {
     try {
-      return user.findAll();
+      return User.findAll({ include: "Booking" });
     } catch (e) {
       console.log(e);
       throw new Error();
@@ -40,7 +40,7 @@ class UsersService {
 
   static async getUserById(id) {
     try {
-      return user.findOne({ where: { id } });
+      return User.findOne({ where: { id },  include: "Booking"  });
     } catch (e) {
       console.log(e);
       throw new Error();
@@ -61,7 +61,7 @@ class UsersService {
     }
   ) {
     try {
-      const userToUpdate = await user.findOne({ where: { id } });
+      const userToUpdate = await User.findOne({ where: { id } });
       if (userToUpdate) {
         userToUpdate.username = username;
         userToUpdate.firstname = firstname;
@@ -83,7 +83,7 @@ class UsersService {
 
   static async deleteUserById(id) {
     try {
-      const userToDelete = await user.findOne({ where: { id } });
+      const userToDelete = await User.findOne({ where: { id } });
       if (userToDelete) {
         await userToDelete.destroy();
         return true;
