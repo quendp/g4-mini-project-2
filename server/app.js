@@ -5,6 +5,7 @@ const { sequelize } = require("./models");
 const userRoutes = require("./src/routes/userRoutes");
 const bookingRoutes = require("./src/routes/bookingRoutes");
 const agentRoutes = require("./src/routes/agentRoutes");
+const packageRoutes = require("./src/routes/packageRoutes");
 
 // parse application/json
 app.use(bodyParser.json());
@@ -12,6 +13,7 @@ app.use(bodyParser.json());
 app.use("/api/users", userRoutes);
 app.use("/api/bookings", bookingRoutes);
 app.use("/api/agents", agentRoutes);
+app.use("/api/packages", packageRoutes);
 
 app.listen(3000, async () => {
   console.log("Server started on port 3000");
