@@ -29,7 +29,7 @@ class BookingService {
 
   static async getAllBooking() {
     try {
-      return Booking.findAll({ include: "Package" });
+      return Booking.findAll({ include: ["Package", "Payments"] });
     } catch (e) {
       console.log(e);
       throw new Error();
@@ -38,7 +38,7 @@ class BookingService {
 
   static async getBookingById(id) {
     try {
-      return Booking.findOne({ where: { id }, include: "Package" });
+      return Booking.findOne({ where: { id }, include: ["Package", "Payments"] });
     } catch (e) {
       console.log(e);
       throw new Error();
