@@ -1,0 +1,222 @@
+@font-face {
+  font-family: "Oranienbaum";
+  src: url("./assets/");
+  src: url("./assets/") format("truetype");
+}
+@font-face {
+  font-family: "onelove";
+  src: url("./assets/fonts/onelove/onelove.ttf");
+  src: url("./assets/fonts/onelove/onelove.ttf") format("truetype"),
+      url("./assets/fonts/onelove/onelove.otf") format("opentype");
+}
+@font-face {
+  font-family: "Poppins-Bold";
+  src: url("./assets/fonts/Poppins/Poppins-Bold.ttf");
+  src: url("./assets/fonts/Poppins/Poppins-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Poppins-Regular";
+  src: url("./assets/fonts/Poppins/Poppins-Regular.ttf");
+  src: url("./assets/fonts/Poppins/Poppins-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Poppins-Light";
+  src: url("./assets/fonts/Poppins/Poppins-Light.ttf");
+  src: url("./assets/fonts/Poppins/Poppins-Light.ttf") format("truetype");
+}
+@font-face {
+  font-family: "AddingtonCF-Bold";
+  src: url("./assets/fonts/Addington-CF/AddingtonCF-Bold.ttf");
+  src: url("./assets/fonts/Addington-CF/AddingtonCF-Bold.ttf") format("truetype"),
+      url("./assets/fonts/Addington-CF/AddingtonCF-Bold.otf") format("opentype");
+}
+@font-face {
+  font-family: "AddingtonCF-Extrabold";
+  src: url("./assets/fonts/Addington-CF/AddingtonCF-ExtraBold.ttf");
+  src: url("./assets/fonts/Addington-CF/AddingtonCF-ExtraBold.ttf") format("truetype"),
+      url("./assets/fonts/Addington-CF/AddingtonCF-ExtraBold.otf") format("opentype");
+}
+@font-face {
+  font-family: "AddingtonCF-Light";
+  src: url("./assets/fonts/Addington-CF/AddingtonCF-Light.ttf");
+  src: url("./assets/fonts/Addington-CF/AddingtonCF-Light.ttf") format("truetype"),
+      url("./assets/fonts/Addington-CF/AddingtonCF-Light.otf") format("opentype");
+}
+@font-face {
+  font-family: "AddingtonCF-Lightitalic";
+  src: url("./assets/fonts/Addington-CF/AddingtonCF-LightItalic.ttf");
+  src: url("./assets/fonts/Addington-CF/AddingtonCF-LightItalic.ttf") format("truetype"),
+      url("./assets/fonts/Addington-CF/AddingtonCF-LightItalic.otf") format("opentype");
+}
+@font-face {
+  font-family: "AddingtonCF-Regular";
+  src: url("./assets/fonts/Addington-CF/AddingtonCF-Regular.ttf");
+  src: url("./assets/fonts/Addington-CF/AddingtonCF-Regular.ttf") format("truetype"),
+      url("./assets/fonts/Addington-CF/AddingtonCF-Regular.otf") format("opentype");
+}
+@font-face {
+  font-family: "AddingtonCF-Regularitalic";
+  src: url("./assets/fonts/Addington-CF/AddingtonCF-RegularItalic.ttf");
+  src: url("./assets/fonts/Addington-CF/AddingtonCF-RegularItalic.ttf") format("truetype"),
+      url("./assets/fonts/Addington-CF/AddingtonCF-RegularItalic.otf") format("opentype");
+}
+
+:root {
+  /* Font family */
+  --ff-heading-primary: "Oranienbaum", serif;
+  --ff-heading-primary-2: "AddingtonCF-Regular", serif;
+  --ff-heading-primary-2-italic: "AddingtonCF-Regularitalic", serif;
+  --ff-heading-primary-2-bold: "AddingtonCF-Bold", serif;
+  --ff-heading-primary-2-extrabold: "AddingtonCF-Extrabold", serif;
+  --ff-heading-primary-2-light: "AddingtonCF-Light", serif;
+  --ff-heading-primary-2-light-italic: "AddingtonCF-Lightitalic", serif;
+
+  --ff-heading-secondary: "onelove", "Brush Script MT", serif;
+  --ff-body-bold: "Poppins-Bold", sans-serif;
+  --ff-body-regular: "Poppins-Regular", sans-serif;
+  --ff-body-light: "Poppins-Light", sans-serif;
+
+  /* Colors */
+  --clr-primary-dark: #080808;
+  --clr-primary-glass: rgba(0, 0, 0, 0.8);
+  --clr-secondary-000: #ffffff;
+  --clr-secondary-100: #ecf1f7;
+  --clr-secondary-200: #d4d3d3;
+  --clr-secondary-300: #f2f0ec;
+  --clr-secondary-400: #a1a1a1;
+  --clr-secondary-500: #666565;
+  --clr-secondary-700: #303030;
+  --clr-accent-lights: #b97508;
+  --clr-accent-lights-100: #ffae00;
+  --clr-accent-water: #0066ff;
+  --clr-accent-water-100: #00b7ff;
+  --clr-accent-summit: #53a19b;
+  --clr-accent-summit-100: #8ee0c8;
+  --clr-accent-history: #946b2d;
+  --clr-accent-history-100: #b49367;
+  --clr-accent-culture: #169b1b;
+  --clr-accent-culture-100: #14cf29;
+
+  /* Font Size */
+  --fz--header-title: clamp(0.5rem, 0.9vw, 0.7rem);
+  --fz--header-sub: clamp(2rem, 10vw, 3rem);  
+  --fz--header-menu: clamp(0.8rem, 6vw, 2.5rem);
+  --fz--header-cat-title: 20vw;
+  --fz--header-cat-list: clamp(1rem, 1.5vw, 2rem);
+
+  --fz-main-h1: clamp(2rem, 7vw, 6rem);
+  --fz-main-h2: clamp(1rem, 3vw, 3rem);
+  --fz-main-h3: clamp(0.8rem, 2vw, 2.5rem);
+  --fz-main-secondary: clamp(2.5rem, 7vw, 7rem);
+  --fz-main-p: clamp(0.8rem, 1.3vw, 1.5rem);
+  --fz-main-text: clamp(0.7rem, 1vw, 1rem);
+  --fz-main-large: clamp(1rem, 5vw, 5rem);
+  --fz-main-small: clamp(0.6rem, 0.9vw, 1.3rem);
+}
+
+/* Utility classes */
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+  -ms-overflow-style: none; 
+  scrollbar-width: none;  
+  background-color: var(--clr-primary-dark);
+}
+
+.body-wrapper {
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* m-heading-2-dark --> h2-dark*/
+.h2-dark { 
+  font-family: var(--ff-heading-primary-2-light);
+  color: var(--clr-primary-dark);
+  font-size: var(--fz-main-h2);
+  letter-spacing: 0.8px;
+}
+
+/* m-heading-3-dark --> h3-dark */
+.h3-dark {
+  font-family: var(--ff-heading-primary-2);
+  color: var(--clr-primary-dark);
+  font-size: var(--fz-main-h3);
+}
+
+/* m-heading-3-dark-2 --> h3-dark-bold */
+.h3-dark-bold {
+  font-family: var(--ff-heading-primary-2-bold);
+  color: var(--clr-primary-dark);
+  font-size: var(--fz-main-h3);
+}
+
+/* m-paragraph-text-dark --> p-dark */
+.p-dark {
+  font-family: var(--ff-body-light);
+  color: var(--clr-secondary-700);
+  font-size: var(--fz-main-p);
+}
+
+/* m-primary-btn-dark --> cta-dark */
+.cta-dark {
+  transition: background-color 400ms ease-in-out, box-shadow 400ms ease-in-out;
+  font-family: var(--ff-body-light);
+  color: var(--clr-secondary-100);
+  font-size: var(--fz-main-text);
+  background-color: var(--clr-primary-dark);
+  letter-spacing: 1px;
+  padding: 0.8rem 1.5rem;
+}
+
+.cta-dark:hover, .cta-dark:active {
+  border: none;
+  outline: none;
+  color: var(--clr-secondary-100);
+  background-color: var(--clr-secondary-500);
+}
+
+/* m-primary-link-dark --> anchor-dark */
+.anchor-dark {
+  transition: background-color 400ms ease-in-out;
+  font-family: var(--ff-body-regular);
+  color: var(--clr-secondary-700);
+  font-size: var(--fz-main-p);
+  border: none;
+  outline: none;
+  text-decoration: none;
+}
+
+.anchor-dark:hover, .anchor-dark:active {
+  color: var(--clr-secondary-500);
+}
+
+/* Animations */
+@keyframes fade-in {
+  100% {
+      opacity: 1;
+  }
+}
+
+@keyframes zoom-in {
+  100% {
+      opacity: 1;
+      transform: scale(1);
+  }
+}
+
+@keyframes fade-up {
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes expand {
+  100% {
+      letter-spacing: 0.3vw;
+  }
+}
