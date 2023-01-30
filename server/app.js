@@ -7,6 +7,7 @@ const bookingRoutes = require("./src/routes/bookingRoutes");
 const agentRoutes = require("./src/routes/agentRoutes");
 const packageRoutes = require("./src/routes/packageRoutes");
 const paymentRoutes = require("./src/routes/paymentRoutes");
+const companionRoutes = require("./src/routes/companionRoutes");
 
 // parse application/json
 app.use(bodyParser.json());
@@ -16,6 +17,7 @@ app.use("/api/bookings", bookingRoutes);
 app.use("/api/agents", agentRoutes);
 app.use("/api/packages", packageRoutes);
 app.use("/api/payments", paymentRoutes);
+app.use("/api/companions", companionRoutes);
 
 app.listen(3000, async () => {
   console.log("Server started on port 3000");
