@@ -3,9 +3,9 @@ import './TestingArea.css'
 
 import About from '../pages/About/About'
 import Agent from '../pages/Agent/Agent'
-import HomeTestimonials from '../pages/Home/HomeTestimonials'
+import HomeTestimonials from '../pages/Home/HomeTestimonials/HomeTestimonials'
 import Contact from '../pages/Contact/Contact'
-import HomeStories from '../pages/Home/HomeStories'
+import HomeStories from '../pages/Home/HomeStories/HomeStories'
 
 
 const TestingArea = () => {
