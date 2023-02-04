@@ -1,6 +1,10 @@
 import React, {useState} from 'react'
 import './TestingArea.css'
 
+// Done Testing
+import Header from '../components/Header/Header'
+import SignUpForm from '../components/SignUpForm/SignUpForm'
+
 import About from '../pages/About/About'
 import Agent from '../pages/Agent/Agent'
 import HomeTestimonials from '../pages/Home/HomeTestimonials/HomeTestimonials'
@@ -22,23 +26,27 @@ const TestingArea = () => {
     <div>
       {
       !isTesting && (
-        <div className='testingArea-wrapper vh-100 d-flex flex-column justify-content-center align-items-center'>
-        <button onClick={ () => {startTesting("roland")} }  className='cta-dark rounded-pill mb-3' >
-          Click here for Sir Roland
-        </button>
-        <button onClick={ () => {startTesting("nherwin")} } className='cta-dark rounded-pill mb-3'>
-          Click here for Sir Nherwin
-        </button>
-        <button onClick={ () => {startTesting("radilyn")} } className='cta-dark rounded-pill mb-3'>
-          Click here for Ms. Radilyn
-        </button>
-        <button onClick={ () => {startTesting("ce")} } className='cta-dark rounded-pill mb-3'>
-          Click here for Ms. CE
-        </button>
-        <button onClick={ () => {startTesting("nick")} } className='cta-dark rounded-pill mb-3'>
-          Click here for Sir Nick
-        </button>
-      </div>
+        <div>
+          <SignUpForm />
+          <Header />
+          <div className='testingArea-wrapper vh-100 d-flex flex-column justify-content-center align-items-center'>
+            <button onClick={ () => {startTesting("roland")} }  className='cta-dark rounded-pill mb-3' >
+              Click here for Sir Roland
+            </button>
+            <button onClick={ () => {startTesting("nherwin")} } className='cta-dark rounded-pill mb-3'>
+              Click here for Sir Nherwin
+            </button>
+            <button onClick={ () => {startTesting("radilyn")} } className='cta-dark rounded-pill mb-3'>
+              Click here for Ms. Radilyn
+            </button>
+            <button onClick={ () => {startTesting("ce")} } className='cta-dark rounded-pill mb-3'>
+              Click here for Ms. CE
+            </button>
+            <button onClick={ () => {startTesting("nick")} } className='cta-dark rounded-pill mb-3'>
+              Click here for Sir Nick
+            </button>
+          </div>
+        </div>
       )
     }
     {isTesting && currentDeveloper == "roland" && (
