@@ -1,0 +1,51 @@
+/* SIGN UP MODAL STARTS HERE*/
+.modal-title {
+    font-size: var(--fz-main-p);
+    font-family: var(--ff-body-regular);
+    color: var(--clr-accent-lights-100);
+    text-shadow: 0 0 10px var(--clr-accent-lights-100);
+}
+
+#signUpModal label, #signUpModal .form-control,
+#bookingModal label, #bookingModal .form-control {
+    font-size: var(--fz-main-text);
+    font-family: var(--ff-body-regular);
+    background-color: transparent;
+    color: var(--clr-secondary-200);
+}
+
+.modal-content {
+    background-color: var(--clr-primary-glass);
+    background-image: url(../../assets/images/grain.png);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+}
+
+.modal-header, .modal-footer {
+    border: none;
+}
+
+.modal-signup-btn {
+    color: var(--clr-primary-dark);
+    font-size: var(--fz-main-text);
+    background-color: var(--clr-accent-lights-100);
+    box-shadow: 0 0 20px var(--clr-accent-lights-100);
+    border-radius: 0.7rem;
+    transition: background-color 300ms ease-in-out, box-shadow 300ms ease-in-out;
+    text-transform: uppercase;
+}
+
+.modal-signup-btn:hover {
+    background-color: var(--clr-accent-lights);
+    box-shadow: 0 0 20px var(--clr-accent-lights);
+}
+
+.modal-cancel-btn {
+    color: var(--clr-secondary-100);
+    font-size: var(--fz-main-text);
+    text-transform: uppercase;
+}
+
+.modal-cancel-btn:hover {
+    color: var(--clr-secondary-500);
+}

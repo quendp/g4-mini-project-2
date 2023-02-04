@@ -1,7 +1,7 @@
 @font-face {
   font-family: "Oranienbaum";
-  src: url("./assets/");
-  src: url("./assets/") format("truetype");
+  src: url("./assets/fonts/oranienbaum/Oranienbaum.ttf");
+  src: url("./assets/fonts/oranienbaum/Oranienbaum.ttf") format("truetype");
 }
 @font-face {
   font-family: "onelove";
@@ -129,7 +129,7 @@ body::-webkit-scrollbar {
 body {
   -ms-overflow-style: none; 
   scrollbar-width: none;  
-  /* background-color: var(--clr-primary-dark); */
+  background-color: var(--clr-primary-dark);
 }
 
 .body-wrapper {
