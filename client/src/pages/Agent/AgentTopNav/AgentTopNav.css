@@ -1,0 +1,25 @@
+.search-input {
+    border: none;
+    border-bottom: 2px solid #999;
+    transition: all .4s;
+}
+
+.search-input:focus {
+    box-shadow: none;
+    border-bottom: 2px solid #5e5e5e;
+}
+
+.search-button {
+    transition: all .4s;
+}
+
+.search-button:hover {
+    background-color: #eee;
+    transform: translateY(-1px);
+}
+
+@media (max-width: 992px) {
+    .top-navbar {
+        position: static;
+    }
+}
