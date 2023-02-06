@@ -19,7 +19,7 @@ app.use("/api/packages", packageRoutes);
 app.use("/api/payments", paymentRoutes);
 app.use("/api/companions", companionRoutes);
 
-app.listen(3000, async () => {
-  console.log("Server started on port 3000");
+app.listen(5000, async () => {
+  console.log("Server started on port 5000");
   await sequelize.authenticate();
 });

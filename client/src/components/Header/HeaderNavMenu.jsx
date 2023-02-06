@@ -1,6 +1,6 @@
 import React from 'react'
 
-const HeaderNavMenu = () => {
+const HeaderNavMenu = ({isLoggedIn}) => {
   return (
     <ul className="h-nav-list w-100 py-4 mb-4 rounded d-flex justify-content-evenly p-0">
             <li className="h-nav-item position-relative text-center">
@@ -13,7 +13,7 @@ const HeaderNavMenu = () => {
             <a className="text-uppercase text-decoration-none" href="#">About</a>
             </li>
             <li className="h-nav-item position-relative text-center">
-            <a className="text-uppercase text-decoration-none" href="#">Account</a>
+            <a className="text-uppercase text-decoration-none" href="#" data-bs-toggle={!isLoggedIn ? "modal": ""} data-bs-target="#signUpModal">Account</a>
             </li>
         </ul>
   )

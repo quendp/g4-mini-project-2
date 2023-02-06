@@ -9,7 +9,7 @@ import summitImage from '../../assets/images/explore-the-summit/mount-pulag-joan
 import historyImage from '../../assets/images/look-back-in-history/calle-crisologo-593843_1920.jpg';
 import natureImage from '../../assets/images/nature-and-culture/ifugao-ar-2FsniOcLPj8-unsplash.jpg';
 
-const Header = () => {
+const Header = ({isLoggedIn}) => {
     const [isActiveClass, setIsActiveClass] = useState("");
     const [showExpanded, setShowExpanded] = useState("d-none");
     const [headerBgColor, setHeaderBgColor] = useState("transparent");
@@ -276,8 +276,8 @@ const Header = () => {
 
   return (
     <header className={isActiveClass + " h-header-wrapper container-fluid position-fixed top-0 start-0"} style={headerWrapperStyle}>
-        <HeaderCollapsed onBurgerClick = {headerClickHandler}/>
-        <HeaderExpanded onBurgerClick = {showExpanded} categoriesData = {categoriesInfo} />
+        <HeaderCollapsed isLoggedIn={isLoggedIn} onBurgerClick = {headerClickHandler}/>
+        <HeaderExpanded onBurgerClick = {showExpanded} categoriesData = {categoriesInfo} isLoggedIn={isLoggedIn} />
     </header>
   )
 }

@@ -1,0 +1,120 @@
+/* SIGN UP MODAL STARTS HERE*/
+.modal-title {
+    font-size: var(--fz-main-p);
+    font-family: var(--ff-body-bold);
+    color: var(--clr-accent-lights-100);
+    text-shadow: 0 0 10px var(--clr-accent-lights-100);
+    text-transform: uppercase;
+}
+
+.signUpCreateLink {
+    color: var(--clr-secondary-100);
+    font-size: var(--fz-main-small);
+    font-family: var(--ff-body-regular);
+}
+
+.signUpCreateLink a {
+    color: var(--clr-accent-lights-100);
+    text-decoration: none;
+}
+
+.signUpCreateLink a:hover, .signUpCreateLink a:active {
+    color: var(--clr-accent-lights);
+}
+
+.modal-content h3 {
+    color: var(--clr-secondary-100);
+    font-size: var(--fz-main-p);
+    font-family: var(--ff-body-regular);
+}
+
+.modal-content label, .modal-content .form-control {
+    font-size: var(--fz-main-text);
+    font-family: var(--ff-body-regular);
+    background-color: transparent;
+    color: var(--clr-secondary-100);
+}
+
+.form-control:focus {
+    border-color: var(--clr-accent-lights-100);
+    box-shadow: 0 0 5px var(--clr-accent-lights);
+}
+
+.form-control.isValid{
+    border-color: var(--clr-accent-valid-100);
+    box-shadow: 0 0 5px var(--clr-accent-valid);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(.375em + .1875rem) center;
+    background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+}
+
+.form-control.isInvalid{
+    border-color: var(--clr-accent-invalid-100);
+    box-shadow: 0 0 5px var(--clr-accent-invalid);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(.375em + .1875rem) center;
+    background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+}
+
+.form-control.isInvalid~.invalid-feedback{
+    display: block;
+}
+
+.invalid-feedback {
+    font-size: var(--fz-main-text);
+    font-family: var(--ff-body-regular);
+}
+
+.modal-content {
+    background-color: var(--clr-primary-glass);
+    background-image: url(../../assets/images/grain.png);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+}
+
+.modal-header, .modal-footer {
+    border: none;
+}
+
+.modal-content button, .modal-content button:hover , .modal-content button:active {
+    font-family: var(--ff-body-regular);
+    font-size: var(--fz-main-small);
+    text-transform: uppercase;
+    outline: none !important;
+    border: none !important;
+}
+
+.modal-signup-btn {
+    color: var(--clr-primary-dark);
+    background-color: var(--clr-accent-lights-100);
+    box-shadow: 0 0 20px var(--clr-accent-lights-100);
+    border-radius: 0.7rem;
+    transition: background-color 300ms ease-in-out, box-shadow 300ms ease-in-out;
+}
+
+.modal-signup-btn:hover, .modal-signup-btn:active {
+    background-color: var(--clr-accent-lights) !important;
+    box-shadow: 0 0 20px var(--clr-accent-lights);
+}
+
+.modal-cancel-btn {
+    color: var(--clr-secondary-100);
+    transition: color 300ms ease-in-out;
+}
+
+.modal-cancel-btn:hover, .modal-cancel-btn:active {
+    color: var(--clr-secondary-500) !important;
+}
+
+.forgot-password {
+    color: var(--clr-secondary-200);
+    font-size: var(--fz-main-small);
+    font-family: var(--ff-body-regular);
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    color: var(--clr-secondary-400);
+}
