@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import './Agent.css'
 import AgentNavbar from './AgentNavbar'
 import AgentBookings from './AgentBookings/AgentBookings'
 import AgentDutyList from './AgentDutyList/AgentDutyList'
@@ -226,7 +227,7 @@ const Agent = () => {
       ))
 
   return (
-    <div>
+    <div className='agent-body'>
       <AgentNavbar />
       <AgentBookings
       key={travelDetails.id}

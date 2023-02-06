@@ -1,4 +1,5 @@
 import React from 'react'
+import './AgentBookingsConfirmed.css'
 
 const AgentBookingsConfirmed = (props) => {
   
@@ -13,13 +14,13 @@ const AgentBookingsConfirmed = (props) => {
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title">Booking Confirmed!</h5>
-            <button type="button" className="btn-close" onClick={props.hide}></button>
+            <button type="button" className="btn-close btn-color" onClick={props.hide}></button>
           </div>
-          <div className="modal-body">
+          <div className="modal-body text-secondary">
             <img src={props.image} className='img-fluid'/>
-            <h3>Destination: {props.destination}</h3>
-            <h4>Package: {props.package}</h4>
-            <h4>Full Name: {props.fullName}</h4>
+            <h5 className='mt-3'>Destination: {props.destination}</h5>
+            <h6>Package: {props.package}</h6>
+            <h6>Full Name: {props.fullName}</h6>
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-secondary" onClick={props.hide}>Later</button>
