@@ -5,10 +5,13 @@
 .sidebar {
     height: 100%;
     background-color: var(--clr-primary-dark);
+    backdrop-filter: blur(2px);
+    background-image: url(../../../assets/images/grain.png);
     background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    /* box-shadow: 5px 7px 25px #999; */
+    background-repeat: repeat;
+    background-attachment: fixed;
+    /* background-size: cover; */
+    box-shadow: 5px 7px 25px #999;
 }
 
 .bottom-border {

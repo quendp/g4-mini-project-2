@@ -5,7 +5,7 @@ const AgentDutyList = (props) => {
   return (
     <section id='assignedDutySection'>
       <div className='container-fluid'>
-        <div className='row mb-5 align-items-center'>
+        <div className='row align-items-center'>
           <div className='col-xxl-10 col-xl-9 col-lg-9 ms-auto'>
             <div className='row'>
               <div className='col-xxl-12 col-xl-12 col-12 mb-4'>

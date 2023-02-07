@@ -1,26 +1,36 @@
 import React from 'react'
 
-const AgentBookingsCancelled = () => {
+const AgentBookingsCancelled = (props) => {
+
+  let modelStyle = {
+    display: 'block',
+    backgroundColor: 'rgba(0,0,0,0.8)'
+  }
+
   return (
-    <div>
-        <div className="modal fade" id="removeBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div className="modal-dialog">
-                <div className="modal-content">
-                <div className="modal-header">
-                    <h1 className="modal-title fs-5" id="staticBackdropLabel">Remove this item?</h1>
-                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    
+    <div className='modal show-fade' style={modelStyle}>
+        <div className='modal-dialog'>
+            <div className='modal-content'>
+                <div className='modal-header'>
+                    <h4 className='modal-title text-warning' style={{textShadow: 'none', fontWeight: 'bold'}}>
+                        Remove this Item?
+                    </h4>
+                    <button type='button' className='btn-close' data-bs-dismiss='modal' aria-label='Close' onClick={props.hide}></button>
                 </div>
-                <div className="modal-body">
-                    <h5>Press Ok to continue</h5>
+                <div className='modal-body'>
+                    <div className='d-flex flex-column justify-content-center align-items-around text-secondary'>
+                        <h5>{props.fullName}</h5>
+                        <h5>Reson: {props.reason}</h5>
+                    </div>
                 </div>
-                <div className="modal-footer d-flex justify-content-center">
-                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Later</button>
-                    <button type="button" className="btn btn-warning">Ok</button>
-                </div>
+                <div className='modal-footer'>
+                    <button type='button' className='btn btn-warning' style={{color: 'rgb(59, 58, 58)', fontWeight: 'bold'}}>Ok</button>
                 </div>
             </div>
-        </div>     
+        </div>
     </div>
+
   )
 }
 

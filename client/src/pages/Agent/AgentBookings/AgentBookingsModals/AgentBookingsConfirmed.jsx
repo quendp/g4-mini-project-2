@@ -13,7 +13,7 @@ const AgentBookingsConfirmed = (props) => {
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title">Booking Confirmed!</h5>
+            <h5 className="modal-title text-success" style={{textShadow: 'none', fontWeight: 'bold'}}>Booking Confirmed!</h5>
             <button type="button" className="btn-close btn-color" onClick={props.hide}></button>
           </div>
           <div className="modal-body text-secondary">
@@ -23,7 +23,6 @@ const AgentBookingsConfirmed = (props) => {
             <h6>Full Name: {props.fullName}</h6>
           </div>
           <div className="modal-footer">
-            <button type="button" className="btn btn-secondary" onClick={props.hide}>Later</button>
             <button type="button" className="btn btn-success">Submit</button>
           </div>
         </div>

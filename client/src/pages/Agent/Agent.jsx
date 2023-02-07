@@ -39,6 +39,7 @@ const travelDetails = [
     package: 'Basic',
     travelDate: 'March 14 2023',
     status: 'Waitlist',
+    cancelledReason: '',
     transportationCost: 1100,
     accommodationCost: 3000,
     otherCost: 1100,
@@ -52,6 +53,7 @@ const travelDetails = [
     package: 'Premium',
     travelDate: 'March 14 2023',
     status: 'Waitlist',
+    cancelledReason: '',
     transportationCost: 1400,
     accommodationCost: 2900,
     otherCost: 1000,
@@ -65,6 +67,7 @@ const travelDetails = [
     package: 'Standard',
     travelDate: 'March 14 2023',
     status: 'Waitlist',
+    cancelledReason: '',
     transportationCost: 1300,
     accommodationCost: 2800,
     otherCost: 900,
@@ -78,6 +81,7 @@ const travelDetails = [
     package: 'Basic',
     travelDate: 'March 14 2023',
     status: 'Waitlist',
+    cancelledReason: '',
     transportationCost: 1200,
     accommodationCost: 2700,
     otherCost: 800,
@@ -91,6 +95,7 @@ const travelDetails = [
     package: 'Premium',
     travelDate: 'March 14 2023',
     status: 'Confirmed',
+    cancelledReason: '',
     transportationCost: 1700,
     accommodationCost: 2600,
     otherCost: 700,
@@ -104,6 +109,7 @@ const travelDetails = [
     package: 'Standard',
     travelDate: 'March 14 2023',
     status: 'Confirmed',
+    cancelledReason: '',
     transportationCost: 1600,
     accommodationCost: 2500,
     otherCost: 600,
@@ -116,7 +122,8 @@ const travelDetails = [
     image: mtApo,
     package: 'Basic',
     travelDate: 'March 14 2023',
-    status: 'Waitlist',
+    status: 'Cancelled',
+    cancelledReason: 'Lorem ipsum dolor sit amet.',
     transportationCost: 1500,
     accommodationCost: 2400,
     otherCost: 500,
@@ -130,6 +137,7 @@ const travelDetails = [
     package: 'Premium',
     travelDate: 'March 14 2023',
     status: 'Waitlist',
+    cancelledReason: '',
     transportationCost: 2000,
     accommodationCost: 2300,
     otherCost: 400,
@@ -143,6 +151,7 @@ const travelDetails = [
     package: 'Standard',
     travelDate: 'March 14 2023',
     status: 'Cancelled',
+    cancelledReason: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, amet.',
     transportationCost: 1900,
     accommodationCost: 2200,
     otherCost: 300,
@@ -156,6 +165,7 @@ const travelDetails = [
     package: 'Basic',
     travelDate: 'March 14 2023',
     status: 'Tentative',
+    cancelledReason: '',
     transportationCost: 1800,
     accommodationCost: 2100,
     otherCost: 200,
@@ -185,6 +195,16 @@ const Agent = () => {
     let tempSubmitdata = [image, destination, packag, fullname]
     setTempSubmitData(item => [1, ...tempSubmitdata])
     return setModelSubmit(true)
+  }
+
+  /*for remove button */
+  const [modelRemove, setModelRemove] = useState(false)
+  const [tempremovedata, setTempRemoveData] = useState([])
+
+  const getDataRemove = (fullName, reason) => {
+    let tempRemovedata = [fullName, reason]
+    setTempRemoveData(item => [1, ...tempRemovedata])
+    return setModelRemove(true)
   }
 
   /*for filtereng status */
@@ -218,7 +238,7 @@ const Agent = () => {
             <div className="card-footer text-secondary d-flex alight-items-center justify-content-between">
 
               {(travelDetail.status === 'Waitlist')?
-              <button type='button' className='bookings-card__btn btn-outline-info' onClick={() => getData(travelDetail.transportationCost, travelDetail.accommodationCost, travelDetail.otherCost, travelDetail.totalCost)}>Proceed</button>:(travelDetail.status === 'Tentative')?<span className='cards-span2'>Required Confirmation</span>:(travelDetail.status === 'Confirmed')?<button type='button' className='bookings-card__btn2 btn outline-info' onClick={() => getDataSubmit(travelDetail.image, travelDetail.destination, travelDetail.package, travelDetail.fullName)}>View</button>:<button type='button' className='bookings-card__btn3 btn-outline-info' data-bs-toggle="modal" data-bs-target='#removeBackdrop'>Remove</button>}
+              <button type='button' className='bookings-card__btn btn-outline-info' onClick={() => getData(travelDetail.transportationCost, travelDetail.accommodationCost, travelDetail.otherCost, travelDetail.totalCost)}>Proceed</button>:(travelDetail.status === 'Tentative')?<span className='cards-span2'>Required Confirmation</span>:(travelDetail.status === 'Confirmed')?<button type='button' className='bookings-card__btn2 btn outline-info' onClick={() => getDataSubmit(travelDetail.image, travelDetail.destination, travelDetail.package, travelDetail.fullName)}>View</button>:<button type='button' className='bookings-card__btn3 btn-outline-info'onClick={() => getDataRemove(travelDetail.fullName, travelDetail.cancelledReason)}>Remove</button>}
 
               <span className='cards-span'>{travelDetail.status}</span>
             </div>
@@ -263,8 +283,14 @@ const Agent = () => {
         hide={() => setModelSubmit(false)}
         />: ''
       }
+      {
+        modelRemove === true ? <AgentBookingsCancelled 
+        fullName={tempremovedata[1]}
+        reason={tempremovedata[2]}
+        hide={() => setModelRemove(false)}
+        />: ''
+      }
       
-      <AgentBookingsCancelled />
     </div>
   )
 }
