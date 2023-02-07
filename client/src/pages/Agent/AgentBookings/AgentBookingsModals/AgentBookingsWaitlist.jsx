@@ -17,7 +17,7 @@ const AgentBookingsWaitlist = (props) => {
             <div className="modal-content">
                 <div className="modal-header">
                     <h4 className="modal-title text-primary " style={{textShadow: 'none', fontWeight: 'bold'}}>New Booking!</h4>
-                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={props.hide}></button>
+                    <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" onClick={props.hide}></button>
                 </div>
                 <div className="modal-body">
                     <div className='d-flex justify-content-between align-items-center text-secondary'>

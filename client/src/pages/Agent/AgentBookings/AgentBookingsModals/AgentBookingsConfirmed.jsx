@@ -14,7 +14,7 @@ const AgentBookingsConfirmed = (props) => {
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title text-success" style={{textShadow: 'none', fontWeight: 'bold'}}>Booking Confirmed!</h5>
-            <button type="button" className="btn-close btn-color" onClick={props.hide}></button>
+            <button type="button" className="btn-close btn-close-white" onClick={props.hide}></button>
           </div>
           <div className="modal-body text-secondary">
             <img src={props.image} className='img-fluid'/>

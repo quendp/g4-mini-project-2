@@ -16,7 +16,7 @@ const AgentBookingsCancelled = (props) => {
                     <h4 className='modal-title text-warning' style={{textShadow: 'none', fontWeight: 'bold'}}>
                         Remove this Item?
                     </h4>
-                    <button type='button' className='btn-close' data-bs-dismiss='modal' aria-label='Close' onClick={props.hide}></button>
+                    <button type='button' className='btn-close btn-close-white' data-bs-dismiss='modal' aria-label='Close' onClick={props.hide}></button>
                 </div>
                 <div className='modal-body'>
                     <div className='d-flex flex-column justify-content-center align-items-around text-secondary'>
