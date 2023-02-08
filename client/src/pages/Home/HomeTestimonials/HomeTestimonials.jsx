@@ -6,14 +6,14 @@
   2) use lowercase letters for classNames. I already changed those like the image-container, card-holder, etc.
 */
 import React from "react";
-import picture1 from "./HomeImages/user1.jpg";
-import picture2 from "./HomeImages/user2.jpg";
-import picture3 from "./HomeImages/user3.jpg";
-import picture4 from "./HomeImages/user4.jpg";
-import picture5 from "./HomeImages/user5.jpg";
-import picture6 from "./HomeImages/user6.jpg";
-import picture7 from "./HomeImages/user7.jpg";
-import picture8 from "./HomeImages/user8.jpg";
+import picture1 from "../../../assets/images/home-testimonials-images/user1.jpg";
+import picture2 from "../../../assets/images/home-testimonials-images/user2.jpg";
+import picture3 from "../../../assets/images/home-testimonials-images/user3.jpg";
+import picture4 from "../../../assets/images/home-testimonials-images/user4.jpg";
+import picture5 from "../../../assets/images/home-testimonials-images/user5.jpg";
+import picture6 from "../../../assets/images/home-testimonials-images/user6.jpg";
+import picture7 from "../../../assets/images/home-testimonials-images/user7.jpg";
+import picture8 from "../../../assets/images/home-testimonials-images/user8.jpg";
 import "./HomeTestimonials.css";
 
 
