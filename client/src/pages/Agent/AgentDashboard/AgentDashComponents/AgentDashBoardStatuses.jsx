@@ -1,4 +1,5 @@
 import React from 'react'
+import './AgentdashBoardStatuses.css'
 
 const AgentDashBoardStatuses = (props) => {
   return (
@@ -6,7 +7,7 @@ const AgentDashBoardStatuses = (props) => {
         <div className='container-fluid'>
             <div className='row'>
                 <div className='col-xxl-10 col-xl-9 col-lg-9 ms-auto'>
-                    <div className='row pt-lg-5 mt-lg-3 mb-5'>
+                    <div className='row pt-lg-5 mt-lg-3 mb-2'>
 
                         {
                             
@@ -25,13 +26,13 @@ const AgentDashBoardStatuses = (props) => {
                                         <i className="fa-solid fa-ban fa-3x text-danger"></i>
                                         }
 
-                                        <div className="d-flex flex-column align-items-end justify-content-evenly text-secondary">
-                                            <h3>{number.number}</h3>
+                                        <div className="d-flex flex-column align-items-end justify-content-evenly">
+                                            <h3 className='text-dark fw-bold'>{number.number}</h3>
                                         </div>  
                                     </div>
                                 </div>
-                                <div className="card-footer text-secondary">
-                                    <span>{number.status}</span>
+                                <div className="card-footer">
+                                    <span className='text-dark fw-bold'>{number.status}</span>
                                 </div>
                             </div>
                         </div>))

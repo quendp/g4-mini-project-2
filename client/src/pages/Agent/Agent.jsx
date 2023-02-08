@@ -14,7 +14,7 @@ const travelDetails = [
     fullName: 'Dia Leocadio',
     destination: 'Star City',
     package: 'Basic',
-    travelDate: 'March 14 2023',
+    travelDate: 'March 2 2023',
     status: 'Waitlist',
     cancelledReason: '',
     transportationCost: 1100,
@@ -27,7 +27,7 @@ const travelDetails = [
     fullName: 'Elnie Ebasan',
     destination: 'Mt. Apo',
     package: 'Premium',
-    travelDate: 'March 14 2023',
+    travelDate: 'March 3 2023',
     status: 'Waitlist',
     cancelledReason: '',
     transportationCost: 1400,
@@ -40,7 +40,7 @@ const travelDetails = [
     fullName: 'Faith Mariano',
     destination: 'Calle Crisologo',
     package: 'Standard',
-    travelDate: 'March 14 2023',
+    travelDate: 'March 4 2023',
     status: 'Waitlist',
     cancelledReason: '',
     transportationCost: 1300,
@@ -53,7 +53,7 @@ const travelDetails = [
     fullName: 'Gene Espejo',
     destination: 'Chocolate Hills',
     package: 'Basic',
-    travelDate: 'March 14 2023',
+    travelDate: 'March 5 2023',
     status: 'Waitlist',
     cancelledReason: '',
     transportationCost: 1200,
@@ -66,7 +66,7 @@ const travelDetails = [
     fullName: 'James Osias',
     destination: 'Rizal Park',
     package: 'Premium',
-    travelDate: 'March 14 2023',
+    travelDate: 'March 6 2023',
     status: 'Confirmed',
     cancelledReason: '',
     transportationCost: 1700,
@@ -79,7 +79,7 @@ const travelDetails = [
     fullName: 'Joffrey Acula',
     destination: 'Fort Santaiago',
     package: 'Standard',
-    travelDate: 'March 14 2023',
+    travelDate: 'March 7 2023',
     status: 'Confirmed',
     cancelledReason: '',
     transportationCost: 1600,
@@ -92,7 +92,7 @@ const travelDetails = [
     fullName: 'Rendi Aguila',
     destination: 'Mt .Apo',
     package: 'Basic',
-    travelDate: 'March 14 2023',
+    travelDate: 'March 8 2023',
     status: 'Cancelled',
     cancelledReason: 'Lorem ipsum dolor sit amet.',
     transportationCost: 1500,
@@ -105,7 +105,7 @@ const travelDetails = [
     fullName: 'Mohn Javier',
     destination: 'Fort Santiago',
     package: 'Premium',
-    travelDate: 'March 14 2023',
+    travelDate: 'March 9 2023',
     status: 'Waitlist',
     cancelledReason: '',
     transportationCost: 2000,
@@ -118,7 +118,7 @@ const travelDetails = [
     fullName: 'Ram Libres',
     destination: 'Rizal Shrine',
     package: 'Standard',
-    travelDate: 'March 14 2023',
+    travelDate: 'March 10 2023',
     status: 'Cancelled',
     cancelledReason: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, amet.',
     transportationCost: 1900,
@@ -131,7 +131,7 @@ const travelDetails = [
     fullName: 'Sketch Caneba',
     destination: 'Chinatown',
     package: 'Basic',
-    travelDate: 'March 14 2023',
+    travelDate: 'March 12 2023',
     status: 'Tentative',
     cancelledReason: '',
     transportationCost: 1800,
@@ -225,7 +225,13 @@ const Agent = () => {
       // onChangeFilter={filterChangeHandler}
       toFilterCards={toFilterCards}
       />
-      <AgentDashboard />
+      <AgentDashboard 
+      travelDetails={travelDetails}
+      fullName={travelDetails.fullName}
+      destination={travelDetails.destination}
+      travelDate={travelDetails.traveldate}
+      status={travelDetails.status}
+      />
       {
         model === true ? <AgentBookingsWaitlist 
         transportationCost={tempdata[1]}
