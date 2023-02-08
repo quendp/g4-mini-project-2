@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import FormModal from "../FormUI/FormModal";
+import FormModal from "../../FormUI/FormModal";
 
 const LogInForm = ({mode, handleChangeMode, setLogInToken}) => {
   const [logInData, setLogInData] = useState({
@@ -33,6 +33,7 @@ const LogInForm = ({mode, handleChangeMode, setLogInToken}) => {
                 username: e.target.value,
             });
           }}
+          onBlur={()=>console.log("blurred")}
           value={logInData.username}
         />
         <label htmlFor="formUserName">Username or Email</label>

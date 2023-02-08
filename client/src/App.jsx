@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import TestingArea from "./components/TestingArea";
 import UserAuthentication from "./components/UserAuthentication/UserAuthentication";
-import User from "./pages/User/User";
 import "./App.css";
 
 function App() {
@@ -60,30 +58,13 @@ function App() {
         handleLogOut={handleLogOut}
         setLogInToken={setLogInToken}
       />
-      <BrowserRouter>
-        <Routes>
-          <Route
-            exact
-            path="/"
-            element={
-              <>
-                <TestingArea
-                  isLoggedIn={isLoggedIn}
-                  handleLogOut={handleLogOut}
-                  loading={loading}
-                  data={data}
-                />
-                <div className="w-100 d-flex justify-content-center p-5">
-                  <Link to="/user">
-                    <button className="btn btn-primary">Go to user page</button>
-                  </Link>
-                </div>
-              </>
-            }
-          />
-          <Route path="/user" element={<User logInToken={logInToken} />} />
-        </Routes>
-      </BrowserRouter>
+      <TestingArea
+        isLoggedIn={isLoggedIn}
+        handleLogOut={handleLogOut}
+        loading={loading}
+        data={data}
+        logInToken={logInToken}
+      />
     </div>
   );
 }

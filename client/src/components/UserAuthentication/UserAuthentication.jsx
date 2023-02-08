@@ -5,10 +5,13 @@ import SignUpForm from "./SignUpForm/SignUpForm";
 import LogOutForm from "./LogOutForm/LogOutForm";
 
 const UserAuthentication = ({ isLoggedIn, handleLogOut, setLogInToken }) => {
+
   const [hasAccount, setHasAccount] = useState(true);
+
   const handleChangeMode = () => {
     hasAccount === true ? setHasAccount(false) : setHasAccount(true);
   };
+  
   return (
     <div
       className="modal fade"

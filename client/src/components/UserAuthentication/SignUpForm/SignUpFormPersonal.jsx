@@ -1,7 +1,7 @@
 import React from "react";
 
-const SignUpFormPersonal = ({ formData, setFormData }) => {
-  const formValidty = ""
+const SignUpFormPersonal = (props) => {
+  const formValidty = "";
   return (
     <div>
       <div className="row g-0 g-sm-4">
@@ -13,13 +13,10 @@ const SignUpFormPersonal = ({ formData, setFormData }) => {
             placeholder="Firstname"
             aria-label="Firstname"
             required
-            onChange={(e) =>{
-                setFormData({
-                    ...formData,
-                    firstname: e.target.value,
-                });
+            onChange={(e) => {
+              props.setFirstName(e.target.value);
             }}
-            value={formData.firstname}
+            value={props.firstName}
           />
           <label htmlFor="formFirstName" className="ps-3 ps-sm-4">
             First Name
@@ -34,13 +31,10 @@ const SignUpFormPersonal = ({ formData, setFormData }) => {
             placeholder="Lastname"
             aria-label="Lastname"
             required
-            onChange={(e) =>{
-                setFormData({
-                    ...formData,
-                    lastname: e.target.value,
-                });
+            onChange={(e) => {
+              props.setLastName(e.target.value);
             }}
-            value={formData.lastname}
+            value={props.lastName}
           />
           <label htmlFor="formLastName" className="ps-3 ps-sm-4">
             Last Name
@@ -56,13 +50,10 @@ const SignUpFormPersonal = ({ formData, setFormData }) => {
             id="formNumber"
             placeholder="____ - ___ - ____"
             required
-            onChange={(e) =>{
-                setFormData({
-                    ...formData,
-                    phone_number: Number(e.target.value),
-                });
+            onChange={(e) => {
+              props.setPhoneNumber(e.target.value);
             }}
-            value={formData.phone_number}
+            value={props.phoneNumber}
           />
           <label htmlFor="formNumber" className="ps-3 ps-sm-4">
             Phone Number
@@ -70,19 +61,17 @@ const SignUpFormPersonal = ({ formData, setFormData }) => {
           <div className="invalid-feedback">Please choose a valid number.</div>
         </div>
         <div className="form-floating mb-3 mb-sm-4 col-12 col-sm-6">
-          <input 
-            type="number" 
-            className={`form-control ${formValidty}`} 
-            id="formAge" 
+          <input
+            type="number"
+            className={`form-control ${formValidty}`}
+            id="formAge"
             placeholder="Age"
             required
-            onChange={(e) =>{
-                setFormData({
-                    ...formData,
-                    age: Number(e.target.value),
-                });
+            onChange={(e) => {
+              props.setAge(e.target.value);
             }}
-            value={formData.age} />
+            value={props.age}
+          />
           <label htmlFor="formAge" className="ps-3 ps-sm-4">
             Age
           </label>
@@ -96,13 +85,10 @@ const SignUpFormPersonal = ({ formData, setFormData }) => {
           id="formAddress"
           placeholder="Current Address"
           required
-          onChange={(e) =>{
-            setFormData({
-                ...formData,
-                address: e.target.value,
-            });
-        }}
-        value={formData.address}
+          onChange={(e) => {
+            props.setAddress(e.target.value);
+          }}
+          value={props.address}
         />
         <label htmlFor="formAddress">Current Address</label>
         <div className="invalid-feedback">Please enter a valid address.</div>

@@ -1,6 +1,6 @@
 import React from "react";
 
-const SignUpFormAccount = ({ formData, setFormData }) => {
+const SignUpFormAccount = (props) => {
   const formValidty = ""
   return (
     <div>
@@ -9,22 +9,20 @@ const SignUpFormAccount = ({ formData, setFormData }) => {
           <input
             type="text"
             id="formUsername"
-            className={`form-control ${formValidty}`}
+            className={`form-control ${props.usernameClass}`}
             placeholder="Username"
             aria-label="Username"
             required
             onChange={(e) =>{
-                setFormData({
-                    ...formData,
-                    username: e.target.value,
-                });
+                props.setUsername(e.target.value)
             }}
-            value={formData.username}
+            onBlur={props.validateUserName(this)}
+            value={props.username}
           />
           <label htmlFor="formUsername" className="ps-3 ps-sm-4">
             Username
           </label>
-          <div className="invalid-feedback">Username cannot be empty.</div>
+          <div className="invalid-feedback">Username can only contain letters, numbers and "_". </div>
         </div>
         <div className="form-floating mb-3 mb-sm-4 col-12 col-sm-6">
           <input
@@ -34,12 +32,9 @@ const SignUpFormAccount = ({ formData, setFormData }) => {
             placeholder="name@example.com"
             required
             onChange={(e) =>{
-                setFormData({
-                    ...formData,
-                    email: e.target.value,
-                });
+                props.setEmail(e.target.value)
             }}
-            value={formData.email}
+            value={props.email}
           />
           <label htmlFor="formEmail" className="ps-3 ps-sm-4">
             Email Address
@@ -54,13 +49,10 @@ const SignUpFormAccount = ({ formData, setFormData }) => {
           id="formPassword"
           placeholder="Password"
           required
-          onChange={(e) =>{
-            setFormData({
-                ...formData,
-                password: e.target.value,
-            });
-        }}
-        value={formData.password}
+            onChange={(e) =>{
+                props.setPassword(e.target.value)
+            }}
+            value={props.password}
         />
         <label htmlFor="formPassword">Password</label>
         <div className="invalid-feedback">Please choose a valid password.</div>
@@ -72,13 +64,10 @@ const SignUpFormAccount = ({ formData, setFormData }) => {
           id="formConfirmPass"
           placeholder="Confirm Password"
           required
-          onChange={(e) =>{
-            setFormData({
-                ...formData,
-                passwordConfirmation: e.target.value,
-            });
-        }}
-        value={formData.passwordConfirmation}
+            onChange={(e) =>{
+                props.setPassMatch(e.target.value)
+            }}
+            value={props.passMatch}
         />
         <label htmlFor="formConfirmPass">Confirm Password</label>
         <div className="invalid-feedback">Password doesn't match.</div>
