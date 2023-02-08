@@ -1,56 +1,68 @@
 h1 {
-    font-size: var(--fz-main-h2);
-    font-family: var(--ff-heading-primary-2-light);
-    color: var(--clr-primary-dark);
-    letter-spacing: 0.8px;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    font-weight:700;
-    padding: 100px;
-    width: 100%;
+  font-size: var(--fz-main-h2);
+  font-family: var(--ff-heading-primary-2-light);
+  color: var(--clr-primary-dark);
+  letter-spacing: 0.8px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-weight: 700;
+  padding: 100px;
+  width: 100%;
 }
 
 .Testimonials {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    text-align: center;
-    background-color: var(--clr-secondary-000);
-    margin: 0;
-    padding: 0;
-    border-radius: 1rem;
-    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  .Gallery img {
-    width: clamp(2rem, 4vw, 5rem);
-    height: clamp(2rem, 4vw, 5rem);
-    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.2);
-    transform: translate(-30%, -30%);
-    position: absolute;
-    border-radius: 80%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-  
-  .CardHolder {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 10px;
-    margin: 25px 20px;
-    width: 380px; 
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+  background-color: var(--clr-secondary-000);
+  margin: 0;
+  padding: 0;
+  border-radius: 1rem;
+  box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.Gallery {
+  background-color: var(--clr-secondary-000);
+  display: flex;
+  overflow-x: scroll;
+  width: 100%;
+}
+.Gallery img {
+  width: clamp(2rem, 4vw, 5rem);
+  height: clamp(2rem, 4vw, 5rem);
+  box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.2);
+  transform: translate(-30%, -30%);
+  position: absolute;
+  border-radius: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  object-fit: cover;
+}
+
+.CardHolder {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 25px 20px;
+  width: 380px; 
     height: 180px; 
-    border: 1px solid rgba(128, 128, 128, 0.089); 
-    background-color: var(--clr-secondary-100);
-    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.2);
-  }
+  border: 1px solid rgba(128, 128, 128, 0.089);
+  background-color: var(--clr-secondary-100);
+  box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+  border-radius: 10px;
+  margin-left: 10px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
 
 .description {
-    font-family: var(--ff-body-light)!important;
-    font-size: var(--fz-main-text)!important;
- }
+  font-family: var(--ff-body-light) !important;
+  font-size: var(--fz-main-text) !important;
+}
