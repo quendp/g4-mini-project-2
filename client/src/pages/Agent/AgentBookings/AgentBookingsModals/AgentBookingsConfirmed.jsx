@@ -17,7 +17,6 @@ const AgentBookingsConfirmed = (props) => {
             <button type="button" className="btn-close btn-close-white" onClick={props.hide}></button>
           </div>
           <div className="modal-body text-secondary">
-            <img src={props.image} className='img-fluid'/>
             <h5 className='mt-3'>Destination: {props.destination}</h5>
             <h6>Package: {props.package}</h6>
             <h6>Full Name: {props.fullName}</h6>

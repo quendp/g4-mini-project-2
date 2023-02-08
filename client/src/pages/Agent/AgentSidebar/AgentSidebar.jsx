@@ -15,15 +15,21 @@ const AgentSidebar = () => {
         </div>
         <ul className='navbar-nav flex-column mt-2'>
           <li className="nav-item">
-            <a href="#assignedDutySection" to='' className="nav-link text-white p-3 mb-2 bg-secondary sidebar-panel">
-              <i className="fa-solid fa-list text-light fa-lg me-3"></i>Assigned Duties
+            <a href="#" to='' className="nav-link text-white p-3 mb-2 bg-secondary sidebar-panel">
+              <i className="fa-solid fa-chart-line text-light fa-lg me-3"></i>Dashboard
             </a>
           </li>
           <li className="nav-item">
-            <a href="#bookingsSection" className="nav-link text-white p-3 mb-2 sidebar-link"><i className="fa-solid fa-address-card text-light fa-lg me-3"></i>Bookings</a>
+            <a href="#bookingsSection" className="nav-link text-white p-3 mb-2 sidebar-link"><i className="fa-solid fa-list text-light fa-lg me-3"></i>Waitlist</a>
           </li>
           <li className="nav-item">
-            <a href="#" className="nav-link text-white p-3 mb-2 sidebar-link"><i className="fa-solid fa-bell text-light fa-lg me-3"></i>Notifications</a>
+            <a href="#" className="nav-link text-white p-3 mb-2 sidebar-link"><i className="fa-solid fa-question text-light fa-lg me-3"></i>Tentative</a>
+          </li>
+          <li className="nav-item">
+            <a href="#" className="nav-link text-white p-3 mb-2 sidebar-link"><i className="fa-solid fa-check text-light fa-lg me-3"></i>Confirmed</a>
+          </li>
+          <li className="nav-item">
+            <a href="#" className="nav-link text-white p-3 mb-2 sidebar-link"><i className="fa-solid fa-ban text-light fa-lg me-3"></i>Cancelled</a>
           </li>
         </ul>
       </div>
