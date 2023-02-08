@@ -23,7 +23,11 @@ const SignUpForm = ({ mode, handleChangeMode, setLogInToken }) => {
   const [usernameClass, setUsernameClass] = useState("");
 
   const validateUserName = () => {
-
+    if (!validUsername) {
+      setUsernameClass("isInvalid")
+    } else {
+      setUsernameClass("isValid")
+    }
   }
 
   const [email, setEmail] = useState("");
@@ -74,11 +78,6 @@ const SignUpForm = ({ mode, handleChangeMode, setLogInToken }) => {
     console.log(result);
     console.log(username);
     setValidUsername(result);
-    if (!validUsername) {
-      setUsernameClass("isInvalid")
-    } else {
-      setUsernameClass("isValid")
-    }
   }, [username]);
 
   useEffect(() => {
