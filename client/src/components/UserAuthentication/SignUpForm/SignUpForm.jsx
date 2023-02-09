@@ -1,9 +1,9 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import SignUpFormAccount from "./SignUpFormAccount";
 import SignUpFormPersonal from "./SignUpFormPersonal";
 import FormModal from "../../FormUI/FormModal";
 
-const SignUpForm = ({ mode, handleChangeMode, setLogInToken }) => {
+const SignUpForm = ({ handleChangeMode, submitHandler }) => {
   
   const [step, setStep] = useState(0);
 
@@ -13,22 +13,11 @@ const SignUpForm = ({ mode, handleChangeMode, setLogInToken }) => {
   const NAME_REGEX = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%^&*(){}|~<>;:[\]]{0,30}$/;
   const NUMBER_REGEX = /^\d{10,12}$/;
   const AGE_REGEX = /^\d{1,3}$/;
-  const ADDRESS_REGEX = /^[\w'\-,.][^_!¡?÷?¿/\\+=@#$%^&*{}|~<>;:[\]]{0,200}$/;
-
-  const usernameRef = useRef();
-  const errRef = useRef();
+  const ADDRESS_REGEX = /^[\w'\-,.][^_!¡÷?¿/\\+=@#$%^&*{}|~<>;:[\]]{0,200}$/;
 
   const [username, setUsername] = useState("");
-  const [validUsername, setValidUsername] = useState(false);
+  const [validUsername, setValidUsername] = useState();
   const [usernameClass, setUsernameClass] = useState("");
-
-  const validateUserName = () => {
-    if (!validUsername) {
-      setUsernameClass("isInvalid")
-    } else {
-      setUsernameClass("isValid")
-    }
-  }
 
   const [email, setEmail] = useState("");
   const [validEmail, setValidEmail] = useState(false);
@@ -62,7 +51,7 @@ const SignUpForm = ({ mode, handleChangeMode, setLogInToken }) => {
   const [validAddress, setValidAddress] = useState(false);
   const [addressFocus, setAddressFocus] = useState(false);
 
-  const formData = {
+  const signUpData = {
     username: username,
     email: email,
     password: password,
@@ -139,7 +128,6 @@ const SignUpForm = ({ mode, handleChangeMode, setLogInToken }) => {
             username={username}
             setUsername={setUsername}
             usernameClass={usernameClass}
-            validateUserName={validateUserName}
             email={email}
             setEmail={setEmail}
             password={password}
@@ -167,29 +155,45 @@ const SignUpForm = ({ mode, handleChangeMode, setLogInToken }) => {
     }
   };
 
-  const handleClickNext = () => {
-    setTimeout(() => {
-      setStep(1);
-    }, 100);
-    console.log("clicked next");
-  };
+  const onClickBtnLeft = () => {
+    setStep(0)
+  }
 
-  const handleSubmit = () => {
-    console.log("sign up submitted");
-    setLogInToken(true);
-    const signUpModalInst = document.getElementById("signUpModal");
-    const myModal = bootstrap.Modal.getOrCreateInstance(signUpModalInst);
-    myModal.hide();
-  };
+  const onClickBtnRight = () => {
+    setTimeout(() => {
+      setStep(1)
+    }, 100);
+  }
+
+  const onClickSubmit = (event) => {
+    event.preventDefault()
+    submitHandler(signUpData)
+  }
+
+  const headerTitle = "Create a Lakbay Account";
+  const headerText = "Already have an account? ";
+  const headerLink = (
+    <a href="#" onClick={handleChangeMode}>Log in here.</a>
+  );
+  const btnLeftClass = "modal-cancel-btn";
+  const dataDismiss = step === 0 ? "modal" : "";
+  const btnLeftText = step === 0 ? "cancel" : "previous";
+  const btnRightType = step === 0 ? "button" : "submit";
+  const btnRightText = step === 0 ? "next" : "submit";
 
   return (
     <FormModal
-      mode={mode}
-      step={step}
-      setStep={setStep}
-      handleSubmit={handleSubmit}
-      handleClickNext={handleClickNext}
-      handleChangeMode={handleChangeMode}
+    headerTitle={headerTitle}
+    headerText={headerText}
+    headerLink={headerLink}
+    submitHandler={onClickSubmit}
+    btnLeftClass={btnLeftClass}
+    dataDismiss={dataDismiss}
+    onClickBtnLeft={onClickBtnLeft}
+    btnLeftText={btnLeftText}
+    btnRightType={btnRightType}
+    onClickBtnRight={onClickBtnRight}
+    btnRightText={btnRightText}
     >
       <div className="mb-4">
         <h3>

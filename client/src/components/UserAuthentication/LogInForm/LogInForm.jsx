@@ -1,24 +1,42 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import FormModal from "../../FormUI/FormModal";
 
-const LogInForm = ({mode, handleChangeMode, setLogInToken}) => {
+const LogInForm = ({ handleChangeMode, submitHandler }) => {
   const [logInData, setLogInData] = useState({
     username: "",
     password: "",
   });
 
-  const handleSubmit = () => {
-    setLogInToken(true)
-    console.log(logInData);
-    console.log("submitted");
-
-    const signUpModalInst = document.getElementById("signUpModal");
-    const myModal = bootstrap.Modal.getOrCreateInstance(signUpModalInst );
-    myModal.hide();
+  const onClickSubmit = (event) => {
+    event.preventDefault()
+    submitHandler(logInData)
   }
 
+  const headerTitle = "Log in to your Lakbay Account";
+  const headerText = "Doesn't have an account? ";
+  const headerLink = (
+    <a href="#" onClick={handleChangeMode}>
+      Sign up here.
+    </a>
+  );
+  const btnLeftClass = "modal-cancel-btn";
+  const dataDismiss = "modal";
+  const btnLeftText = "cancel";
+  const btnRightType = "submit";
+  const btnRightText = "Sign In";
+
   return (
-    <FormModal mode={mode} handleSubmit={handleSubmit} handleChangeMode={handleChangeMode}>
+    <FormModal
+      submitHandler={onClickSubmit}
+      headerTitle={headerTitle}
+      headerText={headerText}
+      headerLink={headerLink}
+      btnLeftClass={btnLeftClass}
+      dataDismiss={dataDismiss}
+      btnLeftText={btnLeftText}
+      btnRightType={btnRightType}
+      btnRightText={btnRightText}
+    >
       <div className="form-floating mb-3">
         <input
           type="text"
@@ -27,13 +45,13 @@ const LogInForm = ({mode, handleChangeMode, setLogInToken}) => {
           placeholder="UserName"
           aria-label="UserName"
           required
-          onChange={(e) =>{
+          onChange={(e) => {
             setLogInData({
-                ...logInData,
-                username: e.target.value,
+              ...logInData,
+              username: e.target.value,
             });
           }}
-          onBlur={()=>console.log("blurred")}
+          onBlur={() => console.log("blurred")}
           value={logInData.username}
         />
         <label htmlFor="formUserName">Username or Email</label>
@@ -48,10 +66,10 @@ const LogInForm = ({mode, handleChangeMode, setLogInToken}) => {
           id="formPassword"
           placeholder="Password"
           required
-          onChange={(e) =>{
+          onChange={(e) => {
             setLogInData({
-                ...logInData,
-                password: e.target.value,
+              ...logInData,
+              password: e.target.value,
             });
           }}
           value={logInData.password}

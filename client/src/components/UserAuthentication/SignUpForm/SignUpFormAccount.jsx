@@ -14,9 +14,8 @@ const SignUpFormAccount = (props) => {
             aria-label="Username"
             required
             onChange={(e) =>{
-                props.setUsername(e.target.value)
+                props.setUsername(e.target.value);
             }}
-            onBlur={props.validateUserName(this)}
             value={props.username}
           />
           <label htmlFor="formUsername" className="ps-3 ps-sm-4">

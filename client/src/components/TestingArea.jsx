@@ -13,8 +13,6 @@ import HomeStories from "../pages/Home/HomeStories/HomeStories";
 import User from "../pages/User/User";
 
 const TestingArea = ({
-  isLoggedIn,
-  handleLogOut,
   loading,
   data,
   logInToken,
@@ -42,7 +40,7 @@ const TestingArea = ({
                     {!loading && (
                       <p className="m-5 pt-5 p-light">{data.email}</p>
                     )}
-                    <Header isLoggedIn={isLoggedIn} />
+                    <Header logInToken={logInToken} />
                     <div className="testingArea-wrapper px-3 py-5 mx-auto">
                       <h1 className="h3-light-bold text-center mb-3">
                         TESTING AREA

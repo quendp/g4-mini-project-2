@@ -1,17 +1,15 @@
 import React, { useState } from "react";
-import "./UserAuthentication.css";
 import LogInForm from "./LogInForm/LogInForm";
 import SignUpForm from "./SignUpForm/SignUpForm";
 import LogOutForm from "./LogOutForm/LogOutForm";
 
-const UserAuthentication = ({ isLoggedIn, handleLogOut, setLogInToken }) => {
-
+const UserAuthentication = ({ logInToken, handleLogOut, submitHandler }) => {
   const [hasAccount, setHasAccount] = useState(true);
 
   const handleChangeMode = () => {
     hasAccount === true ? setHasAccount(false) : setHasAccount(true);
   };
-  
+
   return (
     <div
       className="modal fade"
@@ -20,18 +18,24 @@ const UserAuthentication = ({ isLoggedIn, handleLogOut, setLogInToken }) => {
       aria-labelledby="signUpModalLabel"
       aria-hidden="true"
     >
-      <div className={`modal-dialog ${(!isLoggedIn && !hasAccount) ? 'modal-lg': 'modal-md'} modal-dialog-centered`}>
-        <div className="modal-content p-3 p-md-4">
-          {!isLoggedIn && hasAccount && (
-            <LogInForm mode="login" handleChangeMode={handleChangeMode} setLogInToken={setLogInToken} />
-          )}
-          {!isLoggedIn && !hasAccount && (
-            <SignUpForm mode="signup" handleChangeMode={handleChangeMode} setLogInToken={setLogInToken} />
-          )}
-          {isLoggedIn && (
-            <LogOutForm mode="logout" handleLogOut={handleLogOut}/>
-          )}
-        </div>
+      <div
+        className={`modal-dialog ${
+          logInToken.length === 0 && !hasAccount ? "modal-lg" : "modal-md"
+        } modal-dialog-centered`}
+      >
+        {logInToken.length === 0 && hasAccount && (
+          <LogInForm
+            handleChangeMode={handleChangeMode}
+            submitHandler={submitHandler}
+          />
+        )}
+        {logInToken.length === 0 && !hasAccount && (
+          <SignUpForm
+            handleChangeMode={handleChangeMode}
+            submitHandler={submitHandler}
+          />
+        )}
+        {logInToken.length > 0 && <LogOutForm handleLogOut={handleLogOut} />}
       </div>
     </div>
   );

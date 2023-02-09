@@ -5,33 +5,34 @@ import UserAuthentication from "./components/UserAuthentication/UserAuthenticati
 import "./App.css";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [logInToken, setLogInToken] = useState(false);
+  const [logInToken, setLogInToken] = useState("");
+
+
+  const submitLogInHandler = (logInData) => {
+    setLogInToken("tokenSample");
+    console.log("user logged in");
+    console.log(logInData);
+
+    const signUpModalInst = document.getElementById("signUpModal");
+    const myModal = bootstrap.Modal.getOrCreateInstance(signUpModalInst);
+    myModal.hide();
+  }
 
   useEffect(() => {
-    if (!logInToken) {
-      setIsLoggedIn(false);
-    } else {
-      setIsLoggedIn(true);
-    }
-  }, [logInToken]);
+    console.log("submitted with token: ", logInToken);
+  }, [logInToken])
 
   const handleLogOut = () => {
-    setLogInToken(false);
+    setLogInToken("");
     console.log("user logged out");
-    console.log("is there a token (log out) ? : ", logInToken);
-    setTimeout(() => {
-      console.log("is user logged in? : ", isLoggedIn);
-    }, 1000);
-  };
 
-  console.log("is there a token ? : ", logInToken);
-  setTimeout(() => {
-    console.log("is user logged in? : ", isLoggedIn);
-  }, 1000);
+    const signUpModalInst = document.getElementById("signUpModal");
+    const myModal = bootstrap.Modal.getOrCreateInstance(signUpModalInst);
+    myModal.hide();
+  };
 
   useEffect(() => {
     const getData = async () => {
@@ -54,16 +55,14 @@ function App() {
   return (
     <div>
       <UserAuthentication
-        isLoggedIn={isLoggedIn}
+        submitHandler = {submitLogInHandler}
+        logInToken={logInToken}
         handleLogOut={handleLogOut}
-        setLogInToken={setLogInToken}
       />
       <TestingArea
-        isLoggedIn={isLoggedIn}
-        handleLogOut={handleLogOut}
+        logInToken={logInToken}
         loading={loading}
         data={data}
-        logInToken={logInToken}
       />
     </div>
   );
