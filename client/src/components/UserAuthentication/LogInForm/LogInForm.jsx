@@ -9,7 +9,7 @@ const LogInForm = ({ handleChangeMode, submitHandler }) => {
 
   const onClickSubmit = (event) => {
     event.preventDefault()
-    submitHandler(logInData)
+    submitHandler(logInData, "sample log in token")
   }
 
   const headerTitle = "Log in to your Lakbay Account";

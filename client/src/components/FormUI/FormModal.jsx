@@ -12,6 +12,9 @@ const FormModal = (props) => {
           {props.headerText}
           {props.headerLink}
         </p>
+        <p className="p-light" style={{color:"var(--clr-accent-invalid)"}}>
+          {props.errMsg}
+        </p>
       </div>
       <form action="#" onSubmit={props.submitHandler} noValidate>
         <div className="modal-body py-3">

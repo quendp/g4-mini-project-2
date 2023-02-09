@@ -20,7 +20,7 @@ const SignUpFormAccount = (props) => {
           <label htmlFor="formUsername" className="ps-3 ps-sm-4">
             Username
           </label>
-          <div className="invalid-feedback">Username can only contain letters, numbers and "_". Should be 3-32 characters long.</div>
+          <div className="invalid-feedback">Username can only contain letters, numbers and "_". Should be 3-16 characters long.</div>
         </div>
         <div className="form-floating mb-3 mb-sm-4 col-12 col-sm-6">
           <input

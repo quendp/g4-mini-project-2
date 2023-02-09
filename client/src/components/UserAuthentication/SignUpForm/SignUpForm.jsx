@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import SignUpFormAccount from "./SignUpFormAccount";
 import SignUpFormPersonal from "./SignUpFormPersonal";
 import FormModal from "../../FormUI/FormModal";
 
 const SignUpForm = ({ handleChangeMode, submitHandler }) => {
-  
-  const [step, setStep] = useState(0);
-  const [isSubmitClicked, setIsSubmitClicked] = useState(false)
-  const [isNextClicked, setIsNextClicked] = useState(false)
+  const REGISTER_URL = "/api/users";
 
-  const USERNAME_REGEX = /^[A-z][A-z0-9-_]{3,32}$/;
+  const [step, setStep] = useState(0);
+  const [isSubmitClicked, setIsSubmitClicked] = useState(false);
+  const [isNextClicked, setIsNextClicked] = useState(false);
+  const [errMsg, setErrMsg] = useState("");
+
+  const USERNAME_REGEX = /^[A-z][A-Za-z0-9-_]{3,16}$/;
   const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   const PWD_REGEX = /^(?=.*[A-Za-z\d])[A-Za-z\d@$!%*#?&^_-]{8,32}$/;
   const NAME_REGEX = /^[\w'\-,.][^0-9_!¡÷?¿/\\+=@#$%^&*(){}|~<>;:[\]]{1,30}$/;
@@ -35,15 +38,15 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
 
   const [firstName, setFirstName] = useState("");
   const [validFirstName, setValidFirstName] = useState(false);
-  const [firstNameClass, setFirstNameClass] = useState("")
+  const [firstNameClass, setFirstNameClass] = useState("");
 
   const [lastName, setLastName] = useState("");
   const [validLastName, setValidLastName] = useState(false);
-  const [lastNameClass, setLastNameClass] = useState("")
+  const [lastNameClass, setLastNameClass] = useState("");
 
   const [phoneNumber, setPhoneNumber] = useState("");
   const [validNumber, setValidNumber] = useState(false);
-  const [numberClass, setNumberClass] = useState("")
+  const [numberClass, setNumberClass] = useState("");
 
   const [age, setAge] = useState("");
   const [validAge, setValidAge] = useState(false);
@@ -55,13 +58,13 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
 
   const signUpData = {
     username: username,
-    email: email,
-    password: password,
     firstname: firstName,
     lastname: lastName,
+    email: email,
     phone_number: phoneNumber,
     age: age,
     address: address,
+    password: password,
   };
 
   useEffect(() => {
@@ -75,13 +78,13 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
   }, [username]);
 
   useEffect(() => {
-    const result = EMAIL_REGEX.test(email);;
+    const result = EMAIL_REGEX.test(email);
     setValidEmail(result);
     if (!result && isNextClicked) {
       setEmailClass("isInvalid");
     } else if (result && isNextClicked) {
       setEmailClass("isValid");
-    } 
+    }
   }, [email]);
 
   useEffect(() => {
@@ -91,7 +94,7 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
       setPassClass("isInvalid");
     } else if (result && isNextClicked) {
       setPassClass("isValid");
-    } 
+    }
   }, [password]);
 
   useEffect(() => {
@@ -101,8 +104,8 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
       setPassMatchClass("isInvalid");
     } else if (result && isNextClicked) {
       setPassMatchClass("isValid");
-    } 
-  }, [passMatch])
+    }
+  }, [passMatch]);
 
   useEffect(() => {
     const result = NAME_REGEX.test(firstName);
@@ -111,7 +114,7 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
       setFirstNameClass("isInvalid");
     } else if (result && isSubmitClicked) {
       setFirstNameClass("isValid");
-    } 
+    }
   }, [firstName]);
 
   useEffect(() => {
@@ -121,7 +124,7 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
       setLastNameClass("isInvalid");
     } else if (result && isSubmitClicked) {
       setLastNameClass("isValid");
-    } 
+    }
   }, [lastName]);
 
   useEffect(() => {
@@ -131,17 +134,17 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
       setNumberClass("isInvalid");
     } else if (result && isSubmitClicked) {
       setNumberClass("isValid");
-    } 
+    }
   }, [phoneNumber]);
 
   useEffect(() => {
-    const result = (AGE_REGEX.test(age) && age >= 16);
+    const result = AGE_REGEX.test(age) && age >= 16;
     setValidAge(result);
     if (!result && isSubmitClicked) {
       setAgeClass("isInvalid");
     } else if (result && isSubmitClicked) {
       setAgeClass("isValid");
-    } 
+    }
   }, [age]);
 
   useEffect(() => {
@@ -151,7 +154,7 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
       setAddressClass("isInvalid");
     } else if (result && isSubmitClicked) {
       setAddressClass("isValid");
-    } 
+    }
   }, [address]);
 
   const conditionalComponent = () => {
@@ -162,15 +165,12 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
             username={username}
             setUsername={setUsername}
             usernameClass={usernameClass}
-
             email={email}
             setEmail={setEmail}
             emailClass={emailClass}
-
             password={password}
             setPassword={setPassword}
             passClass={passClass}
-
             passMatch={passMatch}
             setPassMatch={setPassMatch}
             passMatchClass={passMatchClass}
@@ -182,19 +182,15 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
             firstName={firstName}
             setFirstName={setFirstName}
             firstNameClass={firstNameClass}
-
             lastName={lastName}
             setLastName={setLastName}
             lastNameClass={lastNameClass}
-
             phoneNumber={phoneNumber}
             setPhoneNumber={setPhoneNumber}
             numberClass={numberClass}
-
             age={age}
             setAge={setAge}
             ageClass={ageClass}
-
             address={address}
             setAddress={setAddress}
             addressClass={addressClass}
@@ -206,44 +202,75 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
 
   const onClickBtnLeft = () => {
     setStep(0);
-  }
+  };
 
   const onClickBtnRight = () => {
     setIsNextClicked(true);
     if (!validUsername || !validEmail || !validPass || !validPassMatch) {
-      !validUsername ? setUsernameClass("isInvalid"): setUsernameClass("");
-      !validEmail ? setEmailClass("isInvalid"): setEmailClass("");
-      !validPass ? setPassClass("isInvalid"): setPassClass("");
-      validPassMatch && passMatch.length > 0 ? setPassMatchClass(""): setPassMatchClass("isInvalid");
+      !validUsername ? setUsernameClass("isInvalid") : setUsernameClass("");
+      !validEmail ? setEmailClass("isInvalid") : setEmailClass("");
+      !validPass ? setPassClass("isInvalid") : setPassClass("");
+      validPassMatch && passMatch.length > 0
+        ? setPassMatchClass("")
+        : setPassMatchClass("isInvalid");
     } else {
       setTimeout(() => {
-        setStep(1)
+        setStep(1);
       }, 100);
       setUsernameClass("");
       setEmailClass("");
       setPassClass("");
       setPassMatchClass("");
     }
-  }
+  };
 
-  const onClickSubmit = (event) => {
+  const onClickSubmit = async (event) => {
     event.preventDefault();
     setIsSubmitClicked(true);
-    if (!validFirstName || !validLastName || !validNumber || !validAge || !validAddress) {
-      !validFirstName ? setFirstNameClass("isInvalid"): setFirstNameClass("");
-      !validLastName ? setLastNameClass("isInvalid"): setLastNameClass("");
-      !validNumber ? setNumberClass("isInvalid"): setNumberClass("");
-      !validAge ? setAgeClass("isInvalid"): setAgeClass("");
-      !validAddress ? setAddressClass("isInvalid"): setAddressClass("");
-    } else {
-      submitHandler(signUpData);
+    if (
+      !validFirstName ||
+      !validLastName ||
+      !validNumber ||
+      !validAge ||
+      !validAddress
+    ) {
+      !validFirstName ? setFirstNameClass("isInvalid") : setFirstNameClass("");
+      !validLastName ? setLastNameClass("isInvalid") : setLastNameClass("");
+      !validNumber ? setNumberClass("isInvalid") : setNumberClass("");
+      !validAge ? setAgeClass("isInvalid") : setAgeClass("");
+      !validAddress ? setAddressClass("isInvalid") : setAddressClass("");
+      return;
     }
-  }
+    try {
+      const response = await axios.post(
+        REGISTER_URL,
+        JSON.stringify(signUpData),
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
+      console.log(response.data);
+      console.log(response.accessToken);
+      console.log(JSON.stringify(response));
+      submitHandler(signUpData, "sample token");
+    } catch (err) {
+      if (!err?.response) {
+        setErrMsg("Registration failed. Cannot connect to the server.");
+      } else if (err.response?.status === 409) {
+        setErrMsg("Username Taken");
+      } else {
+        setErrMsg("Registration failed. Please check your internet connection.");
+      }
+    }
+  };
 
   const headerTitle = "Create a Lakbay Account";
   const headerText = "Already have an account? ";
   const headerLink = (
-    <a href="#" onClick={handleChangeMode}>Log in here.</a>
+    <a href="#" onClick={handleChangeMode}>
+      Log in here.
+    </a>
   );
   const btnLeftClass = "modal-cancel-btn";
   const dataDismiss = step === 0 ? "modal" : "";
@@ -253,17 +280,18 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
 
   return (
     <FormModal
-    headerTitle={headerTitle}
-    headerText={headerText}
-    headerLink={headerLink}
-    submitHandler={onClickSubmit}
-    btnLeftClass={btnLeftClass}
-    dataDismiss={dataDismiss}
-    onClickBtnLeft={onClickBtnLeft}
-    btnLeftText={btnLeftText}
-    btnRightType={btnRightType}
-    onClickBtnRight={onClickBtnRight}
-    btnRightText={btnRightText}
+      headerTitle={headerTitle}
+      headerText={headerText}
+      headerLink={headerLink}
+      submitHandler={onClickSubmit}
+      btnLeftClass={btnLeftClass}
+      dataDismiss={dataDismiss}
+      onClickBtnLeft={onClickBtnLeft}
+      btnLeftText={btnLeftText}
+      btnRightType={btnRightType}
+      onClickBtnRight={onClickBtnRight}
+      btnRightText={btnRightText}
+      errMsg={errMsg}
     >
       <div className="mb-4">
         <h3>

@@ -31,17 +31,7 @@ const TestingArea = ({ loading, data, logInToken }) => {
             <>
               <div>
                 {!isTesting && (
-                  <div>
-                    {loading && <p className="m-5 pt-5 p-light">Loading...</p>}
-                    {!loading && (
-                      <>
-                        <p className="mt-5 mx-5 pt-5 p-light">
-                          {data.username}
-                        </p>
-                        <p className=" mx-5 p-light">{data.email}</p>
-                        <p className="mb-5 mx-5 p-light">{data.password}</p>
-                      </>
-                    )}
+                  <div className="vh-100 d-flex flex-column justify-content-center">
                     <Header logInToken={logInToken} />
                     <div className="testingArea-wrapper px-3 py-5 mx-auto">
                       <h1 className="h3-light-bold text-center mb-3">
@@ -90,7 +80,7 @@ const TestingArea = ({ loading, data, logInToken }) => {
                         </button>
                       </div>
                     </div>
-                    <div className="w-100 d-flex justify-content-center p-5">
+                    <div className="w-100 d-flex justify-content-center pt-5">
                       <Link to="/user">
                         <button className="btn btn-primary">
                           Go to user page
