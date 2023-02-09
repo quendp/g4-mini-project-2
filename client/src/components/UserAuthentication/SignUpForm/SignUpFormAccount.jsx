@@ -1,7 +1,6 @@
 import React from "react";
 
 const SignUpFormAccount = (props) => {
-  const formValidty = ""
   return (
     <div>
       <div className="row g-0 g-sm-4">
@@ -21,12 +20,12 @@ const SignUpFormAccount = (props) => {
           <label htmlFor="formUsername" className="ps-3 ps-sm-4">
             Username
           </label>
-          <div className="invalid-feedback">Username can only contain letters, numbers and "_". </div>
+          <div className="invalid-feedback">Username can only contain letters, numbers and "_". Should be 3-32 characters long.</div>
         </div>
         <div className="form-floating mb-3 mb-sm-4 col-12 col-sm-6">
           <input
             type="email"
-            className={`form-control ${formValidty}`}
+            className={`form-control ${props.emailClass}`}
             id="formEmail"
             placeholder="name@example.com"
             required
@@ -44,7 +43,7 @@ const SignUpFormAccount = (props) => {
       <div className="form-floating mb-3 mb-sm-4">
         <input
           type="password"
-          className={`form-control ${formValidty}`}
+          className={`form-control ${props.passClass}`}
           id="formPassword"
           placeholder="Password"
           required
@@ -54,12 +53,12 @@ const SignUpFormAccount = (props) => {
             value={props.password}
         />
         <label htmlFor="formPassword">Password</label>
-        <div className="invalid-feedback">Please choose a valid password.</div>
+        <div className="invalid-feedback">Please choose a valid password. Should be 8-32 characters.</div>
       </div>
       <div className="form-floating mb-3 mb-sm-4">
         <input
           type="password"
-          className={`form-control ${formValidty}`}
+          className={`form-control ${props.passMatchClass}`}
           id="formConfirmPass"
           placeholder="Confirm Password"
           required

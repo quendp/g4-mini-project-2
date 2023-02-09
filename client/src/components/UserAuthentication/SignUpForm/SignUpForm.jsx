@@ -6,14 +6,16 @@ import FormModal from "../../FormUI/FormModal";
 const SignUpForm = ({ handleChangeMode, submitHandler }) => {
   
   const [step, setStep] = useState(0);
+  const [isSubmitClicked, setIsSubmitClicked] = useState(false)
+  const [isNextClicked, setIsNextClicked] = useState(false)
 
-  const USERNAME_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
+  const USERNAME_REGEX = /^[A-z][A-z0-9-_]{3,32}$/;
   const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%]).{8,24}$/;
-  const NAME_REGEX = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%^&*(){}|~<>;:[\]]{0,30}$/;
+  const PWD_REGEX = /^(?=.*[A-Za-z\d])[A-Za-z\d@$!%*#?&^_-]{8,32}$/;
+  const NAME_REGEX = /^[\w'\-,.][^0-9_!¡÷?¿/\\+=@#$%^&*(){}|~<>;:[\]]{1,30}$/;
   const NUMBER_REGEX = /^\d{10,12}$/;
   const AGE_REGEX = /^\d{1,3}$/;
-  const ADDRESS_REGEX = /^[\w'\-,.][^_!¡÷?¿/\\+=@#$%^&*{}|~<>;:[\]]{0,200}$/;
+  const ADDRESS_REGEX = /^[\w'\-,.][^_!¡÷?¿/\\+=@#$%^&*{}|~<>;:[\]]{1,200}$/;
 
   const [username, setUsername] = useState("");
   const [validUsername, setValidUsername] = useState();
@@ -21,35 +23,35 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
 
   const [email, setEmail] = useState("");
   const [validEmail, setValidEmail] = useState(false);
-  const [emailFocus, setEmailFocus] = useState(false);
+  const [emailClass, setEmailClass] = useState("");
 
   const [password, setPassword] = useState("");
   const [validPass, setValidPass] = useState(false);
-  const [passFocus, setPassFocus] = useState(false);
+  const [passClass, setPassClass] = useState("");
 
   const [passMatch, setPassMatch] = useState("");
   const [validPassMatch, setValidPassMatch] = useState(false);
-  const [passMatchFocus, setPassMatchFocus] = useState(false);
+  const [passMatchClass, setPassMatchClass] = useState("");
 
   const [firstName, setFirstName] = useState("");
   const [validFirstName, setValidFirstName] = useState(false);
-  const [firstNameFocus, setFirstNameFocus] = useState(false);
+  const [firstNameClass, setFirstNameClass] = useState("")
 
   const [lastName, setLastName] = useState("");
   const [validLastName, setValidLastName] = useState(false);
-  const [lastNameFocus, setLastNameFocus] = useState(false);
+  const [lastNameClass, setLastNameClass] = useState("")
 
   const [phoneNumber, setPhoneNumber] = useState("");
   const [validNumber, setValidNumber] = useState(false);
-  const [numberFocus, setNumberFocus] = useState(false);
+  const [numberClass, setNumberClass] = useState("")
 
   const [age, setAge] = useState("");
   const [validAge, setValidAge] = useState(false);
-  const [ageFocus, setAgeFocus] = useState(false);
+  const [ageClass, setAgeClass] = useState("");
 
   const [address, setAddress] = useState("");
   const [validAddress, setValidAddress] = useState(false);
-  const [addressFocus, setAddressFocus] = useState(false);
+  const [addressClass, setAddressClass] = useState("");
 
   const signUpData = {
     username: username,
@@ -64,60 +66,92 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
 
   useEffect(() => {
     const result = USERNAME_REGEX.test(username);
-    console.log(result);
-    console.log(username);
     setValidUsername(result);
+    if (!result && isNextClicked) {
+      setUsernameClass("isInvalid");
+    } else if (result && isNextClicked) {
+      setUsernameClass("isValid");
+    }
   }, [username]);
 
   useEffect(() => {
-    const result = EMAIL_REGEX.test(email);
-    console.log(result);
-    console.log(email);
+    const result = EMAIL_REGEX.test(email);;
     setValidEmail(result);
+    if (!result && isNextClicked) {
+      setEmailClass("isInvalid");
+    } else if (result && isNextClicked) {
+      setEmailClass("isValid");
+    } 
   }, [email]);
 
   useEffect(() => {
     const result = PWD_REGEX.test(password);
-    console.log(result);
-    console.log(password);
     setValidPass(result);
-    const match = password === passMatch;
-    setValidPassMatch(match);
+    if (!result && isNextClicked) {
+      setPassClass("isInvalid");
+    } else if (result && isNextClicked) {
+      setPassClass("isValid");
+    } 
   }, [password]);
 
   useEffect(() => {
+    const result = password === passMatch;
+    setValidPassMatch(result);
+    if (!result && isNextClicked) {
+      setPassMatchClass("isInvalid");
+    } else if (result && isNextClicked) {
+      setPassMatchClass("isValid");
+    } 
+  }, [passMatch])
+
+  useEffect(() => {
     const result = NAME_REGEX.test(firstName);
-    console.log(result);
-    console.log(firstName);
     setValidFirstName(result);
+    if (!result && isSubmitClicked) {
+      setFirstNameClass("isInvalid");
+    } else if (result && isSubmitClicked) {
+      setFirstNameClass("isValid");
+    } 
   }, [firstName]);
 
   useEffect(() => {
     const result = NAME_REGEX.test(lastName);
-    console.log(result);
-    console.log(lastName);
     setValidLastName(result);
+    if (!result && isSubmitClicked) {
+      setLastNameClass("isInvalid");
+    } else if (result && isSubmitClicked) {
+      setLastNameClass("isValid");
+    } 
   }, [lastName]);
 
   useEffect(() => {
     const result = NUMBER_REGEX.test(phoneNumber);
-    console.log(result);
-    console.log(phoneNumber);
     setValidNumber(result);
+    if (!result && isSubmitClicked) {
+      setNumberClass("isInvalid");
+    } else if (result && isSubmitClicked) {
+      setNumberClass("isValid");
+    } 
   }, [phoneNumber]);
 
   useEffect(() => {
-    const result = AGE_REGEX.test(age);
-    console.log(result);
-    console.log(age);
-    setValidNumber(result);
+    const result = (AGE_REGEX.test(age) && age >= 16);
+    setValidAge(result);
+    if (!result && isSubmitClicked) {
+      setAgeClass("isInvalid");
+    } else if (result && isSubmitClicked) {
+      setAgeClass("isValid");
+    } 
   }, [age]);
 
   useEffect(() => {
     const result = ADDRESS_REGEX.test(address);
-    console.log(result);
-    console.log(address);
     setValidAddress(result);
+    if (!result && isSubmitClicked) {
+      setAddressClass("isInvalid");
+    } else if (result && isSubmitClicked) {
+      setAddressClass("isValid");
+    } 
   }, [address]);
 
   const conditionalComponent = () => {
@@ -128,12 +162,18 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
             username={username}
             setUsername={setUsername}
             usernameClass={usernameClass}
+
             email={email}
             setEmail={setEmail}
+            emailClass={emailClass}
+
             password={password}
             setPassword={setPassword}
+            passClass={passClass}
+
             passMatch={passMatch}
             setPassMatch={setPassMatch}
+            passMatchClass={passMatchClass}
           />
         );
       case 1:
@@ -141,14 +181,23 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
           <SignUpFormPersonal
             firstName={firstName}
             setFirstName={setFirstName}
+            firstNameClass={firstNameClass}
+
             lastName={lastName}
             setLastName={setLastName}
+            lastNameClass={lastNameClass}
+
             phoneNumber={phoneNumber}
             setPhoneNumber={setPhoneNumber}
+            numberClass={numberClass}
+
             age={age}
             setAge={setAge}
+            ageClass={ageClass}
+
             address={address}
             setAddress={setAddress}
+            addressClass={addressClass}
           />
         );
       default:
@@ -156,18 +205,39 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
   };
 
   const onClickBtnLeft = () => {
-    setStep(0)
+    setStep(0);
   }
 
   const onClickBtnRight = () => {
-    setTimeout(() => {
-      setStep(1)
-    }, 100);
+    setIsNextClicked(true);
+    if (!validUsername || !validEmail || !validPass || !validPassMatch) {
+      !validUsername ? setUsernameClass("isInvalid"): setUsernameClass("");
+      !validEmail ? setEmailClass("isInvalid"): setEmailClass("");
+      !validPass ? setPassClass("isInvalid"): setPassClass("");
+      validPassMatch && passMatch.length > 0 ? setPassMatchClass(""): setPassMatchClass("isInvalid");
+    } else {
+      setTimeout(() => {
+        setStep(1)
+      }, 100);
+      setUsernameClass("");
+      setEmailClass("");
+      setPassClass("");
+      setPassMatchClass("");
+    }
   }
 
   const onClickSubmit = (event) => {
-    event.preventDefault()
-    submitHandler(signUpData)
+    event.preventDefault();
+    setIsSubmitClicked(true);
+    if (!validFirstName || !validLastName || !validNumber || !validAge || !validAddress) {
+      !validFirstName ? setFirstNameClass("isInvalid"): setFirstNameClass("");
+      !validLastName ? setLastNameClass("isInvalid"): setLastNameClass("");
+      !validNumber ? setNumberClass("isInvalid"): setNumberClass("");
+      !validAge ? setAgeClass("isInvalid"): setAgeClass("");
+      !validAddress ? setAddressClass("isInvalid"): setAddressClass("");
+    } else {
+      submitHandler(signUpData);
+    }
   }
 
   const headerTitle = "Create a Lakbay Account";

@@ -12,11 +12,7 @@ import Contact from "../pages/Contact/Contact";
 import HomeStories from "../pages/Home/HomeStories/HomeStories";
 import User from "../pages/User/User";
 
-const TestingArea = ({
-  loading,
-  data,
-  logInToken,
-}) => {
+const TestingArea = ({ loading, data, logInToken }) => {
   const [isTesting, setIsTesting] = useState(false);
   const [currentDeveloper, setCurrentDeveloper] = useState("");
 
@@ -38,7 +34,13 @@ const TestingArea = ({
                   <div>
                     {loading && <p className="m-5 pt-5 p-light">Loading...</p>}
                     {!loading && (
-                      <p className="m-5 pt-5 p-light">{data.email}</p>
+                      <>
+                        <p className="mt-5 mx-5 pt-5 p-light">
+                          {data.username}
+                        </p>
+                        <p className=" mx-5 p-light">{data.email}</p>
+                        <p className="mb-5 mx-5 p-light">{data.password}</p>
+                      </>
                     )}
                     <Header logInToken={logInToken} />
                     <div className="testingArea-wrapper px-3 py-5 mx-auto">
@@ -88,6 +90,13 @@ const TestingArea = ({
                         </button>
                       </div>
                     </div>
+                    <div className="w-100 d-flex justify-content-center p-5">
+                      <Link to="/user">
+                        <button className="btn btn-primary">
+                          Go to user page
+                        </button>
+                      </Link>
+                    </div>
                   </div>
                 )}
                 {isTesting && currentDeveloper == "roland" && <About />}
@@ -97,11 +106,6 @@ const TestingArea = ({
                 )}
                 {isTesting && currentDeveloper == "ce" && <Contact />}
                 {isTesting && currentDeveloper == "nick" && <HomeStories />}
-              </div>
-              <div className="w-100 d-flex justify-content-center p-5">
-                <Link to="/user">
-                  <button className="btn btn-primary">Go to user page</button>
-                </Link>
               </div>
             </>
           }

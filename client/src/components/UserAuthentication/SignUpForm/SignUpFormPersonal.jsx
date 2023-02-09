@@ -1,7 +1,6 @@
 import React from "react";
 
 const SignUpFormPersonal = (props) => {
-  const formValidty = "";
   return (
     <div>
       <div className="row g-0 g-sm-4">
@@ -9,7 +8,7 @@ const SignUpFormPersonal = (props) => {
           <input
             type="text"
             id="formFirstName"
-            className={`form-control ${formValidty}`}
+            className={`form-control ${props.firstNameClass}`}
             placeholder="Firstname"
             aria-label="Firstname"
             required
@@ -21,13 +20,13 @@ const SignUpFormPersonal = (props) => {
           <label htmlFor="formFirstName" className="ps-3 ps-sm-4">
             First Name
           </label>
-          <div className="invalid-feedback">First name cannot be empty.</div>
+          <div className="invalid-feedback">Please enter a valid first name. Could be 2-30 characters long.</div>
         </div>
         <div className="form-floating mb-3 mb-sm-4 col-12 col-sm-6">
           <input
             type="text"
             id="formLastName"
-            className={`form-control ${formValidty}`}
+            className={`form-control ${props.lastNameClass}`}
             placeholder="Lastname"
             aria-label="Lastname"
             required
@@ -39,14 +38,14 @@ const SignUpFormPersonal = (props) => {
           <label htmlFor="formLastName" className="ps-3 ps-sm-4">
             Last Name
           </label>
-          <div className="invalid-feedback">Last name cannot be empty.</div>
+          <div className="invalid-feedback">Please enter a valid first name. Could be 2-30 characters long.</div>
         </div>
       </div>
       <div className="row g-0 g-sm-4">
         <div className="form-floating mb-3 mb-sm-4 col-12 col-sm-6">
           <input
             type="number"
-            className={`form-control ${formValidty}`}
+            className={`form-control ${props.numberClass}`}
             id="formNumber"
             placeholder="____ - ___ - ____"
             required
@@ -63,7 +62,7 @@ const SignUpFormPersonal = (props) => {
         <div className="form-floating mb-3 mb-sm-4 col-12 col-sm-6">
           <input
             type="number"
-            className={`form-control ${formValidty}`}
+            className={`form-control ${props.ageClass}`}
             id="formAge"
             placeholder="Age"
             required
@@ -75,13 +74,13 @@ const SignUpFormPersonal = (props) => {
           <label htmlFor="formAge" className="ps-3 ps-sm-4">
             Age
           </label>
-          <div className="invalid-feedback">Please choose a valid age.</div>
+          <div className="invalid-feedback">Should be atleast 16 years old.</div>
         </div>
       </div>
       <div className="form-floating mb-3 mb-sm-4">
         <input
           type="text"
-          className={`form-control ${formValidty}`}
+          className={`form-control ${props.addressClass}`}
           id="formAddress"
           placeholder="Current Address"
           required
