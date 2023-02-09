@@ -125,7 +125,11 @@ const HomeTestimonials = () => {
     You are free to install the packages mentioned here. I think we are done with the "basic setup" section in this article, so, you can go straight to "Adding animation" section. 
 
   3. Lastly, try to look for other "testimonials section layout" (the design in my mini project 1 is very rushed so do not follow or copy it).
-    You are free to design it on your own. I will also send you some samples for reference. I think, your UI designing skills is pretty decent so I'll let you decide on that one.
+    You are free to design it on your own. I think, your UI designing skills is pretty decent so I'll let you decide on that one.
+
+    For your reference, here are a few examples:
+    - https://cdn.dribbble.com/users/1960313/screenshots/15383285/media/f8b829211b9a4d8374cc62635f6c98c9.jpg
+    - https://cdn.dribbble.com/users/584114/screenshots/6796204/039_-_testimonials.png
 
   That's all, thank you!
 
