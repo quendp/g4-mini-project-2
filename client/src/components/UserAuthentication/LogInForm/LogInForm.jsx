@@ -1,20 +1,70 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+
 import FormModal from "../../FormUI/FormModal";
 import showPassImg from "../../../assets/images/showPass.png";
 import hidePassImg from "../../../assets/images/hidePass.png";
 
 const LogInForm = ({ handleChangeMode, submitHandler }) => {
+
+  const REGISTER_URL = "/api/login";
+  const [isSubmitClicked, setIsSubmitClicked] = useState(false);
+  const [errMsg, setErrMsg] = useState("");
   const [showPass, setShowPass] = useState(false);
 
-  const [logInData, setLogInData] = useState({
-    username: "",
-    password: "",
-  });
+  const USERNAME_REGEX = /^[A-z][A-Za-z0-9-_]{3,16}$/;
+  const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  const PWD_REGEX = /^(?=.*[A-Za-z\d])[A-Za-z\d@$!%*#?&^_-]{8,32}$/;
+
+  const [username, setUsername] = useState("");
+  const [validUsername, setValidUsername] = useState();
+  const [usernameClass, setUsernameClass] = useState("");
+
+  const [password, setPassword] = useState("");
+  const [validPass, setValidPass] = useState(false);
+  const [passClass, setPassClass] = useState("");
+
+  const logInData = {
+    username: username,
+    password: password,
+  };
+
+  useEffect(() => {
+    const result = (USERNAME_REGEX.test(username) || EMAIL_REGEX.test(username));
+    setValidUsername(result);
+    if (!result && isSubmitClicked) {
+      setUsernameClass("isInvalid");
+    } else if (result && isSubmitClicked) {
+      setUsernameClass("isValid");
+    }
+  }, [username]);
+
+  useEffect(() => {
+    const result = PWD_REGEX.test(password);
+    setValidPass(result);
+    if (!result && isSubmitClicked) {
+      setPassClass("isInvalid");
+    } else if (result && isSubmitClicked) {
+      setPassClass("isValid");
+    }
+  }, [password]);
 
   const onClickSubmit = (event) => {
     event.preventDefault();
-    submitHandler(logInData, "sample log in token");
+    setIsSubmitClicked(true);
+    if (
+      !validUsername || !validPass 
+    ) {
+      !validUsername ? setUsernameClass("isInvalid") : setUsernameClass("");
+      !validPass ? setPassClass("isInvalid") : setPassClass("");
+    } else {
+      submitToServer()
+    }
   };
+
+  const submitToServer = async () => {
+    submitHandler(logInData, "sample log in token");
+  }
 
   const headerTitle = "Log in to your Lakbay Account";
   const headerText = "Doesn't have an account? ";
@@ -40,47 +90,41 @@ const LogInForm = ({ handleChangeMode, submitHandler }) => {
       btnLeftText={btnLeftText}
       btnRightType={btnRightType}
       btnRightText={btnRightText}
+      errMsg={errMsg}
     >
       <div className="form-floating mb-3">
         <input
           type="text"
           id="formUserName"
-          className="form-control"
+          className={`form-control ${usernameClass}`}
           placeholder="UserName"
           aria-label="UserName"
           required
           onChange={(e) => {
-            setLogInData({
-              ...logInData,
-              username: e.target.value,
-            });
+            setUsername(e.target.value);
           }}
-          onBlur={() => console.log("blurred")}
-          value={logInData.username}
+          value={username}
         />
         <label htmlFor="formUserName">Username or Email</label>
         <div className="invalid-feedback">
-          The username or email you entered isn’t connected to an account.
+          The username or email you entered is invalid, try again.
         </div>
       </div>
       <div className="form-floating mb-3">
         <input
           type={!showPass ? "password" : "text"}
-          className="form-control"
+          className={`form-control ${passClass}`}
           id="formPassword"
           placeholder="Password"
           required
           onChange={(e) => {
-            setLogInData({
-              ...logInData,
-              password: e.target.value,
-            });
+            setPassword(e.target.value);
           }}
-          value={logInData.password}
+          value={password}
         />
         <label htmlFor="formPassword">Password</label>
         <div className="invalid-feedback">
-          The password you’ve entered is incorrect
+          The password you’ve enterred is invalid, try again.
         </div>
         <div className="mt-2">
           <a href="#" className="forgot-password">
