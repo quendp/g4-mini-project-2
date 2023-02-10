@@ -186,22 +186,22 @@ const DUMMY_CHART = [
 const statusesNumber = [
   {
     id: 1,
-    status: 'Waitlist',
+    estatus: 'Waitlist',
     number: 100
   },
   {
     id: 2,
-    status: 'Tentative',
+    estatus: 'Tentative',
     number: 83
   },
   {
     id: 3,
-    status: 'Confirmed',
+    estatus: 'Confirmed',
     number: 162
   },
   {
     id: 4,
-    status: 'Cancelled',
+    estatus: 'Cancelled',
     number: 26
   }
 ]
@@ -234,7 +234,7 @@ const Agent = () => {
       status={travelDetails.status}
 
       statusesNumber={statusesNumber}
-      estatus={statusesNumber.status}
+      estatus={statusesNumber.estatus}
       number={statusesNumber.number}
       />
 

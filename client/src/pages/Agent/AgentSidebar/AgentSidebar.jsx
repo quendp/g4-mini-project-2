@@ -82,7 +82,7 @@ const AgentSidebar = (props) => {
               status={props.status}
 
               statusesNumber={props.statusesNumber}
-              estatus={props.status}
+              estatus={props.estatus}
               number={props.number}
               />
           }

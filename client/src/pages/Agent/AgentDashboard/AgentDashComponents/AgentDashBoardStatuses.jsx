@@ -3,7 +3,7 @@ import './AgentdashBoardStatuses.css'
 
 const AgentDashBoardStatuses = (props) => {
   return (
-    <section>
+    <section style={{backgroundColor: '#ffffff'}}>
         <div className='container-fluid'>
             <div className='row'>
                 <div className='col-xxl-10 col-xl-9 col-lg-9 ms-auto'>
