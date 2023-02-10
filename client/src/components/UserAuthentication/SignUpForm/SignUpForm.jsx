@@ -5,7 +5,7 @@ import SignUpFormPersonal from "./SignUpFormPersonal";
 import FormModal from "../../FormUI/FormModal";
 
 const SignUpForm = ({ handleChangeMode, submitHandler }) => {
-  const REGISTER_URL = "/api/users";
+  const REGISTER_URL = "/api/register";
 
   const [step, setStep] = useState(0);
   const [isSubmitClicked, setIsSubmitClicked] = useState(false);
@@ -239,8 +239,12 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
       !validNumber ? setNumberClass("isInvalid") : setNumberClass("");
       !validAge ? setAgeClass("isInvalid") : setAgeClass("");
       !validAddress ? setAddressClass("isInvalid") : setAddressClass("");
-      return;
+    } else {
+      submitToServer()
     }
+  };
+
+  const submitToServer = async () => {
     try {
       const response = await axios.post(
         REGISTER_URL,
@@ -250,20 +254,24 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
           withCredentials: true,
         }
       );
-      console.log(response.data);
-      console.log(response.accessToken);
-      console.log(JSON.stringify(response));
-      submitHandler(signUpData, "sample token");
+      if (response.data.message) {
+        setErrMsg(response.data.message)
+      } else {
+        console.log(response.data);
+        console.log(JSON.stringify(response));
+        submitHandler(signUpData, "sample token");
+      }
     } catch (err) {
       if (!err?.response) {
         setErrMsg("Registration failed. Cannot connect to the server.");
       } else if (err.response?.status === 409) {
-        setErrMsg("Username Taken");
+        setErrMsg("Username or email already exists. Try a different one.");
       } else {
         setErrMsg("Registration failed. Please check your internet connection.");
       }
     }
   };
+
 
   const headerTitle = "Create a Lakbay Account";
   const headerText = "Already have an account? ";

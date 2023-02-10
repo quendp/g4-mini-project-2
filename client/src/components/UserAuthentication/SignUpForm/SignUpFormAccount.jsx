@@ -1,6 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
+import showPassImg from "../../../assets/images/showPass.png";
+import hidePassImg from "../../../assets/images/hidePass.png";
 
 const SignUpFormAccount = (props) => {
+  const [showPass, setShowPass] = useState(false);
+  const [showPassMatch, setShowPassMatch] = useState(false);
   return (
     <div>
       <div className="row g-0 g-sm-4">
@@ -42,7 +46,7 @@ const SignUpFormAccount = (props) => {
       </div>
       <div className="form-floating mb-3 mb-sm-4">
         <input
-          type="password"
+          type={!showPass ? "password" : "text"}
           className={`form-control ${props.passClass}`}
           id="formPassword"
           placeholder="Password"
@@ -54,10 +58,17 @@ const SignUpFormAccount = (props) => {
         />
         <label htmlFor="formPassword">Password</label>
         <div className="invalid-feedback">Please choose a valid password. Should be 8-32 characters.</div>
+        <div
+          className="signUpForm-seePass position-absolute"
+          onClick={() => setShowPass(showPass ? false : true)}
+          style={{
+            backgroundImage: `url(${!showPass ? hidePassImg : showPassImg})`,
+          }}
+        ></div>
       </div>
       <div className="form-floating mb-3 mb-sm-4">
         <input
-          type="password"
+          type={!showPassMatch ? "password" : "text"}
           className={`form-control ${props.passMatchClass}`}
           id="formConfirmPass"
           placeholder="Confirm Password"
@@ -69,6 +80,13 @@ const SignUpFormAccount = (props) => {
         />
         <label htmlFor="formConfirmPass">Confirm Password</label>
         <div className="invalid-feedback">Password doesn't match.</div>
+        <div
+          className="signUpForm-seePass position-absolute"
+          onClick={() => setShowPassMatch(showPassMatch ? false : true)}
+          style={{
+            backgroundImage: `url(${!showPassMatch ? hidePassImg : showPassImg})`,
+          }}
+        ></div>
       </div>
     </div>
   );

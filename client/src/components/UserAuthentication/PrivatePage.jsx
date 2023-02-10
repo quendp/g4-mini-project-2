@@ -4,9 +4,9 @@ const PrivatePage = ({ children, logInToken }) => {
 
   const showSignUpModal = () => {
     try {
-        const signUpModalInst = document.getElementById("signUpModal");
+      const signUpModalInst = document.getElementById("signUpModal");
       let myModal = bootstrap.Modal.getOrCreateInstance(
-        signUpModalInst,
+        '#signUpModal',
         {
           backdrop: "static",
           keyboard: false,
@@ -15,7 +15,7 @@ const PrivatePage = ({ children, logInToken }) => {
      myModal.show();
 
     } catch (err) {
-      console.log(err.message);
+      console.log(err);
     }
   };
 
