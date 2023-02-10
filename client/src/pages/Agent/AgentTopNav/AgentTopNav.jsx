@@ -3,18 +3,18 @@ import './AgentTopNav.css'
 
 const AgentTopNav = () => {
   return (
-      <div className='col-xxl-10 col-xl-9 col-lg-9 bg-dark  ms-auto fixed-top px-3 py-2 top-navbar'>
+      <div className='col-xxl-10 col-xl-9 col-lg-9 bg-dark  ms-auto fixed-top px-3 py-2 agentTopNav'>
         <div className='row align-items-center justify-content-center'>
           <div className='col-xl-4 col-lg-4'>
             <h4 className='text-light text-uppercase mb-0'>
-              Dashboard
+              Agent 1
             </h4>
           </div>
           <div className='co-xl-4 col-lg-4'>
             <form>
               <div className='input-group'>
-                <input type="text" className='form-control bg-secondary text-light search-input' />
-                <button className='btn btn-light search-button'>
+                <input type="text" className='form-control bg-secondary text-light agentTopNav-search__input' />
+                <button className='btn btn-light agentTopNav-search__button'>
                 <i className="fas fa-search text-primary"></i>
                 </button>
               </div>

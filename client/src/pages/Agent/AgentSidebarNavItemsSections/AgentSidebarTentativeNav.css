@@ -1,0 +1,13 @@
+.agentSidebarTentativeNav-cards {
+    box-shadow: 1px 2px 5px #999;
+    transition: all .4s;
+}
+
+.agentSidebarTentativeNav-cards:hover {
+    box-shadow: 2px 3px 15px #999;
+    transform: translateY(-1px);
+}
+
+.agentSidebarTentativeNav-cards__span {
+    font-family: var(--ff-heading-primary-2-italic);
+}

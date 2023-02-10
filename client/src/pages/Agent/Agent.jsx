@@ -1,12 +1,6 @@
-import React, { useState } from 'react'
-import './Agent.css'
+import React from 'react'
 import AgentNavbar from './AgentNavbar'
-import AgentDashboard from './AgentDashboard/AgentDashboard'
-import AgentBookings from './AgentBookings/AgentBookings'
-import AgentBookingsWaitlist from './AgentBookings/AgentBookingsModals/AgentBookingsWaitlist'
-import AgentBookingsConfirmed from './AgentBookings/AgentBookingsModals/AgentBookingsConfirmed'
-import AgentBookingsCancelled from './AgentBookings/AgentBookingsModals/AgentBookingsCancelled'
-
+// import AgentDashboard from './AgentDashboard/AgentDashboard'
 
 const travelDetails = [
   {
@@ -141,121 +135,118 @@ const travelDetails = [
   }
 ]
 
+const DUMMY_CHART = [
+  {
+    id: 1,
+    month: 'Jan',
+    cosmopolitanLights: 20,
+    diveUnderWater: 22,
+    exploreTheSummit: 32,
+    lookBackInHIstory: 13,
+    natureAndCulture: 26,
+  },
+  {
+    id: 2,
+    month: 'Feb',
+    cosmopolitanLights: 23,
+    diveUnderWater: 35,
+    exploreTheSummit: 56,
+    lookBackInHIstory: 24,
+    natureAndCulture: 27,
+  },
+  {
+    id: 3,
+    month: 'Mar',
+    cosmopolitanLights: 36,
+    diveUnderWater: 27,
+    exploreTheSummit: 33,
+    lookBackInHIstory: 13,
+    natureAndCulture: 15,
+  },
+  {
+    id: 4,
+    month: 'Apr',
+    cosmopolitanLights: 42,
+    diveUnderWater: 14,
+    exploreTheSummit: 22,
+    lookBackInHIstory: 43,
+    natureAndCulture: 56,
+  },
+  {
+    id: 2,
+    month: 'May',
+    cosmopolitanLights: 56,
+    diveUnderWater: 44,
+    exploreTheSummit: 54,
+    lookBackInHIstory: 30,
+    natureAndCulture: 23,
+  },
+]
 
+const statusesNumber = [
+  {
+    id: 1,
+    status: 'Waitlist',
+    number: 100
+  },
+  {
+    id: 2,
+    status: 'Tentative',
+    number: 83
+  },
+  {
+    id: 3,
+    status: 'Confirmed',
+    number: 162
+  },
+  {
+    id: 4,
+    status: 'Cancelled',
+    number: 26
+  }
+]
 
 const Agent = () => {
 
-  const [filteredStatus, setFilteredStatus] = useState('Waitlist')
-
-  /*for proceed button */
-  const [model, setModel] = useState(false);
-  const [tempdata, setTempdata] = useState([]);
-
-  const getData = (transportationCost, accommodationCost, otherCost, totalCost) => {
-    let tempData = [transportationCost, accommodationCost, otherCost, totalCost]
-    setTempdata(item => [1, ...tempData])
-    return setModel(true)
-  }
-
-  /*for submit button */
-  const [modelSubmit, setModelSubmit] = useState(false)
-  const [tempsubmitdata, setTempSubmitData] = useState([]) 
-
-  const getDataSubmit = ( destination, packag, fullname) => {
-    let tempSubmitdata = [destination, packag, fullname]
-    setTempSubmitData(item => [1, ...tempSubmitdata])
-    return setModelSubmit(true)
-  }
-
-  /*for remove button */
-  const [modelRemove, setModelRemove] = useState(false)
-  const [tempremovedata, setTempRemoveData] = useState([])
-
-  const getDataRemove = (fullName, reason) => {
-    let tempRemovedata = [fullName, reason]
-    setTempRemoveData(item => [1, ...tempRemovedata])
-    return setModelRemove(true)
-  }
-
-  /*for filtereng status */
-  // const filterChangeHandler = (selectedStatus) => {
-  //     setFilteredStatus(selectedStatus)
-  // }
-
-  const filteredCards = travelDetails.filter((travelDetail) => {
-    return travelDetail.status === filteredStatus
-  })
-
-
-
-  const toFilterCards = (filteredCards.length === 0)? 
-  <h2 className='text-secondary text-center'>No Booking Status</h2>:/*filteredCards*/travelDetails.map((travelDetail, index) => (
-
-      <div className="col-xxl-3 col-xl-3 col-lg-6 col-md-6 p-2" key={index}>
-        <div className="card cards">
-          <div className="card-body">
-            <div className="d-flex justify-content-between">
-              <div className='d-flex flex-column align-items-start justify-content-evenly text-secondary'>
-                <h5>{travelDetail.destination}</h5>
-                <h6>{travelDetail.fullName}</h6>
-              </div>
-              <div className="d-flex flex-column align-items-end justify-content-evenly text-secondary">
-                <h6>{travelDetail.package}</h6>                            
-                <h6>{travelDetail.travelDate}</h6>
-              </div>  
-            </div>
-          </div>
-            <div className="card-footer text-secondary d-flex alight-items-center justify-content-between">
-
-              {(travelDetail.status === 'Waitlist')?
-              <button type='button' className='bookings-card__btn btn-outline-info' onClick={() => getData(travelDetail.transportationCost, travelDetail.accommodationCost, travelDetail.otherCost, travelDetail.totalCost)}>Proceed</button>:(travelDetail.status === 'Tentative')?<span className='cards-span2'>Required Confirmation</span>:(travelDetail.status === 'Confirmed')?<button type='button' className='bookings-card__btn2 btn outline-info' onClick={() => getDataSubmit(travelDetail.destination, travelDetail.package, travelDetail.fullName)}>View</button>:<button type='button' className='bookings-card__btn3 btn-outline-info'onClick={() => getDataRemove(travelDetail.fullName, travelDetail.cancelledReason)}>Remove</button>}
-
-              <span className='cards-span'>{travelDetail.status}</span>
-            </div>
-        </div>
-      </div>
-      ))
 
   return (
-    <div className='agent-body'>
-      <AgentNavbar />
-      <AgentBookings
-      key={travelDetails.id}
-      // statusSelected={filteredStatus}
-      // onChangeFilter={filterChangeHandler}
-      toFilterCards={toFilterCards}
-      />
-      <AgentDashboard 
+    <div style={{backgroundColor: '#ffffff'}}>
+      <AgentNavbar 
       travelDetails={travelDetails}
+      transportationCost={travelDetails.transportationCost}
+      accommodationCost={travelDetails.accommodationCost}
+      otherCost={travelDetails.otherCost}
+      totalCost={travelDetails.totalCost}
+      destination={travelDetails.destination}
+      package={travelDetails.package}
+      fullName={travelDetails.fullName}
+      cancelledReason={travelDetails.cancelledReason}
+
+      DUMMY_CHART={DUMMY_CHART}
+      month={DUMMY_CHART.month}
+      cosmopolitanLights={DUMMY_CHART.cosmopolitanLights}
+      diveUnderWater={DUMMY_CHART.diveUnderWater}
+      exploreTheSummit={DUMMY_CHART.exploreTheSummit}
+      lookBackInHIstory={DUMMY_CHART.lookBackInHIstory}
+      natureAndCulture={DUMMY_CHART.natureAndCulture}
+
+      travelDate={travelDetails.travelDate}
+      status={travelDetails.status}
+
+      statusesNumber={statusesNumber}
+      estatus={statusesNumber.status}
+      number={statusesNumber.number}
+      />
+
+      {/* <AgentDashboard 
+      travelDetail={travelDetails}
       fullName={travelDetails.fullName}
       destination={travelDetails.destination}
       travelDate={travelDetails.traveldate}
       status={travelDetails.status}
-      />
-      {
-        model === true ? <AgentBookingsWaitlist 
-        transportationCost={tempdata[1]}
-        accommodationCost={tempdata[2]}
-        otherCost={tempdata[3]}
-        totalCost={tempdata[4]}
-        hide={() => setModel(false)}
-        /> : ''
-      }
-      {
-        modelSubmit === true ? <AgentBookingsConfirmed 
-        destination={tempsubmitdata[1]}
-        package={tempsubmitdata[2]}
-        fullName={tempsubmitdata[3]}
-        hide={() => setModelSubmit(false)}
-        />: ''
-      }
-      {
-        modelRemove === true ? <AgentBookingsCancelled 
-        fullName={tempremovedata[1]}
-        reason={tempremovedata[2]}
-        hide={() => setModelRemove(false)}
-        />: ''
-      }
+      statusesNumber={statusesNumber}
+      estatus={statusesNumber.status}
+      number={statusesNumber.number} */}
       
     </div>
   )

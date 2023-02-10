@@ -13,26 +13,26 @@ const AgentDashBoardStatuses = (props) => {
                             
                         props.statusesNumber.map((number, idx) =>
                         (<div className="col-xxl-3 col-xl-3 col-lg-6 col-md-6 p-2" key={idx}>
-                            <div className="card cards">
+                            <div className="card agentdashBoardStatuses-cards">
                                 <div className="card-body">
                                     <div className="d-flex justify-content-between">
                                         {
-                                        (number.status === 'Waitlist') ? 
+                                        (number.estatus === 'Waitlist') ? 
                                         <i className="fa-solid fa-list fa-3x text-primary"></i> : 
-                                        (number.status === 'Tentative') ? 
+                                        (number.estatus === 'Tentative') ? 
                                         <i className="fa-solid fa-question fa-3x text-secondary"></i> :
-                                        (number.status === 'Confirmed') ? 
+                                        (number.estatus === 'Confirmed') ? 
                                         <i className="fa-solid fa-check fa-3x text-success"></i> : 
                                         <i className="fa-solid fa-ban fa-3x text-danger"></i>
                                         }
 
                                         <div className="d-flex flex-column align-items-end justify-content-evenly">
-                                            <h3 className='text-dark fw-bold'>{number.number}</h3>
+                                            <h3 className='text-dark fw-bold fs-1'>{number.number}</h3>
                                         </div>  
                                     </div>
                                 </div>
                                 <div className="card-footer">
-                                    <span className='text-dark fw-bold'>{number.status}</span>
+                                    <span className='text-dark fw-bold'>{number.estatus}</span>
                                 </div>
                             </div>
                         </div>))

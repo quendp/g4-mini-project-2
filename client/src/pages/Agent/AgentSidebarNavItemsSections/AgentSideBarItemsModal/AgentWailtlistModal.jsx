@@ -1,17 +1,13 @@
 import React from 'react'
-import './AgentBookingsWaitlist.css'
 
-const AgentBookingsWaitlist = (props) => {
+const AgentWailtlistModal = (props) => {
   
     let modelStyle = {
         display: 'block',
         backgroundColor: 'rgba(0,0,0,0.8)'
     }
 
-
   return (
-
-
     <div className="modal show-fade" style={modelStyle}>
         <div className="modal-dialog">
             <div className="modal-content">
@@ -46,4 +42,4 @@ const AgentBookingsWaitlist = (props) => {
   )
 }
 
-export default AgentBookingsWaitlist
+export default AgentWailtlistModal

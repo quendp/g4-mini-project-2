@@ -1,14 +1,10 @@
-.latest-updates {
-    height: 70vh;
+.agentDashboard-latest__updates {
+    height: 35vh;
     background-color: var(--clr-secondary-400);
 }
 
-.cards {
-    box-shadow: 1px 2px 5px #999;
-    transition: all .4s;
-}
-
-.cards:hover {
-    box-shadow: 2px 3px 15px #999;
-    transform: translateY(-1px);
+@media (max-width: 1199px) {
+    .agentDashboard-latest__updates {
+        height: 70vh;
+    }
 }

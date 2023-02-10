@@ -3,33 +3,13 @@ import AgentDashBoardStatuses from './AgentDashComponents/AgentDashBoardStatuses
 import AgentDashBoardLatestUpdates from './AgentDashComponents/AgentDashBoardLatestUpdates'
 import './Agentdashboard.css'
 import AgentDashBoardLineChart from './AgentDashComponents/AgentDashBoardLineChart'
-
-const statusesNumber = [
-    {
-      id: 1,
-      status: 'Waitlist',
-      number: 100
-    },
-    {
-      id: 2,
-      status: 'Tentative',
-      number: 83
-    },
-    {
-      id: 3,
-      status: 'Confirmed',
-      number: 162
-    },
-    {
-      id: 4,
-      status: 'Cancelled',
-      number: 26
-    }
-  ]
+import AgentDashBoardStatusSortFilter
+from './AgentDashComponents/AgentDashBoardStatusSortFilter'
 
 const AgentDashboard = (props) => {
-
   
+  const [sortType, setSortType] = useState("newest");
+  const [selectedStatus, setSelectedStatus] = useState("All");
 
   const sortTravels = (travels, sortType) => {
     return travels.sort((a, b) => {
@@ -39,17 +19,19 @@ const AgentDashboard = (props) => {
     });
   };
 
-  const [sortType, setSortType] = useState("newest");
+  const filteredTravels = (travels, selectedStatus) => {
+    return selectedStatus === "All"
+      ? travels
+      : travels.filter((travel) => travel.status === selectedStatus);
+  };
+
 
   return (
     <>
     <AgentDashBoardStatuses
-          statusesNumber={statusesNumber}
-          status={statusesNumber.status}
-          number={statusesNumber.number} />
-          
-    
-    
+          statusesNumber={props.statusesNumber}
+          estatus={props.estatus}
+          number={props.number} />
     <section>
         <div className='container-fluid'>
             <div className='row p-2 align-items-center'>
@@ -59,40 +41,45 @@ const AgentDashboard = (props) => {
                         <div>
                           <div className='d-flex justify-content-between align-items-center'>
                             <h3 className='latest-update__heading text-dark'>Latest Updates</h3>
-                            <div className="form-group m-1 d-flex ">
-                              {/* <label htmlFor="sortSelect" className='fw-bold'>Sort By:</label> */}
-                              <select
-                                className="form-control fw-bold"
-                                // id="sortSelect"
-                                value={sortType}
-                                onChange={(e) => setSortType(e.target.value)}
-                              >
-                                <option value="newest">Newest</option>
-                                <option value="oldest">Oldest</option>
-                              </select>
-                            </div>
+                            <AgentDashBoardStatusSortFilter 
+                            selectedStatus={selectedStatus}
+                            setSelectedStatus={setSelectedStatus}
+                            sortType={sortType}
+                            setSortType={setSortType}
+                            />
                           </div>
-                          <div className='overflow-auto latest-updates p-1'>
-                                {
-
-                                  sortTravels(props.travelDetails, sortType).map((traveldetail, idx) => <AgentDashBoardLatestUpdates
+                          <div className='overflow-auto agentDashboard-latest__updates p-1'>
+                                { 
+                                  
+                                  sortTravels(
+                                    filteredTravels
+                                    (props.travelDetails, selectedStatus), sortType
+                                      ).map((traveldetail, idx) => <AgentDashBoardLatestUpdates
                                   key={idx}
                                   fullName={traveldetail.fullName}
                                   destination={traveldetail.destination}
                                   travelDate={traveldetail.travelDate}
                                   status={traveldetail.status}
                                   />)
+                                  
                                 }
                           </div>
                         </div>    
                       </div>
-                      <AgentDashBoardLineChart />
+                      <AgentDashBoardLineChart
+                      month={props.month}
+                      dummyChart={props.DUMMY_CHART}
+                      cosmopolitanLights={props.cosmopolitanLights}
+                      diveUnderWater={props.diveUnderWater}
+                      exploreTheSummit={props.exploreTheSummit}
+                      lookBackInHistory={props.lookBackInHistory}
+                      natureAndCulture={props.natureAndCulture}
+                      />        
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
     </>
   )
 }
