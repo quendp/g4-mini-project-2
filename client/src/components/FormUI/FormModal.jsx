@@ -4,7 +4,7 @@ import './FormModal.css'
 const FormModal = (props) => {
   return (
     <div className="modal-content p-3 p-md-4">
-      <div className="modal-header pt-4 flex-column justify-content-center">
+      <div className="modal-header pt-4 pb-0 flex-column justify-content-center">
         <h1 className="modal-title mb-2" id="signUpModalLabel">
           {props.headerTitle}
         </h1>
@@ -12,7 +12,7 @@ const FormModal = (props) => {
           {props.headerText}
           {props.headerLink}
         </p>
-        <p className="p-light" style={{color:"var(--clr-accent-invalid)"}}>
+        <p className={`p-light modal-header__errorMsg px-4 text-center py-1 rounded-pill ${props.errMsg == "" ? "d-none": ""}`}>
           {props.errMsg}
         </p>
       </div>

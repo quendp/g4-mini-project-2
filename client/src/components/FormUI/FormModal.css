@@ -78,6 +78,12 @@
     border: none;
 }
 
+.modal-header__errorMsg {
+    color: var(--clr-secondary-100);
+    font-size:var(--fz--main-text) !important; 
+    background-color: var(--clr-accent-invalid-100);
+}
+
 .modal-content button, 
 .modal-content button:hover, 
 .modal-content button:active {

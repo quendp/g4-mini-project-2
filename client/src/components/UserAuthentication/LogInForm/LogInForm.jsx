@@ -7,7 +7,7 @@ import hidePassImg from "../../../assets/images/hidePass.png";
 
 const LogInForm = ({ handleChangeMode, submitHandler }) => {
 
-  const REGISTER_URL = "/api/login";
+  const REGISTER_URL = "/api/users/login";
   const [isSubmitClicked, setIsSubmitClicked] = useState(false);
   const [errMsg, setErrMsg] = useState("");
   const [showPass, setShowPass] = useState(false);

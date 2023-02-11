@@ -1,6 +1,73 @@
 const { User } = require("../../models");
 
 class UsersService {
+
+  static async registerUser({
+    username,
+    firstname,
+    lastname,
+    email,
+    phone_number,
+    age,
+    address,
+    password,
+  }) {
+    try {
+      // check if username already exists
+      const usernameExists = await User.findOne({where: {username}})
+      if(usernameExists){
+        return {message: "Username is already taken."}
+      }
+      // check if email already exists
+      const emailExists = await User.findOne({where: {email}})
+      if(emailExists){
+        return {message: "Email address already have an account."}
+      }
+      // create user
+      const newUser = await User.create({
+        username,
+        firstname,
+        lastname,
+        email,
+        phone_number,
+        age,
+        address,
+        password,
+      });
+      return newUser;
+    } catch (err) {
+      console.log("Registration failed: ", err);
+    }
+  }
+
+  static async loginUser({
+    username,
+    email,
+    password,
+  }) {
+    try {
+      // check if username already exists
+      const usernameExists = await User.findOne({where: {username}})
+      if(usernameExists){
+        return {message: "Username already exists"}
+      }
+      // check if email already exists
+      const emailExists = await User.findOne({where: {email}})
+      if(emailExists){
+        return {message: "Email already exists"}
+      }
+      // create user
+      const newUser = await User.create({
+        username,
+        email,
+        password,
+      });
+      return newUser;
+    } catch (err) {
+      console.log("Registration failed: ", err);
+    }
+  }
+
   static async createUser({
     username,
     firstname,

@@ -5,7 +5,7 @@ import SignUpFormPersonal from "./SignUpFormPersonal";
 import FormModal from "../../FormUI/FormModal";
 
 const SignUpForm = ({ handleChangeMode, submitHandler }) => {
-  const REGISTER_URL = "/api/register";
+  const REGISTER_URL = "/api/users/register";
 
   const [step, setStep] = useState(0);
   const [isSubmitClicked, setIsSubmitClicked] = useState(false);
@@ -201,8 +201,17 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
   };
 
   const onClickBtnLeft = () => {
-    setStep(0);
+    setTimeout(() => {
+      setStep(0);
+      setIsNextClicked(false);
+      setIsSubmitClicked(false);
+    }, 100);
   };
+
+  useEffect(() => {
+    if (errMsg == "Username is already taken.") setUsernameClass("isInvalid");
+    else if (errMsg == "Email address already have an account.") setEmailClass("isInvalid");
+  }, [errMsg])
 
   const onClickBtnRight = () => {
     setIsNextClicked(true);
@@ -255,7 +264,8 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
         }
       );
       if (response.data.message) {
-        setErrMsg(response.data.message)
+        setErrMsg(response.data.message);
+        onClickBtnLeft();
       } else {
         console.log(response.data);
         console.log(JSON.stringify(response));
@@ -266,6 +276,7 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
         setErrMsg("Registration failed. Cannot connect to the server.");
       } else if (err.response?.status === 409) {
         setErrMsg("Username or email already exists. Try a different one.");
+        onClickBtnLeft();
       } else {
         setErrMsg("Registration failed. Please check your internet connection.");
       }

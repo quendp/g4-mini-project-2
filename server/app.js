@@ -10,10 +10,6 @@ const packageRoutes = require("./src/routes/packageRoutes");
 const paymentRoutes = require("./src/routes/paymentRoutes");
 const companionRoutes = require("./src/routes/companionRoutes");
 
-const registrationRoutes = require("./src/routes/registrationRoutes");
-const loginRoutes = require("./src/routes/loginRoutes");
-
-
 // parse application/json
 app.use(bodyParser.json());
 
@@ -23,9 +19,6 @@ app.use("/api/agents", agentRoutes);
 app.use("/api/packages", packageRoutes);
 app.use("/api/payments", paymentRoutes);
 app.use("/api/companions", companionRoutes);
-
-app.use("/api/register", registrationRoutes);
-app.use("/api/login", loginRoutes);
 
 
 app.listen(5000, async () => {
