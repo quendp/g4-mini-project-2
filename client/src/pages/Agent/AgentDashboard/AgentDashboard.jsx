@@ -5,6 +5,7 @@ import './Agentdashboard.css'
 import AgentDashBoardLineChart from './AgentDashComponents/AgentDashBoardLineChart'
 import AgentDashBoardStatusSortFilter
 from './AgentDashComponents/AgentDashBoardStatusSortFilter'
+import AgentDashBoardRadarChart from './AgentDashComponents/AgentDashBoardRadarChart'
 
 const AgentDashboard = (props) => {
   
@@ -75,6 +76,9 @@ const AgentDashboard = (props) => {
                       lookBackInHistory={props.lookBackInHistory}
                       natureAndCulture={props.natureAndCulture}
                       />        
+                    </div>
+                    <div className='row'>
+                      <AgentDashBoardRadarChart />
                     </div>
                 </div>
             </div>
