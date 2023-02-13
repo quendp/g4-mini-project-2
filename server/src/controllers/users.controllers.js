@@ -33,21 +33,30 @@ class UsersController {
   static async loginUser(req, res) {
     try {
       const {
-        username,
-        email,
+        usernameOrEmail,
         password,
       } = req.body;
-      const user = await UsersService.loginUser({
-        username,
-        email,
+      const token = await UsersService.loginUser({
+        usernameOrEmail,
         password,
       });
-      res.json(user);
+      res.json(token);
     } catch (e) {
-      res.status(400).json({ message: "Error creating user" });
+      res.status(400).json({ message: "Error logging in. Try again later." });
     }
   }
 
+  static async getUserByUsername(req, res) {
+    try {
+      const { username } = req.params;
+      const user = await UsersService.getUserByUsername(username);
+      res.json(user);
+    } catch (e) {
+      res.status(404).json({ message: "User not Found" });
+    }
+  }
+
+  // for tesing purposes only
   static async createUser(req, res) {
     try {
       const {
@@ -82,16 +91,6 @@ class UsersController {
       res.json(users);
     } catch (e) {
       res.status(404).json({ message: "Users not Found" });
-    }
-  }
-
-  static async getUserById(req, res) {
-    try {
-      const { id } = req.params;
-      const user = await UsersService.getUserById(id);
-      res.json(user);
-    } catch (e) {
-      res.status(404).json({ message: "User not Found" });
     }
   }
 

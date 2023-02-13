@@ -25,7 +25,7 @@ const LogInForm = ({ handleChangeMode, submitHandler }) => {
   const [passClass, setPassClass] = useState("");
 
   const logInData = {
-    username: username,
+    usernameOrEmail: username,
     password: password,
   };
 
@@ -49,21 +49,50 @@ const LogInForm = ({ handleChangeMode, submitHandler }) => {
     }
   }, [password]);
 
+  const onClickBtnLeft = () => {
+      setUsernameClass("");
+      setPassClass("");
+      setErrMsg("");
+      setIsSubmitClicked(false);
+  };
+
   const onClickSubmit = (event) => {
     event.preventDefault();
     setIsSubmitClicked(true);
-    if (
-      !validUsername || !validPass 
-    ) {
+    if ( !validUsername || !validPass ) {
       !validUsername ? setUsernameClass("isInvalid") : setUsernameClass("");
       !validPass ? setPassClass("isInvalid") : setPassClass("");
     } else {
-      submitToServer()
+      submitToServer();
     }
   };
 
   const submitToServer = async () => {
-    submitHandler(logInData, "sample log in token");
+    try {
+      const response = await axios.post(
+        REGISTER_URL,
+        JSON.stringify(logInData),
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
+      if (response.data.message) {
+        setErrMsg(response.data.message);
+      } else {
+        submitHandler(response.data.token);
+      }
+    } catch (err) {
+      if (!err?.response) {
+        setErrMsg("Registration failed. Cannot connect to the server.");
+      } else if (err.response?.status === 409) {
+        setErrMsg("Username or email already exists. Try a different one.");
+      } else {
+        setErrMsg("Registration failed. Please check your internet connection.");
+      }
+    } finally {
+      setIsSubmitClicked(false);
+    }
   }
 
   const headerTitle = "Log in to your Lakbay Account";
@@ -85,6 +114,7 @@ const LogInForm = ({ handleChangeMode, submitHandler }) => {
       headerTitle={headerTitle}
       headerText={headerText}
       headerLink={headerLink}
+      onClickBtnLeft={onClickBtnLeft}
       btnLeftClass={btnLeftClass}
       dataDismiss={dataDismiss}
       btnLeftText={btnLeftText}

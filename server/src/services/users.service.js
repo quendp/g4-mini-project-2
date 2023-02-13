@@ -1,4 +1,7 @@
 const { User } = require("../../models");
+const { Op } = require("sequelize");
+const jwt = require("jsonwebtoken");
+const {jwtSecret} = require("../../config/secrets");
 
 class UsersService {
 
@@ -41,33 +44,43 @@ class UsersService {
   }
 
   static async loginUser({
-    username,
-    email,
+    usernameOrEmail,
     password,
   }) {
     try {
-      // check if username already exists
-      const usernameExists = await User.findOne({where: {username}})
-      if(usernameExists){
-        return {message: "Username already exists"}
+      // check if username or email exists
+      const accountExists = await User.findOne({where: {
+        [Op.or] : [
+          {username: usernameOrEmail},
+          {email: usernameOrEmail}
+        ]
+      }});
+      if(!accountExists){
+        return {message: "Email or username does not match an account."}
       }
-      // check if email already exists
-      const emailExists = await User.findOne({where: {email}})
-      if(emailExists){
-        return {message: "Email already exists"}
+      // check if password matches the account found
+      if(accountExists.password !== password){
+        return {message: "Incorrect password"}
       }
-      // create user
-      const newUser = await User.create({
-        username,
-        email,
-        password,
-      });
-      return newUser;
+      const jwtToken = jwt.sign({id: accountExists.id, email: accountExists.email }, jwtSecret );
+      return {token: jwtToken}
     } catch (err) {
       console.log("Registration failed: ", err);
+      return {message: "Error logging in. Try again later."}
     }
   }
 
+  static async getUserByUsername(username) {
+    try {
+      const currentUser = await User.findOne({ where: { username},  include: "Booking"  });
+      return currentUser;
+    } catch (e) {
+      console.log(e);
+      throw new Error();
+    }
+  }
+
+  // for testing purposes only
   static async createUser({
     username,
     firstname,
@@ -99,15 +112,6 @@ class UsersService {
   static async getAllUsers() {
     try {
       return User.findAll({ include: "Booking" });
-    } catch (e) {
-      console.log(e);
-      throw new Error();
-    }
-  }
-
-  static async getUserById(id) {
-    try {
-      return User.findOne({ where: { id },  include: "Booking"  });
     } catch (e) {
       console.log(e);
       throw new Error();

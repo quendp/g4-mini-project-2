@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const { sequelize } = require("./models");
+require("./auth/passport");
 
 const userRoutes = require("./src/routes/userRoutes");
 const bookingRoutes = require("./src/routes/bookingRoutes");
