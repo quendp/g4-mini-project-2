@@ -1,3 +1,11 @@
 .testingArea-wrapper button {
-    width: 20rem;
+    max-width: 20rem;
+    width: 100%;
+}
+
+.testingArea-wrapper {
+    background-color: var(--clr-secondary-700);
+    width: fit-content;
+    border-radius: 3rem;
+    margin-top: 5vh;
 }
