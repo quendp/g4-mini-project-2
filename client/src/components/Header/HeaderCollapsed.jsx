@@ -19,7 +19,7 @@ const HeaderCollapsed = (props) => {
         <button type="button"
           className="h-btn-signUp btn me-4 px-4 py-2 d-none d-md-block position-relative overflow-hidden rounded-pill"
           data-bs-toggle="modal" data-bs-target="#signUpModal">
-          SIGN UP
+          {props.logInToken.length > 0 ? "LOG OUT": "SIGN IN" }
         </button>
         <div className="h-btn-ham position-relative" onClick={props.onBurgerClick}>
           <span className="position-absolute start-50"></span>

@@ -1,0 +1,10 @@
+.agentDashboard-latest__updates {
+    height: 35vh;
+    background-color: var(--clr-secondary-400);
+}
+
+@media (max-width: 1199px) {
+    .agentDashboard-latest__updates {
+        height: 70vh;
+    }
+}

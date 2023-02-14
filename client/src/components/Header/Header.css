@@ -51,6 +51,11 @@
     transition: background-color 300ms ease-in-out;
 }
 
+.h-btn-signUp:focus-visible {
+    color: var(--clr-secondary-100);
+    border: 0.05rem solid var(--clr-secondary-100);
+}
+
 .h-btn-signUp::before {
     content: "";
     position: absolute;
