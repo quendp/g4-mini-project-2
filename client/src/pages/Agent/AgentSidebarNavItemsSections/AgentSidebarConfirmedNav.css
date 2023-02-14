@@ -1,0 +1,20 @@
+.agentSidebarConfirmedNav-cards__btn {
+    transition: background-color 100ms ease-in-out, box-shadow 400ms ease-in-out;
+    font-family: var(--ff-body-light);
+    color: var(--clr-secondary-100);
+    font-size: var(--fz-main-text);
+    background-color: var(--clr-accent-culture);
+    letter-spacing: 1px;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    outline: none;
+}
+
+.agentSidebarConfirmedNav-cards__btn:hover, .agentSidebarConfirmedNav-cards__btn:active {
+    color: var(--clr-secondary-100);
+    background-color: var(--clr-accent-culture-100);
+}
+
+.agentSidebarConfirmedNav-cards__span {
+    font-family: var(--ff-heading-primary-2-italic);
+}
