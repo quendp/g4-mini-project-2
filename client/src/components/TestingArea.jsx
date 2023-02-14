@@ -6,11 +6,11 @@ import "./TestingArea.css";
 import Header from "../components/Header/Header";
 
 import About from "../pages/About/About";
-import Agent from "../pages/Agent/Agent";
-import HomeTestimonials from "../pages/Home/HomeTestimonials/HomeTestimonials";
+import Admin from "../pages/Admin/Admin";
 import Contact from "../pages/Contact/Contact";
 import HomeStories from "../pages/Home/HomeStories/HomeStories";
 import User from "../pages/User/User";
+import Footer from "./Footer/Footer";
 
 const TestingArea = ({ loading, data, logInToken }) => {
   const [isTesting, setIsTesting] = useState(false);
@@ -90,9 +90,9 @@ const TestingArea = ({ loading, data, logInToken }) => {
                   </div>
                 )}
                 {isTesting && currentDeveloper == "roland" && <About />}
-                {isTesting && currentDeveloper == "nherwin" && <Agent />}
+                {isTesting && currentDeveloper == "nherwin" && <Admin />}
                 {isTesting && currentDeveloper == "radilyn" && (
-                  <HomeTestimonials />
+                  <Footer />
                 )}
                 {isTesting && currentDeveloper == "ce" && <Contact />}
                 {isTesting && currentDeveloper == "nick" && <HomeStories />}

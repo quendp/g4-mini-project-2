@@ -7,10 +7,10 @@ function App() {
   const [logInToken, setLogInToken] = useState("");
 
 
-  const submitLogInHandler = (logInData, token) => {
+  const submitLogInHandler = (token) => {
     setLogInToken(token);
+    localStorage.setItem("token", token);
     console.log("user logged in with token:", token);
-    console.log(logInData);
 
     const signUpModalInst = document.getElementById("signUpModal");
     const myModal = bootstrap.Modal.getOrCreateInstance(signUpModalInst);
