@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-spring/web": "^9.6.1",
+    "@use-gesture/react": "^10.2.24",
     "chart.js": "^4.2.0",
     "react-chartjs-2": "^5.2.0",
     "axios": "^1.3.2",
