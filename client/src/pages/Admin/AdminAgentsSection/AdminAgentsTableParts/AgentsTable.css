@@ -1,0 +1,31 @@
+.admin-agents__table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+  
+.admin-agents__table td, .admin-agents__table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+  
+.admin-agents__table tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+  
+.admin-agents__table tr:hover {
+    background-color: #ddd;
+    cursor: pointer;
+}
+  
+.admin-agents__table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+}
+
+.agent-cell__orange {
+    background-color: orangered;
+}

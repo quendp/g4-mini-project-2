@@ -1,0 +1,9 @@
+.admin-cards__sectionTwo {
+    box-shadow: 1px 2px 5px #999;
+    transition: all .4s;
+}
+
+.admin-cards__sectionTwo:hover {
+    box-shadow: 2px 3px 15px #999;
+    transform: translateY(-1px);
+}

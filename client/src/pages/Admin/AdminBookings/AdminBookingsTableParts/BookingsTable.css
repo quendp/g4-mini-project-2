@@ -1,0 +1,40 @@
+.admin-bookings__table {
+    font-family: var(--ff-body-regular);
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+.admin-bookings__table td,.admin-bookings__table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+.admin-bookings__table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+  
+.admin-bookings__table tr:hover {
+    background-color: #ddd;
+    cursor: pointer;
+}
+  
+.admin-bookings__table th, tfoot td {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    /* color: white; */
+}
+
+.bookings-table_filteringAndSearch {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bookings-header__sorter {
+  opacity: .7;
+}
+
+.bookings-header__sortfull {
+  opacity: .3
+}

@@ -1,0 +1,33 @@
+.global-filter__span {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2px;
+}
+  
+.global-filter__search {
+    font-weight: bold;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-right: 10px;
+    font-family: var(--ff-body-regular);
+}
+  
+.global-filter__input {
+    font-family: var(--ff-body-regular);
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    transition: border-color 0.2s ease-in-out;
+}
+  
+.global-filter__input:focus,
+.global-filter__input:hover {
+    border-color: #888;
+    outline: none;
+}
+  
+  
+  
+  
+  

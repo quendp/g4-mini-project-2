@@ -1,6 +1,7 @@
-.AgentBody {
-    font-family: var(--ff-body-regular);
-    font-weight: 400;
-    background-color: #eee;
+.admin {
+    width: 100%;
+    height: 100%;
 }
+
+
 
