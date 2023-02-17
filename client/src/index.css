@@ -233,10 +233,10 @@ body.disableScroll {
 
 /* m-primary-link-dark --> anchor-dark */
 .anchor-dark {
-  transition: background-color 400ms ease-in-out;
+  transition: color 400ms ease-in-out;
   font-family: var(--ff-body-regular);
   color: var(--clr-secondary-700);
-  font-size: var(--fz-main-p);
+  font-size: var(--fz-main-text);
   border: none;
   outline: none;
   text-decoration: none;
@@ -245,4 +245,19 @@ body.disableScroll {
 .anchor-dark:hover,
 .anchor-dark:active {
   color: var(--clr-secondary-500);
+}
+
+.anchor-light {
+  transition: color 400ms ease-in-out;
+  font-family: var(--ff-body-regular);
+  color: var(--clr-secondary-100);
+  font-size: var(--fz-main-text);
+  border: none;
+  outline: none;
+  text-decoration: none;
+}
+
+.anchor-light:hover,
+.anchor-light:active {
+  color: var(--clr-secondary-300);
 }

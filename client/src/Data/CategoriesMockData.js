@@ -21,6 +21,8 @@ import historyPoster from "../assets/images/hero-section-thumbnails/history-post
 import natureThumb from "../assets/images/hero-section-thumbnails/nature-thumb.jpg";
 import naturePoster from "../assets/images/hero-section-thumbnails/nature-poster.jpg";
 
+import starCity from "../assets/images/cosmopolitan-lights/star-city.webp";
+
 const categoriesInfo = [
   {
     categoryId: 1,
@@ -37,42 +39,54 @@ const categoriesInfo = [
     accentLight: "var(--clr-accent-lights-100",
     destinations: [
       {
+        id: 1,
         destination: "Star City Amusement Park in Pasay",
+        destinationImage: starCity,
         details:
           "Located in the city of Pasay in Metro Manila, Star City is one of the biggest, most popular and all weather, air-conditioned amusement park in all of Philippines.",
         duration: "2 days",
         price: "Php 3,500.00 / person",
       },
       {
+        id: 2,
         destination: "Chinatown in Binondo Manila",
+        destinationImage: starCity,
         details:
           "It is the oldest Chinatown in the world, established in 1594 by the Spaniards as a settlement near Intramuros but across the Pasig River for Catholic Chinese.",
         duration: "1 1/2 days",
         price: "Php 2,500.00 / person",
       },
       {
+        id: 3,
         destination: "Mall of Asia in Pasay City",
+        destinationImage: starCity,
         details:
           "The mall is currently the largest shopping mall in the Philippines and the third in the world. When it opened in 2006, it was the largest shopping mall in the Philippines until SM North EDSA was redeveloped in 2008.",
         duration: "1 1/2 days",
         price: "Php 3,500.00 / person",
       },
       {
+        id: 4,
         destination: "Manila Ocean Park",
+        destinationImage: starCity,
         details:
           "Manila Ocean Park is the country's first world-class marine theme park and a premiere educational facility. An integrated urban resort with marine life attractions and aqua-themed hotel.",
         duration: "2 days",
         price: "Php 6,000.00 / person",
       },
       {
+        id: 5,
         destination: "Solaire Resort & Casino Manila",
+        destinationImage: starCity,
         details:
           "When you are looking for comfortable and convenient accommodations in Manila, make Solaire Resort & Casino your home away from home. A stay at Solaire Resort & Casino ensures an easy access to the lively city and all of its wonders.",
         duration: "5 days",
         price: "Php 25,000.00 / person",
       },
       {
+        id: 6,
         destination: "Cultural Center of the Philippines in Pasay City",
+        destinationImage: starCity,
         details:
           "It is a mixed-use cultural and tourism hub overlooking Manila Bay in south-central Manila, most of which fall under the jurisdiction of the city of Pasay.",
         duration: "1 day",
@@ -95,42 +109,54 @@ const categoriesInfo = [
     accentLight: "var(--clr-accent-water-100",
     destinations: [
       {
+        id: 1,
         destination: "Bantayan Island in Cebu",
+        destinationImage: starCity,
         details:
           "Bantayan Island Cebu is an excellent spot for relaxation with its exquisite beauty. It has white sands, clear blue beaches, tranquil mood, and hospitable people.",
         duration: "5 days",
         price: "Php 12,000.00 / person",
       },
       {
+        id: 2,
         destination: "Boracay Beach in Aklan",
+        destinationImage: starCity,
         details:
           "Boracay Island in Aklan is one of the top tourist destination in the Philippines. Boast white sand beaches, caves and scenic views.",
         duration: "5 days",
         price: "Php 25,500.00 / person",
       },
       {
+        id: 3,
         destination: "El Nido in Palawan",
+        destinationImage: starCity,
         details:
           "El Nido has been named a number of times as the best island beaches in the world because of its paradise-like attractions with white sand, turquoise waters, vibrant coral reefs, and stunning limestone cliffs.",
         duration: "7 days",
         price: "Php 28,500.00 / person",
       },
       {
+        id: 4,
         destination: "Palaui Island in Santa Ana",
+        destinationImage: starCity,
         details:
           "Palaui island offers so much white sandy beaches and panoramic coves, a century old lighthouse, hidden waterfalls and lovely people, all in a scenic ragged terrain surrounded with huge waves and echoing wind.",
         duration: "5 days",
         price: "Php 15,000.00 / person",
       },
       {
+        id: 5,
         destination: "Panglao Island in Bohol",
+        destinationImage: starCity,
         details:
           "Panglao Island is the most popular tourist spot in Bohol. It is the tourist hub for all activities and there are hundreds of resorts, hotels, and restaurants in this area.",
         duration: "5 days",
         price: "Php 17,500.00 / person",
       },
       {
+        id: 6,
         destination: "Siargao Island",
+        destinationImage: starCity,
         details:
           "Named after a native mangrove, the surf capital of the Philippines is perfect for lovers of the great outdoors, whether you embrace adventure sports or gentler pursuits such as swimming in rock pools and caves.",
         duration: "7 days",
@@ -153,42 +179,54 @@ const categoriesInfo = [
     accentLight: "var(--clr-accent-summit-100",
     destinations: [
       {
+        id: 1,
         destination: "Mt. Apo in Davao City",
+        destinationImage: starCity,
         details:
           "Towering at 2954 meters above sea level, Mount Apo is the highest mountain and volcano in the Philippines. It is also marked for the UNESCO Tentative World Heritage List.",
         duration: "7 days",
         price: "Php 15,500.00 / person",
       },
       {
+        id: 2,
         destination: "Guiting-Guiting National Park in Sibuyan Island",
+        destinationImage: starCity,
         details:
           "Its steep slopes and jagged peak, have earned it the reputation as one of the most difficult mountain to climb in the Philippines. It also ranked 71st-highest peak of an island in the world.",
         duration: "7 days",
         price: "Php 12,500.00 / person",
       },
       {
+        id: 3,
         destination: "Mt. Pulag in Benguet",
+        destinationImage: starCity,
         details:
           "Mt. Pulag National Park is the highest peak in Luzon and is the second highest mountain in the Philippines with an elevation of 2,922 m above sea level. Visitors can also catch glimpses of the Milky Way Galaxy at dawn.",
         duration: "5 days",
         price: "Php 13,500.00 / person",
       },
       {
+        id: 4,
         destination: "Mt. Pinatubo in Zambales",
+        destinationImage: starCity,
         details:
           "Explore the Philippines most popular hiking destination on an 18 hour tour taking you to the best trekking areas and viewing spots around Mount Pinatubo.",
         duration: "5 days",
         price: "Php 16,000.00 / person",
       },
       {
+        id: 5,
         destination: "Mt. Ugo in Nueva Viscaya",
+        destinationImage: starCity,
         details:
           "Mt. Ugo is a popular hiking destination located in the borderline province of Nueva Vizcaya and Benguet. It has an elevation of 2,200 meters above sea level or 7,217 feet.",
         duration: "5 days",
         price: "Php 15,500.00 / person",
       },
       {
+        id: 6,
         destination: "Mt. Ulap in Itogon, Benguet",
+        destinationImage: starCity,
         details:
           "Mt. Ulap is located in Itogon, Benguet. It is one of the most visited mountains in the Philippines. It offers scenic views of the Cordillera mountain range and it is often called mini Mt. Ugo.",
         duration: "5 days",
@@ -211,42 +249,54 @@ const categoriesInfo = [
     accentLight: "var(--clr-accent-history-100",
     destinations: [
       {
+        id: 1,
         destination: "Calle Crisologo in Vigan, Ilocos Sur",
+        destinationImage: starCity,
         details:
           "One of the most beautiful streets in the Philippines. It boasts a dense concentration of centuries-old stone houses, lovely tungsten lamps, and antique cobblestone, where horse-drawn carriages or calesas are used for transport. ",
         duration: "2 days",
         price: "Php 5,500.00 / person",
       },
       {
+        id: 2,
         destination: "Fort Santiago, Intramuros, Manila",
+        destinationImage: starCity,
         details:
           "Fort Santiago is one of the oldest fortifications in Manila built by the Spaniards in 1571 from what was once a palisaded structure of logs and earth built by Rajah Soliman on the native settlement called Maynila.",
         duration: "1 1/2 days",
         price: "Php 3,500.00 / person",
       },
       {
+        id: 3,
         destination: "Magellan's Cross in Mactan, Cebu",
+        destinationImage: starCity,
         details:
           "A small circular pavilion, built in the 19th century, houses Magellans Cross, which is today one of Cebu islands most important religious icons and an essential stop on any Cebu City tour.",
         duration: "2 days",
         price: "Php 5,500.00 / person",
       },
       {
+        id: 4,
         destination: "National Museum of Natural History in Manila",
+        destinationImage: starCity,
         details:
           "One of the most popular museums in the country is the National Museum of Natural History, which was officially opened to the public in May 2018. Located in Rizal Park, it is part of the National Museum Complex.",
         duration: "1 1/2 days",
         price: "Php 3,000.00 / person",
       },
       {
+        id: 5,
         destination: "Rizal park in Manila",
+        destinationImage: starCity,
         details:
           "Rizal Park, also known as Luneta Park or simply Luneta, is a historic urban park located in Ermita, Manila. It is considered one of the largest urban parks in the Philippines, covering an area of 58 hectares.",
         duration: "1 day",
         price: "Php 2,000.00 / person",
       },
       {
+        id: 6,
         destination: "Rizal Shrine in Dapitan, Zamboanga del Norte",
+        destinationImage: starCity,
         details:
           "The shrine features a collection of structures that retells the tales of former Dapitan and the passion of an extraordinary man who lived as an exile with a purpose—to teach and serve the Dapitanons.",
         duration: "3 day",
@@ -269,42 +319,54 @@ const categoriesInfo = [
     accentLight: "var(--clr-accent-culture-100",
     destinations: [
       {
+        id: 1,
         destination: "Chocolate Hills in Bohol",
+        destinationImage: starCity,
         details:
           "The Chocolate Hills is declared the Philippines' 3rd National Geological Monument and is dubbed as an Eight Wonder of the World. These iconic hills are even featured in the 200 Philippine Peso bill.",
         duration: "5 days",
         price: "Php 12,500.00 / person",
       },
       {
+        id: 2,
         destination: "Barracuda Lake in Coron Island, Palawan Province",
+        destinationImage: starCity,
         details:
           "It is one of the famous diving sites not only in Coron but also in the entire country. Barracuda Lake is composed of both salt and fresh water, but the most notable feature of this lake is its thermocline.",
         duration: "5 days",
         price: "Php 11,500.00 / person",
       },
       {
+        id: 3,
         destination: "Banaue Rice Terraces in Ifugao",
+        destinationImage: starCity,
         details:
           "The Banaue Rice Terraces are terraces that were carved into the mountains of Banaue, Ifugao, in the Philippines, by the ancestors of the Igorot people. The terraces are occasionally called the Eighth Wonder of the World.",
         duration: "5 days",
         price: "Php 10,500.00 / person",
       },
       {
+        id: 4,
         destination: "Puerto Galera in Mindoro oriental",
+        destinationImage: starCity,
         details:
           "Puerto Galera is a town on the Philippine island of Mindoro. It's known for its dive sites and beaches. The long curve of White Beach is backed by bars and resorts.",
         duration: "5 days",
         price: "Php 16,000.00 / person",
       },
       {
+        id: 5,
         destination: "Tagaytay in Cavite",
+        destinationImage: starCity,
         details:
           "Tagaytay is a popular holiday town south of Manila on the Philippine island Luzon. Known for its mild climate, it sits on a ridge above Taal Volcano Island, an active volcano surrounded by Taal Lake.",
         duration: "3 days",
         price: "Php 9,500.00 / person",
       },
       {
+        id: 6,
         destination: "Masungi Georeserve in Tanay, Rizal",
+        destinationImage: starCity,
         details:
           "The Masungi Georeserve is a conservation area and a rustic rock garden tucked in the rainforests of Rizal. In this sanctuary, guests will be able to commune with nature, and reenergise themselves while doing so.",
         duration: "3 days",

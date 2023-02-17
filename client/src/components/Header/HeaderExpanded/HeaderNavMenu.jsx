@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "../Header.module.css";
 
@@ -33,7 +33,11 @@ const HeaderNavMenu = ({ onCloseHeader }) => {
       {headerLinks.map((linkItem) => (
         <li key={linkItem.id} className="position-relative text-center">
           <NavLink
-            className="text-uppercase text-decoration-none"
+            className={({ isActive }) => {
+              let activeClass = "text-uppercase text-decoration-none ";
+              if (isActive) activeClass += styles.active;
+              return activeClass;
+            }}
             onClick={onCloseHeader}
             to={linkItem.path}
           >
