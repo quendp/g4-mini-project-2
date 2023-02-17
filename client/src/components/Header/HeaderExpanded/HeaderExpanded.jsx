@@ -8,10 +8,7 @@ const HeaderExpanded = (props) => {
     <nav
       className={`${props.showExpanded} ${styles.navCon} d-flex flex-column justify-content-start align-items-center pt-5`}
     >
-      <HeaderNavMenu
-        onCloseHeader={props.onCloseHeader}
-        logInToken={props.logInToken}
-      />
+      <HeaderNavMenu onCloseHeader={props.onCloseHeader} />
       <HeaderCategories
         onCloseHeader={props.onCloseHeader}
         showExpanded={props.showExpanded}

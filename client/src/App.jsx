@@ -4,7 +4,6 @@ import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import PublicLayout from "./components/Layout/PublicLayout";
 import PrivateLayout from "./components/Layout/PrivateLayout";
-import UserAuthentication from "./context/UserAuthentication/UserAuthentication";
 import NotFound from "./pages/NotFound/NotFound";
 import Home from "./pages/Home/Home";
 import User from "./pages/User/User";
@@ -14,42 +13,20 @@ import Contact from "./pages/Contact/Contact";
 import About from "./pages/About/About";
 import Categories from "./pages/Categories/Categories";
 
+// context
+import { UserAuthentication } from "./context/UserAuthentication/UserAuthentication";
+
 // testing area
 import { developers } from "./components/TestingArea";
 
 function App() {
-  const [logInToken, setLogInToken] = useState("asdfasdf");
-
-  const submitLogInHandler = (token) => {
-    setLogInToken(token);
-    localStorage.setItem("token", token);
-    console.log("user logged in with token:", token);
-
-    const signUpModalInst = document.getElementById("signUpModal");
-    const myModal = bootstrap.Modal.getOrCreateInstance(signUpModalInst);
-    myModal.hide();
-  };
-
-  const handleLogOut = () => {
-    setLogInToken("");
-    console.log("user logged out");
-
-    const signUpModalInst = document.getElementById("signUpModal");
-    const myModal = bootstrap.Modal.getOrCreateInstance(signUpModalInst);
-    myModal.hide();
-  };
-
   return (
     <>
-      <UserAuthentication
-        submitHandler={submitLogInHandler}
-        logInToken={logInToken}
-        handleLogOut={handleLogOut}
-      >
+      <UserAuthentication>
         <Routes>
           <Route path="/" element={<Layout />}>
             {/* public routes */}
-            <Route element={<PublicLayout logInToken={logInToken} />}>
+            <Route element={<PublicLayout />}>
               <Route index element={<Home />} />
               <Route path="contact" element={<Contact />} />
               <Route path="about" element={<About />} />

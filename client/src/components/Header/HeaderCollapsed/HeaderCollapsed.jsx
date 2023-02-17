@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styles from "../Header.module.css";
 import headerLogo from "../../../assets/images/logo-svg/logo-outline-white.svg";
+import UserAuthContext from "../../../context/UserAuthentication/UserAuthentication";
 
 const HeaderCollapsed = (props) => {
+  const { logInToken } = useContext(UserAuthContext);
   return (
     <div className={`row navbar px-0 px-sm-2 px-md-2 px-lg-5`}>
       <div className="col-3">
@@ -30,7 +32,7 @@ const HeaderCollapsed = (props) => {
           data-bs-toggle="modal"
           data-bs-target="#signUpModal"
         >
-          {props.logInToken.length > 0 ? "LOG OUT" : "SIGN IN"}
+          {logInToken.length > 0 ? "LOG OUT" : "SIGN IN"}
         </button>
         <div
           className={`${styles.hamBtn} position-relative`}

@@ -4,7 +4,7 @@ import HeaderCollapsed from "./HeaderCollapsed/HeaderCollapsed";
 import HeaderExpanded from "./HeaderExpanded/HeaderExpanded";
 import grainOverlay from "../../assets/images/grain.png";
 
-const Header = ({ logInToken }) => {
+const Header = () => {
   const [isActiveClass, setIsActiveClass] = useState("");
   const [showExpanded, setShowExpanded] = useState("d-none");
   const [headerBgColor, setHeaderBgColor] = useState("transparent");
@@ -68,13 +68,11 @@ const Header = ({ logInToken }) => {
       style={headerWrapperStyle}
     >
       <HeaderCollapsed
-        logInToken={logInToken}
         onBurgerClick={headerClickHandler}
         onCloseHeader={onCloseHeader}
       />
       <HeaderExpanded
         showExpanded={showExpanded}
-        logInToken={logInToken}
         onCloseHeader={onCloseHeader}
       />
     </header>
