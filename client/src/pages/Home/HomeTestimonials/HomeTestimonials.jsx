@@ -1,7 +1,7 @@
 import React from "react";
 import "./HomeTestimonials.css";
 import CardContainer from "./TestimonialCard/CardContainer";
-import { testimonials } from "./TestimonialsData";
+import { testimonials } from "../../../components/Data/TestimonialsMockData";
 import Card from "./TestimonialCard/Card";
 
 const HomeTestimonials = () => {

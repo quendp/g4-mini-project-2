@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import SignUpFormAccount from "./SignUpFormAccount";
 import SignUpFormPersonal from "./SignUpFormPersonal";
-import FormModal from "../../FormUI/FormModal";
+import FormModal from "../../../components/FormUI/FormModal";
 
 const SignUpForm = ({ handleChangeMode, submitHandler }) => {
   const REGISTER_URL = "/api/users/register";
@@ -210,8 +210,9 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
 
   useEffect(() => {
     if (errMsg == "Username is already taken.") setUsernameClass("isInvalid");
-    else if (errMsg == "Email address already have an account.") setEmailClass("isInvalid");
-  }, [errMsg])
+    else if (errMsg == "Email address already have an account.")
+      setEmailClass("isInvalid");
+  }, [errMsg]);
 
   const onClickBtnRight = () => {
     setIsNextClicked(true);
@@ -249,7 +250,7 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
       !validAge ? setAgeClass("isInvalid") : setAgeClass("");
       !validAddress ? setAddressClass("isInvalid") : setAddressClass("");
     } else {
-      submitToServer()
+      submitToServer();
     }
   };
 
@@ -269,7 +270,7 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
       } else {
         console.log(response.data);
         console.log(JSON.stringify(response));
-        submitHandler(signUpData, "sample token");
+        submitHandler(signUpData);
       }
     } catch (err) {
       if (!err?.response) {
@@ -278,11 +279,12 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
         setErrMsg("Username or email already exists. Try a different one.");
         onClickBtnLeft();
       } else {
-        setErrMsg("Registration failed. Please check your internet connection.");
+        setErrMsg(
+          "Registration failed. Please check your internet connection."
+        );
       }
     }
   };
-
 
   const headerTitle = "Create a Lakbay Account";
   const headerText = "Already have an account? ";
