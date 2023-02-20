@@ -270,7 +270,7 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
       } else {
         console.log(response.data);
         console.log(JSON.stringify(response));
-        submitHandler(signUpData, "sample token");
+        submitHandler(signUpData);
       }
     } catch (err) {
       if (!err?.response) {

@@ -6,7 +6,7 @@
       rgba(0, 0, 0, 0.8) 0%,
       rgba(0, 0, 0, 0.01) 100%
     ),
-    url(../images/grain.png);
+    url(../../../assets/images/grain.png);
 }
 
 .m-hero-bg {
@@ -165,7 +165,7 @@ main .btn:active {
   font-family: var(--ff-body-light);
   z-index: 2;
   backdrop-filter: blur(5px);
-  background-image: url(../images/grain.png);
+  background-image: url(../../../assets/images/grain.png);
 }
 
 #mContinueRotation {

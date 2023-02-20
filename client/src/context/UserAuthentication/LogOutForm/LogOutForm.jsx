@@ -1,7 +1,7 @@
 import React from "react";
 import FormModal from "../../../components/FormUI/FormModal";
 
-const LogOutForm = ({ handleLogOut }) => {
+const LogOutForm = ({ submitHandler }) => {
   const headerTitle = "Confirm log out";
   const headerText = "Are you sure you want to log out?";
   const footerWrapperClass = "justify-content-center";
@@ -10,9 +10,14 @@ const LogOutForm = ({ handleLogOut }) => {
   const btnLeftText = "cancel";
   const btnRightType = "button";
   const btnRightText = "log out";
+
+  const onClickLogOut = () => {
+    submitHandler("");
+  };
+
   return (
     <FormModal
-      onClickBtnRight={handleLogOut}
+      onClickBtnRight={onClickLogOut}
       headerTitle={headerTitle}
       headerText={headerText}
       footerWrapperClass={footerWrapperClass}

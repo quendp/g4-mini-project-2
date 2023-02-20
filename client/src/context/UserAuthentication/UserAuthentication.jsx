@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useMemo } from "react";
 import LogInForm from "./LogInForm/LogInForm";
 import SignUpForm from "./SignUpForm/SignUpForm";
 import LogOutForm from "./LogOutForm/LogOutForm";
@@ -7,31 +7,28 @@ const UserAuthContext = createContext({});
 
 export const UserAuthentication = ({ children }) => {
   const [hasAccount, setHasAccount] = useState(true);
-  const [logInToken, setLogInToken] = useState("asdfasdf");
+  const [logInToken, setLogInToken] = useState({ token: "" });
 
   const handleChangeMode = () => {
     hasAccount === true ? setHasAccount(false) : setHasAccount(true);
   };
 
-  const submitLogInHandler = (token) => {
-    setLogInToken(token);
-    localStorage.setItem("token", token);
-    console.log("user logged in with token:", token);
+  const submitHandler = (jwtToken) => {
+    setLogInToken({ token: jwtToken });
+    console.log("user logged in with token:", jwtToken);
+    closeModal();
+  };
+
+  const closeModal = () => {
     const signUpModalInst = document.getElementById("signUpModal");
     const myModal = bootstrap.Modal.getOrCreateInstance(signUpModalInst);
     myModal.hide();
   };
 
-  const handleLogOut = () => {
-    setLogInToken("");
-    console.log("user logged out");
-    const signUpModalInst = document.getElementById("signUpModal");
-    const myModal = bootstrap.Modal.getOrCreateInstance(signUpModalInst);
-    myModal.hide();
-  };
+  const userData = useMemo(() => logInToken, [logInToken]);
 
   return (
-    <UserAuthContext.Provider value={{ logInToken }}>
+    <UserAuthContext.Provider value={userData}>
       <div
         className="modal fade"
         id="signUpModal"
@@ -41,22 +38,24 @@ export const UserAuthentication = ({ children }) => {
       >
         <div
           className={`modal-dialog ${
-            logInToken.length === 0 && !hasAccount ? "modal-lg" : "modal-md"
+            userData.token.length === 0 && !hasAccount ? "modal-lg" : "modal-md"
           } modal-dialog-centered`}
         >
-          {logInToken.length === 0 && hasAccount && (
+          {userData.token.length === 0 && hasAccount && (
             <LogInForm
               handleChangeMode={handleChangeMode}
-              submitHandler={submitLogInHandler}
+              submitHandler={submitHandler}
             />
           )}
-          {logInToken.length === 0 && !hasAccount && (
+          {userData.token.length === 0 && !hasAccount && (
             <SignUpForm
               handleChangeMode={handleChangeMode}
-              submitHandler={submitLogInHandler}
+              submitHandler={submitHandler}
             />
           )}
-          {logInToken.length > 0 && <LogOutForm handleLogOut={handleLogOut} />}
+          {userData.token.length > 0 && (
+            <LogOutForm submitHandler={submitHandler} />
+          )}
         </div>
       </div>
       {children}

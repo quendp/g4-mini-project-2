@@ -20,7 +20,6 @@ const TestingArea = () => {
   return (
     <div>
       <div className="testingArea-bg vh-100 d-flex flex-column justify-content-center">
-        {/* <Header logInToken={logInToken} /> */}
         <div className="testingArea-wrapper px-3 py-5 mx-auto">
           <h1 className="h3-light-bold text-center mb-3">TESTING AREA</h1>
           <div className="d-flex flex-column justify-content-center align-items-center mx-2 mx-md-5">

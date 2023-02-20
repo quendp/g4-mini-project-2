@@ -5,7 +5,7 @@ import headerLogo from "../../../assets/images/logo-svg/logo-outline-white.svg";
 import UserAuthContext from "../../../context/UserAuthentication/UserAuthentication";
 
 const HeaderCollapsed = (props) => {
-  const { logInToken } = useContext(UserAuthContext);
+  const userData = useContext(UserAuthContext);
   return (
     <div className={`row navbar px-0 px-sm-2 px-md-2 px-lg-5`}>
       <div className="col-3">
@@ -32,7 +32,7 @@ const HeaderCollapsed = (props) => {
           data-bs-toggle="modal"
           data-bs-target="#signUpModal"
         >
-          {logInToken.length > 0 ? "LOG OUT" : "SIGN IN"}
+          {userData.token.length > 0 ? "LOG OUT" : "LOG IN"}
         </button>
         <div
           className={`${styles.hamBtn} position-relative`}

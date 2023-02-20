@@ -1,17 +1,17 @@
-import "./App.css";
-import React, { useState } from "react";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
+import "./App.css";
 import Layout from "./components/Layout/Layout";
-import PublicLayout from "./components/Layout/PublicLayout";
 import PrivateLayout from "./components/Layout/PrivateLayout";
-import NotFound from "./pages/NotFound/NotFound";
-import Home from "./pages/Home/Home";
-import User from "./pages/User/User";
-import Agent from "./pages/Agent/Agent";
-import Admin from "./pages/Admin/Admin";
-import Contact from "./pages/Contact/Contact";
+import PublicLayout from "./components/Layout/PublicLayout";
 import About from "./pages/About/About";
+import Admin from "./pages/Admin/Admin";
+import Agent from "./pages/Agent/Agent";
 import Categories from "./pages/Categories/Categories";
+import Contact from "./pages/Contact/Contact";
+import Home from "./pages/Home/Home";
+import NotFound from "./pages/NotFound/NotFound";
+import User from "./pages/User/User";
 
 // context
 import { UserAuthentication } from "./context/UserAuthentication/UserAuthentication";
