@@ -79,7 +79,7 @@ const LogInForm = ({ handleChangeMode, submitHandler }) => {
       if (response.data.message) {
         setErrMsg(response.data.message);
       } else {
-        submitHandler(response.data.token);
+        submitHandler(response.data.token, username);
       }
     } catch (err) {
       if (!err?.response) {
