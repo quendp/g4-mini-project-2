@@ -1,43 +1,58 @@
-import React, { useState } from "react";
-import TestingArea from "./components/TestingArea";
-import UserAuthentication from "./components/UserAuthentication/UserAuthentication";
+import React from "react";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import Layout from "./components/Layout/Layout";
+import PrivateLayout from "./components/Layout/PrivateLayout";
+import PublicLayout from "./components/Layout/PublicLayout";
+import About from "./pages/About/About";
+import Admin from "./pages/Admin/Admin";
+import Agent from "./pages/Agent/Agent";
+import Categories from "./pages/Categories/Categories";
+import Contact from "./pages/Contact/Contact";
+import Home from "./pages/Home/Home";
+import NotFound from "./pages/NotFound/NotFound";
+import User from "./pages/User/User";
+
+// context
+import { UserAuthentication } from "./context/UserAuthentication/UserAuthentication";
+
+// testing area
+import { developers } from "./components/TestingArea";
 
 function App() {
-  const [logInToken, setLogInToken] = useState("");
-
-
-  const submitLogInHandler = (token) => {
-    setLogInToken(token);
-    localStorage.setItem("token", token);
-    console.log("user logged in with token:", token);
-
-    const signUpModalInst = document.getElementById("signUpModal");
-    const myModal = bootstrap.Modal.getOrCreateInstance(signUpModalInst);
-    myModal.hide();
-  }
-
-  const handleLogOut = () => {
-    setLogInToken("");
-    console.log("user logged out");
-
-    const signUpModalInst = document.getElementById("signUpModal");
-    const myModal = bootstrap.Modal.getOrCreateInstance(signUpModalInst);
-    myModal.hide();
-  };
-
-
   return (
-    <div>
-      <UserAuthentication
-        submitHandler = {submitLogInHandler}
-        logInToken={logInToken}
-        handleLogOut={handleLogOut}
-      />
-      <TestingArea
-        logInToken={logInToken}
-      />
-    </div>
+    <>
+      <UserAuthentication>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            {/* public routes */}
+            <Route element={<PublicLayout />}>
+              <Route index element={<Home />} />
+              <Route path="contact" element={<Contact />} />
+              <Route path="about" element={<About />} />
+              <Route path="categories" element={<Categories />} />
+            </Route>
+
+            {/* role-based routes */}
+            <Route element={<PrivateLayout />}>
+              <Route path="user" element={<User />} />
+              <Route path="agent" element={<Agent />} />
+              <Route path="admin" element={<Admin />} />
+            </Route>
+
+            {/* developers testing area */}
+            <Route path="/roland" element={developers.roland} />
+            <Route path="/nherwin" element={developers.nherwin} />
+            <Route path="/radilyn" element={developers.radilyn} />
+            <Route path="/ce" element={developers.ce} />
+            <Route path="/nick" element={developers.nick} />
+
+            {/* catch all */}
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </UserAuthentication>
+    </>
   );
 }
 

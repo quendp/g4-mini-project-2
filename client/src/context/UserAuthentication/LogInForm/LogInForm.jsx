@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import FormModal from "../../FormUI/FormModal";
+import FormModal from "../../../components/FormUI/FormModal";
 import showPassImg from "../../../assets/images/showPass.png";
 import hidePassImg from "../../../assets/images/hidePass.png";
 
 const LogInForm = ({ handleChangeMode, submitHandler }) => {
-
   const REGISTER_URL = "/api/users/login";
   const [isSubmitClicked, setIsSubmitClicked] = useState(false);
   const [errMsg, setErrMsg] = useState("");
@@ -30,7 +29,7 @@ const LogInForm = ({ handleChangeMode, submitHandler }) => {
   };
 
   useEffect(() => {
-    const result = (USERNAME_REGEX.test(username) || EMAIL_REGEX.test(username));
+    const result = USERNAME_REGEX.test(username) || EMAIL_REGEX.test(username);
     setValidUsername(result);
     if (!result && isSubmitClicked) {
       setUsernameClass("isInvalid");
@@ -50,16 +49,16 @@ const LogInForm = ({ handleChangeMode, submitHandler }) => {
   }, [password]);
 
   const onClickBtnLeft = () => {
-      setUsernameClass("");
-      setPassClass("");
-      setErrMsg("");
-      setIsSubmitClicked(false);
+    setUsernameClass("");
+    setPassClass("");
+    setErrMsg("");
+    setIsSubmitClicked(false);
   };
 
   const onClickSubmit = (event) => {
     event.preventDefault();
     setIsSubmitClicked(true);
-    if ( !validUsername || !validPass ) {
+    if (!validUsername || !validPass) {
       !validUsername ? setUsernameClass("isInvalid") : setUsernameClass("");
       !validPass ? setPassClass("isInvalid") : setPassClass("");
     } else {
@@ -88,12 +87,14 @@ const LogInForm = ({ handleChangeMode, submitHandler }) => {
       } else if (err.response?.status === 409) {
         setErrMsg("Username or email already exists. Try a different one.");
       } else {
-        setErrMsg("Registration failed. Please check your internet connection.");
+        setErrMsg(
+          "Registration failed. Please check your internet connection."
+        );
       }
     } finally {
       setIsSubmitClicked(false);
     }
-  }
+  };
 
   const headerTitle = "Log in to your Lakbay Account";
   const headerText = "Doesn't have an account? ";
