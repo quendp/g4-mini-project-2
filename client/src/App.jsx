@@ -38,8 +38,14 @@ function App() {
               element: <About />,
             },
             {
-              path: "/categories",
+              path: "/category",
               element: <Categories />,
+              children: [
+                {
+                  path: "/category/:category",
+                  element: <Categories />,
+                },
+              ],
             },
             {
               path: "/contact",

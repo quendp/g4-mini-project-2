@@ -40,13 +40,25 @@ import pinatubo from "../assets/images/explore-the-summit/pinatubo.jpg";
 import ugo from "../assets/images/explore-the-summit/ugo.jpg";
 import ulap from "../assets/images/explore-the-summit/ulap.jpg";
 
+import fortSantiago from "../assets/images/look-back-in-history/fort-santiago.jpg";
+import mactan from "../assets/images/look-back-in-history/mactan.jpg";
+import museum from "../assets/images/look-back-in-history/museum.jpg";
+import rizalShrine from "../assets/images/look-back-in-history/rizal-shrine.jpg";
+import rizal from "../assets/images/look-back-in-history/rizal.jpg";
+
+import bohol from "../assets/images/nature-and-culture/bohol.jpg";
+import coron from "../assets/images/nature-and-culture/coron.jpg";
+import puerto from "../assets/images/nature-and-culture/puerto-galera.jpg";
+import tagaytay from "../assets/images/nature-and-culture/tagaytay.jpg";
+import tanay from "../assets/images/nature-and-culture/tanay.jpg";
+
 const categoriesInfo = [
   {
     categoryId: 1,
     category: "Cosmopolitan Lights",
     headerTitle: "THE LIVELY MODERN CITIES",
     previewImage: lightsImage,
-    categoryTitle: "Visit the Lively <br> and Colorful Cities",
+    categoryTitle: ["Visit the Lively", "and Colorful Cities"],
     description:
       "A trip to Star City Amusement Park, Manila Ocean Park, Chinatown, and Solaire Resort and Casino in Manila, and Mall of Asia and Cultural Center of the Philippines in Pasay.",
     videoBg: lightsVid,
@@ -116,7 +128,7 @@ const categoriesInfo = [
     category: "Dive Under Water",
     headerTitle: "THE WONDERS OF THE SEA",
     previewImage: waterImage,
-    categoryTitle: "Discover the Wonders <br> of the Deep Sea",
+    categoryTitle: ["Discover the Wonders", "of the Deep Sea"],
     description:
       "A trip towards places such as the Bantayan Island in Cebu, Boracay Beach in Aklan, El Nido in Palawan, Palaui Island in Santa Ana, Panglao Island in Bohol, and Siargao Island.",
     videoBg: waterVid,
@@ -186,7 +198,7 @@ const categoriesInfo = [
     category: "Explore the Summit",
     headerTitle: "THE SKY ON MOUNTAIN PEAKS",
     previewImage: summitImage,
-    categoryTitle: "Look at the Sky on <br> Top of Mountain Peaks",
+    categoryTitle: ["Look at the Sky on", "Top of Mountain Peaks"],
     description:
       "Visit beautiful mountains such as Mt. Apo in Davao City, Mt. Guiting Guiting in Sibuyan, Mt. Pulag and Mt. Itogon in Benguet, Mt. Pinatubo in Zambales, and Mt. Ugo in Nueva Viscaya.",
     videoBg: summitVid,
@@ -256,7 +268,7 @@ const categoriesInfo = [
     category: "Look Back in History",
     headerTitle: "THE REMNANTS OF THE PAST",
     previewImage: historyImage,
-    categoryTitle: "Embrace the Great <br> Remnants of the Past",
+    categoryTitle: ["Embrace the Great", "Remnants of the Past"],
     description:
       "Visit Historical Sites such as Calle Crisologo in Vigan, Fort Santiago in Intramuros, Magellan's Cross in Mactan, National Museum and Rizal Park in Manila, and Rizal Shrine in Dapitan.",
     videoBg: historyVid,
@@ -268,7 +280,7 @@ const categoriesInfo = [
       {
         id: 1,
         destination: "Calle Crisologo in Vigan, Ilocos Sur",
-        destinationImage: starCity,
+        destinationImage: historyImage,
         details:
           "One of the most beautiful streets in the Philippines. It boasts a dense concentration of centuries-old stone houses, lovely tungsten lamps, and antique cobblestone, where horse-drawn carriages or calesas are used for transport. ",
         duration: "2 days",
@@ -277,7 +289,7 @@ const categoriesInfo = [
       {
         id: 2,
         destination: "Fort Santiago, Intramuros, Manila",
-        destinationImage: starCity,
+        destinationImage: fortSantiago,
         details:
           "Fort Santiago is one of the oldest fortifications in Manila built by the Spaniards in 1571 from what was once a palisaded structure of logs and earth built by Rajah Soliman on the native settlement called Maynila.",
         duration: "1 1/2 days",
@@ -286,7 +298,7 @@ const categoriesInfo = [
       {
         id: 3,
         destination: "Magellan's Cross in Mactan, Cebu",
-        destinationImage: starCity,
+        destinationImage: mactan,
         details:
           "A small circular pavilion, built in the 19th century, houses Magellans Cross, which is today one of Cebu islands most important religious icons and an essential stop on any Cebu City tour.",
         duration: "2 days",
@@ -295,7 +307,7 @@ const categoriesInfo = [
       {
         id: 4,
         destination: "National Museum of Natural History in Manila",
-        destinationImage: starCity,
+        destinationImage: museum,
         details:
           "One of the most popular museums in the country is the National Museum of Natural History, which was officially opened to the public in May 2018. Located in Rizal Park, it is part of the National Museum Complex.",
         duration: "1 1/2 days",
@@ -304,7 +316,7 @@ const categoriesInfo = [
       {
         id: 5,
         destination: "Rizal park in Manila",
-        destinationImage: starCity,
+        destinationImage: rizal,
         details:
           "Rizal Park, also known as Luneta Park or simply Luneta, is a historic urban park located in Ermita, Manila. It is considered one of the largest urban parks in the Philippines, covering an area of 58 hectares.",
         duration: "1 day",
@@ -313,7 +325,7 @@ const categoriesInfo = [
       {
         id: 6,
         destination: "Rizal Shrine in Dapitan, Zamboanga del Norte",
-        destinationImage: starCity,
+        destinationImage: rizalShrine,
         details:
           "The shrine features a collection of structures that retells the tales of former Dapitan and the passion of an extraordinary man who lived as an exile with a purpose—to teach and serve the Dapitanons.",
         duration: "3 day",
@@ -326,7 +338,7 @@ const categoriesInfo = [
     category: "Nature and Culture",
     headerTitle: "THE BREATH OF FRESH AIR",
     previewImage: natureImage,
-    categoryTitle: "Feel the Beauty of <br> the Untouched Lands",
+    categoryTitle: ["Feel the Beauty of", "the Untouched Lands"],
     description:
       "Visit the Chocolate Hills in Bohol, Barracuda Lake in Coron, Banaue Rice Terraces in Ifugao, Puerto Galera in Mindoro, Tagaytay in Cavite, and Masungi Georeserve in Tanay.",
     videoBg: natureVid,
@@ -338,7 +350,7 @@ const categoriesInfo = [
       {
         id: 1,
         destination: "Chocolate Hills in Bohol",
-        destinationImage: starCity,
+        destinationImage: bohol,
         details:
           "The Chocolate Hills is declared the Philippines' 3rd National Geological Monument and is dubbed as an Eight Wonder of the World. These iconic hills are even featured in the 200 Philippine Peso bill.",
         duration: "5 days",
@@ -347,7 +359,7 @@ const categoriesInfo = [
       {
         id: 2,
         destination: "Barracuda Lake in Coron Island, Palawan Province",
-        destinationImage: starCity,
+        destinationImage: coron,
         details:
           "It is one of the famous diving sites not only in Coron but also in the entire country. Barracuda Lake is composed of both salt and fresh water, but the most notable feature of this lake is its thermocline.",
         duration: "5 days",
@@ -356,7 +368,7 @@ const categoriesInfo = [
       {
         id: 3,
         destination: "Banaue Rice Terraces in Ifugao",
-        destinationImage: starCity,
+        destinationImage: natureImage,
         details:
           "The Banaue Rice Terraces are terraces that were carved into the mountains of Banaue, Ifugao, in the Philippines, by the ancestors of the Igorot people. The terraces are occasionally called the Eighth Wonder of the World.",
         duration: "5 days",
@@ -365,7 +377,7 @@ const categoriesInfo = [
       {
         id: 4,
         destination: "Puerto Galera in Mindoro oriental",
-        destinationImage: starCity,
+        destinationImage: puerto,
         details:
           "Puerto Galera is a town on the Philippine island of Mindoro. It's known for its dive sites and beaches. The long curve of White Beach is backed by bars and resorts.",
         duration: "5 days",
@@ -374,7 +386,7 @@ const categoriesInfo = [
       {
         id: 5,
         destination: "Tagaytay in Cavite",
-        destinationImage: starCity,
+        destinationImage: tagaytay,
         details:
           "Tagaytay is a popular holiday town south of Manila on the Philippine island Luzon. Known for its mild climate, it sits on a ridge above Taal Volcano Island, an active volcano surrounded by Taal Lake.",
         duration: "3 days",
@@ -383,7 +395,7 @@ const categoriesInfo = [
       {
         id: 6,
         destination: "Masungi Georeserve in Tanay, Rizal",
-        destinationImage: starCity,
+        destinationImage: tanay,
         details:
           "The Masungi Georeserve is a conservation area and a rustic rock garden tucked in the rainforests of Rizal. In this sanctuary, guests will be able to commune with nature, and reenergise themselves while doing so.",
         duration: "3 days",
