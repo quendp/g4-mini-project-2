@@ -22,6 +22,23 @@ import natureThumb from "../assets/images/hero-section-thumbnails/nature-thumb.j
 import naturePoster from "../assets/images/hero-section-thumbnails/nature-poster.jpg";
 
 import starCity from "../assets/images/cosmopolitan-lights/star-city.webp";
+import ccp from "../assets/images/cosmopolitan-lights/ccp.webp";
+import chinaTown from "../assets/images/cosmopolitan-lights/chinatown.jpg";
+import moa from "../assets/images/cosmopolitan-lights/mall-of-asia.jpg";
+import manilaOcean from "../assets/images/cosmopolitan-lights/manila-ocean-park.jpg";
+import solaire from "../assets/images/cosmopolitan-lights/solaire.jpg";
+
+import bantayan from "../assets/images/dive-under-water/bantayan.jpg";
+import boracay from "../assets/images/dive-under-water/boracay.jpg";
+import palaui from "../assets/images/dive-under-water/palaui.jpg";
+import panglao from "../assets/images/dive-under-water/panglao.jpg";
+import siargao from "../assets/images/dive-under-water/siargao.jpg";
+
+import apo from "../assets/images/explore-the-summit/apo.jpg";
+import guiting from "../assets/images/explore-the-summit/guiting-guiting.jpg";
+import pinatubo from "../assets/images/explore-the-summit/pinatubo.jpg";
+import ugo from "../assets/images/explore-the-summit/ugo.jpg";
+import ulap from "../assets/images/explore-the-summit/ulap.jpg";
 
 const categoriesInfo = [
   {
@@ -50,7 +67,7 @@ const categoriesInfo = [
       {
         id: 2,
         destination: "Chinatown in Binondo Manila",
-        destinationImage: starCity,
+        destinationImage: chinaTown,
         details:
           "It is the oldest Chinatown in the world, established in 1594 by the Spaniards as a settlement near Intramuros but across the Pasig River for Catholic Chinese.",
         duration: "1 1/2 days",
@@ -59,7 +76,7 @@ const categoriesInfo = [
       {
         id: 3,
         destination: "Mall of Asia in Pasay City",
-        destinationImage: starCity,
+        destinationImage: moa,
         details:
           "The mall is currently the largest shopping mall in the Philippines and the third in the world. When it opened in 2006, it was the largest shopping mall in the Philippines until SM North EDSA was redeveloped in 2008.",
         duration: "1 1/2 days",
@@ -68,7 +85,7 @@ const categoriesInfo = [
       {
         id: 4,
         destination: "Manila Ocean Park",
-        destinationImage: starCity,
+        destinationImage: manilaOcean,
         details:
           "Manila Ocean Park is the country's first world-class marine theme park and a premiere educational facility. An integrated urban resort with marine life attractions and aqua-themed hotel.",
         duration: "2 days",
@@ -77,7 +94,7 @@ const categoriesInfo = [
       {
         id: 5,
         destination: "Solaire Resort & Casino Manila",
-        destinationImage: starCity,
+        destinationImage: solaire,
         details:
           "When you are looking for comfortable and convenient accommodations in Manila, make Solaire Resort & Casino your home away from home. A stay at Solaire Resort & Casino ensures an easy access to the lively city and all of its wonders.",
         duration: "5 days",
@@ -86,7 +103,7 @@ const categoriesInfo = [
       {
         id: 6,
         destination: "Cultural Center of the Philippines in Pasay City",
-        destinationImage: starCity,
+        destinationImage: ccp,
         details:
           "It is a mixed-use cultural and tourism hub overlooking Manila Bay in south-central Manila, most of which fall under the jurisdiction of the city of Pasay.",
         duration: "1 day",
@@ -111,7 +128,7 @@ const categoriesInfo = [
       {
         id: 1,
         destination: "Bantayan Island in Cebu",
-        destinationImage: starCity,
+        destinationImage: bantayan,
         details:
           "Bantayan Island Cebu is an excellent spot for relaxation with its exquisite beauty. It has white sands, clear blue beaches, tranquil mood, and hospitable people.",
         duration: "5 days",
@@ -120,7 +137,7 @@ const categoriesInfo = [
       {
         id: 2,
         destination: "Boracay Beach in Aklan",
-        destinationImage: starCity,
+        destinationImage: boracay,
         details:
           "Boracay Island in Aklan is one of the top tourist destination in the Philippines. Boast white sand beaches, caves and scenic views.",
         duration: "5 days",
@@ -129,7 +146,7 @@ const categoriesInfo = [
       {
         id: 3,
         destination: "El Nido in Palawan",
-        destinationImage: starCity,
+        destinationImage: waterImage,
         details:
           "El Nido has been named a number of times as the best island beaches in the world because of its paradise-like attractions with white sand, turquoise waters, vibrant coral reefs, and stunning limestone cliffs.",
         duration: "7 days",
@@ -138,7 +155,7 @@ const categoriesInfo = [
       {
         id: 4,
         destination: "Palaui Island in Santa Ana",
-        destinationImage: starCity,
+        destinationImage: palaui,
         details:
           "Palaui island offers so much white sandy beaches and panoramic coves, a century old lighthouse, hidden waterfalls and lovely people, all in a scenic ragged terrain surrounded with huge waves and echoing wind.",
         duration: "5 days",
@@ -147,7 +164,7 @@ const categoriesInfo = [
       {
         id: 5,
         destination: "Panglao Island in Bohol",
-        destinationImage: starCity,
+        destinationImage: panglao,
         details:
           "Panglao Island is the most popular tourist spot in Bohol. It is the tourist hub for all activities and there are hundreds of resorts, hotels, and restaurants in this area.",
         duration: "5 days",
@@ -156,7 +173,7 @@ const categoriesInfo = [
       {
         id: 6,
         destination: "Siargao Island",
-        destinationImage: starCity,
+        destinationImage: siargao,
         details:
           "Named after a native mangrove, the surf capital of the Philippines is perfect for lovers of the great outdoors, whether you embrace adventure sports or gentler pursuits such as swimming in rock pools and caves.",
         duration: "7 days",
@@ -181,7 +198,7 @@ const categoriesInfo = [
       {
         id: 1,
         destination: "Mt. Apo in Davao City",
-        destinationImage: starCity,
+        destinationImage: apo,
         details:
           "Towering at 2954 meters above sea level, Mount Apo is the highest mountain and volcano in the Philippines. It is also marked for the UNESCO Tentative World Heritage List.",
         duration: "7 days",
@@ -190,7 +207,7 @@ const categoriesInfo = [
       {
         id: 2,
         destination: "Guiting-Guiting National Park in Sibuyan Island",
-        destinationImage: starCity,
+        destinationImage: guiting,
         details:
           "Its steep slopes and jagged peak, have earned it the reputation as one of the most difficult mountain to climb in the Philippines. It also ranked 71st-highest peak of an island in the world.",
         duration: "7 days",
@@ -199,7 +216,7 @@ const categoriesInfo = [
       {
         id: 3,
         destination: "Mt. Pulag in Benguet",
-        destinationImage: starCity,
+        destinationImage: summitImage,
         details:
           "Mt. Pulag National Park is the highest peak in Luzon and is the second highest mountain in the Philippines with an elevation of 2,922 m above sea level. Visitors can also catch glimpses of the Milky Way Galaxy at dawn.",
         duration: "5 days",
@@ -208,7 +225,7 @@ const categoriesInfo = [
       {
         id: 4,
         destination: "Mt. Pinatubo in Zambales",
-        destinationImage: starCity,
+        destinationImage: pinatubo,
         details:
           "Explore the Philippines most popular hiking destination on an 18 hour tour taking you to the best trekking areas and viewing spots around Mount Pinatubo.",
         duration: "5 days",
@@ -217,7 +234,7 @@ const categoriesInfo = [
       {
         id: 5,
         destination: "Mt. Ugo in Nueva Viscaya",
-        destinationImage: starCity,
+        destinationImage: ugo,
         details:
           "Mt. Ugo is a popular hiking destination located in the borderline province of Nueva Vizcaya and Benguet. It has an elevation of 2,200 meters above sea level or 7,217 feet.",
         duration: "5 days",
@@ -226,7 +243,7 @@ const categoriesInfo = [
       {
         id: 6,
         destination: "Mt. Ulap in Itogon, Benguet",
-        destinationImage: starCity,
+        destinationImage: ulap,
         details:
           "Mt. Ulap is located in Itogon, Benguet. It is one of the most visited mountains in the Philippines. It offers scenic views of the Cordillera mountain range and it is often called mini Mt. Ugo.",
         duration: "5 days",
