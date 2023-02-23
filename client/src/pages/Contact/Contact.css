@@ -1,0 +1,40 @@
+.contact-container {
+    display: flex;
+    height: 100vh;
+    padding: 1rem;
+    background-color: var(--clr-secondary-300);
+    align-items: center;
+}
+
+.contact-container__details {
+    width: 50vw;
+    height: 35rem;
+    align-items: center;
+}
+
+.contact-container__form {
+    width: 50vw;
+    height: 35rem;
+    align-items: start;
+}
+
+@media (max-width: 768px) {
+    .contact-container {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        padding: 0.2rem;
+    }
+
+    .contact-container__details {
+        width: 100vw;
+        height: auto;
+        text-align: center;
+        align-items: center;
+    }
+
+    .contact-container__form {
+        width: 100vw;
+        height: auto;
+    }
+}

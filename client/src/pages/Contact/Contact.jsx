@@ -1,11 +1,20 @@
-import React from 'react'
+import React from 'react';
+import ContactDetails from './ContactDetails';
+import ContactForm from './ContactForm';
+import './Contact.css';
 
 const Contact = () => {
+  
   return (
-    <div>
-      Start here Ms. CE, delete this line to start on your task. Thank you!
+    <div className='contact-container'>
+      <div className='contact-container__details'>
+        <ContactDetails/>
+      </div>
+      <div className='contact-container__form'>
+        <ContactForm/>
+      </div>  
     </div>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;

@@ -1,0 +1,17 @@
+.contact-form__container {
+    padding: 3.5rem;
+}
+
+.contact-form__label {
+    font-family: var(--ff-body-regular);
+    color: var(--clr-secondary-700);
+    font-size: var(--fz-main-small);
+}
+
+.contact-form__button {
+    background-color: var(--clr-primary-dark);
+    height: 2.5rem;
+    width: 7.5rem;
+    border-radius: 1.5rem;
+    color: white;
+}
