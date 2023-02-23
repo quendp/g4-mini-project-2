@@ -3,6 +3,7 @@ import './ContactDetails.css';
 
 const ContactDetails = () => {
   return (
+    
     <div className='contact-details__container'>
         <div className ='h3-dark-bold'>
             <p>
