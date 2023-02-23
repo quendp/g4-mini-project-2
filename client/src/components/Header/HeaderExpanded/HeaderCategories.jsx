@@ -51,6 +51,23 @@ const HeaderCategories = (props) => {
     setPreviewTransDuration("500ms, 10ms");
   };
 
+  const urlPath = (categId) => {
+    switch (categId) {
+      case 1:
+        return "/categories/cosmopolitan-lights";
+      case 2:
+        return "/categories/dive-under-water";
+      case 3:
+        return "/categories/explore-the-summit";
+      case 4:
+        return "/categories/look-back-in-history";
+      case 5:
+        return "/categories/nature-and-culture";
+      default:
+        return "/categories";
+    }
+  };
+
   return (
     <div className="d-flex flex-column justify-content-center align-items-center w-100 h-100 position-relative">
       <div
@@ -81,7 +98,7 @@ const HeaderCategories = (props) => {
           <li className="my-2" key={category.categoryId}>
             <Link
               className="text-decoration-none"
-              to="/categories"
+              to={urlPath(category.categoryId)}
               onMouseEnter={() => {
                 showImage(category.categoryId);
               }}

@@ -33,6 +33,7 @@ const Header = () => {
   };
 
   const onCloseHeader = () => {
+    document.body.classList.remove("disableScroll");
     setIsActiveClass("");
     setShowExpanded("d-none");
     adjustHeader();

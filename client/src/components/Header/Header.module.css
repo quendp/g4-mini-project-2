@@ -34,6 +34,7 @@
   letter-spacing: calc(var(--fz--header-title) / 2);
   word-spacing: calc(var(--fz--header-title) / 2);
   transition: transform 400ms ease-in-out, color 400ms ease-in-out;
+  text-shadow: 0 0 10px var(--clr-secondary-400);
 }
 
 .wrapper.expandHeader .title h2 {

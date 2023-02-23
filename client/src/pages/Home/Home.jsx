@@ -8,8 +8,8 @@ const Home = () => {
   const [categoryIndex, setCategoryIndex] = useState(0);
 
   const onChangeCategory = (categoryId) => {
-    setCategoryIndex(categoryId - 1);
-    console.log(categoryId);
+    setCategoryIndex(categoryId);
+    console.log("Home : ", categoryId);
   };
 
   return (

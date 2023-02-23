@@ -19,10 +19,7 @@ const HomeHero = ({ categoryIndex, onChangeCategory }) => {
   }, [categoryIndex]);
 
   return (
-    <section
-      className="m-hero-section m-0 vh-100 justify-content-center"
-      id="mHeroSection"
-    >
+    <section className="m-hero-section m-0 vh-100 justify-content-center">
       <video
         className={`m-hero-bg m-0 p-0 position-fixed top-0 start-0 vh-100 w-100 opacity-${videoOpacity}`}
         id="mHeroBg"
@@ -43,12 +40,8 @@ const HomeHero = ({ categoryIndex, onChangeCategory }) => {
               onChangeCategory={onChangeCategory}
             />
           </div>
-          <div
-            className="d-none col-md-6 col-12 d-md-flex justify-content-center align-items-center position-relative"
-            id="mHeroRight"
-          >
-            <HomeHeroRotateBtn />
-            <HomeHeroWheel />
+          <div className="d-none col-md-6 col-12 d-md-flex justify-content-center align-items-center position-relative">
+            <HomeHeroWheel categoryIndex={categoryIndex} />
           </div>
         </div>
       </div>

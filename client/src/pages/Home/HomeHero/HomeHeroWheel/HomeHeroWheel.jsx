@@ -1,79 +1,48 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { categoriesInfo } from "../../../../Data/CategoriesMockData";
+import HomeHeroWheelImg from "./HomeHeroWheelImg";
+import { animationDelay } from "../../../../Utils/AnimationDelay";
 
-const HomeHeroWheel = () => {
+const HomeHeroWheel = ({ categoryIndex }) => {
+  const [heroRightTransform, setHeroRightTransform] = useState("100%, 100%");
+  const [heroRightOpacity, setHeroRightOpacity] = useState("0");
+
+  const prevCategory = useRef(categoryIndex);
+
+  const [indexHolder, setIndexHolder] = useState(prevCategory.current);
+
+  useEffect(() => {
+    (async () => {
+      prevCategory.current = categoryIndex;
+      setHeroRightTransform("0%, 0%");
+      setHeroRightOpacity("0");
+      await animationDelay(1000);
+      setIndexHolder(prevCategory.current);
+      setHeroRightTransform("-50% , -50%");
+      setHeroRightOpacity("1");
+    })();
+  }, [categoryIndex]);
+
+  const heroRightStyle = {
+    transform: `translate(${heroRightTransform}) rotate(15deg)`,
+    opacity: heroRightOpacity,
+  };
+
   return (
     <div
-      className="row mHeroCircle rounded-circle position-absolute d-flex justify-content-center align-items-center"
-      id="mHeroCircle"
+      className="row m-hero-circle rounded-circle position-absolute d-flex justify-content-center align-items-center"
+      style={heroRightStyle}
     >
       <div className="position-relative rounded-circle d-flex justify-content-center align-items-center w-100 h-100">
-        <div
-          className="m-hero-circle-sub position-absolute rounded-circle overflow-hidden d-flex justify-content-center align-items-center"
-          id="circleImage1Sub"
-        >
-          <img
-            className="m-hero-circle-image"
-            id="mCircleImage1"
-            src={categoriesInfo[0].destinations[0].destinationImage}
-            alt="Star City Amusement Park in Pasay"
-          />
-        </div>
-        <div
-          className="m-hero-circle-sub position-absolute rounded-circle overflow-hidden d-flex justify-content-center align-items-center"
-          id="circleImage2Sub"
-        >
-          <img
-            className="m-hero-circle-image"
-            id="mCircleImage2"
-            src={categoriesInfo[0].destinations[1].destinationImage}
-            alt="Chinatown in Binondo Manila"
-          />
-        </div>
-        <div
-          className="m-hero-circle-sub position-absolute rounded-circle overflow-hidden d-flex justify-content-center align-items-center"
-          id="circleImage3Sub"
-        >
-          <img
-            className="m-hero-circle-image"
-            id="mCircleImage3"
-            src={categoriesInfo[0].destinations[2].destinationImage}
-            alt="Mall of Asia in Pasay City"
-          />
-        </div>
-        <div
-          className="m-hero-circle-sub position-absolute rounded-circle overflow-hidden d-flex justify-content-center align-items-center"
-          id="circleImage4Sub"
-        >
-          <img
-            className="m-hero-circle-image"
-            id="mCircleImage4"
-            src={categoriesInfo[0].destinations[3].destinationImage}
-            alt="Manila Ocean Park"
-          />
-        </div>
-        <div
-          className="m-hero-circle-sub position-absolute rounded-circle overflow-hidden d-flex justify-content-center align-items-center"
-          id="circleImage5Sub"
-        >
-          <img
-            className="m-hero-circle-image"
-            id="mCircleImage5"
-            src={categoriesInfo[0].destinations[4].destinationImage}
-            alt="Solaire Resort & Casino Manila"
-          />
-        </div>
-        <div
-          className="m-hero-circle-sub position-absolute rounded-circle overflow-hidden d-flex justify-content-center align-items-center"
-          id="circleImage6Sub"
-        >
-          <img
-            className="m-hero-circle-image"
-            id="mCircleImage6"
-            src={categoriesInfo[0].destinations[5].destinationImage}
-            alt="Cultural Center of the Philippines in Pasay City"
-          />
-        </div>
+        {categoriesInfo[indexHolder].destinations.map((destination) => {
+          return (
+            <HomeHeroWheelImg
+              destination={destination}
+              key={destination.id}
+              categoryIndex={indexHolder}
+            />
+          );
+        })}
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { categoriesInfo } from "../../../../Data/CategoriesMockData";
+import { animationDelay } from "../../../../Utils/AnimationDelay";
 
 const HomeHeroText = ({ categoryIndex }) => {
   const [isButtonActive, setIsButtonActive] = useState(false);
@@ -9,29 +10,31 @@ const HomeHeroText = ({ categoryIndex }) => {
 
   const prevCategory = useRef(categoriesInfo[categoryIndex]);
 
+  const [holdCategory, setHoldCategory] = useState(prevCategory.current);
+
   useEffect(() => {
-    setHeroLeftTransform("-100%");
-    setHeroLeftOpacity("0");
-    setTimeout(() => {
-      prevCategory.current = categoriesInfo[categoryIndex]; // bug on quick category change. try await animation funciton.
+    (async () => {
+      prevCategory.current = categoriesInfo[categoryIndex];
+      setHeroLeftTransform("-100%");
+      setHeroLeftOpacity("0");
+      await animationDelay(1000);
+      setHoldCategory(prevCategory.current);
       setHeroLeftTransform("0");
       setHeroLeftOpacity("1");
-    }, 1000);
+    })();
   }, [categoryIndex]);
 
   const titleStyle = {
-    color: prevCategory.current.accentLight,
-    textShadow: `0 0 20px ${prevCategory.current.accentLight}`,
+    color: holdCategory.accentLight,
+    textShadow: `0 0 20px ${holdCategory.accentLight}`,
   };
 
   const buttonStyle = {
     backgroundColor: !isButtonActive
-      ? prevCategory.current.accentLight
-      : prevCategory.current.accent,
+      ? holdCategory.accentLight
+      : holdCategory.accent,
     boxShadow: `0 0 20px ${
-      !isButtonActive
-        ? prevCategory.current.accentLight
-        : prevCategory.current.accent
+      !isButtonActive ? holdCategory.accentLight : holdCategory.accent
     }`,
   };
 
@@ -51,17 +54,17 @@ const HomeHeroText = ({ categoryIndex }) => {
   const urlPath = () => {
     switch (categoryIndex) {
       case 0:
-        return "/category/cosmopolitan-lights";
+        return "/categories/cosmopolitan-lights";
       case 1:
-        return "/category/dive-under-water";
+        return "/categories/dive-under-water";
       case 2:
-        return "/category/explore-the-summit";
+        return "/categories/explore-the-summit";
       case 3:
-        return "/category/look-back-in-history";
+        return "/categories/look-back-in-history";
       case 4:
-        return "/category/nature-and-culture";
+        return "/categories/nature-and-culture";
       default:
-        return "/category";
+        return "/categories";
     }
   };
 
@@ -70,22 +73,22 @@ const HomeHeroText = ({ categoryIndex }) => {
       className="home-hero-text h-75 py-0 px-3 px-md-0 px-xl-5 m-0 d-flex flex-column justify-content-center align-items-center"
       style={heroLeftStyle}
     >
-      <div className="w-100 d-flex flex-column justify-content-center align-items-center align-items-md-start p-0 mx-0 mt-0 mb-5">
+      <div className="w-100 d-flex flex-column justify-content-center align-items-center align-items-md-start p-0 mx-0 mt-0 mb-4 ">
         <h1 className="lh-1 my-0 text-center text-md-start text-nowrap">
-          {prevCategory.current.categoryTitle[0]} <br />
-          {prevCategory.current.categoryTitle[1]}
+          {holdCategory.categoryTitle[0]} <br />
+          {holdCategory.categoryTitle[1]}
         </h1>
         <h2
           className="lh-1 mx-0 mb-0 text-center text-md-start text-nowrap"
           style={titleStyle}
         >
-          {prevCategory.current.category}
+          {holdCategory.category}
         </h2>
       </div>
       <div className="w-100 d-flex flex-column justify-content-start align-items-start align-items-md-start p-0 m-0">
         <div className="p-0 px-sm-5 px-md-0 pe-lg-5 m-0 d-flex flex-column align-items-center align-items-md-start justify-content-center">
           <p className="w-100 mx-0 mt-0 mb-4 p-0 px-sm-5 px-md-0 pe-lg-5 text-center text-md-start">
-            {prevCategory.current.description}
+            {holdCategory.description}
           </p>
           <button className="btn p-0 m-0">
             <Link

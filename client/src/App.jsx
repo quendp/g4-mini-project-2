@@ -1,6 +1,5 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./App.css";
 import Layout from "./components/Layout/Layout";
 import PrivateLayout from "./components/Layout/PrivateLayout";
 import PublicLayout from "./components/Layout/PublicLayout";
@@ -38,11 +37,11 @@ function App() {
               element: <About />,
             },
             {
-              path: "/category",
+              path: "/categories",
               element: <Categories />,
               children: [
                 {
-                  path: "/category/:category",
+                  path: "/categories/:category",
                   element: <Categories />,
                 },
               ],

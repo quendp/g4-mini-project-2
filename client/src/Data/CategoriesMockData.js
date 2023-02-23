@@ -65,7 +65,7 @@ const categoriesInfo = [
     thumbnail: lightsThumb,
     poster: lightsPoster,
     accent: "var(--clr-accent-lights)",
-    accentLight: "var(--clr-accent-lights-100",
+    accentLight: "var(--clr-accent-lights-100)",
     destinations: [
       {
         id: 1,
@@ -135,7 +135,7 @@ const categoriesInfo = [
     thumbnail: waterThumb,
     poster: waterPoster,
     accent: "var(--clr-accent-water)",
-    accentLight: "var(--clr-accent-water-100",
+    accentLight: "var(--clr-accent-water-100)",
     destinations: [
       {
         id: 1,
@@ -205,7 +205,7 @@ const categoriesInfo = [
     thumbnail: summitThumb,
     poster: summitPoster,
     accent: "var(--clr-accent-summit)",
-    accentLight: "var(--clr-accent-summit-100",
+    accentLight: "var(--clr-accent-summit-100)",
     destinations: [
       {
         id: 1,
@@ -275,7 +275,7 @@ const categoriesInfo = [
     thumbnail: historyThumb,
     poster: historyPoster,
     accent: "var(--clr-accent-history)",
-    accentLight: "var(--clr-accent-history-100",
+    accentLight: "var(--clr-accent-history-100)",
     destinations: [
       {
         id: 1,
@@ -345,7 +345,7 @@ const categoriesInfo = [
     thumbnail: natureThumb,
     poster: naturePoster,
     accent: "var(--clr-accent-culture)",
-    accentLight: "var(--clr-accent-culture-100",
+    accentLight: "var(--clr-accent-culture-100)",
     destinations: [
       {
         id: 1,

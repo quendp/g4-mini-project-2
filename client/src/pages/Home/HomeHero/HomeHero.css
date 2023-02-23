@@ -1,6 +1,6 @@
 .m-hero-section {
   padding-top: 10vh;
-  overflow: hidden;
+  /* overflow: hidden; */
   background: linear-gradient(
       0deg,
       rgba(0, 0, 0, 0.8) 0%,
@@ -17,7 +17,7 @@
 
 /* hero section left */
 .home-hero-text {
-  transition: transform 1000ms ease-in-out, opacity 400ms ease-in-out;
+  transition: transform 1000ms ease-in-out, opacity 1000ms ease-in-out;
 }
 
 .home-hero-text h1 {
@@ -59,8 +59,8 @@
 
 .m-hero-thumb {
   box-shadow: 0 0 10px var(--clr-primary-dark);
-  transition: transform 400ms ease-in-out, box-shadow 400ms ease-in-out,
-    border 400ms ease-in-out;
+  transition: transform 1000ms ease-in-out, box-shadow 400ms ease-in-out,
+    border 200ms ease-in-out;
 }
 
 .m-hero-thumb:hover {
@@ -70,24 +70,18 @@
 
 .home-hero-menu-description {
   font-family: var(--ff-body-light);
-  color: var(--clr-secondary-100);
   letter-spacing: 2px;
   transition: transform 400ms ease-in-out;
-  text-shadow: 0 0 15px var(--clr-secondary-100);
   font-size: var(--fz-main-small);
 }
 
-/* Hero section right */
-#mHeroRight {
-  transition: transform 1000ms ease-in-out;
-}
-
-.mHeroCircle {
+.m-hero-circle {
   top: 100%;
   left: 100%;
   width: 65vw;
   height: 65vw;
   transform: translate(-50%, -50%) rotate(15deg);
+  transition: transform 1000ms ease-in-out, opacity 1000ms ease-in-out;
 }
 
 .m-hero-circle-sub {
@@ -106,14 +100,6 @@
   object-fit: cover;
   height: 100%;
   transform: rotate(-15deg);
-}
-
-#mCircleNext {
-  width: 10vw;
-}
-
-#mCirclePrev {
-  height: 10vw;
 }
 
 #circleImage2Sub {
@@ -144,53 +130,6 @@
 #circleImage5Sub {
   top: 100%;
   left: 50%;
-}
-
-.m-continue-rotation {
-  background-color: var(--clr-primary-glass);
-  color: var(--clr-secondary-100);
-  font-family: var(--ff-body-light);
-  z-index: 2;
-  backdrop-filter: blur(5px);
-  background-image: url(../../../assets/images/grain.png);
-}
-
-#mContinueRotation {
-  transition: color 400ms ease-in-out, text-shadow 400ms ease-in-out;
-}
-
-.mContText1 {
-  transform: translate(-50%, 0%) rotate(-80deg);
-}
-.mContText2 {
-  transform: translate(-50%, 0%) rotate(-73deg);
-}
-.mContText3 {
-  transform: translate(-50%, 0%) rotate(-66deg);
-}
-.mContText4 {
-  transform: translate(-50%, 0%) rotate(-59deg);
-}
-.mContText5 {
-  transform: translate(-50%, 0%) rotate(-52deg);
-}
-.mContText6 {
-  transform: translate(-50%, 0%) rotate(-45deg);
-}
-.mContText7 {
-  transform: translate(-50%, 0%) rotate(-38deg);
-}
-.mContText8 {
-  transform: translate(-50%, 0%) rotate(-31deg);
-}
-.mContText9 {
-  transform: translate(-50%, 0%) rotate(-24deg);
-}
-.mContText10 {
-  transform: translate(-50%, 0%) rotate(-17deg);
-}
-.mContText11 {
-  transform: translate(-50%, 0%) rotate(-10deg);
 }
 
 .m-circle-text {
