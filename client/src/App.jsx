@@ -43,6 +43,12 @@ function App() {
                 {
                   path: "/categories/:category",
                   element: <Categories />,
+                  children: [
+                    {
+                      path: "/categories/:category/:destination",
+                      element: <Categories />,
+                    },
+                  ],
                 },
               ],
             },

@@ -1,6 +1,6 @@
 .m-hero-section {
   padding-top: 10vh;
-  /* overflow: hidden; */
+  overflow: hidden;
   background: linear-gradient(
       0deg,
       rgba(0, 0, 0, 0.8) 0%,
@@ -61,6 +61,7 @@
   box-shadow: 0 0 10px var(--clr-primary-dark);
   transition: transform 1000ms ease-in-out, box-shadow 400ms ease-in-out,
     border 200ms ease-in-out;
+  cursor: pointer;
 }
 
 .m-hero-thumb:hover {
@@ -85,21 +86,27 @@
 }
 
 .m-hero-circle-sub {
-  transform: translate(-50%, -50%);
   width: 27vw;
   height: 27vw;
   box-shadow: 0 0 20px var(--clr-primary-dark);
-}
-
-.m-hero-circle-sub:active {
-  transform: translate(-50%, -50%) scale(0.98);
-  box-shadow: 0 0 10px var(--clr-primary-dark);
+  transition: transform 1000ms ease-in-out, box-shadow 1000ms ease-in-out;
 }
 
 .m-hero-circle-image {
   object-fit: cover;
   height: 100%;
   transform: rotate(-15deg);
+}
+
+.m-hero-circle-overlay {
+  transform: rotate(-15deg);
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: opacity 300ms ease-in-out;
+  opacity: 0;
+}
+
+.m-hero-circle-sub:hover > .m-hero-circle-overlay {
+  opacity: 1;
 }
 
 #circleImage2Sub {
@@ -133,17 +140,11 @@
 }
 
 .m-circle-text {
-  left: 8%;
-  bottom: 27vw;
-  color: var(--clr-accent-lights-100);
+  right: 2rem;
+  bottom: 1rem;
   font-family: var(--ff-body-regular);
-}
-
-#mCircleText {
-  transition: opacity 400ms ease-in-out;
-  opacity: 0;
-  background-color: rgba(0, 0, 0, 0.3);
-  text-shadow: 0 0 5px var(--clr-primary-dark);
-  backdrop-filter: blur(5px);
-  font-size: var(--fz-main-small);
+  transition: opacity 1000ms ease-in-out;
+  font-size: var(--fz-main-p);
+  width: 17vw;
+  height: 10vw;
 }

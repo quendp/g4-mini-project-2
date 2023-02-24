@@ -9,7 +9,6 @@ const Home = () => {
 
   const onChangeCategory = (categoryId) => {
     setCategoryIndex(categoryId);
-    console.log("Home : ", categoryId);
   };
 
   return (

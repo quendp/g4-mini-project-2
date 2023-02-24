@@ -90,20 +90,10 @@
 }
 
 .ham .hamBtn span {
-  transform: translate(-50%, -50%);
   width: 100%;
   height: 0.1rem;
   background: var(--clr-secondary-100);
-  transition: width 500ms ease-out, transform 500ms ease-out;
-}
-
-.ham .hamBtn span:nth-child(1) {
-  width: 70%;
-  top: 40%;
-}
-
-.ham .hamBtn span:nth-child(2) {
-  top: 60%;
+  transition: width 200ms ease-out, transform 200ms ease-out, top 200ms ease-out;
 }
 
 /* Inside Menu before click */
@@ -118,18 +108,6 @@
   height: 100vh;
   background-attachment: fixed;
   background-repeat: repeat;
-}
-
-.wrapper.expandHeader .hamBtn span:nth-child(1) {
-  width: 85%;
-  top: 50%;
-  transform: translate(-50%, -50%) rotate(45deg);
-}
-
-.wrapper.expandHeader .hamBtn span:nth-child(2) {
-  width: 85%;
-  top: 50%;
-  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 /* Header menu (home, contact, about, sign up) */

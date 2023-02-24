@@ -1,11 +1,48 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "../Header.module.css";
 import headerLogo from "../../../assets/images/logo-svg/logo-outline-white.svg";
 import UserAuthContext from "../../../context/UserAuthentication/UserAuthentication";
+import { animationDelay } from "../../../Utils/AnimationDelay";
 
 const HeaderCollapsed = (props) => {
   const userData = useContext(UserAuthContext);
+
+  const [burgerTopWidth, setBurgerTopWidth] = useState("70%");
+  const [burgerTopPos, setBurgerTopPos] = useState("40%");
+  const [burgerBotPos, setBurgerBotPos] = useState("60%");
+  const [burgerRotation, setBurgerRotation] = useState("0");
+
+  const burgerTop = {
+    width: burgerTopWidth,
+    top: burgerTopPos,
+    transform: `translate(-50%, -50%) rotate(${burgerRotation}deg)`,
+  };
+
+  const burgerBot = {
+    top: burgerBotPos,
+    transform: `translate(-50%, -50%) rotate(-${burgerRotation}deg)`,
+  };
+
+  const burgerClickHandler = async () => {
+    props.onBurgerClick();
+    if (props.isActiveClass == "") {
+      setBurgerTopWidth("100%");
+      await animationDelay(200);
+      setBurgerTopPos("50%");
+      setBurgerBotPos("50%");
+      await animationDelay(200);
+      setBurgerRotation("45");
+    } else {
+      setBurgerRotation("0");
+      await animationDelay(200);
+      setBurgerTopPos("40%");
+      setBurgerBotPos("60%");
+      await animationDelay(200);
+      setBurgerTopWidth("70%");
+    }
+  };
+
   return (
     <div className={`row navbar px-0 px-sm-2 px-md-2 px-lg-5`}>
       <div className="col-3">
@@ -36,10 +73,10 @@ const HeaderCollapsed = (props) => {
         </button>
         <div
           className={`${styles.hamBtn} position-relative`}
-          onClick={props.onBurgerClick}
+          onClick={burgerClickHandler}
         >
-          <span className="position-absolute start-50"></span>
-          <span className="position-absolute start-50"></span>
+          <span className="position-absolute start-50" style={burgerTop}></span>
+          <span className="position-absolute start-50" style={burgerBot}></span>
         </div>
       </div>
     </div>

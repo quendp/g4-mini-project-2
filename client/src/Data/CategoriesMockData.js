@@ -55,6 +55,7 @@ import tanay from "../assets/images/nature-and-culture/tanay.jpg";
 const categoriesInfo = [
   {
     categoryId: 1,
+    categoryPath: "cosmopolitan-lights",
     category: "Cosmopolitan Lights",
     headerTitle: "THE LIVELY MODERN CITIES",
     previewImage: lightsImage,
@@ -70,6 +71,7 @@ const categoriesInfo = [
       {
         id: 1,
         destination: "Star City Amusement Park in Pasay",
+        path: "star-city",
         destinationImage: starCity,
         details:
           "Located in the city of Pasay in Metro Manila, Star City is one of the biggest, most popular and all weather, air-conditioned amusement park in all of Philippines.",
@@ -79,6 +81,7 @@ const categoriesInfo = [
       {
         id: 2,
         destination: "Chinatown in Binondo Manila",
+        path: "chinatown",
         destinationImage: chinaTown,
         details:
           "It is the oldest Chinatown in the world, established in 1594 by the Spaniards as a settlement near Intramuros but across the Pasig River for Catholic Chinese.",
@@ -88,6 +91,7 @@ const categoriesInfo = [
       {
         id: 3,
         destination: "Mall of Asia in Pasay City",
+        path: "mall-of-asia",
         destinationImage: moa,
         details:
           "The mall is currently the largest shopping mall in the Philippines and the third in the world. When it opened in 2006, it was the largest shopping mall in the Philippines until SM North EDSA was redeveloped in 2008.",
@@ -97,6 +101,7 @@ const categoriesInfo = [
       {
         id: 4,
         destination: "Manila Ocean Park",
+        path: "manila-ocean-park",
         destinationImage: manilaOcean,
         details:
           "Manila Ocean Park is the country's first world-class marine theme park and a premiere educational facility. An integrated urban resort with marine life attractions and aqua-themed hotel.",
@@ -106,6 +111,7 @@ const categoriesInfo = [
       {
         id: 5,
         destination: "Solaire Resort & Casino Manila",
+        path: "solaire",
         destinationImage: solaire,
         details:
           "When you are looking for comfortable and convenient accommodations in Manila, make Solaire Resort & Casino your home away from home. A stay at Solaire Resort & Casino ensures an easy access to the lively city and all of its wonders.",
@@ -115,6 +121,7 @@ const categoriesInfo = [
       {
         id: 6,
         destination: "Cultural Center of the Philippines in Pasay City",
+        path: "cultural-center-of-the-philippines",
         destinationImage: ccp,
         details:
           "It is a mixed-use cultural and tourism hub overlooking Manila Bay in south-central Manila, most of which fall under the jurisdiction of the city of Pasay.",
@@ -125,6 +132,7 @@ const categoriesInfo = [
   },
   {
     categoryId: 2,
+    categoryPath: "dive-under-water",
     category: "Dive Under Water",
     headerTitle: "THE WONDERS OF THE SEA",
     previewImage: waterImage,
@@ -140,6 +148,7 @@ const categoriesInfo = [
       {
         id: 1,
         destination: "Bantayan Island in Cebu",
+        path: "bantayan-island",
         destinationImage: bantayan,
         details:
           "Bantayan Island Cebu is an excellent spot for relaxation with its exquisite beauty. It has white sands, clear blue beaches, tranquil mood, and hospitable people.",
@@ -149,6 +158,7 @@ const categoriesInfo = [
       {
         id: 2,
         destination: "Boracay Beach in Aklan",
+        path: "boracay",
         destinationImage: boracay,
         details:
           "Boracay Island in Aklan is one of the top tourist destination in the Philippines. Boast white sand beaches, caves and scenic views.",
@@ -158,6 +168,7 @@ const categoriesInfo = [
       {
         id: 3,
         destination: "El Nido in Palawan",
+        path: "el-nido",
         destinationImage: waterImage,
         details:
           "El Nido has been named a number of times as the best island beaches in the world because of its paradise-like attractions with white sand, turquoise waters, vibrant coral reefs, and stunning limestone cliffs.",
@@ -167,6 +178,7 @@ const categoriesInfo = [
       {
         id: 4,
         destination: "Palaui Island in Santa Ana",
+        path: "palaui-island",
         destinationImage: palaui,
         details:
           "Palaui island offers so much white sandy beaches and panoramic coves, a century old lighthouse, hidden waterfalls and lovely people, all in a scenic ragged terrain surrounded with huge waves and echoing wind.",
@@ -176,6 +188,7 @@ const categoriesInfo = [
       {
         id: 5,
         destination: "Panglao Island in Bohol",
+        path: "panglao-island",
         destinationImage: panglao,
         details:
           "Panglao Island is the most popular tourist spot in Bohol. It is the tourist hub for all activities and there are hundreds of resorts, hotels, and restaurants in this area.",
@@ -185,6 +198,7 @@ const categoriesInfo = [
       {
         id: 6,
         destination: "Siargao Island",
+        path: "siargao-island",
         destinationImage: siargao,
         details:
           "Named after a native mangrove, the surf capital of the Philippines is perfect for lovers of the great outdoors, whether you embrace adventure sports or gentler pursuits such as swimming in rock pools and caves.",
@@ -195,6 +209,7 @@ const categoriesInfo = [
   },
   {
     categoryId: 3,
+    categoryPath: "explore-the-summit",
     category: "Explore the Summit",
     headerTitle: "THE SKY ON MOUNTAIN PEAKS",
     previewImage: summitImage,
@@ -210,6 +225,7 @@ const categoriesInfo = [
       {
         id: 1,
         destination: "Mt. Apo in Davao City",
+        path: "mt-apo",
         destinationImage: apo,
         details:
           "Towering at 2954 meters above sea level, Mount Apo is the highest mountain and volcano in the Philippines. It is also marked for the UNESCO Tentative World Heritage List.",
@@ -219,6 +235,7 @@ const categoriesInfo = [
       {
         id: 2,
         destination: "Guiting-Guiting National Park in Sibuyan Island",
+        path: "guiting-guiting",
         destinationImage: guiting,
         details:
           "Its steep slopes and jagged peak, have earned it the reputation as one of the most difficult mountain to climb in the Philippines. It also ranked 71st-highest peak of an island in the world.",
@@ -228,6 +245,7 @@ const categoriesInfo = [
       {
         id: 3,
         destination: "Mt. Pulag in Benguet",
+        path: "mt-pulag",
         destinationImage: summitImage,
         details:
           "Mt. Pulag National Park is the highest peak in Luzon and is the second highest mountain in the Philippines with an elevation of 2,922 m above sea level. Visitors can also catch glimpses of the Milky Way Galaxy at dawn.",
@@ -237,6 +255,7 @@ const categoriesInfo = [
       {
         id: 4,
         destination: "Mt. Pinatubo in Zambales",
+        path: "mt-pinatubo",
         destinationImage: pinatubo,
         details:
           "Explore the Philippines most popular hiking destination on an 18 hour tour taking you to the best trekking areas and viewing spots around Mount Pinatubo.",
@@ -246,6 +265,7 @@ const categoriesInfo = [
       {
         id: 5,
         destination: "Mt. Ugo in Nueva Viscaya",
+        path: "mt-ugo",
         destinationImage: ugo,
         details:
           "Mt. Ugo is a popular hiking destination located in the borderline province of Nueva Vizcaya and Benguet. It has an elevation of 2,200 meters above sea level or 7,217 feet.",
@@ -255,6 +275,7 @@ const categoriesInfo = [
       {
         id: 6,
         destination: "Mt. Ulap in Itogon, Benguet",
+        path: "mt-ulap",
         destinationImage: ulap,
         details:
           "Mt. Ulap is located in Itogon, Benguet. It is one of the most visited mountains in the Philippines. It offers scenic views of the Cordillera mountain range and it is often called mini Mt. Ugo.",
@@ -265,6 +286,7 @@ const categoriesInfo = [
   },
   {
     categoryId: 4,
+    categoryPath: "look-back-in-history",
     category: "Look Back in History",
     headerTitle: "THE REMNANTS OF THE PAST",
     previewImage: historyImage,
@@ -280,6 +302,7 @@ const categoriesInfo = [
       {
         id: 1,
         destination: "Calle Crisologo in Vigan, Ilocos Sur",
+        path: "calle-crisologo",
         destinationImage: historyImage,
         details:
           "One of the most beautiful streets in the Philippines. It boasts a dense concentration of centuries-old stone houses, lovely tungsten lamps, and antique cobblestone, where horse-drawn carriages or calesas are used for transport. ",
@@ -289,6 +312,7 @@ const categoriesInfo = [
       {
         id: 2,
         destination: "Fort Santiago, Intramuros, Manila",
+        path: "fort-santiago",
         destinationImage: fortSantiago,
         details:
           "Fort Santiago is one of the oldest fortifications in Manila built by the Spaniards in 1571 from what was once a palisaded structure of logs and earth built by Rajah Soliman on the native settlement called Maynila.",
@@ -298,6 +322,7 @@ const categoriesInfo = [
       {
         id: 3,
         destination: "Magellan's Cross in Mactan, Cebu",
+        path: "mactan",
         destinationImage: mactan,
         details:
           "A small circular pavilion, built in the 19th century, houses Magellans Cross, which is today one of Cebu islands most important religious icons and an essential stop on any Cebu City tour.",
@@ -307,6 +332,7 @@ const categoriesInfo = [
       {
         id: 4,
         destination: "National Museum of Natural History in Manila",
+        path: "national-museum",
         destinationImage: museum,
         details:
           "One of the most popular museums in the country is the National Museum of Natural History, which was officially opened to the public in May 2018. Located in Rizal Park, it is part of the National Museum Complex.",
@@ -316,6 +342,7 @@ const categoriesInfo = [
       {
         id: 5,
         destination: "Rizal park in Manila",
+        path: "rizal-park",
         destinationImage: rizal,
         details:
           "Rizal Park, also known as Luneta Park or simply Luneta, is a historic urban park located in Ermita, Manila. It is considered one of the largest urban parks in the Philippines, covering an area of 58 hectares.",
@@ -325,6 +352,7 @@ const categoriesInfo = [
       {
         id: 6,
         destination: "Rizal Shrine in Dapitan, Zamboanga del Norte",
+        path: "rizal-shrine",
         destinationImage: rizalShrine,
         details:
           "The shrine features a collection of structures that retells the tales of former Dapitan and the passion of an extraordinary man who lived as an exile with a purpose—to teach and serve the Dapitanons.",
@@ -335,6 +363,7 @@ const categoriesInfo = [
   },
   {
     categoryId: 5,
+    categoryPath: "nature-and-culture",
     category: "Nature and Culture",
     headerTitle: "THE BREATH OF FRESH AIR",
     previewImage: natureImage,
@@ -350,6 +379,7 @@ const categoriesInfo = [
       {
         id: 1,
         destination: "Chocolate Hills in Bohol",
+        path: "chocolate-hills",
         destinationImage: bohol,
         details:
           "The Chocolate Hills is declared the Philippines' 3rd National Geological Monument and is dubbed as an Eight Wonder of the World. These iconic hills are even featured in the 200 Philippine Peso bill.",
@@ -359,6 +389,7 @@ const categoriesInfo = [
       {
         id: 2,
         destination: "Barracuda Lake in Coron Island, Palawan Province",
+        path: "barracuda-lake",
         destinationImage: coron,
         details:
           "It is one of the famous diving sites not only in Coron but also in the entire country. Barracuda Lake is composed of both salt and fresh water, but the most notable feature of this lake is its thermocline.",
@@ -368,6 +399,7 @@ const categoriesInfo = [
       {
         id: 3,
         destination: "Banaue Rice Terraces in Ifugao",
+        path: "banaue-rice-terraces",
         destinationImage: natureImage,
         details:
           "The Banaue Rice Terraces are terraces that were carved into the mountains of Banaue, Ifugao, in the Philippines, by the ancestors of the Igorot people. The terraces are occasionally called the Eighth Wonder of the World.",
@@ -377,6 +409,7 @@ const categoriesInfo = [
       {
         id: 4,
         destination: "Puerto Galera in Mindoro oriental",
+        path: "puerto-galera",
         destinationImage: puerto,
         details:
           "Puerto Galera is a town on the Philippine island of Mindoro. It's known for its dive sites and beaches. The long curve of White Beach is backed by bars and resorts.",
@@ -386,6 +419,7 @@ const categoriesInfo = [
       {
         id: 5,
         destination: "Tagaytay in Cavite",
+        path: "tagaytay",
         destinationImage: tagaytay,
         details:
           "Tagaytay is a popular holiday town south of Manila on the Philippine island Luzon. Known for its mild climate, it sits on a ridge above Taal Volcano Island, an active volcano surrounded by Taal Lake.",
@@ -395,6 +429,7 @@ const categoriesInfo = [
       {
         id: 6,
         destination: "Masungi Georeserve in Tanay, Rizal",
+        path: "masungi-georeserve",
         destinationImage: tanay,
         details:
           "The Masungi Georeserve is a conservation area and a rustic rock garden tucked in the rainforests of Rizal. In this sanctuary, guests will be able to commune with nature, and reenergise themselves while doing so.",

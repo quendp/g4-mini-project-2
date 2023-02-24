@@ -3,7 +3,6 @@ import "./HomeHero.css";
 import { categoriesInfo } from "../../../Data/CategoriesMockData";
 import HomeHeroText from "./HomeHeroCateg/HomeHeroText";
 import HomeHeroMenu from "./HomeHeroCateg/HomeHeroMenu";
-import HomeHeroRotateBtn from "./HomeHeroWheel/HomeHeroRotateBtn";
 import HomeHeroWheel from "./HomeHeroWheel/HomeHeroWheel";
 
 const HomeHero = ({ categoryIndex, onChangeCategory }) => {

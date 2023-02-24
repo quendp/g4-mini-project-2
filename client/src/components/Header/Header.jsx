@@ -71,6 +71,7 @@ const Header = () => {
       <HeaderCollapsed
         onBurgerClick={headerClickHandler}
         onCloseHeader={onCloseHeader}
+        isActiveClass={isActiveClass}
       />
       <HeaderExpanded
         showExpanded={showExpanded}

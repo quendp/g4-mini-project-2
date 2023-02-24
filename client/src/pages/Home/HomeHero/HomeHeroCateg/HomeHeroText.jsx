@@ -51,23 +51,6 @@ const HomeHeroText = ({ categoryIndex }) => {
     setIsButtonActive(false);
   };
 
-  const urlPath = () => {
-    switch (categoryIndex) {
-      case 0:
-        return "/categories/cosmopolitan-lights";
-      case 1:
-        return "/categories/dive-under-water";
-      case 2:
-        return "/categories/explore-the-summit";
-      case 3:
-        return "/categories/look-back-in-history";
-      case 4:
-        return "/categories/nature-and-culture";
-      default:
-        return "/categories";
-    }
-  };
-
   return (
     <div
       className="home-hero-text h-75 py-0 px-3 px-md-0 px-xl-5 m-0 d-flex flex-column justify-content-center align-items-center"
@@ -92,7 +75,7 @@ const HomeHeroText = ({ categoryIndex }) => {
           </p>
           <button className="btn p-0 m-0">
             <Link
-              to={urlPath()}
+              to={`/categories/${holdCategory.categoryPath}`}
               className="btn rounded-pill px-4 py-2 text-uppercase"
               style={buttonStyle}
               onMouseOver={hoverButton}
