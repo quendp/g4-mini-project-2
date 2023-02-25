@@ -7,7 +7,6 @@ import {
 } from "react-table";
 import MOCK_DATA from "../../AdminDataCollection/AdminBookingsTableData/MOCK_DATA.json";
 import COLUMNS from "./BookingsTableColumns";
-import "./BookingsTable.css";
 import BookingsFilterByCategory from "./BookingsFilterByCategory";
 import BookingsFilterByStatus from "./BookingsFilterByStatus";
 import BookingsGlobalFiltering from "./BookingsGlobalFiltering";
@@ -17,7 +16,7 @@ import BookingsPagination from "./BookingsPagination";
 const BookingsTable = () => {
   const columns = useMemo(() => COLUMNS, []);
   const [filterValue, setFilterValue] = useState("all");
-  const [statusFilter, setStatusFilter] = useState('all')
+  const [statusFilter, setStatusFilter] = useState("all");
   const data = useMemo(() => {
     let filteredData = MOCK_DATA;
     if (filterValue === "cosmopolitan-lights") {
@@ -70,19 +69,17 @@ const BookingsTable = () => {
           row.destination === "Tagaytay" ||
           row.destination === "Tanay"
       );
-    } if (statusFilter !== "all") {
+    }
+    if (statusFilter !== "all") {
       filteredData = filteredData.filter((row) => row.status === statusFilter);
     }
-    
-      return filteredData;
-    }, [filterValue, statusFilter]);
-
+    return filteredData;
+  }, [filterValue, statusFilter]);
 
   const {
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    //   rows,
     page,
     nextPage,
     previousPage,
@@ -107,18 +104,17 @@ const BookingsTable = () => {
 
   const { globalFilter, pageIndex, pageSize } = state;
 
-
   return (
     <>
       <div className="bookings-table_filteringAndSearch">
         <div>
-          <BookingsFilterByStatus 
-          statusFilter={statusFilter}
-          setStatusFilter={setStatusFilter}
+          <BookingsFilterByStatus
+            statusFilter={statusFilter}
+            setStatusFilter={setStatusFilter}
           />
-          <BookingsFilterByCategory 
-          filterValue={filterValue}
-          setFilterValue={setFilterValue}
+          <BookingsFilterByCategory
+            filterValue={filterValue}
+            setFilterValue={setFilterValue}
           />
         </div>
         <div>
@@ -129,28 +125,30 @@ const BookingsTable = () => {
         </div>
       </div>
       <table className="admin-bookings__table" {...getTableProps()}>
-        <BookingsTableHeaderGroup 
-        headerGroups={headerGroups}
-        />
+        <BookingsTableHeaderGroup headerGroups={headerGroups} />
         <tbody {...getTableBodyProps()}>
           {page.map((row, idx) => {
             prepareRow(row);
             return (
               <tr {...row.getRowProps()} key={idx}>
                 {row.cells.map((cell, idx) => (
-                  <td className={
-                    cell.column.id === "status"
-                      ? `${
-                          cell.value === "Waitlist"
-                            ? "text-primary"
-                            : cell.value === "Tentative"
-                            ? "text-muted"
-                            : cell.value === "Confirmed"
-                            ? "text-success"
-                            : "text-danger"
-                        }`
-                      : ""
-                  } {...cell.getCellProps()} key={idx}>
+                  <td
+                    className={
+                      cell.column.id === "status"
+                        ? `${
+                            cell.value === "Waitlist"
+                              ? "text-primary"
+                              : cell.value === "Tentative"
+                              ? "text-muted"
+                              : cell.value === "Confirmed"
+                              ? "text-success"
+                              : "text-danger"
+                          }`
+                        : ""
+                    }
+                    {...cell.getCellProps()}
+                    key={idx}
+                  >
                     {cell.render("Cell")}
                   </td>
                 ))}
@@ -170,7 +168,7 @@ const BookingsTable = () => {
         pageCount={pageCount}
         pageSize={pageSize}
         setPageSize={setPageSize}
-      />  
+      />
     </>
   );
 };

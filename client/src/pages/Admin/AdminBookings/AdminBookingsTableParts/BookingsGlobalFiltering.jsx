@@ -1,22 +1,20 @@
-import React from 'react'
-import './BookingsGlobalFiltering.css'
+import React from "react";
 
 const BookingsGlobalFiltering = (props) => {
- 
   const filterhandler = (e) => {
-    props.setFilter(e.target.value)
-  }
+    props.setFilter(e.target.value);
+  };
 
   return (
-    <span className='d-flex mb-2 global-filter__span'>
-        <div className='global-filter__search'>
-            Search: {' '}
-        </div>
-        <input className='global-filter__input' value={props.filter || ''} 
+    <span className="d-flex mb-2 global-filter__span">
+      <div className="global-filter__search">Search: </div>
+      <input
+        className="global-filter__input"
+        value={props.filter || ""}
         onChange={filterhandler}
-        />
+      />
     </span>
-  )
-}
+  );
+};
 
-export default BookingsGlobalFiltering
+export default BookingsGlobalFiltering;
