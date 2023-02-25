@@ -3,8 +3,8 @@
   overflow: hidden;
   background: linear-gradient(
       0deg,
-      rgba(0, 0, 0, 0.8) 0%,
-      rgba(0, 0, 0, 0.01) 100%
+      rgba(8, 8, 8, 1) 0%,
+      rgba(161, 161, 161, 0) 100%
     ),
     url(../../../assets/images/grain.png);
 }

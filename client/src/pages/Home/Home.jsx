@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import TestingArea from "../../components/TestingArea";
 import HomeHero from "./HomeHero/HomeHero";
+import HomeServices from "./HomeServices/HomeServices";
 import HomeStats from "./HomeStats/HomeStats";
 
 const Home = () => {
@@ -18,6 +19,7 @@ const Home = () => {
         categoryIndex={categoryIndex}
         onChangeCategory={onChangeCategory}
       />
+      <HomeServices categoryIndex={categoryIndex} />
       <HomeStats />
       <TestingArea />
     </>
