@@ -1,6 +1,7 @@
 import React from "react";
 import "./HomeServices.css";
-import { categoriesInfo } from "../../../Data/CategoriesMockData";
+import HomeServicesCard from "./HomeServicesCard";
+import HomeServicesTitle from "./HomeServicesTitle";
 
 const HomeServices = ({ categoryIndex }) => {
   const homeServices = [
@@ -31,57 +32,22 @@ const HomeServices = ({ categoryIndex }) => {
   ];
 
   return (
-    <div className="home-services__wrapper w-100 container-fluid m-0 p-0">
-      <div className="home-services__overlay container-fluid vh-100 d-flex flex-column justify-content-center p-5 h-100 w-100">
-        <div className="row pt-5">
-          <div className="col-12 text-center">
-            <h2 className="home-services__title">
-              Do you want to travel?
-              <span
-                style={{
-                  color: categoriesInfo[categoryIndex].accentLight,
-                }}
-              >
-                {" "}
-                We got you covered.
-              </span>
-            </h2>
-            <p className="p-light">
-              Here are some of the services we have to offer.
-            </p>
-          </div>
-        </div>
-        <div className="row py-5 px-5">
+    <section className="home-services__wrapper w-100 container-fluid m-0 p-0 min-vh-100 ">
+      <div className="home-services__overlay container-fluid d-flex flex-column justify-content-center align-items-center p-5 px-1 px-sm-3 px-md-5 min-vh-100 w-100">
+        <HomeServicesTitle categoryIndex={categoryIndex} />
+        <div className="row py-5 px-1 px-md-5 d-flex justify-content-center">
           {homeServices.map((service) => {
             return (
-              <div className="col-3 p-4 h-100" key={service.id}>
-                <div className="home-services__card overflow-hidden h-100 d-flex justify-content-start flex-column">
-                  <div className="home-services-top p-3 py-4 d-flex justify-content-center">
-                    <div
-                      className="home-services-card__number me-3 p-2 d-flex justify-content-center flex-column align-items-center"
-                      style={{
-                        backgroundColor:
-                          categoriesInfo[categoryIndex].accentLight,
-                      }}
-                    >
-                      <span>{service.id}</span>
-                    </div>
-                    <div className="home-services-card__title">
-                      <h3 className="h3-light lh-1">{service.title}</h3>
-                    </div>
-                  </div>
-                  <div className="p-4 d-flex justify-content-center">
-                    <p className="home-services-card__description py-2">
-                      {service.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <HomeServicesCard
+                key={service.id}
+                service={service}
+                categoryIndex={categoryIndex}
+              />
             );
           })}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
