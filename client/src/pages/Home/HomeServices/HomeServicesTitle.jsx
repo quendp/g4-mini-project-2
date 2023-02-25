@@ -1,10 +1,21 @@
 import React from "react";
 import { categoriesInfo } from "../../../Data/CategoriesMockData";
+import { useInView } from "react-intersection-observer";
 
 const HomeServicesTitle = ({ categoryIndex }) => {
+  const [serviceTiltleRef, serviceTiltleInView] = useInView({ threshold: 0.3 });
+
   return (
-    <div className="row pt-5">
-      <div className="col-12 text-center">
+    <div
+      className="row pt-5"
+      style={{
+        opacity: serviceTiltleInView ? "1" : "0",
+        transform: serviceTiltleInView ? "translateX(0)" : "translateX(-10rem)",
+        transition: "opacity 400ms ease-in-out, transform 400ms ease-in-out",
+      }}
+      ref={serviceTiltleRef}
+    >
+      <div className="col-12 mx-auto text-center px-5">
         <h2 className="home-services__title">
           Do you want to travel?
           <span

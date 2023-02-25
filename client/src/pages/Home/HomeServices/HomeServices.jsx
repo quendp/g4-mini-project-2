@@ -1,4 +1,5 @@
 import React from "react";
+import { useInView } from "react-intersection-observer";
 import "./HomeServices.css";
 import HomeServicesCard from "./HomeServicesCard";
 import HomeServicesTitle from "./HomeServicesTitle";
@@ -30,12 +31,22 @@ const HomeServices = ({ categoryIndex }) => {
         "We will handle your accomodation during the trip including hotel booking and restaurant reservations.",
     },
   ];
+  const [servicesRef, servicesInView] = useInView({ threshold: 0.3 });
 
   return (
     <section className="home-services__wrapper w-100 container-fluid m-0 p-0 min-vh-100 ">
       <div className="home-services__overlay container-fluid d-flex flex-column justify-content-center align-items-center p-5 px-1 px-sm-3 px-md-5 min-vh-100 w-100">
         <HomeServicesTitle categoryIndex={categoryIndex} />
-        <div className="row py-5 px-1 px-md-5 d-flex justify-content-center">
+        <div
+          className="row py-2 py-md-5 px-1 px-md-5 d-flex justify-content-center"
+          style={{
+            opacity: servicesInView ? "1" : "0",
+            transform: servicesInView ? "translateX(0)" : "translateX(10rem)",
+            transition:
+              "opacity 400ms ease-in-out, transform 400ms ease-in-out",
+          }}
+          ref={servicesRef}
+        >
           {homeServices.map((service) => {
             return (
               <HomeServicesCard

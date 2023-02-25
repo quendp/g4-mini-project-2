@@ -26,13 +26,20 @@
 }
 
 .home-services__card {
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(10px);
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 1.3rem;
   box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: transform 200ms ease-in-out, background-color 200ms ease-in-out;
 }
 
-.home-services-top {
+.home-services__card:hover {
+  transform: translateY(-5px) scale(1.015);
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.home-services-card__separator {
   border-bottom: 1px solid var(--clr-secondary-500);
 }
 

@@ -128,8 +128,8 @@
   --fz--header-cat-list: clamp(1rem, 1.5vw, 2rem);
 
   --fz-main-h1: clamp(2rem, 7vw, 6rem);
-  --fz-main-h2: clamp(1rem, 3vw, 3rem);
-  --fz-main-h3: clamp(0.8rem, 2vw, 2.5rem);
+  --fz-main-h2: clamp(1.2rem, 4vw, 4rem);
+  --fz-main-h3: clamp(1rem, 2vw, 2.5rem);
   --fz-main-secondary: clamp(2.5rem, 7vw, 7rem);
   --fz-main-p: clamp(0.8rem, 1.3vw, 1.5rem);
   --fz-main-text: clamp(0.7rem, 1vw, 1rem);
