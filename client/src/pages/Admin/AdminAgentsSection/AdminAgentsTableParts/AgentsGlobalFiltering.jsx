@@ -1,22 +1,20 @@
-import React from 'react'
-import './AgentsGlobalFiltering.css'
+import React from "react";
 
 const AgentsGlobalFiltering = (props) => {
-
   const filterHandler = (e) => {
-    props.setFilter(e.target.value)
-  }
+    props.setFilter(e.target.value);
+  };
 
   return (
-    <span className='d-flex mb-2 adminAgent-filter__span'>
-        <div className='adminAgent-filter__search'>
-            Search:{' '}
-        </div>
-        <input className='adminAgent-filter__input' 
-        value={props.filter || ''} 
-        onChange={filterHandler}/>
+    <span className="d-flex mb-2 adminAgent-filter__span">
+      <div className="adminAgent-filter__search">Search: </div>
+      <input
+        className="adminAgent-filter__input"
+        value={props.filter || ""}
+        onChange={filterHandler}
+      />
     </span>
-  )
-}
+  );
+};
 
-export default AgentsGlobalFiltering
+export default AgentsGlobalFiltering;

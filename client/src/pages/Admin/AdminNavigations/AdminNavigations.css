@@ -1,0 +1,46 @@
+/* For AdminTopNav */
+@media (max-width: 992px) {
+  .admin-top__navbar {
+    position: static;
+  }
+}
+
+/* For AdminSidebar */
+.admin-sidebar {
+  height: 100%;
+  background-image: url(../../../assets/images/grain.png);
+  background-repeat: repeat;
+}
+
+.admin-bottom__border {
+  border-bottom: 1px groove #eee;
+}
+
+.admin-sidebar__panel {
+  border-radius: 7px;
+  box-shadow: 2px 5px 10px #111;
+  transition: all 0.4s;
+}
+
+.admin-sidebar__panel:hover {
+  background-color: #f66436;
+  border-radius: 7px;
+  box-shadow: 2px 5px 20px #111;
+  transform: translateY(-1px);
+}
+
+.admin-sidebar__link {
+  transition: all 0.4s;
+}
+
+.admin-sidebar__link:hover {
+  background-color: #444;
+  border-radius: 5px;
+}
+
+@media (max-width: 992px) {
+  .admin-sidebar {
+    position: static;
+    height: auto;
+  }
+}
