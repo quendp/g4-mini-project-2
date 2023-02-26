@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import About from "../pages/About/About";
 import Agent from "../pages/Agent/Agent";
 import Contact from "../pages/Contact/Contact";
-import Categories from "../pages/Categories/Categories";
 import Footer from "./Footer/Footer";
+import Categories from "../pages/Categories/Categories";
 
 const developers = {
   roland: <About />,

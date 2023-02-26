@@ -1,0 +1,41 @@
+/* hero section */
+.catHeroSection {
+  padding-top: 10vh;
+  overflow: hidden;
+  background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0.3) 100%
+    ),
+    url(../../assets/images/grain.png);
+}
+
+.catHeroBg {
+  z-index: -1;
+  object-fit: cover;
+  transition: opacity 500ms ease-in-out;
+}
+
+.catHeroTitle {
+  font-family: var(--ff-heading-primary);
+  font-size: var(--fz-main-h1);
+}
+
+#catHeroImageWrapper {
+  transition: opacity 400ms ease-in-out;
+}
+
+#catHeroChosen {
+  font-size: var(--fz-main-text);
+  transition: opacity 300ms ease-in-out;
+}
+
+.catImageHolder img {
+  aspect-ratio: 5 / 3;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0.8rem;
+  box-shadow: 0 0 30px -5px var(--clr-primary-dark);
+  transition: box-shadow 400ms ease-in-out;
+}
