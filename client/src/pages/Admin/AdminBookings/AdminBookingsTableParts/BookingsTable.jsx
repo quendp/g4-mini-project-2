@@ -5,16 +5,16 @@ import {
   useGlobalFilter,
   usePagination,
 } from "react-table";
-import MOCK_DATA from "../../AdminDataCollection/AdminBookingsTableData/MOCK_DATA.json";
-import COLUMNS from "./BookingsTableColumns";
+import MOCK_DATA from "../../AdminDataCollection/AdminBookingsTableData/AdminBookingsMOCK_DATA.json";
+import { bookingsTableColumn } from "../../AdminTablesUIs/AdminTablesColumn";
 import BookingsFilterByCategory from "./BookingsFilterByCategory";
 import BookingsFilterByStatus from "./BookingsFilterByStatus";
-import BookingsGlobalFiltering from "./BookingsGlobalFiltering";
-import BookingsTableHeaderGroup from "./BookingsTableHeaderGroup";
-import BookingsPagination from "./BookingsPagination";
+import AdminGlobalFiltering from "../../AdminTablesUIs/AdminGlobalFiltering";
+import AdminTableHeaderGroups from "../../AdminTablesUIs/AdminTableHeaderGroups";
+import AdminTablesPagination from "../../AdminTablesUIs/AdminTablesPagination";
 
 const BookingsTable = () => {
-  const columns = useMemo(() => COLUMNS, []);
+  const columns = useMemo(() => bookingsTableColumn, []);
   const [filterValue, setFilterValue] = useState("all");
   const [statusFilter, setStatusFilter] = useState("all");
   const data = useMemo(() => {
@@ -118,46 +118,48 @@ const BookingsTable = () => {
           />
         </div>
         <div>
-          <BookingsGlobalFiltering
+          <AdminGlobalFiltering
             filter={globalFilter}
             setFilter={setGlobalFilter}
           />
         </div>
       </div>
-      <table className="admin-bookings__table" {...getTableProps()}>
-        <BookingsTableHeaderGroup headerGroups={headerGroups} />
+      <table className="admin-table" {...getTableProps()}>
+        <AdminTableHeaderGroups headerGroups={headerGroups} isBooking={true} />
         <tbody {...getTableBodyProps()}>
           {page.map((row, idx) => {
             prepareRow(row);
             return (
               <tr {...row.getRowProps()} key={idx}>
-                {row.cells.map((cell, idx) => (
-                  <td
-                    className={
-                      cell.column.id === "status"
-                        ? `${
-                            cell.value === "Waitlist"
-                              ? "text-primary"
-                              : cell.value === "Tentative"
-                              ? "text-muted"
-                              : cell.value === "Confirmed"
-                              ? "text-success"
-                              : "text-danger"
-                          }`
-                        : ""
+                {row.cells.map((cell, idx) => {
+                  let className = "";
+                  if (cell.column.id === "status") {
+                    if (cell.value === "Waitlist") {
+                      className = "text-primary";
+                    } else if (cell.value === "Tentative") {
+                      className = "text-muted";
+                    } else if (cell.value === "Confirmed") {
+                      className = "text-success";
+                    } else {
+                      className = "text-danger";
                     }
-                    {...cell.getCellProps()}
-                    key={idx}
-                  >
-                    {cell.render("Cell")}
-                  </td>
-                ))}
+                  }
+                  return (
+                    <td
+                      className={className}
+                      {...cell.getCellProps()}
+                      key={idx}
+                    >
+                      {cell.render("Cell")}
+                    </td>
+                  );
+                })}
               </tr>
             );
           })}
         </tbody>
       </table>
-      <BookingsPagination
+      <AdminTablesPagination
         nextPage={nextPage}
         previousPage={previousPage}
         canNextPage={canNextPage}
@@ -168,6 +170,7 @@ const BookingsTable = () => {
         pageCount={pageCount}
         pageSize={pageSize}
         setPageSize={setPageSize}
+        pageSizeOptions={[10, 15, 20]}
       />
     </>
   );

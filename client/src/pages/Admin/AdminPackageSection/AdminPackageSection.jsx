@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import adminCard from "../AdminDataCollection/AdminPackageCardData";
 import AdminPackageCard from "./AdminPackageCards/AdminPackageCard";
 import "./AdminPackageSection.css";
-import CosmoLightPage from "./AdminPackageCards/AdminDestinationsList/CosmoLightPage";
-import DiveUnderWaterPage from "./AdminPackageCards/AdminDestinationsList/DiveUnderWaterPage";
-import ExploreTheSummitPage from "./AdminPackageCards/AdminDestinationsList/ExploreTheSummitPage";
-import LookBackInHIstoryPage from "./AdminPackageCards/AdminDestinationsList/LookBackInHIstoryPage";
-import NatureAndCulturePage from "./AdminPackageCards/AdminDestinationsList/NatureAndCulturePage";
+import AdminDestinations from "./AdminPackageCards/AdminDestinationsList/AdminDestionations";
+import {
+  cosmopolitanLights,
+  diveUnderWater,
+  exploreTheSummit,
+  lookBackInHistory,
+  natureAndCulture,
+} from "../AdminDataCollection/AdminPackageSectionData";
 
 const AdminPackageSection = () => {
   const [selectedCard, setSelectedCard] = useState(null);
@@ -15,15 +18,65 @@ const AdminPackageSection = () => {
   const renderPage = () => {
     switch (selectedCard) {
       case "Cosmopolitan Lights":
-        return <CosmoLightPage handleBackButton={handleBackButton} />;
+        return (
+          <AdminDestinations
+            pageTitle="Cosmopolitan Lights Destinations"
+            data={cosmopolitanLights}
+            id={cosmopolitanLights.id}
+            name={cosmopolitanLights.name}
+            basic={cosmopolitanLights.basic}
+            standard={cosmopolitanLights.standard}
+            handleBackButton={handleBackButton}
+          />
+        );
       case "Dive Under Water":
-        return <DiveUnderWaterPage handleBackButton={handleBackButton} />;
+        return (
+          <AdminDestinations
+            pageTitle="Dive Under Water Destinations"
+            data={diveUnderWater}
+            id={diveUnderWater.id}
+            name={diveUnderWater.name}
+            basic={diveUnderWater.basic}
+            standard={diveUnderWater.standard}
+            handleBackButton={handleBackButton}
+          />
+        );
       case "Explore The Summit":
-        return <ExploreTheSummitPage handleBackButton={handleBackButton} />;
+        return (
+          <AdminDestinations
+            pageTitle="Explore The Summit Destinations"
+            data={exploreTheSummit}
+            id={exploreTheSummit.id}
+            name={exploreTheSummit.name}
+            basic={exploreTheSummit.basic}
+            standard={exploreTheSummit.standard}
+            handleBackButton={handleBackButton}
+          />
+        );
       case "Look Back In History":
-        return <LookBackInHIstoryPage handleBackButton={handleBackButton} />;
+        return (
+          <AdminDestinations
+            pageTitle="Look Back In History Destinations"
+            data={lookBackInHistory}
+            id={lookBackInHistory.id}
+            name={lookBackInHistory.name}
+            basic={lookBackInHistory.basic}
+            standard={lookBackInHistory.standard}
+            handleBackButton={handleBackButton}
+          />
+        );
       case "Nature And Culture":
-        return <NatureAndCulturePage handleBackButton={handleBackButton} />;
+        return (
+          <AdminDestinations
+            pageTitle="Nature And Culture Destinations"
+            data={natureAndCulture}
+            id={natureAndCulture.id}
+            name={natureAndCulture.name}
+            basic={natureAndCulture.basic}
+            standard={natureAndCulture.standard}
+            handleBackButton={handleBackButton}
+          />
+        );
       default:
         return null;
     }
@@ -41,7 +94,7 @@ const AdminPackageSection = () => {
   return (
     <>
       <div
-        style={{ backgroundColor: "#ffffff", height: "140vh" }}
+        style={{ backgroundColor: "#ffffff", height: "100vh" }}
         className="col-xxl-10 col-xl-9 col-lg-9 ms-auto  p-2 pt-lg-5 mt-lg-2"
       >
         {selectedCard ? (

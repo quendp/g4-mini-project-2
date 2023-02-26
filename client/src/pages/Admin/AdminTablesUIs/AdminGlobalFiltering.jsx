@@ -1,7 +1,8 @@
 import React from "react";
+import "./AdminTableUIs.css";
 
-const BookingsGlobalFiltering = (props) => {
-  const filterhandler = (e) => {
+const AdminGlobalFiltering = (props) => {
+  const filterHandler = (e) => {
     props.setFilter(e.target.value);
   };
 
@@ -11,10 +12,10 @@ const BookingsGlobalFiltering = (props) => {
       <input
         className="global-filter__input"
         value={props.filter || ""}
-        onChange={filterhandler}
+        onChange={filterHandler}
       />
     </span>
   );
 };
 
-export default BookingsGlobalFiltering;
+export default AdminGlobalFiltering;

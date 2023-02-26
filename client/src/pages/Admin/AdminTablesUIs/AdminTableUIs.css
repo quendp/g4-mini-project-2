@@ -1,31 +1,27 @@
-/* For BookingsTable */
-.admin-bookings__table {
+/* For TableItself */
+.admin-table {
   font-family: var(--ff-body-regular);
   border-collapse: collapse;
   width: 100%;
 }
 
-.admin-bookings__table td,
-.admin-bookings__table th {
-  border: 1px solid #ddd;
+.admin-table td,
+.admin-table th {
+  border: 1px solid var(--clr-secondary-200);
   padding: 8px;
 }
 
-.admin-bookings__table tr:nth-child(even) {
-  background-color: #f2f2f2;
+.admin-table tr:nth-child(even) {
+  background-color: var(--clr-secondary-300);
 }
 
-.admin-bookings__table tr:hover {
-  background-color: #ddd;
+.admin-table tr:hover {
+  background-color: var(--clr-secondary-200);
   cursor: pointer;
 }
 
-.admin-bookings__table th,
-tfoot td {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  /* color: white; */
+.agent-cell__orange {
+  background-color: orangered;
 }
 
 .bookings-table_filteringAndSearch {
@@ -56,7 +52,7 @@ tfoot td {
 
 .bookings-filterStatus__select {
   padding: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--clr-secondary-200);
   border-radius: 3px;
   font-size: 16px;
   cursor: pointer;
@@ -68,7 +64,7 @@ tfoot td {
 
 .bookings-filterStatus__select:hover,
 .bookings-filterStatus__select:focus {
-  border-color: #888;
+  border-color: var(--clr-secondary-500);
   outline: none;
 }
 
@@ -86,7 +82,7 @@ tfoot td {
 
 .bookings-filterCategory__select {
   padding: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--clr-secondary-200);
   border-radius: 3px;
   font-size: 16px;
   cursor: pointer;
@@ -98,12 +94,11 @@ tfoot td {
 
 .bookings-filterCategory__select:hover,
 .bookings-filterCategory__select:focus {
-  border-color: #888;
+  border-color: var(--clr-secondary-500);
   outline: none;
 }
 
-/* For BookingsGlobalFiler */
-
+/* For AdminGlocalFiltering */
 .global-filter__span {
   display: flex;
   align-items: center;
@@ -121,7 +116,7 @@ tfoot td {
 
 .global-filter__input {
   font-family: var(--ff-body-regular);
-  border: 2px solid #ccc;
+  border: 2px solid var(--clr-secondary-200);
   border-radius: 4px;
   padding: 8px;
   transition: border-color 0.2s ease-in-out;
@@ -129,36 +124,35 @@ tfoot td {
 
 .global-filter__input:focus,
 .global-filter__input:hover {
-  border-color: #888;
+  border-color: var(--clr-secondary-500);
   outline: none;
 }
 
-/* For BookingsTablePageSize */
+/* For AdminTablePageSize */
 
-.booking-pageSize__select {
+.admin-pageSize__select {
   font-size: 14px;
   padding: 5px;
   margin-right: 10px;
   border-radius: 3px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--clr-secondary-200);
   outline: none;
 }
 
-.booking-pageSize__option {
+.admin-pageSize__option {
   font-size: 14px;
 }
 
-.booking-pageSize__option:hover {
-  background-color: #eee;
+.admin-pageSize__option:hover {
+  background-color: var(--clr-secondary-300);
 }
 
-.booking-pageSize__option:selected {
-  background-color: #eee;
+.admin-pageSize__option:selected {
+  background-color: var(--clr-secondary-300);
 }
 
-/* For BookingsPagination */
-
-.bookings-table__pagination {
+/* For AdminTablesPagination */
+.admin-table__pagination {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -166,31 +160,33 @@ tfoot td {
   font-size: 14px;
 }
 
-.bookings-pagination__whatPage {
+.admin-pagination__whatPage {
   margin-right: 10px;
 }
 
-.bookings-pagination__numberPage {
+.admin-pagination__numberPage {
   font-weight: bold;
 }
 
-.bookings-pagination__button {
+.admin-pagination__button {
   margin-left: 5px;
   margin-right: 5px;
   padding: 5px 10px;
   font-weight: bold;
   border-radius: 3px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--clr-secondary-200);
   background-color: #f9f9f9;
   cursor: pointer;
 }
 
-.bookings-pagination__button:hover {
-  background-color: #eee;
+.admin-pagination__button:hover {
+  background-color: var(--clr-secondary-300);
 }
 
-.bookings-pagination__button:disabled {
-  background-color: #ccc;
+.admin-pagination__button:disabled {
+  background-color: var(--clr-secondary-200);
   cursor: default;
   color: #666;
 }
+
+

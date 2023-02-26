@@ -1,6 +1,19 @@
 import React from "react";
+import Cosmopolitan from "../../../../assets/images/hero-section-thumbnails/city-poster.jpg";
+import DiveUnderWater from "../../../../assets/images/hero-section-thumbnails/water-poster.jpg";
+import ExploreTheSummit from "../../../../assets/images/hero-section-thumbnails/mountain-poster.jpg";
+import LookBackInHistory from "../../../../assets/images/hero-section-thumbnails/history-poster.jpg";
+import NatureAndCulture from "../../../../assets/images/hero-section-thumbnails/nature-poster.jpg";
 
 const AdminPackageCard = (props) => {
+  const cardImages = {
+    "Cosmopolitan Lights": Cosmopolitan,
+    "Dive Under Water": DiveUnderWater,
+    "Explore The Summit": ExploreTheSummit,
+    "Look Back In History": LookBackInHistory,
+    "Nature And Culture": NatureAndCulture,
+  };
+
   return (
     <>
       <div className="adminPackage-Card__container">
@@ -11,31 +24,12 @@ const AdminPackageCard = (props) => {
             onClick={() => props.handleCardClick(card.title)}
           >
             <div
-              className={
-                card.title === "Cosmopolitan Lights"
-                  ? "adminPackage-card__header adminPackage-card__header1"
-                  : card.title === "Dive Under Water"
-                  ? "adminPackage-card__header adminPackage-card__header2"
-                  : card.title === "Explore The Summit"
-                  ? "adminPackage-card__header adminPackage-card__header3"
-                  : card.title === "Look Back In History"
-                  ? "adminPackage-card__header adminPackage-card__header4"
-                  : "adminPackage-card__header adminPackage-card__header5"
-              }
+              className=" adminPackage-card__headerImage"
+              style={{ backgroundImage: `url(${cardImages[card.title]})` }}
             >
-              {card.title === "Cosmopolitan Lights" ? (
-                <i className="fas fa-globe adminPackage-card__headerIcon1" />
-              ) : card.title === "Dive Under Water" ? (
-                <i className="fas fa-swimmer adminPackage-card__headerIcon2" />
-              ) : card.title === "Explore The Summit" ? (
-                <i className="fas fa-mountain adminPackage-card__headerIcon3" />
-              ) : card.title === "Look Back In History" ? (
-                <i className="fas fa-history adminPackage-card__headerIcon4" />
-              ) : (
-                <i className="fas fa-leaf adminPackage-card__headerIcon5" />
-              )}
               <h2>{card.title}</h2>
             </div>
+
             <div className="adminPackage-card__body">
               <p className="fst-italic">{card.subtitle}</p>
             </div>
