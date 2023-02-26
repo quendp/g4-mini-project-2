@@ -15,6 +15,7 @@
     "chart.js": "^4.2.0",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
+    "react-countup": "^6.4.1",
     "react-dom": "^18.2.0",
     "react-intersection-observer": "^9.4.3",
     "react-router-dom": "^6.8.0"
