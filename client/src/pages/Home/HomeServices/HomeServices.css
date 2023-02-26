@@ -16,6 +16,7 @@
     rgba(8, 8, 8, 0.9) 80%,
     rgba(8, 8, 8, 1) 100%
   );
+  z-index: 99;
 }
 
 .home-services__title {
@@ -64,22 +65,27 @@
 }
 
 .home-services__spacer {
-  background: var(--clr-secondary-100);
-  height: 13rem;
+  height: 20rem;
+}
+
+.home-services__spacer img {
+  margin-bottom: 0;
+  height: 40vw;
 }
 
 .home-services-stats__wrapper {
   height: 25rem;
   margin-bottom: -12.5rem;
+  z-index: 999;
 }
 
 .home-services-stats__container {
   border-radius: 1.3rem;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.6);
 }
 
 .home-services-stats__numbers {
-  background-color: var(--clr-secondary-100);
+  background-color: var(--clr-secondary-300);
 }
 
 .home-services-stats__digit {

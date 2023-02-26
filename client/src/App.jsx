@@ -59,6 +59,26 @@ function App() {
           ],
         },
         {
+          path: "/roland",
+          element: developers.roland,
+        },
+        {
+          path: "/nherwin",
+          element: developers.nherwin,
+        },
+        {
+          path: "/radi",
+          element: developers.radilyn,
+        },
+        {
+          path: "/ce",
+          element: developers.ce,
+        },
+        {
+          path: "/nick",
+          element: developers.nick,
+        },
+        {
           element: <PrivateLayout />,
           children: [
             {
@@ -74,26 +94,6 @@ function App() {
               element: <Agent />,
             },
           ],
-        },
-        {
-          path: "/roland",
-          element: developers.roland,
-        },
-        {
-          path: "/nherwin",
-          element: developers.nherwin,
-        },
-        {
-          path: "/radilyn",
-          element: developers.radilyn,
-        },
-        {
-          path: "/ce",
-          element: developers.ce,
-        },
-        {
-          path: "/nick",
-          element: developers.nick,
         },
       ],
     },

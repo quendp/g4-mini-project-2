@@ -4,6 +4,7 @@ import "./HomeServices.css";
 import HomeServicesCard from "./HomeServicesCard";
 import HomeServicesStats from "./HomeServicesStats";
 import HomeServicesTitle from "./HomeServicesTitle";
+import cloudsImg from "../../../assets/images/clouds.png";
 
 const HomeServices = ({ categoryIndex }) => {
   const homeServices = [
@@ -61,7 +62,13 @@ const HomeServices = ({ categoryIndex }) => {
           </div>
           <HomeServicesStats categoryIndex={categoryIndex} />
         </div>
-        <div className="container-fluid home-services__spacer"></div>
+        <div className="container-fluid home-services__spacer position-relative">
+          <img
+            className="position-absolute start-0 bottom-0 w-100"
+            src={cloudsImg}
+            alt="clouds"
+          />
+        </div>
       </section>
     </>
   );
