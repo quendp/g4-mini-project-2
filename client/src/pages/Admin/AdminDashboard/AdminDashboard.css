@@ -1,19 +1,9 @@
-.admin-cards__sectionOne {
-  box-shadow: 1px 2px 5px #999;
-  transition: all 0.4s;
+.admin-cards__section {
+  box-shadow: 1px 2px 5px var(--clr-secondary-500);
+  transition: bos-shadow 0.4s, transform 0.4s;
 }
 
-.admin-cards__sectionOne:hover {
-  box-shadow: 2px 3px 15px #999;
-  transform: translateY(-1px);
-}
-
-.admin-cards__sectionTwo {
-  box-shadow: 1px 2px 5px #999;
-  transition: all 0.4s;
-}
-
-.admin-cards__sectionTwo:hover {
-  box-shadow: 2px 3px 15px #999;
+.admin-cards__section:hover {
+  box-shadow: 2px 3px 15px var(--clr-secondary-500);
   transform: translateY(-1px);
 }

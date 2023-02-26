@@ -1,42 +1,43 @@
 import React from "react";
-import BookingTablePageSize from "./BookingTablePageSize";
+import AdminTablesPageSize from "./AdminTablesPageSize";
 
-const BookingsPagination = (props) => {
+const AdminTablesPagination = (props) => {
   return (
-    <div className="bookings-table__pagination">
-      <span className="bookings-pagination__whatPage">
+    <div className="admin-table__pagination">
+      <span className="admin-pagination__whatPage">
         Page{" "}
-        <strong className="bookings-pagination__numberPage">
+        <strong className="admin-pagination__numberPage">
           {props.pageIndex + 1} of {props.pageOptions.length}
         </strong>{" "}
       </span>
-      <BookingTablePageSize
+      <AdminTablesPageSize
         pageSize={props.pageSize}
         setPageSize={props.setPageSize}
+        options={props.pageSizeOptions}
       />
       <button
-        className="bookings-pagination__button"
+        className="admin-pagination__button"
         onClick={() => props.gotoPage(0)}
         disabled={!props.canPreviousPage}
       >
         {"<<"}
       </button>
       <button
-        className="bookings-pagination__button"
+        className="admin-pagination__button"
         onClick={() => props.previousPage()}
         disabled={!props.canPreviousPage}
       >
         Previous
       </button>
       <button
-        className="bookings-pagination__button"
+        className="admin-pagination__button"
         onClick={() => props.nextPage()}
         disabled={!props.canNextPage}
       >
         Next
       </button>
       <button
-        className="bookings-pagination__button"
+        className="admin-pagination__button"
         onClick={() => props.gotoPage(props.pageCount - 1)}
         disabled={!props.canNextPage}
       >
@@ -46,4 +47,4 @@ const BookingsPagination = (props) => {
   );
 };
 
-export default BookingsPagination;
+export default AdminTablesPagination;

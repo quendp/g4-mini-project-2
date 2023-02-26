@@ -1,19 +1,43 @@
-import React, { useState } from "react";
+import React from "react";
 import Image from "../../../assets/images/user-avatar/user1.jpg";
-import AdminDashboard from "../AdminDashboard/AdminDashboard";
-import AdminBookingsTable from "../AdminBookings/AdminBookingsTable";
-import AdminAgentsTable from "../AdminAgentsSection/AdminAgentsTable";
-import AdminPackageSection from "../AdminPackageSection/AdminPackageSection";
 
-const AdminSidebar = () => {
-  const [isShowing, setIsShowing] = useState(true);
-  const [currentNavSection, setCurrentNavSection] = useState("Dashboard");
+const navItems = [
+  {
+    label: "Dashboard",
+    icon: "fa-house-user",
+    onClick: (props) => props.startShowing("Dashboard"),
+  },
+  {
+    label: "Bookings",
+    icon: "fa-list",
+    onClick: (props) => props.startShowing("Bookings"),
+  },
+  {
+    label: "Agents",
+    icon: "fa-user-tie",
+    onClick: (props) => props.startShowing("Agents"),
+  },
+  {
+    label: "Package",
+    icon: "fa-box",
+    onClick: (props) => props.startShowing("Package"),
+  },
+];
 
-  const startShowing = (section) => {
-    setIsShowing(true);
-    setCurrentNavSection(section);
-  };
+const navItemsBottom = [
+  {
+    label: "Settings",
+    icon: "fa-cog",
+    onClick: (props) => props.startShowing("Settings"),
+  },
+  {
+    label: "Account Information",
+    icon: "fa-user-circle",
+    onClick: (props) => props.startShowing("Account Information"),
+  },
+];
 
+const AdminSidebar = (props) => {
   return (
     <>
       <div className="col-xxl-2 col-xl-3 col-lg-3  admin-sidebar fixed-top">
@@ -35,58 +59,37 @@ const AdminSidebar = () => {
           </a>
         </div>
         <ul className="navbar-nav flex-column mt-2">
-          <li to="/" className="nav-item">
-            <a
-              href="#"
-              className="nav-link text-white bg-secondary p-3 mb-2 admin-sidebar__panel"
-              onClick={() => {
-                startShowing("Dashboard");
-              }}
-            >
-              <i className="fa-solid fa-house-user text-light fa-lg me-3"></i>
-              Dashboard
-            </a>
-          </li>
-          <li to="/bookings" className="nav-item">
-            <a
-              href="#"
-              className="nav-link text-white p-3 mb-2 admin-sidebar__link"
-              onClick={() => {
-                startShowing("Bookings");
-              }}
-            >
-              <i className="fa-solid fa-list text-light fa-lg me-3"></i>Bookings
-            </a>
-          </li>
-          <li to="/agents" className="nav-item">
-            <a
-              href="#"
-              className="nav-link text-white p-3 mb-2 admin-sidebar__link"
-              onClick={() => {
-                startShowing("Agents");
-              }}
-            >
-              <i className="fa-solid fa-user-tie text-light fa-lg me-3"></i>
-              Agents
-            </a>
-          </li>
-          <li to="/package" className="nav-item">
-            <a
-              href="#"
-              className="nav-link text-white p-3 mb-2 admin-sidebar__link"
-              onClick={() => {
-                startShowing("Package");
-              }}
-            >
-              <i className="fa-solid fa-box text-light fa-lg me-3"></i>Package
-            </a>
-          </li>
+          {navItems.map((navItem) => (
+            <li key={navItem.label} className="nav-item">
+              <a
+                href="#"
+                className="nav-link text-white p-3 mb-2 admin-sidebar__panel"
+                onClick={() => navItem.onClick(props)}
+              >
+                <i
+                  className={`fa-solid ${navItem.icon} text-light fa-lg me-3`}
+                ></i>
+                {navItem.label}
+              </a>
+            </li>
+          ))}
         </ul>
+        <div className="admin-sidebar__settingsAndAccount">
+          {navItemsBottom.map((navItem) => (
+            <a
+              key={navItem.label}
+              href="#"
+              className="nav-link text-muted p-3 mb-2"
+              onClick={() => navItem.onClick(props)}
+            >
+              <i
+                className={`fa-solid ${navItem.icon} text-muted fa-lg me-3`}
+              ></i>
+              {navItem.label}
+            </a>
+          ))}
+        </div>
       </div>
-      {isShowing && currentNavSection == "Dashboard" && <AdminDashboard />}
-      {isShowing && currentNavSection == "Bookings" && <AdminBookingsTable />}
-      {isShowing && currentNavSection == "Agents" && <AdminAgentsTable />}
-      {isShowing && currentNavSection == "Package" && <AdminPackageSection />}
     </>
   );
 };
