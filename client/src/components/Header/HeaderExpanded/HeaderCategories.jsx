@@ -81,7 +81,7 @@ const HeaderCategories = (props) => {
           <li className="my-2" key={category.categoryId}>
             <Link
               className="text-decoration-none"
-              to="/categories"
+              to={`/categories/${category.categoryPath}`}
               onMouseEnter={() => {
                 showImage(category.categoryId);
               }}

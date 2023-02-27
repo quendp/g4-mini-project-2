@@ -1,6 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
-import "./App.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import PrivateLayout from "./components/Layout/PrivateLayout";
 import PublicLayout from "./components/Layout/PublicLayout";
@@ -20,39 +19,89 @@ import { UserAuthentication } from "./context/UserAuthentication/UserAuthenticat
 import { developers } from "./components/TestingArea";
 
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout />,
+      errorElement: <NotFound />,
+      children: [
+        {
+          element: <PublicLayout />,
+          children: [
+            {
+              path: "/",
+              element: <Home />,
+            },
+            {
+              path: "/about",
+              element: <About />,
+            },
+            {
+              path: "/categories",
+              element: <Categories />,
+              children: [
+                {
+                  path: "/categories/:category",
+                  element: <Categories />,
+                  children: [
+                    {
+                      path: "/categories/:category/:destination",
+                      element: <Categories />,
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              path: "/contact",
+              element: <Contact />,
+            },
+          ],
+        },
+        {
+          path: "/roland",
+          element: developers.roland,
+        },
+        {
+          path: "/nherwin",
+          element: developers.nherwin,
+        },
+        {
+          path: "/radi",
+          element: developers.radilyn,
+        },
+        {
+          path: "/ce",
+          element: developers.ce,
+        },
+        {
+          path: "/nick",
+          element: developers.nick,
+        },
+        {
+          element: <PrivateLayout />,
+          children: [
+            {
+              path: "/admin",
+              element: <Admin />,
+            },
+            {
+              path: "/:username",
+              element: <User />,
+            },
+            {
+              path: "/agent",
+              element: <Agent />,
+            },
+          ],
+        },
+      ],
+    },
+  ]);
   return (
-    <>
-      <UserAuthentication>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            {/* public routes */}
-            <Route element={<PublicLayout />}>
-              <Route index element={<Home />} />
-              <Route path="contact" element={<Contact />} />
-              <Route path="about" element={<About />} />
-              <Route path="categories" element={<Categories />} />
-            </Route>
-
-            {/* role-based routes */}
-            <Route element={<PrivateLayout />}>
-              <Route path="user" element={<User />} />
-              <Route path="agent" element={<Agent />} />
-              <Route path="admin" element={<Admin />} />
-            </Route>
-
-            {/* developers testing area */}
-            <Route path="/roland" element={developers.roland} />
-            <Route path="/nherwin" element={developers.nherwin} />
-            <Route path="/radilyn" element={developers.radilyn} />
-            <Route path="/ce" element={developers.ce} />
-            <Route path="/nick" element={developers.nick} />
-
-            {/* catch all */}
-            <Route path="*" element={<NotFound />} />
-          </Route>
-        </Routes>
-      </UserAuthentication>
-    </>
+    <UserAuthentication>
+      <RouterProvider router={router} />
+    </UserAuthentication>
   );
 }
 

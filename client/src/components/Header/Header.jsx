@@ -33,6 +33,7 @@ const Header = () => {
   };
 
   const onCloseHeader = () => {
+    document.body.classList.remove("disableScroll");
     setIsActiveClass("");
     setShowExpanded("d-none");
     adjustHeader();
@@ -70,6 +71,7 @@ const Header = () => {
       <HeaderCollapsed
         onBurgerClick={headerClickHandler}
         onCloseHeader={onCloseHeader}
+        isActiveClass={isActiveClass}
       />
       <HeaderExpanded
         showExpanded={showExpanded}

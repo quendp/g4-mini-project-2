@@ -1,7 +1,7 @@
-import React, { useState, createContext, useMemo } from "react";
+import React, { createContext, useEffect, useMemo, useState } from "react";
 import LogInForm from "./LogInForm/LogInForm";
-import SignUpForm from "./SignUpForm/SignUpForm";
 import LogOutForm from "./LogOutForm/LogOutForm";
+import SignUpForm from "./SignUpForm/SignUpForm";
 
 const UserAuthContext = createContext({});
 
@@ -13,17 +13,17 @@ export const UserAuthentication = ({ children }) => {
     hasAccount === true ? setHasAccount(false) : setHasAccount(true);
   };
 
-  const submitHandler = (jwtToken) => {
-    setLogInToken({ token: jwtToken });
+  const submitHandler = (jwtToken, username) => {
+    setLogInToken({ token: jwtToken, username: username });
     console.log("user logged in with token:", jwtToken);
-    closeModal();
+    console.log("user logged in with username:", username);
   };
 
-  const closeModal = () => {
+  useEffect(() => {
     const signUpModalInst = document.getElementById("signUpModal");
     const myModal = bootstrap.Modal.getOrCreateInstance(signUpModalInst);
     myModal.hide();
-  };
+  }, [logInToken]);
 
   const userData = useMemo(() => logInToken, [logInToken]);
 

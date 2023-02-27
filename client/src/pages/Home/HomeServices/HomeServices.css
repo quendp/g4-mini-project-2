@@ -1,0 +1,101 @@
+.home-services__wrapper {
+  background-image: url(../../../assets/images/tim-foster-lSegRSDBMLw-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  background-attachment: fixed;
+}
+
+.home-services__overlay {
+  background: rgb(161, 161, 161);
+  background: linear-gradient(
+    0deg,
+    rgba(161, 161, 161, 0) 0%,
+    rgba(49, 49, 49, 0.425) 30%,
+    rgba(31, 31, 31, 0.8) 60%,
+    rgba(8, 8, 8, 0.9) 80%,
+    rgba(8, 8, 8, 1) 100%
+  );
+  z-index: 99;
+}
+
+.home-services__title {
+  font-family: var(--ff-heading-primary);
+  color: var(--clr-secondary-100);
+  font-size: var(--fz-main-h2);
+  letter-spacing: 0.8px;
+}
+
+.home-services__card {
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 1.3rem;
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: transform 200ms ease-in-out, background-color 200ms ease-in-out;
+}
+
+.home-services__card:hover {
+  transform: translateY(-5px) scale(1.015);
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.home-services-card__separator {
+  border-bottom: 1px solid var(--clr-secondary-500);
+}
+
+.home-services-card__title {
+  display: inline-block;
+  width: 85%;
+}
+
+.home-services-card__number {
+  font-family: var(--ff-heading-primary);
+  font-size: var(--fz-main-p);
+  color: var(--clr-primary-dark);
+  display: inline-block;
+  width: 15%;
+  border-radius: 0.7rem;
+}
+
+.home-services-card__description {
+  color: var(--clr-secondary-200);
+  font-family: var(--ff-body-light);
+  font-size: var(--fz-main-text);
+}
+
+.home-services__spacer {
+  height: 20rem;
+}
+
+.home-services__spacer img {
+  margin-bottom: 0;
+  height: 40vw;
+}
+
+.home-services-stats__wrapper {
+  height: 25rem;
+  margin-bottom: -12.5rem;
+  z-index: 999;
+}
+
+.home-services-stats__container {
+  border-radius: 1.3rem;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.6);
+}
+
+.home-services-stats__numbers {
+  background-color: var(--clr-secondary-300);
+}
+
+.home-services-stats__digit {
+  font-family: var(--ff-heading-primary-2);
+  font-size: calc(var(--fz-main-h1) / 1.2);
+  letter-spacing: 0.8px;
+}
+
+.home-services-stats__text {
+  color: var(--clr-primary-dark);
+  font-family: var(--ff-body-light);
+  font-size: var(--fz-main-text);
+}

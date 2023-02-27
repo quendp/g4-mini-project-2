@@ -3,8 +3,8 @@
   overflow: hidden;
   background: linear-gradient(
       0deg,
-      rgba(0, 0, 0, 0.8) 0%,
-      rgba(0, 0, 0, 0.01) 100%
+      rgba(8, 8, 8, 1) 0%,
+      rgba(161, 161, 161, 0) 100%
     ),
     url(../../../assets/images/grain.png);
 }
@@ -16,25 +16,24 @@
 }
 
 /* hero section left */
-#mHeroLeft {
-  transition: transform 1000ms ease-in-out, opacity 400ms ease-in-out;
+.home-hero-text {
+  transition: transform 1000ms ease-in-out, opacity 1000ms ease-in-out;
 }
-#mHeroCategoryTitle {
+
+.home-hero-text h1 {
   color: var(--clr-secondary-100);
-  text-shadow: 0 0 10px var(--clr-primary-glass);
+  text-shadow: 0 0 10px var(--clr-secondary-400);
   font-family: var(--ff-heading-primary);
   font-size: var(--fz-main-h1);
 }
 
-#mHeroCategory {
+.home-hero-text h2 {
   font-family: var(--ff-heading-secondary);
-  color: var(--clr-accent-lights-100);
-  text-shadow: 0 0 20px var(--clr-accent-lights-100);
   font-size: var(--fz-main-secondary);
   margin-top: -1vw;
 }
 
-#mHeroDescription {
+.home-hero-text p {
   color: var(--clr-secondary-200);
   text-shadow: 0 0 10px var(--clr-primary-dark);
   font-size: var(--fz-main-text);
@@ -42,34 +41,27 @@
   line-height: 1.7;
 }
 
-#mHeroButton {
+.home-hero-text a {
   transition: background-color 400ms ease-in-out, box-shadow 400ms ease-in-out;
   font-family: var(--ff-body-regular);
   letter-spacing: 1px;
-  background-color: var(--clr-accent-lights-100);
   color: var(--clr-primary-dark);
   font-size: var(--fz-main-small);
-  box-shadow: 0 0 20px var(--clr-accent-lights-100);
+  border: none;
+  outline: none;
 }
 
-#mHeroButton:hover,
-#mHeroButton:active {
+.home-hero-text a:hover,
+.home-hero-text a:active {
   background-color: var(--clr-accent-lights);
   box-shadow: 0 0 20px var(--clr-accent-lights);
-  border: none;
-  outline: none;
-}
-
-main .btn,
-main .btn:active {
-  border: none;
-  outline: none;
 }
 
 .m-hero-thumb {
   box-shadow: 0 0 10px var(--clr-primary-dark);
-  transition: transform 400ms ease-in-out, box-shadow 400ms ease-in-out,
-    border 400ms ease-in-out;
+  transition: transform 1000ms ease-in-out, box-shadow 400ms ease-in-out,
+    border 200ms ease-in-out;
+  cursor: pointer;
 }
 
 .m-hero-thumb:hover {
@@ -77,42 +69,27 @@ main .btn:active {
   transform: scale(1.1);
 }
 
-#mThumbDesc {
+.home-hero-menu-description {
   font-family: var(--ff-body-light);
-  color: var(--clr-secondary-100);
   letter-spacing: 2px;
   transition: transform 400ms ease-in-out;
-  text-shadow: 0 0 15px var(--clr-secondary-100);
   font-size: var(--fz-main-small);
 }
 
-#mHeroThumb1 {
-  border: 3px solid var(--clr-accent-lights-100);
-}
-
-/* Hero section right */
-#mHeroRight {
-  transition: transform 1000ms ease-in-out;
-}
-
-.mHeroCircle {
+.m-hero-circle {
   top: 100%;
   left: 100%;
   width: 65vw;
   height: 65vw;
   transform: translate(-50%, -50%) rotate(15deg);
+  transition: transform 1000ms ease-in-out, opacity 1000ms ease-in-out;
 }
 
 .m-hero-circle-sub {
-  transform: translate(-50%, -50%);
   width: 27vw;
   height: 27vw;
   box-shadow: 0 0 20px var(--clr-primary-dark);
-}
-
-.m-hero-circle-sub:active {
-  transform: translate(-50%, -50%) scale(0.98);
-  box-shadow: 0 0 10px var(--clr-primary-dark);
+  transition: transform 1000ms ease-in-out, box-shadow 1000ms ease-in-out;
 }
 
 .m-hero-circle-image {
@@ -121,12 +98,15 @@ main .btn:active {
   transform: rotate(-15deg);
 }
 
-#mCircleNext {
-  width: 10vw;
+.m-hero-circle-overlay {
+  transform: rotate(-15deg);
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: opacity 300ms ease-in-out;
+  opacity: 0;
 }
 
-#mCirclePrev {
-  height: 10vw;
+.m-hero-circle-sub:hover > .m-hero-circle-overlay {
+  opacity: 1;
 }
 
 #circleImage2Sub {
@@ -159,65 +139,12 @@ main .btn:active {
   left: 50%;
 }
 
-.m-continue-rotation {
-  background-color: var(--clr-primary-glass);
-  color: var(--clr-secondary-100);
-  font-family: var(--ff-body-light);
-  z-index: 2;
-  backdrop-filter: blur(5px);
-  background-image: url(../../../assets/images/grain.png);
-}
-
-#mContinueRotation {
-  transition: color 400ms ease-in-out, text-shadow 400ms ease-in-out;
-}
-
-.mContText1 {
-  transform: translate(-50%, 0%) rotate(-80deg);
-}
-.mContText2 {
-  transform: translate(-50%, 0%) rotate(-73deg);
-}
-.mContText3 {
-  transform: translate(-50%, 0%) rotate(-66deg);
-}
-.mContText4 {
-  transform: translate(-50%, 0%) rotate(-59deg);
-}
-.mContText5 {
-  transform: translate(-50%, 0%) rotate(-52deg);
-}
-.mContText6 {
-  transform: translate(-50%, 0%) rotate(-45deg);
-}
-.mContText7 {
-  transform: translate(-50%, 0%) rotate(-38deg);
-}
-.mContText8 {
-  transform: translate(-50%, 0%) rotate(-31deg);
-}
-.mContText9 {
-  transform: translate(-50%, 0%) rotate(-24deg);
-}
-.mContText10 {
-  transform: translate(-50%, 0%) rotate(-17deg);
-}
-.mContText11 {
-  transform: translate(-50%, 0%) rotate(-10deg);
-}
-
 .m-circle-text {
-  left: 8%;
-  bottom: 27vw;
-  color: var(--clr-accent-lights-100);
+  right: 2rem;
+  bottom: 1rem;
   font-family: var(--ff-body-regular);
-}
-
-#mCircleText {
-  transition: opacity 400ms ease-in-out;
-  opacity: 0;
-  background-color: rgba(0, 0, 0, 0.3);
-  text-shadow: 0 0 5px var(--clr-primary-dark);
-  backdrop-filter: blur(5px);
-  font-size: var(--fz-main-small);
+  transition: opacity 1000ms ease-in-out;
+  font-size: var(--fz-main-p);
+  width: 17vw;
+  height: 10vw;
 }
