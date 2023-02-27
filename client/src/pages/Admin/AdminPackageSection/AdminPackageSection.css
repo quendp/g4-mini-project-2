@@ -1,3 +1,7 @@
+.adminPackageSection-container {
+  background-color: var(--clr-secondary-000);
+  height: 100vh;
+}
 .adminPackage-Card__container {
   display: flex;
   justify-content: center;
@@ -149,4 +153,10 @@
 
 .admin-accordion__body {
   cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .adminPackageSection-container {
+    height: auto;
+  }
 }

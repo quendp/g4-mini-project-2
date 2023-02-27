@@ -64,17 +64,16 @@ const AdminDestinations = (props) => {
             aria-labelledby={`flush-heading-${info.id}`}
             data-bs-parent="#accordionFlushExample"
           >
-            <div
-              className="accordion-body admin-accordion__body"
-              onClick={openPackageModal}
-            >
+            <div className="accordion-body admin-accordion__body">
               <div>
-                {selectedPackages[info.id] === "basic" && <p>{info.basic}</p>}
+                {selectedPackages[info.id] === "basic" && (
+                  <p onClick={openPackageModal}>{info.basic}</p>
+                )}
                 {selectedPackages[info.id] === "standard" && (
-                  <p>{info.standard}</p>
+                  <p onClick={openPackageModal}>{info.standard}</p>
                 )}
                 {selectedPackages[info.id] === "premium" && (
-                  <p>{info.premium}</p>
+                  <p onClick={openPackageModal}>{info.premium}</p>
                 )}
               </div>
               <div className="admin-packagePage__button">

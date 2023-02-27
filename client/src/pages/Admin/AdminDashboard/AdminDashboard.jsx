@@ -8,7 +8,7 @@ import "./AdminDashboard.css";
 const AdminDashboard = () => {
   return (
     <div
-      style={{ backgroundColor: "#ffffff", height: "100vh" }}
+      style={{ backgroundColor: "var(--clr-secondary-000)", height: "100vh" }}
       className="col-xxl-10 col-xl-9 col-lg-9 ms-auto"
     >
       <AdminCardSection

@@ -26,18 +26,21 @@ const AdminCardSection = (props) => {
   };
 
   return (
-    <section style={{ backgroundColor: "#ffffff" }}>
+    <section style={{ backgroundColor: "var(--clr-secondary-000)" }}>
       <div className="container-fluid">
         <div
           className={
             props.cardType === "SectionOne"
-              ? "row pt-lg-5 mt-lg-2 m-2"
-              : "row mt-lg-3 m-2"
+              ? "row pt-lg-5 mt-lg-2 mx-2 pt-2"
+              : "row mt-lg-3 mx-2"
           }
         >
           <h4
-            className="mb-0 fw-bolder text-muted fs-2"
-            style={{ backgroundColor: "#ffffff", textAlign: "center" }}
+            className="mb-0 fw-bolder text-muted fs-2 pt-2"
+            style={{
+              backgroundColor: "var(--clr-secondary-000)",
+              textAlign: "center",
+            }}
           >
             {props.sectionTitle}
           </h4>
@@ -48,7 +51,7 @@ const AdminCardSection = (props) => {
             >
               <div
                 className="card admin-cards__section"
-                style={{ minHeight: "190px" }}
+                style={{ minHeight: "180px" }}
               >
                 <div className="card-body d-flex justify-content-center align-items-center">
                   <h3 className="fw-bold fs-1">{info.number}</h3>

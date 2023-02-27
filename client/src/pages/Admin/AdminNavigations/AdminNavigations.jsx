@@ -24,7 +24,18 @@ const AdminNavigations = (props) => {
         className="navbar navbar-expand-lg navbar-light"
         style={{ zIndex: "10" }}
       >
-        <div className=" navbar-collapse" id="navbarSupportedContent">
+        <button
+          className="navbar-toggler bg-light"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
           <div className="container-fluid">
             <div className="row">
               <AdminSidebar startShowing={startShowing} />
