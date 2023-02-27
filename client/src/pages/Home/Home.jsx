@@ -20,7 +20,7 @@ const Home = () => {
         onChangeCategory={onChangeCategory}
       />
       <HomeServices categoryIndex={categoryIndex} />
-      <HomeStories />
+      <HomeStories categoryIndex={categoryIndex} />
       <TestingArea />
     </>
   );

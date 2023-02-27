@@ -24,7 +24,12 @@ const HomeServicesStats = ({ categoryIndex }) => {
                 color: categoriesInfo[categoryIndex].accentLight,
               }}
             >
-              <CountUp start={1000} end={statsInView ? 13675 : 0} duration={2}>
+              <CountUp
+                start={1000}
+                end={statsInView ? 13675 : 0}
+                duration={2}
+                suffix={"+"}
+              >
                 {({ countUpRef }) => <span ref={countUpRef} />}
               </CountUp>
             </h3>
@@ -55,7 +60,12 @@ const HomeServicesStats = ({ categoryIndex }) => {
                 color: categoriesInfo[categoryIndex].accentLight,
               }}
             >
-              <CountUp start={1000} end={statsInView ? 35467 : 0} duration={2}>
+              <CountUp
+                start={1000}
+                end={statsInView ? 35467 : 0}
+                duration={2}
+                suffix={"+"}
+              >
                 {({ countUpRef }) => <span ref={countUpRef} />}
               </CountUp>
             </h3>
