@@ -189,17 +189,17 @@ const HomeStories = ({ categoryCurrent }) => {
           >
             <div className="home-stories-gallery__left col-12 col-md-7">
               <div className="row h-75">
-                <div className="col-5 h-100 p-1">
+                <div className="col-5 h-100 p-0">
                   <img src={storyImage1} alt="travel story 1" />
                 </div>
                 <div className="col-7 h-100">
                   <div className="row h-50">
-                    <div className="col-12 p-1 h-100">
+                    <div className="col-12 p-0 h-100">
                       <img src={storyImage2} alt="travel story 2" />
                     </div>
                   </div>
                   <div className="row h-50">
-                    <div className="col-12 p-1 h-100">
+                    <div className="col-12 p-0 h-100">
                       <img src={storyImage3} alt="travel story 3" />
                     </div>
                   </div>
@@ -207,22 +207,22 @@ const HomeStories = ({ categoryCurrent }) => {
                 </div>
               </div>
               <div className="row h-25">
-                <div className="col-12 h-100 p-1">
+                <div className="col-12 h-100 p-0">
                   <img src={storyImage4} alt="travel story 4" />
                 </div>
               </div>
             </div>
             <div className="home-stories-gallery__right col-12 col-md-5">
               <div className="row h-50">
-                <div className="col-12 h-100 p-1">
+                <div className="col-12 h-100 p-0">
                   <img src={storyImage5} alt="travel story 5" />
                 </div>
               </div>
               <div className="row h-50">
-                <div className="col-7 h-100 p-1">
+                <div className="col-7 h-100 p-0">
                   <img src={storyImage6} alt="travel story 6" />
                 </div>
-                <div className="col-5 h-100 p-1">
+                <div className="col-5 h-100 p-0">
                   <img src={storyImage7} alt="travel story 7" />
                 </div>
               </div>

@@ -55,7 +55,7 @@
 }
 
 .home-stories__description {
-  font-family: var(--ff-body-light);
+  font-family: var(--ff-body-regular);
   color: var(--clr-primary-dark);
   font-size: var(--fz-main-p);
 }
@@ -66,7 +66,7 @@
   object-fit: cover;
   object-position: center;
   transition: object-position 300ms ease-in-out, filter 300ms ease-in-out;
-  filter: saturate(100%);
+  padding: 0.3vw;
 }
 
 .home-stories__gallery {
@@ -90,15 +90,14 @@
 
 .home-stories__gallery:hover img {
   object-position: bottom right;
-  filter: saturate(10%);
 }
 
 .home-stories-gallery__button {
-  box-shadow: 0 0 20px var(--clr-primary-dark);
+  box-shadow: 5px 5px 10px var(--clr-primary-dark);
 }
 
 .home-stories-gallery__button:hover {
-  box-shadow: 0 0 5px var(--clr-primary-dark);
+  box-shadow: 2px 2px 5px var(--clr-primary-dark);
 }
 
 @media (min-width: 576px) {

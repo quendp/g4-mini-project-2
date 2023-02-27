@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import "./HomeTestimonials.css";
 import { testimonials } from "../../../Data/TestimonialsMockData";
-import Card from "./TestimonialCard/TestimonialsCard";
+import TestimonialsCard from "./TestimonialCard/TestimonialsCard";
 import HomeTestimonialsTitle from "./HomeTestimonialsTitle";
 import { useInView } from "react-intersection-observer";
 
@@ -9,9 +9,32 @@ const HomeTestimonials = ({ categoryCurrent }) => {
   const [testimonialsCardRef, testimonialsCardInView] = useInView({
     threshold: 0.3,
   });
+
+  const [currentTransform, setCurrentTransform] = useState(0);
+
+  const onPrevCard = () => {
+    setCurrentTransform((prevTrasform) => {
+      console.log(prevTrasform);
+      if (prevTrasform == 0) {
+        return 0;
+      }
+      return prevTrasform + 1;
+    });
+  };
+
+  const onNextCard = () => {
+    setCurrentTransform((prevTrasform) => {
+      console.log(prevTrasform);
+      if (prevTrasform == -7) {
+        return -7;
+      }
+      return prevTrasform - 1;
+    });
+  };
+
   return (
     <section className="home-testimonials__wrapper container-fluid p-0 m-0 py-5">
-      <div className="row p-0 py-md-5 ps-md-5 pe-md-0 m-0 my-5 position-relative h-100 overflow-hidden">
+      <div className="row p-0 py-md-5 ps-md-5 pe-md-0 ms-0 ms-md-5 my-5 position-relative h-100 overflow-hidden">
         <div
           className="home-testimonials__background position-absolute start-0 top-0 h-100"
           style={{
@@ -33,19 +56,32 @@ const HomeTestimonials = ({ categoryCurrent }) => {
         >
           <div className="home-testimonials-card__container d-flex">
             {testimonials.map((testimony) => (
-              <Card
+              <TestimonialsCard
                 key={testimony.id}
                 data={testimony}
                 categoryCurrent={categoryCurrent}
+                currentTransform={currentTransform}
               />
             ))}
           </div>
           <div
-            className="row justify-content-center justify-content-md-start my-3 mt-lg-5 mb-lg-0"
+            className="row justify-content-center justify-content-md-center my-3 mt-lg-0 mb-lg-0"
             style={{ color: categoryCurrent.accent }}
           >
-            <i class="home-testimonials__chevron mx-3 me-md-4 mx-xl-5 fa-solid fa-circle-chevron-left"></i>
-            <i class="home-testimonials__chevron fa-solid fa-circle-chevron-right"></i>
+            <i
+              className="home-testimonials__chevron fa-solid fa-chevron-left mx-3"
+              style={{
+                opacity: currentTransform == 0 ? "0.5" : "1",
+              }}
+              onClick={onPrevCard}
+            ></i>
+            <i
+              className="home-testimonials__chevron fa-solid fa-chevron-right mx-3"
+              style={{
+                opacity: currentTransform == -7 ? "0.5" : "1",
+              }}
+              onClick={onNextCard}
+            ></i>
           </div>
         </div>
       </div>

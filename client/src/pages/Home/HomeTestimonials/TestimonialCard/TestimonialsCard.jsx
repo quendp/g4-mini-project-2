@@ -1,8 +1,15 @@
-const Card = (props) => {
+import React from "react";
+
+const TestimonialsCard = (props) => {
   const data = props.data;
   return (
-    <div className="home-testimonials-card__body px-3 px-md-4 py-3 py-md-5 m-4">
-      <div className="">
+    <div
+      className="home-testimonials-card__body px-3 px-md-4 py-3 py-md-5 m-4"
+      style={{
+        transform: `translateX(calc(${props.currentTransform} * calc(100% + 3rem)))`,
+      }}
+    >
+      <div className="w-100">
         <svg
           width="10%"
           version="1.1"
@@ -21,19 +28,24 @@ const Card = (props) => {
           />
         </svg>
       </div>
-      {/* <div className="home-testimonials-image-container m-0 p-0 rounded-circle">
-        <img
-          className="home-testimonials-card__img rounded-circle"
-          src={data.image.src}
-          alt={data.image.alt}
-        />
-      </div> */}
       <p className="p-3 m-0 home-testimonials-title__description">
         {data.description}
       </p>
-      <h3 className="p-3 pb-0 text-start h3-dark">{data.name}</h3>
+      <div className="w-100 px=md-3 pt-md-3 pb-0 ">
+        <img
+          className="home-testimonials-card__img me-3 me-lg-4"
+          src={data.image.src}
+          alt={data.image.alt}
+        />
+        <h3
+          className="p-0 text-start home-testimonials-card__name"
+          style={{ color: props.categoryCurrent.accent }}
+        >
+          {data.name}
+        </h3>
+      </div>
     </div>
   );
 };
 
-export default Card;
+export default TestimonialsCard;

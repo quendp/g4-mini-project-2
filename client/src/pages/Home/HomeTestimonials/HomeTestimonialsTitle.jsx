@@ -8,7 +8,7 @@ const HomeTestimonialsTitle = ({ categoryCurrent }) => {
 
   return (
     <div
-      className="home-testimonials-title__container col-12 col-md-5 p-5 p-sm-5 p-md-5"
+      className="home-testimonials-title__container col-12 col-md-5 p-5 pb-0 p-md-5"
       ref={testimonialsTiltleRef}
       style={{
         opacity: testimonialsTiltleInView ? "1" : "0",
