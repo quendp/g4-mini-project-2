@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import TestingArea from "../../components/TestingArea";
 import HomeHero from "./HomeHero/HomeHero";
 import HomeServices from "./HomeServices/HomeServices";
 import HomeStories from "./HomeStories/HomeStories";
@@ -26,7 +25,6 @@ const Home = () => {
       <HomeServices categoryCurrent={categoryCurrent} />
       <HomeStories categoryCurrent={categoryCurrent} />
       <HomeTestimonials categoryCurrent={categoryCurrent} />
-      <TestingArea />
     </>
   );
 };

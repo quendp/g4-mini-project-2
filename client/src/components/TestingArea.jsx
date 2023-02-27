@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import About from "../pages/About/About";
 import Admin from "../pages/Admin/Admin";
 import Contact from "../pages/Contact/Contact";
-import HomeStories from "../pages/Home/HomeStories/HomeStories";
+import Categories from "../pages/Categories/Categories";
 import Footer from "./Footer/Footer";
 
 const developers = {
@@ -13,7 +13,7 @@ const developers = {
   nherwin: <Admin />,
   radilyn: <Footer />,
   ce: <Contact />,
-  nick: <HomeStories />,
+  nick: <Categories />,
 };
 
 const TestingArea = () => {
