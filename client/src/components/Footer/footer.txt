@@ -1,0 +1,339 @@
+Footer.jsx
+
+import React from "react";
+import "./Footer.css";
+import FooterSections from "./FooterSections";
+
+const Footer = () => {
+  return (
+    <>
+      <div className="footer-container container-fluid f-footer-bottom w-100 justify-self-end py-5 m-0">
+        <div className="footer-talk mx-auto p-5">
+          <div className="footer-help text-center row py-1">
+            <h2 className="h2-light">First-time traveler?</h2>
+
+            <p className="p-light mb-2">
+              "Travel to your heart's content and leave the planning to us!"
+            </p>
+          </div>
+
+          <div className="py-4">
+            <button className="cta-light rounded-pill text-uppercase py-3">
+              See here for tips!
+            </button>
+          </div>
+        </div>
+
+        <FooterSections />
+      </div>
+
+      <div>
+        <p className="footer-copyright">
+          © Copyright Lakbay 2023 | All Rights Reserved | Privacy Policy | Terms
+          & Conditions
+        </p>
+      </div>
+    </>
+  );
+};
+
+export default Footer;
+
+
+
+********************************************************************
+Footer.css
+
+.footer-container {
+  margin: 0;
+  padding: 0;
+  background-color: var(--clr-primary-dark-100);
+  backdrop-filter: blur(0px);
+  background-image: url(/src/assets/images/grain.png);
+}
+
+.footer-talk {
+  margin: 1rem 0rem;
+  /* padding: 2.5rem 5rem; */
+  text-align: center;
+  border: 1px solid 175555;
+  border-radius: 2rem;
+  background-color: var(--clr-secondary-700);
+  width: 90%;
+  box-shadow: 5px 5px 10px var(--clr-primary-dark);
+}
+
+.footer-help {
+  font-family: var(--ff-body-light);
+  color: var(--clr-secondary-200);
+  font-size: var(--fz-main-h2);
+  display: flex;
+  justify-content: space-between;
+  align-items: left;
+  padding: 1rem;
+}
+
+.footer-copyright {
+  padding: 0.5rem 0rem;
+  text-align: center;
+  font-family: var(--ff-body-light);
+  color: var(--clr-primary-dark);
+  font-size: 0.8rem;
+  background-color: rgba(199, 199, 199, 0.63);
+}
+
+.cta-light {
+  transition: background-color 100ms ease-in-out, box-shadow 400ms ease-in-out;
+  font-family: var(--ff-body-light);
+  color: var(--clr-primary-dark);
+  font-size: var(--fz-main-text);
+  background-color: var(--clr-accent-lights-100);
+  letter-spacing: 1px;
+  padding: 0.8rem 4rem;
+  border: none;
+  outline: none;
+}
+
+.cta-light:hover,
+.cta-light:active {
+  background-color: var(--clr-accent-lights);
+}
+
+
+
+***************************************************************************
+FooterSections.jsx
+
+import React from "react";
+import "./FooterSections.css";
+import FooterSearch from "./FooterSearch";
+
+const FooterSections = () => {
+  return (
+    <div className="footer-sections w-100 m-0 p-0 pt-5 row">
+      <div className="col-12 m-0 p-4 col-xl-5 col-md-12">
+        <div className="footer-lakbay p-5 w-75 text-center">
+          <h2 className="lakbay mb-4">LAKBAY</h2>
+
+          <div className="footer_info">
+            <p>18th Floor, W Fifth, 5th Avenue, Taguig</p>
+            <p>(+63 65) 888-888</p>
+            <p>support@lakbay.agency</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="footer-navigation col-12 m-0 p-0 col-xl-2 col-md-5 col-10 pt-4">
+        <h3 className="mb-4 h3-light">Category</h3>
+        <ul className="ps-2">
+          <li className="py-2">
+            <a href="">Cosmopolitan Lights</a>
+          </li>
+          <li className="py-2">
+            <a href="">Dive Under Water</a>
+          </li>
+          <li className="py-2">
+            <a href="">Explore the Summit</a>
+          </li>
+          <li className="py-2">
+            <a href="">Look Back in History</a>
+          </li>
+          <li className="py-2">
+            <a href="">Nature and Culture</a>
+          </li>
+        </ul>
+      </div>
+
+      <div className="footer-navigation col-12 m-0 p-0 col-xl-2 col-md-5 col-10 pt-4">
+        <h3 className="mb-4 h3-light">Navigation</h3>
+        <ul className="ps-2">
+          <li className="py-2">
+            <a href="">Home</a>
+          </li>
+          <li className="py-2">
+            <a href="">About</a>
+          </li>
+          <li className="py-2">
+            <a href="">Dashboard</a>
+          </li>
+          <li className="py-2">
+            <a href="">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+
+      <div className="footer-navigation footer-follow col-12 m-0 p-0 pe-5 col-md-3 pt-4">
+        <h3 className="h3-light mb-4">Follow Us</h3>
+        <ul className="">
+          <li className="me-4">
+            <a href="https://www.facebook.com">
+              <i class="fa-brands fa-facebook"></i>
+            </a>
+          </li>
+          <li className="mx-4">
+            <a href="https://www.twitter.com">
+              <i class="fa-brands fa-twitter"></i>
+            </a>
+          </li>
+          <li className="mx-4">
+            <a href="https://www.instagram.com">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+          </li>
+          <li className="mx-4">
+            <a href="https://www.tiktok.com">
+              <i class="fa-brands fa-tiktok"></i>
+            </a>
+          </li>
+        </ul>
+
+        <div className="footer-search-container w-100">
+          <FooterSearch />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default FooterSections;
+
+
+
+******************************************************************************************
+FooterSection.css
+
+
+.footer-sections > div {
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  align-items: center;
+  height: 24rem;
+}
+
+.footer-sections .navigation {
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  align-items: start;
+}
+
+.footer-navigation li a {
+  text-decoration: none;
+  color: var(--clr-secondary-100);
+}
+
+.footer-navigation li a:hover {
+  color: var(--clr-secondary-400);
+}
+.footer-lakbay {
+  background-color: var(--clr-secondary-700);
+  border-radius: 2rem;
+  box-shadow: 5px 5px 15px -3px var(--clr-primary-dark);
+}
+
+.footer-sections li,
+.footer-sections ul,
+.footer-sections p {
+  list-style: none;
+  padding: 0;
+  color: var(--clr-secondary-100);
+  font-family: var(--ff-body-regular);
+}
+
+.footer-sections h3 {
+  font-family: var(--ff-body-bold);
+  font-size: var(--fz-main-p);
+}
+
+.lakbay {
+  color: var(--clr-accent-lights-100);
+  font-family: var(--ff-heading-primary);
+  font-size: calc(var(--fz-main-h1) / 1.7);
+  letter-spacing: calc(var(--fz--header-sub) / 2.2);
+}
+
+.footer_info {
+  font-family: var(--ff-body-light);
+  text-align: center;
+  line-height: 1.3;
+}
+
+.footer-follow li a {
+  color: #81bbd1;
+  margin-right: 0rem;
+  font-size: 2rem;
+  padding: 0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+.footer-follow ul,
+.footer-follow li {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding: 0;
+}
+
+**************************************************************************************
+
+FooterSearch.jsx
+
+import React from "react";
+import "./FooterSearch.css";
+
+const FooterSearch = () => {
+  return (
+    <div className="w-100 m-0 p-0 pt-5">
+      <div className="footer-search">
+        <form className="footer-search-form">
+          <input className="w-75" type="text" placeholder="Search" />
+          <button type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default FooterSearch;
+
+
+****************************************************************************************
+
+FooterSearch.css
+
+
+.footer-search-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.footer-search-form {
+  display: flex;
+  align-items: center;
+}
+
+.footer-search-form input[type="text"] {
+  padding: 0.5rem;
+  border: 0.5px solid white;
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.footer-search-form button[type="submit"] {
+  padding: 0.5rem;
+  border: 0.5px solid white;
+  border-radius: 0 0.5rem 0.5rem 0;
+  background-color: var(--clr-primary-light);
+  color: var(--clr-secondary-200);
+  cursor: pointer;
+}
+
+.footer-search-form button[type="submit"]:hover {
+  background-color: var(--clr-primary);
+  color: var(--clr-secondary-100);
+}
+

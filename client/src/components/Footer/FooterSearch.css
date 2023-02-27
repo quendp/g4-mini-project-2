@@ -1,0 +1,30 @@
+.footer-search-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.footer-search-form {
+  display: flex;
+  align-items: center;
+}
+
+.footer-search-form input[type="text"] {
+  padding: 0.5rem;
+  border: 0.5px solid white;
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.footer-search-form button[type="submit"] {
+  padding: 0.5rem;
+  border: 0.5px solid white;
+  border-radius: 0 0.5rem 0.5rem 0;
+  background-color: var(--clr-primary-light);
+  color: var(--clr-secondary-200);
+  cursor: pointer;
+}
+
+.footer-search-form button[type="submit"]:hover {
+  background-color: var(--clr-primary);
+  color: var(--clr-secondary-100);
+}
