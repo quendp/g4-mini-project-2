@@ -1,4 +1,4 @@
-.footer-container {
+.footer-section__wrapper {
   margin: 0;
   padding: 0;
   background-color: var(--clr-primary-dark-100);
@@ -6,49 +6,41 @@
   background-image: url(/src/assets/images/grain.png);
 }
 
-.footer-talk {
-  margin: 1rem 0rem;
-  /* padding: 2.5rem 5rem; */
+.footer-section__top {
   text-align: center;
-  border: 1px solid 175555;
   border-radius: 2rem;
   background-color: var(--clr-secondary-700);
-  width: 90%;
-  box-shadow: 5px 5px 10px var(--clr-primary-dark);
+  box-shadow: 3px 3px 10px var(--clr-primary-dark),
+    -3px -3px 10px var(--clr-secondary-500);
 }
 
-.footer-help {
-  font-family: var(--ff-body-light);
-  color: var(--clr-secondary-200);
-  font-size: var(--fz-main-h2);
-  display: flex;
-  justify-content: space-between;
-  align-items: left;
-  padding: 1rem;
+.footer-section__top h2 > span {
+  color: var(--clr-accent-lights-100);
 }
 
-.footer-copyright {
-  padding: 0.5rem 0rem;
-  text-align: center;
+.footer-section-top__text {
+  color: var(--clr-secondary-300);
   font-family: var(--ff-body-light);
+  font-size: var(--fz-main-text);
+}
+
+.cta-dark.footer-talk__btn {
   color: var(--clr-primary-dark);
-  font-size: 0.8rem;
-  background-color: rgba(199, 199, 199, 0.63);
+  background-color: var(--clr-accent-lights-100);
+  box-shadow: 3px 3px 10px var(--clr-primary-dark);
+  font-family: var(--ff-body-regular);
+  font-size: var(--fz-main-text);
 }
 
-.cta-light {
-  transition: background-color 100ms ease-in-out, box-shadow 400ms ease-in-out;
+.cta-dark.footer-talk__btn:hover,
+.cta-dark.footer-talk__btn:active {
+  background-color: var(--clr-accent-lights);
+  box-shadow: 0px 0px 5px var(--clr-primary-dark);
+}
+
+.footer-section__bottom {
   font-family: var(--ff-body-light);
   color: var(--clr-primary-dark);
   font-size: var(--fz-main-text);
-  background-color: var(--clr-accent-lights-100);
-  letter-spacing: 1px;
-  padding: 0.8rem 4rem;
-  border: none;
-  outline: none;
-}
-
-.cta-light:hover,
-.cta-light:active {
-  background-color: var(--clr-accent-lights);
+  background-color: var(--clr-secondary-300);
 }

@@ -1,16 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import "./FooterSearch.css";
 
 const FooterSearch = () => {
+  const [searchValue, setSearchValue] = useState("");
+
+  const searchSubmitHandler = (e) => {
+    e.preventDefault();
+    console.log(searchValue);
+  };
   return (
-    <div className="w-100 m-0 p-0 pt-5">
-      <div className="footer-search">
-        <form className="footer-search-form">
-          <input className="w-75" type="text" placeholder="Search" />
-          <button type="submit">Search</button>
-        </form>
-      </div>
-    </div>
+    <form
+      className="d-flex flex-column flex-md-row justify-content-center align-items-center p-2"
+      role="search"
+      onSubmit={searchSubmitHandler}
+    >
+      <input
+        className="footer-search__input form-control me-0 me-md-3 mb-3 rounded-pill px-4 py-2"
+        type="search"
+        placeholder="Search"
+        value={searchValue}
+        onChange={(e) => setSearchValue(e.target.value)}
+      />
+      <button
+        className="footer-search__btn btn rounded-pill mb-3 px-4 py-2"
+        type="submit"
+      >
+        SEARCH
+      </button>
+    </form>
   );
 };
 

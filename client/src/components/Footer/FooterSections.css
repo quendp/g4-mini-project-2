@@ -1,74 +1,29 @@
-.footer-sections > div {
-  display: flex;
-  justify-content: start;
-  flex-direction: column;
-  align-items: center;
-  height: 24rem;
-}
-
-.footer-sections .navigation {
-  display: flex;
-  justify-content: start;
-  flex-direction: column;
-  align-items: start;
-}
-
-.footer-navigation li a {
-  text-decoration: none;
-  color: var(--clr-secondary-100);
-}
-
-.footer-navigation li a:hover {
-  color: var(--clr-secondary-400);
-}
-.footer-lakbay {
-  background-color: var(--clr-secondary-700);
-  border-radius: 2rem;
-  box-shadow: 5px 5px 15px -3px var(--clr-primary-dark);
-}
-
-.footer-sections li,
-.footer-sections ul,
-.footer-sections p {
-  list-style: none;
-  padding: 0;
-  color: var(--clr-secondary-100);
-  font-family: var(--ff-body-regular);
-}
-
-.footer-sections h3 {
-  font-family: var(--ff-body-bold);
-  font-size: var(--fz-main-p);
-}
-
-.lakbay {
+.footer-section-mid-info__title {
   color: var(--clr-accent-lights-100);
   font-family: var(--ff-heading-primary);
-  font-size: calc(var(--fz-main-h1) / 1.7);
-  letter-spacing: calc(var(--fz--header-sub) / 2.2);
+  font-size: var(--fz--header-sub);
+  letter-spacing: calc(var(--fz--header-sub) / 3);
 }
 
-.footer_info {
-  font-family: var(--ff-body-light);
-  text-align: center;
-  line-height: 1.3;
+.footer-section-mid-info__details {
+  color: var(--clr-secondary-200);
+  font-family: var(--ff-body-regular);
+  font-size: var(--fz--main-text);
 }
 
-.footer-follow li a {
-  color: #81bbd1;
-  margin-right: 0rem;
-  font-size: 2rem;
-  padding: 0;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: start;
+.footer-section-mid-info__social li,
+.footer-section-mid-info__social li a {
+  list-style: none;
+  color: var(--clr-accent-lights-100);
+  font-size: var(--fz-main-h3);
 }
 
-.footer-follow ul,
-.footer-follow li {
-  display: flex;
-  justify-content: center;
-  align-items: start;
-  padding: 0;
+.footer-section-mid__navigation li,
+.footer-section-mid__navigation li a {
+  list-style: none;
+  color: var(--clr-secondary-200);
+  font-family: var(--ff-body-regular);
+  font-size: var(--fz-main-p);
+  text-decoration: none;
+  margin-bottom: 1rem;
 }
