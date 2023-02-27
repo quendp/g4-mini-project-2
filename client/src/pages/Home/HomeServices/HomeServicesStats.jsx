@@ -1,9 +1,8 @@
 import React from "react";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
-import { categoriesInfo } from "../../../Data/CategoriesMockData";
 
-const HomeServicesStats = ({ categoryIndex }) => {
+const HomeServicesStats = ({ categoryCurrent }) => {
   const [statsRef, statsInView] = useInView({ threshold: 0.3 });
   return (
     <div
@@ -21,7 +20,7 @@ const HomeServicesStats = ({ categoryIndex }) => {
             <h3
               className="mb-2 mb-xl-3 lh-1 home-services-stats__digit"
               style={{
-                color: categoriesInfo[categoryIndex].accentLight,
+                color: categoryCurrent.accentLight,
               }}
             >
               <CountUp
@@ -42,7 +41,7 @@ const HomeServicesStats = ({ categoryIndex }) => {
             <h3
               className="mb-2 mb-xl-3 lh-1 home-services-stats__digit"
               style={{
-                color: categoriesInfo[categoryIndex].accentLight,
+                color: categoryCurrent.accentLight,
               }}
             >
               <CountUp start={0} end={statsInView ? 30 : 0} duration={2}>
@@ -57,7 +56,7 @@ const HomeServicesStats = ({ categoryIndex }) => {
             <h3
               className="mb-2 mb-xl-3 lh-1 home-services-stats__digit"
               style={{
-                color: categoriesInfo[categoryIndex].accentLight,
+                color: categoryCurrent.accentLight,
               }}
             >
               <CountUp
@@ -77,7 +76,7 @@ const HomeServicesStats = ({ categoryIndex }) => {
         <div
           className="col-12 col-md-4 p-4 p-md-5 text-center text-md-start order-1 order-md-2 d-flex flex-column justify-content-center align-items-center"
           style={{
-            backgroundColor: categoriesInfo[categoryIndex].accentLight,
+            backgroundColor: categoryCurrent.accentLight,
           }}
         >
           <h2 className="h3-dark fw-bold mb-3 mb-md-4">

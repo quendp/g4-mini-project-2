@@ -66,7 +66,7 @@
   object-fit: cover;
   object-position: center;
   transition: object-position 300ms ease-in-out, filter 300ms ease-in-out;
-  filter: saturate(5%);
+  filter: saturate(100%);
 }
 
 .home-stories__gallery {
@@ -90,7 +90,15 @@
 
 .home-stories__gallery:hover img {
   object-position: bottom right;
-  filter: saturate(100%);
+  filter: saturate(10%);
+}
+
+.home-stories-gallery__button {
+  box-shadow: 0 0 20px var(--clr-primary-dark);
+}
+
+.home-stories-gallery__button:hover {
+  box-shadow: 0 0 5px var(--clr-primary-dark);
 }
 
 @media (min-width: 576px) {

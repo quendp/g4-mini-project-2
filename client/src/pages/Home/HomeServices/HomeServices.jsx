@@ -6,7 +6,7 @@ import HomeServicesStats from "./HomeServicesStats";
 import HomeServicesTitle from "./HomeServicesTitle";
 import cloudsImg from "../../../assets/images/clouds.png";
 
-const HomeServices = ({ categoryIndex }) => {
+const HomeServices = ({ categoryCurrent }) => {
   const homeServices = [
     {
       id: "01",
@@ -39,7 +39,7 @@ const HomeServices = ({ categoryIndex }) => {
     <>
       <section className="home-services__wrapper w-100 container-fluid m-0 p-0 min-vh-100 ">
         <div className="home-services__overlay container-fluid d-flex flex-column justify-content-center align-items-center pt-5 px-1 px-sm-3 px-md-5 min-vh-100 w-100">
-          <HomeServicesTitle categoryIndex={categoryIndex} />
+          <HomeServicesTitle categoryCurrent={categoryCurrent} />
           <div
             className="row py-2 py-md-5 px-1 px-md-5 d-flex justify-content-center"
             style={{
@@ -55,12 +55,12 @@ const HomeServices = ({ categoryIndex }) => {
                 <HomeServicesCard
                   key={service.id}
                   service={service}
-                  categoryIndex={categoryIndex}
+                  categoryCurrent={categoryCurrent}
                 />
               );
             })}
           </div>
-          <HomeServicesStats categoryIndex={categoryIndex} />
+          <HomeServicesStats categoryCurrent={categoryCurrent} />
         </div>
         <div className="container-fluid home-services__spacer position-relative">
           <img

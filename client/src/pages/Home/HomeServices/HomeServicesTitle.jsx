@@ -1,8 +1,7 @@
 import React from "react";
-import { categoriesInfo } from "../../../Data/CategoriesMockData";
 import { useInView } from "react-intersection-observer";
 
-const HomeServicesTitle = ({ categoryIndex }) => {
+const HomeServicesTitle = ({ categoryCurrent }) => {
   const [serviceTiltleRef, serviceTiltleInView] = useInView({ threshold: 0.3 });
 
   return (
@@ -20,7 +19,7 @@ const HomeServicesTitle = ({ categoryIndex }) => {
           Do you want to travel?
           <span
             style={{
-              color: categoriesInfo[categoryIndex].accentLight,
+              color: categoryCurrent.accentLight,
             }}
           >
             {" "}

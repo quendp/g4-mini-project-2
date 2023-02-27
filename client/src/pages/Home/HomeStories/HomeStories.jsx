@@ -1,10 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
-import { categoriesInfo } from "../../../Data/CategoriesMockData";
 import "./HomeStories.css";
 import cloudsImg from "../../../assets/images/clouds.png";
-import quotesImg from "../../../assets/images/quote.svg";
 import storyImage1 from "../../../assets/images/home-stories/story-1.jpg";
 import storyImage2 from "../../../assets/images/home-stories/story-2.jpg";
 import storyImage3 from "../../../assets/images/home-stories/story-3.jpg";
@@ -13,7 +11,7 @@ import storyImage5 from "../../../assets/images/home-stories/story-5.jpg";
 import storyImage6 from "../../../assets/images/home-stories/story-6.jpg";
 import storyImage7 from "../../../assets/images/home-stories/story-7.jpg";
 
-const HomeStories = ({ categoryIndex }) => {
+const HomeStories = ({ categoryCurrent }) => {
   const [quoteRef, quoteInView] = useInView({ threshold: 0.3 });
   const [descriptionLeftRef, descriptionLeftInView] = useInView({
     threshold: 0.5,
@@ -100,7 +98,7 @@ const HomeStories = ({ categoryIndex }) => {
             xmlSpace="preserve"
           >
             <path
-              style={{ fill: categoriesInfo[categoryIndex].accentLight }}
+              style={{ fill: categoryCurrent.accentLight }}
               d="M44.33,88.474v15.377h38.417v82.745H0v-82.745h0.002V88.474c0-31.225,8.984-54.411,26.704-68.918
 	C38.964,9.521,54.48,4.433,72.824,4.433v44.326C62.866,48.759,44.33,48.759,44.33,88.474z M181.107,48.759V4.433
 	c-18.343,0-33.859,5.088-46.117,15.123c-17.72,14.507-26.705,37.694-26.705,68.918v15.377h0v82.745h82.744v-82.745h-38.417V88.474
@@ -126,7 +124,7 @@ const HomeStories = ({ categoryIndex }) => {
             xmlSpace="preserve"
           >
             <path
-              style={{ fill: categoriesInfo[categoryIndex].accentLight }}
+              style={{ fill: categoryCurrent.accentLight }}
               d="M44.33,88.474v15.377h38.417v82.745H0v-82.745h0.002V88.474c0-31.225,8.984-54.411,26.704-68.918
 	C38.964,9.521,54.48,4.433,72.824,4.433v44.326C62.866,48.759,44.33,48.759,44.33,88.474z M181.107,48.759V4.433
 	c-18.343,0-33.859,5.088-46.117,15.123c-17.72,14.507-26.705,37.694-26.705,68.918v15.377h0v82.745h82.744v-82.745h-38.417V88.474
@@ -234,8 +232,7 @@ const HomeStories = ({ categoryIndex }) => {
                 <button
                   className="cta-light home-stories-gallery__button text-uppercase px-4 py-3 rounded-pill"
                   style={{
-                    backgroundColor: categoriesInfo[categoryIndex].accentLight,
-                    boxShadow: `0 0 10px ${categoriesInfo[categoryIndex].accentLight}`,
+                    backgroundColor: categoryCurrent.accentLight,
                   }}
                 >
                   JOIN THE LAKBAY COMMUNITY

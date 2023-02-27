@@ -215,7 +215,7 @@ body.disableScroll {
 
 /* m-primary-btn-dark --> cta-dark */
 .cta-dark {
-  transition: background-color 100ms ease-in-out, box-shadow 400ms ease-in-out;
+  transition: background-color 200ms ease-in-out, box-shadow 200ms ease-in-out;
   font-family: var(--ff-body-light);
   color: var(--clr-secondary-100);
   font-size: var(--fz-main-text);
@@ -232,7 +232,7 @@ body.disableScroll {
 }
 
 .cta-light {
-  transition: background-color 100ms ease-in-out, box-shadow 400ms ease-in-out;
+  transition: background-color 200ms ease-in-out, box-shadow 200ms ease-in-out;
   font-family: var(--ff-body-light);
   color: var(--clr-primary-dark);
   font-size: var(--fz-main-text);

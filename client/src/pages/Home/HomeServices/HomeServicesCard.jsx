@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { categoriesInfo } from "../../../Data/CategoriesMockData";
 import UserAuthContext from "../../../context/UserAuthentication/UserAuthentication";
 
-const HomeServicesCard = ({ service, categoryIndex }) => {
+const HomeServicesCard = ({ service, categoryCurrent }) => {
   const userData = useContext(UserAuthContext);
   return (
     <Link
@@ -15,7 +14,7 @@ const HomeServicesCard = ({ service, categoryIndex }) => {
           <div
             className="home-services-card__number me-3 p-2 d-flex justify-content-center flex-column align-items-center"
             style={{
-              backgroundColor: categoriesInfo[categoryIndex].accentLight,
+              backgroundColor: categoryCurrent.accentLight,
             }}
           >
             <span>{service.id}</span>
