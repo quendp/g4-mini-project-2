@@ -1,0 +1,162 @@
+.adminPackageSection-container {
+  background-color: var(--clr-secondary-000);
+  height: 100vh;
+}
+.adminPackage-Card__container {
+  display: flex;
+  justify-content: center;
+  align-items: space-evenly;
+  height: auto;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.adminPackage-card {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 250px;
+  height: 250px;
+  background-color: var(--clr-secondary-200);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 30px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.adminPackage-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 20px var(--clr-primary-glass);
+}
+
+.adminPackage-card__headerImage {
+  margin-right: 10px;
+  height: 70%;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.adminPackage-card__headerImage h2 {
+  font-size: 16px;
+  color: var(--clr-secondary-000);
+  text-shadow:
+  -1px -1px 0 var(--clr-primary-dark),
+  1px -1px 0 var(--clr-primary-dark),
+  -1px 1px 0 var(--clr-primary-dark),
+  1px 1px 0 var(--clr-primary-dark);
+  font-family: var(--ff-body-bold);
+}
+
+.adminPackage-card__body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30%;
+}
+
+.adminPackage-card__body p {
+  font-size: 15px;
+  color: var(--clr-primary-dark-100);
+  text-align: center;
+  margin-top: 10%;
+}
+
+/* For AdminDestination Folder */
+
+.admin-packagePage__button {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 40%;
+  margin: 1rem auto;
+}
+
+.admin-packagePage__buttonB {
+  font-family: var(--ff-body-light);
+  color: var(--clr-secondary-100);
+  font-size: var(--fz-main-text);
+  letter-spacing: 1px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  outline: none;
+  background-color: var(--clr-accent-water);
+  transition: background-color 100ms ease-in-out, box-shadow 400ms ease-in-out;
+}
+
+.admin-packagePage__buttonB:hover,
+.admin-packagePage__buttonB:active {
+  background-color: rgb(52, 52, 214);
+}
+
+.admin-packagePage__buttonS {
+  font-family: var(--ff-body-light);
+  color: var(--clr-secondary-100);
+  font-size: var(--fz-main-text);
+  letter-spacing: 1px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  outline: none;
+  background-color: var(--clr-accent-culture);
+  transition: background-color 100ms ease-in-out, box-shadow 400ms ease-in-out;
+}
+
+.admin-packagePage__buttonS:hover,
+.admin-packagePage__buttonS:active {
+  background-color: rgb(78, 230, 78);
+}
+
+.admin-packagePage__buttonP {
+  font-family: var(--ff-body-light);
+  color: rgb(87, 85, 85);
+  font-size: var(--fz-main-text);
+  letter-spacing: 1px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  outline: none;
+  background-color: var(--clr-accent-lights-100);
+  transition: background-color 100ms ease-in-out, box-shadow 400ms ease-in-out;
+}
+
+.admin-packagePage__buttonP:hover,
+.admin-packagePage__buttonP:active {
+  background-color: rgb(204, 186, 83);
+}
+
+.admin-packagePage__buttonBack {
+  transition: background-color 100ms ease-in-out, box-shadow 400ms ease-in-out;
+  font-family: var(--ff-body-light);
+  color: var(--clr-secondary-100);
+  font-size: var(--fz-main-text);
+  background-color: var(--clr-primary-dark);
+  letter-spacing: 1px;
+  padding: 0.8rem 1.5rem;
+  margin-top: 1rem;
+  border: none;
+  outline: none;
+}
+
+.admin-packagePage__buttonBack:hover, .admin-packagePage__buttonBack:active {
+  background-color: var(--clr-primary-dark-100);
+}
+
+.admin-accordion__body {
+  cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .adminPackageSection-container {
+    height: auto;
+  }
+}

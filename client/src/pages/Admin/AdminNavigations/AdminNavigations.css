@@ -1,0 +1,84 @@
+/* For AdminTopNav */
+@media (max-width: 992px) {
+  .admin-top__navbar {
+    position: static;
+  }
+}
+
+/* For AdminSidebar */
+.admin-sidebar {
+  height: 100%;
+  background-image: url(../../../assets/images/grain.png);
+  background-repeat: repeat;
+}
+
+.admin-bottom__border {
+  border-bottom: 1px groove var(--clr-secondary-100);
+}
+
+.admin-sidebar__panel {
+  border-radius: 7px;
+  transition: border-radius 0.4s, transform 0.4s, background-color 0.4s;
+}
+
+.admin-sidebar__panel:hover {
+  border-radius: 7px;
+  transform: translateY(-1px);
+}
+
+.admin-sidebar__panel:focus {
+  background-color: var(--clr-secondary-500);
+}
+
+.admin-sidebar__settingsAndAccount {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.admin-sidebar__settingsAndAccount i {
+  color: var(--clr-secondary-500);
+}
+
+@media (max-width: 1000px) {
+  .admin-sidebar {
+    position: static;
+    height: 63vh;
+  }
+
+  .admin-sidebar__settingsAndAccount {
+    position: static;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .navbar {
+    padding: 0;
+  }
+
+  .navbar-toggler {
+    margin: 10px;
+    /* position: relative;
+    right: -90%; */
+  }
+
+  .admin-bottom__border {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .navbar-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .admin-sidebar__panel:focus {
+    background-color: transparent;
+  }
+}
