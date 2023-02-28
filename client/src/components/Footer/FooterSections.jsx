@@ -42,7 +42,7 @@ const FooterSections = () => {
           </div>
         </div>
         <div className="d-none d-xl-block col-xl-1"></div>
-        <div className="col-12 col-sm-6 d-flex justify-content-center align-items-center text-center text-md-start justify-content-md-start align-items-sm-start col-xl-3 p-0 p-md-5 mb-0 mb-sm-5">
+        <div className="col-12 col-sm-6 d-flex justify-content-center align-items-center text-center text-xl-start justify-content-xl-start align-items-sm-start col-xl-3 p-0 p-md-5 mb-0 mb-sm-5">
           <div className="footer-section-mid__navigation">
             <h3 className="mb-4 pt-5 h3-light">Navigation</h3>
             <ul className="p-0">
@@ -68,7 +68,7 @@ const FooterSections = () => {
             </ul>
           </div>
         </div>
-        <div className="col-12 col-sm-6 d-flex justify-content-center align-items-center text-center text-md-start justify-content-md-start align-items-sm-start col-xl-3 p-0 p-md-5 mb-5">
+        <div className="col-12 col-sm-6 d-flex justify-content-center align-items-center text-center text-xl-start justify-content-xl-start align-items-sm-start col-xl-3 p-0 p-md-5 mb-5">
           <div className="footer-section-mid__navigation">
             <h3 className="mb-4 pt-5 h3-light">Category</h3>
             <ul className="p-0">

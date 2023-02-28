@@ -17,7 +17,7 @@ const Home = () => {
   };
 
   return (
-    <>
+    <section className="overflow-hidden">
       <HomeHero
         categoryIndex={categoryIndex}
         onChangeCategory={onChangeCategory}
@@ -25,7 +25,7 @@ const Home = () => {
       <HomeServices categoryCurrent={categoryCurrent} />
       <HomeStories categoryCurrent={categoryCurrent} />
       <HomeTestimonials categoryCurrent={categoryCurrent} />
-    </>
+    </section>
   );
 };
 
