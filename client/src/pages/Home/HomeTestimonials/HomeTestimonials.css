@@ -81,9 +81,14 @@
   /* transform: translateX(calc(-4 * calc(100% + 3rem))); */
 }
 
+.home-testimonials-card__body svg {
+  filter: drop-shadow(2px 4px 2px rgb(0 0 0 / 0.3));
+}
+
 .home-testimonials-card__img {
   width: clamp(3rem, 6vw, 5rem);
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5),
+    -3px -3px 5px rgba(255, 255, 255, 1);
   object-fit: cover;
   display: inline-block;
   border-radius: 1rem;

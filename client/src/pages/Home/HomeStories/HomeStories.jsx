@@ -152,15 +152,27 @@ const HomeStories = ({ categoryCurrent }) => {
                   "opacity 400ms ease-in-out 200ms, transform 400ms ease-in-out 200ms",
               }}
             >
+              <h3
+                className="text-center text-md-start"
+                style={{
+                  color: categoryCurrent.accentLight,
+                  textShadow: `2px 2px 5px rgba(0,0,0,0.55), 0 0 25px ${categoryCurrent.accent} `,
+                  fontFamily: "var(--ff-heading-secondary)",
+                  fontSize: "var(--fz-main-h1)",
+                  marginBottom: "-1vw",
+                }}
+              >
+                Inspiring Fellow Travelers
+              </h3>
               <h2 className="text-center text-md-start h2-dark">
                 A Continuously Growing Community
               </h2>
             </div>
           </div>
-          <div className="row m-0 p-0">
+          <div className="home-stories__top row m-auto p-0">
             <div className="col-md-4 d-none d-md-block"></div>
             <div
-              className="col-12 col-md-4 px-5 p-md-3 text-center text-md-start"
+              className="col-12 col-md-4 px-2 px-sm-5 p-md-3 text-center text-md-start"
               ref={descriptionLeftRef}
               style={{
                 opacity: descriptionLeftInView ? "1" : "0",
@@ -174,12 +186,13 @@ const HomeStories = ({ categoryCurrent }) => {
               <p className="home-stories__description p-1 px-lg-3 pb-lg-0 pt-lg-3">
                 Traveling is about creating memories and making stories. In our
                 years of service, we have witnessed the most inspiring and most
-                enjoyable experiences of our clients. Read the stories of fellow
-                travelers who accompanied us these past few years.
+                enjoyable experiences of our clients. Read the stories of your
+                fellow travelers who have been with us through their fun and
+                exciting ventures.
               </p>
             </div>
             <div
-              className="col-12 col-md-4 px-5 p-md-3 text-center text-md-start"
+              className="col-12 col-md-4 px-2 px-sm-5 p-md-3 text-center text-md-start"
               ref={descriptionRightRef}
               style={{
                 opacity: descriptionRightInView ? "1" : "0",

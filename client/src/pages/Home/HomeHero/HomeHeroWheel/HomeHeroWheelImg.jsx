@@ -24,7 +24,7 @@ const HomeHeroWheelImg = ({
         transform: `translate(-50%, -50%) rotate(${subCircleRotation}deg) scale(${
           activeDestination == mappedDestination ? "1" : "0.8"
         })`,
-        boxShadow: `0 0 150px -50px ${
+        boxShadow: `1px 1px 30px var(--clr-primary-glass), 0 0 150px -50px ${
           activeDestination == mappedDestination
             ? categoriesInfo[categoryIndex].accentLight
             : "var(--clr-primary-dark)"
