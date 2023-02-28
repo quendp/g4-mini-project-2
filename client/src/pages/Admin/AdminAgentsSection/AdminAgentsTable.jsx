@@ -2,7 +2,7 @@ import React from "react";
 import AgentsTable from "./AdminAgentsTableParts/AgentsTable";
 import "../AdminTablesUIs/AdminTableUIs.css";
 
-const AdminAgentsTable = () => {
+const AdminAgentsTable = (props) => {
   return (
     <div
       style={{ backgroundColor: "var(--clr-secondary-000)", height: "120vh" }}
@@ -17,7 +17,11 @@ const AdminAgentsTable = () => {
       >
         Agents Table
       </h4>
-      <AgentsTable />
+      <AgentsTable
+        showModal={props.showModal}
+        openModal={props.openModal}
+        closeModal={props.closeModal}
+      />
     </div>
   );
 };
