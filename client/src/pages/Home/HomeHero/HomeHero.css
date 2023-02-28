@@ -22,7 +22,7 @@
 
 .home-hero-text h1 {
   color: var(--clr-secondary-100);
-  text-shadow: 0 0 10px var(--clr-secondary-400);
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6), 0 0 20px var(--clr-secondary-400);
   font-family: var(--ff-heading-primary);
   font-size: var(--fz-main-h1);
 }
