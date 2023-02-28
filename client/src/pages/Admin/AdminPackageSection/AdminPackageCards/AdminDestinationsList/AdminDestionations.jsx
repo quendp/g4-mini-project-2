@@ -58,13 +58,19 @@ const AdminDestinations = (props) => {
             <div className="accordion-body admin-accordion__body">
               <div>
                 {selectedPackages[info.id] === "basic" && (
-                  <p onClick={props.openModal}>{info.basic}</p>
+                  <p onClick={() => props.openModal("adminDestinationsModal")}>
+                    {info.basic}
+                  </p>
                 )}
                 {selectedPackages[info.id] === "standard" && (
-                  <p onClick={props.openModal}>{info.standard}</p>
+                  <p onClick={() => props.openModal("adminDestinationsModal")}>
+                    {info.standard}
+                  </p>
                 )}
                 {selectedPackages[info.id] === "premium" && (
-                  <p onClick={props.openModal}>{info.premium}</p>
+                  <p onClick={() => props.openModal("adminDestinationsModal")}>
+                    {info.premium}
+                  </p>
                 )}
               </div>
               <div className="admin-packagePage__button">
@@ -89,8 +95,8 @@ const AdminDestinations = (props) => {
               </div>
             </div>
             <AdminModalUI
-              showModal={props.showModal}
-              closeModal={props.closeModal}
+              showModal={props.showModal.adminDestinationsModal}
+              closeModal={() => props.closeModal("adminDestinationsModal")}
               modalType="adminDestinations"
             />
           </div>
