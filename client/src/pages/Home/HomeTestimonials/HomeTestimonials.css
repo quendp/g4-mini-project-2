@@ -16,13 +16,13 @@
   z-index: 0;
   opacity: 0.7;
   border-radius: 1rem;
+  box-shadow: 3px 3px 15px var(--clr-primary-dark);
 }
 
 .home-testimonials-title__h3 {
-  font-family: var(--ff-body-regular);
+  font-family: var(--ff-body-bold);
   font-weight: 700;
   font-size: var(--fz-main-p);
-  color: var(--clr-secondary-700);
   letter-spacing: 0.2rem;
 }
 
@@ -39,6 +39,11 @@
   color: var(--clr-secondary-700);
   font-size: var(--fz-main-text);
   line-height: 1.8;
+}
+
+.home-testimonials-title__container > .home-testimonials-title__description {
+  border-radius: 1rem;
+  color: var(--clr-secondary-100);
 }
 
 .home-testimonials-card__container {

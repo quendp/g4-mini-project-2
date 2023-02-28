@@ -27,3 +27,7 @@
   text-decoration: none;
   margin-bottom: 1rem;
 }
+
+.footer-section-mid__navigation li a:hover {
+  color: var(--clr-secondary-400);
+}

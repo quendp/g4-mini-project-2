@@ -13,6 +13,9 @@ import storyImage7 from "../../../assets/images/home-stories/story-7.jpg";
 
 const HomeStories = ({ categoryCurrent }) => {
   const [quoteRef, quoteInView] = useInView({ threshold: 0.3 });
+  const [titleRef, titleInView] = useInView({
+    threshold: 0.5,
+  });
   const [descriptionLeftRef, descriptionLeftInView] = useInView({
     threshold: 0.5,
   });
@@ -137,54 +140,73 @@ const HomeStories = ({ categoryCurrent }) => {
         className="container-fluid m-0 px-0 px-md-5"
         style={{ zIndex: "99" }}
       >
-        <div className="home-stories-content row px-3 px-md-5 py-5 align-content-start">
-          <div
-            className="col-12 col-md-6 p-3 p-md-5 text-center text-md-start"
-            ref={descriptionLeftRef}
-            style={{
-              opacity: descriptionLeftInView ? "1" : "0",
-              transform: descriptionLeftInView
-                ? "translateX(0)"
-                : "translateX(-10rem)",
-              transition:
-                "opacity 400ms ease-in-out 200ms, transform 400ms ease-in-out 200ms",
-            }}
-          >
-            <p className="home-stories__description p-1 p-lg-5 pt-lg-3">
-              Traveling is about creating memories and making stories. In our
-              years of service, we have witnessed the most inspiring and most
-              enjoyable experiences of our clients. Read the stories of fellow
-              travelers who accompanied us these past few years.
-            </p>
+        <div className="home-stories-content row px-3 px-lg-5 py-5 align-content-start">
+          <div className="row m-0 mb-4 p-0 px-md-5 justify-content-center justify-content-md-start">
+            <div
+              className="col-10 px-md-5"
+              ref={titleRef}
+              style={{
+                opacity: titleInView ? "1" : "0",
+                transform: titleInView ? "translateX(0)" : "translateX(-10rem)",
+                transition:
+                  "opacity 400ms ease-in-out 200ms, transform 400ms ease-in-out 200ms",
+              }}
+            >
+              <h2 className="text-center text-md-start h2-dark">
+                A Continuously Growing Community
+              </h2>
+            </div>
           </div>
-          <div
-            className="col-12 col-md-6 p-3 p-md-5 text-center text-md-start"
-            ref={descriptionRightRef}
-            style={{
-              opacity: descriptionRightInView ? "1" : "0",
-              transform: descriptionRightInView
-                ? "translateX(0)"
-                : "translateX(10rem)",
-              transition:
-                "opacity 400ms ease-in-out 200ms, transform 400ms ease-in-out 200ms",
-            }}
-          >
-            <p className="home-stories__description p-1 p-lg-5 pt-lg-3">
-              It is always fun reading the exciting anecdotes of other people.
-              However, what's even better is creating you own. Join our
-              community and read the stories of fellow travel lovers. You can
-              also share your own story if you already took part in our trips
-              before.
-            </p>
+          <div className="row m-0 p-0">
+            <div className="col-md-4 d-none d-md-block"></div>
+            <div
+              className="col-12 col-md-4 px-5 p-md-3 text-center text-md-start"
+              ref={descriptionLeftRef}
+              style={{
+                opacity: descriptionLeftInView ? "1" : "0",
+                transform: descriptionLeftInView
+                  ? "translateX(0)"
+                  : "translateX(-10rem)",
+                transition:
+                  "opacity 400ms ease-in-out 200ms, transform 400ms ease-in-out 200ms",
+              }}
+            >
+              <p className="home-stories__description p-1 px-lg-3 pb-lg-0 pt-lg-3">
+                Traveling is about creating memories and making stories. In our
+                years of service, we have witnessed the most inspiring and most
+                enjoyable experiences of our clients. Read the stories of fellow
+                travelers who accompanied us these past few years.
+              </p>
+            </div>
+            <div
+              className="col-12 col-md-4 px-5 p-md-3 text-center text-md-start"
+              ref={descriptionRightRef}
+              style={{
+                opacity: descriptionRightInView ? "1" : "0",
+                transform: descriptionRightInView
+                  ? "translateX(0)"
+                  : "translateX(10rem)",
+                transition:
+                  "opacity 400ms ease-in-out 200ms, transform 400ms ease-in-out 200ms",
+              }}
+            >
+              <p className="home-stories__description p-1 px-lg-3 pb-lg-0 pt-lg-3">
+                It is always fun reading the exciting anecdotes of other people.
+                However, what's even better is creating you own. Join our
+                community and read the stories of fellow travel lovers. You can
+                also share your own story if you already took part in our trips
+                before.
+              </p>
+            </div>
           </div>
           <div
             className="home-stories__gallery row p-0 m-auto position-relative"
             ref={galleryRef}
             style={{
               opacity: galleryInView ? "1" : "0",
-              transform: galleryInView ? "scale(1)" : "scale(0.7)",
+              transform: galleryInView ? "scale(1)" : "scale(0.8)",
               transition:
-                "opacity 600ms ease-in-out 200ms, transform 600ms ease-in-out 200ms",
+                "opacity 1000ms ease-in-out 200ms, transform 1000ms ease-in-out 200ms",
             }}
           >
             <div className="home-stories-gallery__left col-12 col-md-7">

@@ -4,7 +4,7 @@ import FooterSections from "./FooterSections";
 
 const Footer = () => {
   return (
-    <footer className="footer-section__wrapper container-fluid m-0 p-0 overflow-hidden">
+    <footer className="footer-section__wrapper container-fluid m-0 p-0 pt-5 overflow-hidden">
       <section className="row px-5 pt-5 justify-content-center">
         <div className="footer-section__top col-12 col-md-10 text-center p-4 p-sm-5">
           <h2 className="h2-light mb-3">

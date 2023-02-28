@@ -55,9 +55,9 @@
 }
 
 .home-stories__description {
-  font-family: var(--ff-body-regular);
+  font-family: var(--ff-body-light);
   color: var(--clr-primary-dark);
-  font-size: var(--fz-main-p);
+  font-size: var(--fz-main-text);
 }
 
 .home-stories__gallery img {
