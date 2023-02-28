@@ -11,7 +11,7 @@ import {
   natureAndCulture,
 } from "../AdminDataCollection/AdminPackageSectionData";
 
-const AdminPackageSection = () => {
+const AdminPackageSection = (props) => {
   const [selectedCard, setSelectedCard] = useState(null);
   const [prevSelectedCard, setPrevSelectedCard] = useState(null);
 
@@ -27,6 +27,9 @@ const AdminPackageSection = () => {
             basic={cosmopolitanLights.basic}
             standard={cosmopolitanLights.standard}
             handleBackButton={handleBackButton}
+            showModal={props.showModal}
+            openModal={props.openModal}
+            closeModal={props.closeModal}
           />
         );
       case "Dive Under Water":
@@ -39,6 +42,9 @@ const AdminPackageSection = () => {
             basic={diveUnderWater.basic}
             standard={diveUnderWater.standard}
             handleBackButton={handleBackButton}
+            showModal={props.showModal}
+            openModal={props.openModal}
+            closeModal={props.closeModal}
           />
         );
       case "Explore The Summit":
@@ -51,6 +57,9 @@ const AdminPackageSection = () => {
             basic={exploreTheSummit.basic}
             standard={exploreTheSummit.standard}
             handleBackButton={handleBackButton}
+            showModal={props.showModal}
+            openModal={props.openModal}
+            closeModal={props.closeModal}
           />
         );
       case "Look Back In History":
@@ -63,6 +72,9 @@ const AdminPackageSection = () => {
             basic={lookBackInHistory.basic}
             standard={lookBackInHistory.standard}
             handleBackButton={handleBackButton}
+            showModal={props.showModal}
+            openModal={props.openModal}
+            closeModal={props.closeModal}
           />
         );
       case "Nature And Culture":
@@ -75,6 +87,9 @@ const AdminPackageSection = () => {
             basic={natureAndCulture.basic}
             standard={natureAndCulture.standard}
             handleBackButton={handleBackButton}
+            showModal={props.showModal}
+            openModal={props.openModal}
+            closeModal={props.closeModal}
           />
         );
       default:
