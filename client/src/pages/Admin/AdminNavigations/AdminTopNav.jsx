@@ -35,7 +35,11 @@ const AdminTopNav = (props) => {
         </div>
       </form>
       <div className="d-flex align-items-center justify-content-center">
-        <a href="#" className="nav-link" onClick={props.openModal}>
+        <a
+          href="#"
+          className="nav-link"
+          onClick={() => props.openModal("adminTopNavCloseModal")}
+        >
           <i
             role="button"
             className="fa-solid fa-right-from-bracket fa-fw text-secondary fa-xl "
@@ -43,8 +47,8 @@ const AdminTopNav = (props) => {
         </a>
       </div>
       <AdminModalUI
-        showModal={props.showModal}
-        closeModal={props.closeModal}
+        showModal={props.showModal.adminTopNavCloseModal}
+        closeModal={() => props.closeModal("adminTopNavCloseModal")}
         modalType="adminTopNavCloseModal"
       />
     </div>

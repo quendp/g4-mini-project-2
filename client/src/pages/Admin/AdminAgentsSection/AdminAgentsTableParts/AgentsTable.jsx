@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import {
   useTable,
   useSortBy,
@@ -53,7 +53,10 @@ const AgentsTable = (props) => {
           {page.map((row) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()} onClick={props.openModal}>
+              <tr
+                {...row.getRowProps()}
+                onClick={() => props.openModal("agentsTableModal")}
+              >
                 {row.cells.map((cell) => {
                   let className = "";
                   if (cell.column.id === "current_tasks") {
@@ -92,8 +95,8 @@ const AgentsTable = (props) => {
         pageSizeOptions={[5, 10]}
       />
       <AdminModalUI
-        showModal={props.showModal}
-        closeModal={props.closeModal}
+        showModal={props.showModal.agentsTableModal}
+        closeModal={() => props.closeModal("agentsTableModal")}
         modalType="agentsTable"
       />
     </>
