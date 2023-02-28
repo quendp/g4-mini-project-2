@@ -1,14 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import AdminNavigations from "./AdminNavigations/AdminNavigations";
 
 const Admin = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
   const handleSubmit = (searchValue) => {
     console.log(searchValue);
   };
 
   return (
     <div className="admin">
-      <AdminNavigations searchValueHandler={handleSubmit} />
+      <AdminNavigations
+        searchValueHandler={handleSubmit}
+        showModal={showModal}
+        openModal={openModal}
+        closeModal={closeModal}
+      />
     </div>
   );
 };
