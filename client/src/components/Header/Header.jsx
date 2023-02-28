@@ -12,6 +12,7 @@ const Header = () => {
   const [headerBlur, setHeaderBlur] = useState("blur(0px)");
   const [headerTransform, setHeaderTransform] = useState("translateY(0)");
   const [lastScrollY, setLastScrollY] = useState(window.scrollY);
+  const [isHeaderClosed, setIsHeaderClosed] = useState(false);
 
   window.addEventListener("scroll", () => {
     adjustHeader();
@@ -21,6 +22,7 @@ const Header = () => {
   const headerClickHandler = () => {
     document.body.classList.toggle("disableScroll");
     if (isActiveClass == "") {
+      setIsHeaderClosed(false);
       setIsActiveClass(styles.expandHeader);
       setShowExpanded("");
       setHeaderBgColor("var(--clr-primary-dark)");
@@ -34,6 +36,7 @@ const Header = () => {
 
   const onCloseHeader = () => {
     document.body.classList.remove("disableScroll");
+    setIsHeaderClosed(true);
     setIsActiveClass("");
     setShowExpanded("d-none");
     adjustHeader();
@@ -72,6 +75,7 @@ const Header = () => {
         onBurgerClick={headerClickHandler}
         onCloseHeader={onCloseHeader}
         isActiveClass={isActiveClass}
+        isHeaderClosed={isHeaderClosed}
       />
       <HeaderExpanded
         showExpanded={showExpanded}

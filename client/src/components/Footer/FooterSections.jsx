@@ -19,22 +19,22 @@ const FooterSections = () => {
               <ul className="d-flex justify-content-center p-0">
                 <li className="p-0 mx-3">
                   <a href="https://www.facebook.com">
-                    <i class="fa-brands fa-facebook"></i>
+                    <i className="fa-brands fa-facebook"></i>
                   </a>
                 </li>
                 <li className="p-0 mx-3">
                   <a href="https://www.twitter.com">
-                    <i class="fa-brands fa-twitter"></i>
+                    <i className="fa-brands fa-twitter"></i>
                   </a>
                 </li>
                 <li className="p-0 mx-3">
                   <a href="https://www.instagram.com">
-                    <i class="fa-brands fa-instagram"></i>
+                    <i className="fa-brands fa-instagram"></i>
                   </a>
                 </li>
                 <li className="p-0 mx-3">
                   <a href="https://www.tiktok.com">
-                    <i class="fa-brands fa-tiktok"></i>
+                    <i className="fa-brands fa-tiktok"></i>
                   </a>
                 </li>
               </ul>
