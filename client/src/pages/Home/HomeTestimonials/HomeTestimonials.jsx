@@ -34,7 +34,7 @@ const HomeTestimonials = ({ categoryCurrent }) => {
 
   return (
     <section className="home-testimonials__wrapper container-fluid p-0 m-0 py-5">
-      <div className="row p-0 py-md-5 ps-md-5 pe-md-0 ms-0 ms-md-5 my-5 position-relative h-100 overflow-hidden">
+      <div className="row p-0 py-md-5 ps-md-5 pe-md-0 mx-0 ms-md-5 my-5 position-relative h-100">
         <div
           className="home-testimonials__background position-absolute start-0 top-0 h-100"
           style={{

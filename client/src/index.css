@@ -137,6 +137,9 @@
   --fz-main-small: clamp(0.6rem, 0.9vw, 1.3rem);
 }
 
+html {
+  scroll-behavior: smooth;
+}
 /* Hide scrollbar for Chrome, Safari and Opera */
 body::-webkit-scrollbar {
   display: none;
@@ -146,6 +149,7 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
   background-color: var(--clr-primary-dark);
+  scroll-behavior: smooth;
 }
 
 body.disableScroll {
