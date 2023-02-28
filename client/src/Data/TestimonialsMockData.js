@@ -1,7 +1,16 @@
+import image1 from "../assets/images/user-avatar/user1.jpg";
+import image2 from "../assets/images/user-avatar/user2.jpg";
+import image3 from "../assets/images/user-avatar/user3.jpg";
+import image4 from "../assets/images/user-avatar/user4.jpg";
+import image5 from "../assets/images/user-avatar/user5.jpg";
+import image6 from "../assets/images/user-avatar/user6.jpg";
+import image7 from "../assets/images/user-avatar/user7.jpg";
+import image8 from "../assets/images/user-avatar/user8.jpg";
+
 const testimonials = [
   {
     image: {
-      src: "src/assets/images/user-avatar/user1.jpg",
+      src: image1,
       alt: "image-1",
     },
     name: "Juan Dela Cruz",
@@ -11,8 +20,8 @@ const testimonials = [
   },
   {
     image: {
-      src: "src/assets/images/user-avatar/user2.jpg",
-      alt: "amage-1",
+      src: image2,
+      alt: "image-2",
     },
     name: "Zack Williams",
     id: 2,
@@ -21,8 +30,8 @@ const testimonials = [
   },
   {
     image: {
-      src: "src/assets/images/user-avatar/user3.jpg",
-      alt: "image-1",
+      src: image3,
+      alt: "image-3",
     },
     name: "Kayla Smith",
     id: 3,
@@ -31,8 +40,8 @@ const testimonials = [
   },
   {
     image: {
-      src: "src/assets/images/user-avatar/user4.jpg",
-      alt: "image-1",
+      src: image4,
+      alt: "image-4",
     },
     name: "Dr. Dwayne McArthur",
     id: 4,
@@ -41,8 +50,8 @@ const testimonials = [
   },
   {
     image: {
-      src: "src/assets/images/user-avatar/user5.jpg",
-      alt: "image-1",
+      src: image5,
+      alt: "image-5",
     },
     name: "Manor Clint",
     id: 5,
@@ -51,8 +60,8 @@ const testimonials = [
   },
   {
     image: {
-      src: "src/assets/images/user-avatar/user6.jpg",
-      alt: "image-1",
+      src: image6,
+      alt: "image-6",
     },
     name: "Aaron White",
     id: 6,
@@ -61,8 +70,8 @@ const testimonials = [
   },
   {
     image: {
-      src: "src/assets/images/user-avatar/user7.jpg",
-      alt: "image-1",
+      src: image7,
+      alt: "image-7",
     },
     name: "Engr. Yu Zsi",
     id: 7,
@@ -71,8 +80,8 @@ const testimonials = [
   },
   {
     image: {
-      src: "src/assets/images/user-avatar/user8.jpg",
-      alt: "image-1",
+      src: image8,
+      alt: "image-8",
     },
     name: "Dianne Johnson",
     id: 8,
