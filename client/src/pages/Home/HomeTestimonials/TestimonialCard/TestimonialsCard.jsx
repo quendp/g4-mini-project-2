@@ -4,7 +4,7 @@ const TestimonialsCard = (props) => {
   const data = props.data;
   return (
     <div
-      className="home-testimonials-card__body px-3 px-md-4 py-3 py-md-5 m-4"
+      className="home-testimonials-card__body px-3 px-md-4 py-3 py-md-5 m-4 d-flex flex-column justify-content-between"
       style={{
         transform: `translateX(calc(${props.currentTransform} * calc(100% + 3rem)))`,
       }}
