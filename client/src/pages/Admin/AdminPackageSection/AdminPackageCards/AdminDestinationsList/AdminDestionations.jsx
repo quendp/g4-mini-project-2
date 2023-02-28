@@ -1,25 +1,16 @@
 import React, { useState } from "react";
-import AdminDestinationModal from "./AdminDestinationModal";
+import AdminModalUI from "../../../AdminModalUI/AdminModalUI";
 
 const AdminDestinations = (props) => {
   const [selectedPackages, setSelectedPackages] = useState(
     props.data.reduce((acc, curr) => ({ ...acc, [curr.id]: "basic" }), {})
   );
-  const [showPackageModal, setShowPackageModal] = useState(false);
 
   const handlePackageSelect = (id, packageType) => {
     setSelectedPackages((prevState) => ({
       ...prevState,
       [id]: packageType,
     }));
-  };
-
-  const openPackageModal = () => {
-    setShowPackageModal(true);
-  };
-
-  const closePackageModal = () => {
-    setShowPackageModal(false);
   };
 
   return (
@@ -67,13 +58,13 @@ const AdminDestinations = (props) => {
             <div className="accordion-body admin-accordion__body">
               <div>
                 {selectedPackages[info.id] === "basic" && (
-                  <p onClick={openPackageModal}>{info.basic}</p>
+                  <p onClick={props.openModal}>{info.basic}</p>
                 )}
                 {selectedPackages[info.id] === "standard" && (
-                  <p onClick={openPackageModal}>{info.standard}</p>
+                  <p onClick={props.openModal}>{info.standard}</p>
                 )}
                 {selectedPackages[info.id] === "premium" && (
-                  <p onClick={openPackageModal}>{info.premium}</p>
+                  <p onClick={props.openModal}>{info.premium}</p>
                 )}
               </div>
               <div className="admin-packagePage__button">
@@ -97,9 +88,10 @@ const AdminDestinations = (props) => {
                 </button>
               </div>
             </div>
-            <AdminDestinationModal
-              showPackageModal={showPackageModal}
-              closePackageModal={closePackageModal}
+            <AdminModalUI
+              showModal={props.showModal}
+              closeModal={props.closeModal}
+              modalType="adminDestinations"
             />
           </div>
         </div>

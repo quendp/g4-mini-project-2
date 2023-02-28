@@ -10,9 +10,9 @@ import { agentsTableColumn } from "../../AdminTablesUIs/AdminTablesColumn";
 import AdminGlobalFiltering from "../../AdminTablesUIs/AdminGlobalFiltering";
 import AdminTableHeaderGroups from "../../AdminTablesUIs/AdminTableHeaderGroups";
 import AdminTablesPagination from "../../AdminTablesUIs/AdminTablesPagination";
-import AgentsTableModal from "./AgentsTableModal";
+import AdminModalUI from "../../AdminModalUI/AdminModalUI";
 
-const AgentsTable = () => {
+const AgentsTable = (props) => {
   const columns = useMemo(() => agentsTableColumn, []);
   const data = useMemo(() => MOCK_DATA_2, []);
 
@@ -44,16 +44,6 @@ const AgentsTable = () => {
 
   const { globalFilter, pageIndex, pageSize } = state;
 
-  const [showModal, setShowModal] = useState(false);
-
-  const openModal = () => {
-    setShowModal(true);
-  };
-
-  const closeModal = () => {
-    setShowModal(false);
-  };
-
   return (
     <>
       <AdminGlobalFiltering filter={globalFilter} setFilter={setGlobalFilter} />
@@ -63,7 +53,7 @@ const AgentsTable = () => {
           {page.map((row) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()} onClick={openModal}>
+              <tr {...row.getRowProps()} onClick={props.openModal}>
                 {row.cells.map((cell) => {
                   let className = "";
                   if (cell.column.id === "current_tasks") {
@@ -101,7 +91,11 @@ const AgentsTable = () => {
         setPageSize={setPageSize}
         pageSizeOptions={[5, 10]}
       />
-      <AgentsTableModal showModal={showModal} closeModal={closeModal} />
+      <AdminModalUI
+        showModal={props.showModal}
+        closeModal={props.closeModal}
+        modalType="agentsTable"
+      />
     </>
   );
 };

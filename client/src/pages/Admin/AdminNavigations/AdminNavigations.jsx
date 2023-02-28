@@ -39,7 +39,12 @@ const AdminNavigations = (props) => {
           <div className="container-fluid">
             <div className="row">
               <AdminSidebar startShowing={startShowing} />
-              <AdminTopNav searchValueHandler={props.searchValueHandler} />
+              <AdminTopNav
+                searchValueHandler={props.searchValueHandler}
+                showModal={props.showModal}
+                openModal={props.openModal}
+                closeModal={props.closeModal}
+              />
             </div>
           </div>
         </div>
@@ -47,8 +52,20 @@ const AdminNavigations = (props) => {
 
       {isShowing && currentNavSection == "Dashboard" && <AdminDashboard />}
       {isShowing && currentNavSection == "Bookings" && <AdminBookingsTable />}
-      {isShowing && currentNavSection == "Agents" && <AdminAgentsTable />}
-      {isShowing && currentNavSection == "Package" && <AdminPackageSection />}
+      {isShowing && currentNavSection == "Agents" && (
+        <AdminAgentsTable
+          showModal={props.showModal}
+          openModal={props.openModal}
+          closeModal={props.closeModal}
+        />
+      )}
+      {isShowing && currentNavSection == "Package" && (
+        <AdminPackageSection
+          showModal={props.showModal}
+          openModal={props.openModal}
+          closeModal={props.closeModal}
+        />
+      )}
       {isShowing && currentNavSection == "Settings" && <AdminSettings />}
       {isShowing && currentNavSection == "Account Information" && (
         <AdminAccountInformation />

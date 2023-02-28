@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import AdminModalUI from "../AdminModalUI/AdminModalUI";
 
 const AdminTopNav = (props) => {
   const [searchValue, setSearchValue] = useState("");
@@ -33,30 +34,19 @@ const AdminTopNav = (props) => {
           </button>
         </div>
       </form>
-      <ul className="navbar-nav ms-md-0">
-        <li className="nav-item dropdown">
-          <a
-            className="nav-link dropdown-toggle"
-            id="navbarDropdown"
-            href="#"
+      <div className="d-flex align-items-center justify-content-center">
+        <a href="#" className="nav-link" onClick={props.openModal}>
+          <i
             role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            <i className="fas fa-user fa-fw text-secondary"></i>
-          </a>
-          <ul
-            className="dropdown-menu dropdown-menu-secondary dropdown-menu-end"
-            aria-labelledby="navbarDropdown"
-          >
-            <li>
-              <a className="dropdown-item" href="#!">
-                Logout
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
+            className="fa-solid fa-right-from-bracket fa-fw text-secondary fa-xl "
+          ></i>
+        </a>
+      </div>
+      <AdminModalUI
+        showModal={props.showModal}
+        closeModal={props.closeModal}
+        modalType="adminTopNavCloseModal"
+      />
     </div>
   );
 };
