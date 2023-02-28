@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "../Header.module.css";
 import headerLogo from "../../../assets/images/logo-svg/logo-outline-white.svg";
@@ -23,6 +23,19 @@ const HeaderCollapsed = (props) => {
     top: burgerBotPos,
     transform: `translate(-50%, -50%) rotate(-${burgerRotation}deg)`,
   };
+
+  useEffect(() => {
+    (async () => {
+      if (props.isHeaderClosed) {
+        setBurgerRotation("0");
+        await animationDelay(200);
+        setBurgerTopPos("40%");
+        setBurgerBotPos("60%");
+        await animationDelay(200);
+        setBurgerTopWidth("70%");
+      }
+    })();
+  }, [props.isHeaderClosed]);
 
   const burgerClickHandler = async () => {
     props.onBurgerClick();
