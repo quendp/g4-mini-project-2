@@ -1,0 +1,26 @@
+.bookings-filter__category {
+    margin: 10px 0;
+  }
+  
+.bookings-filterCategory__label {
+    display: inline-block;
+    margin-right: 10px;
+    font-weight: bold;
+}
+  
+.bookings-filterCategory__select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+}
+  
+.bookings-filterCategory__options {
+    font-size: 16px;
+}
+  
+.bookings-filterCategory__select:hover, .bookings-filterCategory__select:focus {
+    border-color: #888;
+    outline: none;
+}

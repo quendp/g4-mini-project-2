@@ -1,0 +1,29 @@
+.adminAgent-filter__span {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2px;
+}
+  
+.adminAgent-filter__search {
+    font-weight: bold;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-right: 10px;
+    font-family: var(--ff-body-regular);
+}
+  
+.adminAgent-filter__input {
+    font-family: var(--ff-body-regular);
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    transition: border-color 0.2s ease-in-out;
+}
+  
+.adminAgent-filter__input:focus,
+.adminAgent-filter__input:hover {
+    border-color: #888;
+    outline: none;
+}
+  

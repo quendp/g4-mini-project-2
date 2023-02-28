@@ -1,0 +1,36 @@
+.agents-table__pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+  
+.agents-pagination__whatPage {
+    margin-right: 10px;
+}
+  
+.agents-pagination__numberPage {
+    font-weight: bold;
+}
+  
+.agents-pagination__button {
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 5px 10px;
+    font-weight: bold;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+  
+.agents-pagination__button:hover {
+    background-color: #eee;
+}
+  
+.agents-pagination__button:disabled {
+    background-color: #ccc;
+    cursor: default;
+    color: #666;
+}
