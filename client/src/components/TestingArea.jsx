@@ -3,14 +3,14 @@ import "./TestingArea.css";
 
 import { Link } from "react-router-dom";
 import About from "../pages/About/About";
-import Admin from "../pages/Admin/Admin";
+import Agent from "../pages/Agent/Agent";
 import Contact from "../pages/Contact/Contact";
 import Categories from "../pages/Categories/Categories";
 import Footer from "./Footer/Footer";
 
 const developers = {
   roland: <About />,
-  nherwin: <Admin />,
+  nherwin: <Agent />,
   radilyn: <Footer />,
   ce: <Contact />,
   nick: <Categories />,

@@ -157,7 +157,7 @@ body.disableScroll {
 }
 
 .body-wrapper {
-  overflow: hidden;
+  /* overflow: hidden; */
   z-index: 1;
 }
 
