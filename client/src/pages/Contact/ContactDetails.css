@@ -27,6 +27,10 @@
     width: 2rem;
 }
 
+.socials svg:hover {
+    fill: var(--clr-accent-lights);
+}
+
 @media (max-width: 768px) {
     .contact-details__container {
         padding: 1.7rem;
