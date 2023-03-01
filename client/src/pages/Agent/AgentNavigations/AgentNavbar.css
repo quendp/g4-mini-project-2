@@ -13,29 +13,28 @@
 }
 
 .agentSidebar-bottom__border {
-    border-bottom: 1px groove #eee;
-}
-
-.agentSidebar-dashboard__navItem {
-    border-radius: 7px;
-    box-shadow: 2px 5px 10px #111;
-    transition: all .4s;
-}
-
-.agentSidebar-dashboard__navItem:hover {
-    background-color: #f66436;
-    border-radius: 7px;
-    box-shadow: 2px 5px 20px #111;
-    transform: translateY(-1px);
+    border-bottom: 1px groove var(--clr-secondary-300);
 }
 
 .agentSidebar-navItem {
-    transition: all .4s;
+    transition: transform .4s background-color .4s;
 }
 
-.agentSidebar-navItem:hover {
-    background-color: #444;
+.agentSidebar-navItem:hover,
+.agentSidebar-navItem:focus {
+    background-color: var(--clr-secondary-500);
     border-radius: 5px;
+    transform: translateY(-1px);
+}
+
+.admin-sidebar__settingsAndAccount {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.admin-sidebar__settingsAndAccount i {
+  color: var(--clr-secondary-500);
 }
 
 
@@ -44,5 +43,11 @@
     .agentSidebar {
         position: static;
         height: auto;
+    }
+}
+
+@media (max-width: 992px) {
+    .agentTopNav {
+        position: static;
     }
 }
