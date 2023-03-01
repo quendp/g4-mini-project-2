@@ -1,7 +1,8 @@
 import React from 'react';
+import './Contact.css';
+import ContactHeading from './ContactHeading';
 import ContactDetails from './ContactDetails';
 import ContactForm from './ContactForm';
-import './Contact.css';
 
 const Contact = () => {
 
@@ -38,12 +39,17 @@ const Contact = () => {
   
   return (
     <div className='contact-container'>
-      <div className='contact-container__details'>
-        <ContactDetails/>
+      <div className='contact-heading'>
+        <ContactHeading/>
       </div>
-      <div className='contact-container__form'>
-        <ContactForm/>
-      </div>  
+      <div className='contact-body'>
+        <div className='contact-container__details details'>
+          <ContactDetails/>
+        </div>
+        <div className='contact-container__form form'>
+          <ContactForm/>
+        </div>
+      </div>
     </div>
   );
 };

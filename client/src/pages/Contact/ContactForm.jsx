@@ -6,6 +6,7 @@ const ContactForm = () => {
     const onSubmit = (e) => {
     e.preventDefault()
     setFormStatus('Submitting...')
+    setTimeout()
     const { name, phone, email, message } = e.target.elements
     let conFom = {
       name: name.value,
@@ -17,19 +18,16 @@ const ContactForm = () => {
   }
   return (
     <div className="contact-form__container">
+      <div className='form-header'>
+        <h2>Do you have a question? Let's talk.</h2>
+      </div>
       <form onSubmit={onSubmit}>
         <div className="mb-3">
           <label className="contact-form__label" htmlFor="name">
             Full Name
           </label>
           <input className="form-control" type="text" id="name" required />
-        </div>
-        <div className="mb-3">
-          <label className="contact-form__label" htmlFor="phone">
-            Contact Number
-          </label>
-          <input className="form-control" type="tel" id="phone" required />
-        </div>        
+        </div>   
         <div className="mb-3">
           <label className="contact-form__label" htmlFor="email">
             Email Address
@@ -40,7 +38,7 @@ const ContactForm = () => {
           <label className="contact-form__label" htmlFor="message">
             Message
           </label>
-          <textarea className="form-control" id="message" required />
+          <textarea className="form-control" id="message" rows={5} required />
         </div>
         <button className="contact-form__button" type="submit">
           {formStatus}
