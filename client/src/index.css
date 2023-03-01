@@ -296,3 +296,10 @@ main {
 .anchor-light:active {
   color: var(--clr-secondary-300);
 }
+
+/* --- FOR DEBUGGING --- */
+.debug-this,
+.debug-all *,
+.debug-child > * {
+  border: 0.5px solid red;
+}

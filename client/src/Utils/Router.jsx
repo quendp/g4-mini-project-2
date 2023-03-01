@@ -8,7 +8,7 @@ import Contact from "../pages/Contact/Contact";
 import Home from "../pages/Home/Home";
 import NotFound from "../pages/NotFound/NotFound";
 
-// testing area
+// --- IMPORT OF TESTING AREA FOR DEVELOPMENT ---
 import { developers } from "../components/TestingArea";
 
 export const router = createBrowserRouter([
@@ -51,6 +51,13 @@ export const router = createBrowserRouter([
         ],
       },
       {
+        path: "/:username",
+        element: <PrivateLayout />,
+      },
+
+      // --- START OF TESTING AREA ROUTER ---
+
+      {
         path: "/roland",
         element: developers.roland,
       },
@@ -70,10 +77,8 @@ export const router = createBrowserRouter([
         path: "/nick",
         element: developers.nick,
       },
-      {
-        path: "/:username",
-        element: <PrivateLayout />,
-      },
+
+      // --- END OF TESTING AREA ROUTER ---
     ],
   },
 ]);

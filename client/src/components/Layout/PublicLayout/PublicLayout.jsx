@@ -2,7 +2,13 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Footer from "../../Footer/Footer";
 import Header from "../../Header/Header";
+
+/*
+
+ --- IMPORT OF TESTING AREA FOR DEVELOPMENT ---
 import TestingArea from "../../TestingArea";
+
+*/
 
 const PublicLayout = () => {
   return (
@@ -14,7 +20,8 @@ const PublicLayout = () => {
         </main>
         <Footer />
       </div>
-      <TestingArea />
+
+      {/* <TestingArea /> */}
     </>
   );
 };

@@ -39,9 +39,11 @@
   box-shadow: 0px 0px 5px var(--clr-primary-dark);
 }
 
-.footer-section__bottom {
+.footer-section__bottom,
+.footer-section__bottom a {
   font-family: var(--ff-body-light);
-  color: var(--clr-primary-dark);
-  font-size: var(--fz-main-text);
-  background-color: var(--clr-secondary-300);
+  color: var(--clr-secondary-300);
+  font-size: var(--fz-main-small);
+  background-color: var(--clr-secondary-700);
+  text-decoration: none;
 }
