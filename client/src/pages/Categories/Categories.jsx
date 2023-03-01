@@ -10,9 +10,9 @@ const Categories = () => {
   };
 
   if (modal) {
-    document.body.classList.add("active-modal");
+    document.body.classList.add("catBookInfo");
   } else {
-    document.body.classList.remove("active-modal");
+    document.body.classList.remove("catBookInfo");
   }
 
   const categoryItem = categoriesInfo.find((item) => item.categoryId === 1);
@@ -36,18 +36,14 @@ const Categories = () => {
         </video>
         <div className="container-fluid h-100 m-0 p-0 d-flex flex-column justify-content-evenly align-items-center">
           <div className="row m-0 p-0 justify-content-center align-items-center">
-            <h1
-              className={`${styles.catHeroTitle} text-center`}
-              id={`${styles.catHeroTitle}`}
-            >
+            <h1 className={`${styles.catHeroTitle} text-center`}>
               {categoryItem.category}
             </h1>
           </div>
           <div className="row m-0 p-0 justify-content-center">
             <div className="col-10 col-xl-7 m-0 p-0 h-100 position-relative overflow-hidden">
               <div
-                className="row m-0 p-0 justify-content-center h-100"
-                id={`${styles.catHeroImageWrapper}`}
+                className={`${styles.catHeroImageWrapper} row m-0 p-0 justify-content-center h-100`}
               >
                 {destination.map((destinationItem) => (
                   <div
@@ -63,49 +59,37 @@ const Categories = () => {
                     {modal && (
                       <div
                         onClick={toggleModal}
-                        className={`${styles.modal} position-absolute top-0 start-0 h-100 w-100 p-3 p-md-4 p-lg-5`}
-                        id={`${styles.catBookInfo}`}
+                        className="position-absolute top-0 start-0 h-100 w-100 p-3 p-md-4 p-lg-5"
                       >
                         <div
-                          className={`${styles.overlay} d-flex h-100 w-100 flex-column justify-content-between align-items-start`}
+                          className={`${styles.catBookInfo}  d-flex h-100 w-100 flex-column justify-content-between align-items-start`}
                         >
-                          <div
-                            key={destinationItem.id}
-                            className={`${styles.modalContent}`}
-                          >
+                          <div key={destinationItem.id}>
                             <p className="mb-1 mb-sm-3 mb-md-4">
                               DESTINATION :
                               <span
-                                className="ms-2"
-                                id={`${styles.catBookDestination}`}
+                                className={`${styles.catBookDestination} ms-2`}
                               >
                                 {destinationItem.destination}
                               </span>
                             </p>
                             <p className="mb-1 mb-sm-3 mb-md-4">
                               TRIP DETAILS :
-                              <span
-                                className="ms-2"
-                                id={`${styles.catBookDetails}`}
-                              >
+                              <span className={`${styles.catBookDetails} ms-2`}>
                                 {destinationItem.details}
                               </span>
                             </p>
                             <p className="mb-1 mb-sm-3 mb-md-4">
                               DURATION :
                               <span
-                                className="ms-2"
-                                id={`${styles.catBookDuration}`}
+                                className={`${styles.catBookDuration} ms-2`}
                               >
                                 {destinationItem.duration}
                               </span>
                             </p>
                             <p>
                               PRICE :
-                              <span
-                                className="ms-2"
-                                id={`${styles.catBookPrice}`}
-                              >
+                              <span className={`${styles.catBookPrice} ms-2`}>
                                 {destinationItem.price}
                               </span>
                             </p>
