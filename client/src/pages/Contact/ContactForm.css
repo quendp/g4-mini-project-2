@@ -1,0 +1,28 @@
+.contact-form__container {
+    padding: 3.5rem;
+}
+
+.form-header {
+    font-family: var(--ff-body-regular);
+    color: var(--clr-primary-dark);
+    size: var(--fz--header-menu);
+}
+
+.contact-form__label {
+    font-family: var(--ff-body-regular);
+    color: var(--clr-secondary-700);
+    font-size: var(--fz-main-small);
+}
+
+.contact-form__button {
+    background-color: var(--clr-primary-dark);
+    height: 2.5rem;
+    width: 7.5rem;
+    border: 0;
+    border-radius: 1.5rem;
+    color: white;
+}
+
+.contact-form__button:hover {
+    background-color: var(--clr-accent-lights);
+}
