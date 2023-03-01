@@ -6,17 +6,35 @@ import SignUpForm from "./SignUpForm/SignUpForm";
 const UserAuthContext = createContext({});
 
 export const UserAuthentication = ({ children }) => {
+  // For development purposes remove in production
+
+  // const MOCK_LOGIN = {
+  //   token: "sampleToken",
+  //   username: "sample@username",
+  //   role: "user",
+  // };
+
+  const MOCK_LOGIN = {
+    token: false,
+    username: "login",
+    role: false,
+  };
+
+  // For development purposes remove in production
+
   const [hasAccount, setHasAccount] = useState(true);
-  const [logInToken, setLogInToken] = useState({ token: "" });
+  const [logInToken, setLogInToken] = useState(MOCK_LOGIN);
 
   const handleChangeMode = () => {
     hasAccount === true ? setHasAccount(false) : setHasAccount(true);
   };
 
-  const submitHandler = (jwtToken, username) => {
-    setLogInToken({ token: jwtToken, username: username });
+  const submitHandler = (jwtToken, username, role) => {
+    setLogInToken({ token: jwtToken, username: username, role: role });
+
     console.log("user logged in with token:", jwtToken);
     console.log("user logged in with username:", username);
+    console.log("user logged in with role:", role);
   };
 
   useEffect(() => {
@@ -38,24 +56,22 @@ export const UserAuthentication = ({ children }) => {
       >
         <div
           className={`modal-dialog ${
-            userData.token.length === 0 && !hasAccount ? "modal-lg" : "modal-md"
+            !userData.token && !hasAccount ? "modal-lg" : "modal-md"
           } modal-dialog-centered`}
         >
-          {userData.token.length === 0 && hasAccount && (
+          {!userData.token && hasAccount && (
             <LogInForm
               handleChangeMode={handleChangeMode}
               submitHandler={submitHandler}
             />
           )}
-          {userData.token.length === 0 && !hasAccount && (
+          {!userData.token && !hasAccount && (
             <SignUpForm
               handleChangeMode={handleChangeMode}
               submitHandler={submitHandler}
             />
           )}
-          {userData.token.length > 0 && (
-            <LogOutForm submitHandler={submitHandler} />
-          )}
+          {userData.token && <LogOutForm submitHandler={submitHandler} />}
         </div>
       </div>
       {children}
