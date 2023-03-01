@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./FooterSections.css";
 import FooterSearch from "./FooterSearch";
+import { Link } from "react-router-dom";
+import UserAuthContext from "../../context/UserAuthentication/UserAuthentication";
 
 const FooterSections = () => {
+  const userData = useContext(UserAuthContext);
+
   return (
     <div className="footer-section__mid col-12 col-md-10 p-0 ">
       <div className="row m-0 p-0">
@@ -47,23 +51,20 @@ const FooterSections = () => {
             <h3 className="mb-4 pt-5 h3-light">Navigation</h3>
             <ul className="p-0">
               <li className="p-0">
-                <a href="">Home Page</a>
+                <Link to="/">Home Page</Link>
               </li>
               <li className="p-0">
-                <a href="">About Page</a>
+                <Link to="/about">About Page</Link>
               </li>
               <li className="p-0">
-                <a href="">Contact Us</a>
+                <Link to="/contact">Contact Us</Link>
               </li>
               <li className="p-0">
-                <a href="">Dashboard</a>
+                <Link to={`/${userData.username}`}>Dashboard</Link>
               </li>
 
               <li className="p-0">
-                <a href="">Categories</a>
-              </li>
-              <li className="p-0">
-                <a href="">Destinations</a>
+                <Link to="/categories">Categories</Link>
               </li>
             </ul>
           </div>
@@ -73,19 +74,27 @@ const FooterSections = () => {
             <h3 className="mb-4 pt-5 h3-light">Category</h3>
             <ul className="p-0">
               <li className="p-0">
-                <a href="">Cosmopolitan Lights</a>
+                <Link to="/categories/cosmopolitan-lights">
+                  Cosmopolitan Lights
+                </Link>
               </li>
               <li className="p-0">
-                <a href="">Dive Under Water</a>
+                <Link to="/categories/dive-under-water">Dive Under Water</Link>
               </li>
               <li className="p-0">
-                <a href="">Explore the Summit</a>
+                <Link to="/categories/explore-the-summit">
+                  Explore the Summit
+                </Link>
               </li>
               <li className="p-0">
-                <a href="">Look Back in History</a>
+                <Link to="/categories/look-back-in-history">
+                  Look Back in History
+                </Link>
               </li>
               <li className="p-0">
-                <a href="">Nature and Culture</a>
+                <Link to="/categories/nature-and-culture">
+                  Nature and Culture
+                </Link>
               </li>
             </ul>
           </div>

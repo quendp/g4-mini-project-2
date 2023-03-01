@@ -3,15 +3,16 @@
   padding: 0;
   background-color: var(--clr-primary-dark-100);
   backdrop-filter: blur(0px);
-  background-image: url(/src/assets/images/grain.png);
+  background-image: url(../../assets/images/grain.png);
 }
 
 .footer-section__top {
   text-align: center;
   border-radius: 2rem;
-  background-color: var(--clr-secondary-700);
-  box-shadow: 3px 3px 10px var(--clr-primary-dark),
-    -3px -3px 10px var(--clr-secondary-500);
+  background-color: var(--clr-primary-dark-100);
+  background-image: url(../../assets/images/grain.png);
+  box-shadow: 5px 5px 20px var(--clr-primary-dark),
+    -5px -5px 10px var(--clr-primary-dark-400);
 }
 
 .footer-section__top h2 > span {

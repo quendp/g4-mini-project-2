@@ -82,7 +82,7 @@ const HeaderCollapsed = (props) => {
           data-bs-toggle="modal"
           data-bs-target="#signUpModal"
         >
-          {userData.token.length > 0 ? "LOG OUT" : "LOG IN"}
+          {userData.token ? "LOG OUT" : "LOG IN"}
         </button>
         <div
           className={`${styles.hamBtn} position-relative`}

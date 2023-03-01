@@ -6,7 +6,7 @@ const HomeServicesCard = ({ service, categoryCurrent }) => {
   const userData = useContext(UserAuthContext);
   return (
     <Link
-      to={`/${userData.token.length === 0 ? "login" : userData.username}`}
+      to={`/${!userData.token ? "login" : userData.username}`}
       className="text-decoration-none col-12 col-sm-6 col-xl-3 p-4 flex-1"
     >
       <div className="home-services__card overflow-hidden h-100 d-flex justify-content-start flex-column">

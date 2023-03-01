@@ -316,7 +316,8 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
     >
       <div className="mb-4">
         <h3>
-          <span>Step {step + 1} of 2 :</span> Account Details
+          <span>Step {step + 1} of 2 :</span>{" "}
+          {step == 0 ? "Account Details" : "Personal Details"}
         </h3>
       </div>
       {conditionalComponent()}

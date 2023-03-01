@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import UserAuthContext from "../../../context/UserAuthentication/UserAuthentication";
 import styles from "../Header.module.css";
 
 const HeaderNavMenu = ({ onCloseHeader }) => {
+  const userData = useContext(UserAuthContext);
+
   const headerLinks = [
     {
       id: 1,
@@ -22,7 +25,7 @@ const HeaderNavMenu = ({ onCloseHeader }) => {
     {
       id: 4,
       page: "Dashboard",
-      path: "/user",
+      path: `/${userData.username}`,
     },
   ];
 
