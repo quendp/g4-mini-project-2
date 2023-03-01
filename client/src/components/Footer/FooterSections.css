@@ -22,7 +22,7 @@
 .footer-section-mid__navigation li,
 .footer-section-mid__navigation li a {
   list-style: none;
-  color: var(--clr-secondary-200);
+  color: var(--clr-secondary-400);
   font-family: var(--ff-body-regular);
   font-size: var(--fz-main-small);
   text-decoration: none;
