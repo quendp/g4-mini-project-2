@@ -21,11 +21,11 @@
   font-size: var(--fz-main-h1);
 }
 
-#catHeroImageWrapper {
+.catHeroImageWrapper {
   transition: opacity 400ms ease-in-out;
 }
 
-#catHeroChosen {
+.catHeroChosen {
   font-size: var(--fz-main-text);
   transition: opacity 300ms ease-in-out;
 }
@@ -39,89 +39,48 @@
   box-shadow: 0 0 30px -5px var(--clr-primary-dark);
   transition: box-shadow 400ms ease-in-out;
 }
-#catBookInfo {
+.catBookInfo {
   background-color: var(--clr-primary-glass);
   background-image: url(../../assets/images/grain.png);
   border-radius: 0.8rem;
-  transform: translateY(120%);
   transition: transform 500ms ease-in-out;
+  aspect-ratio: 5 / 3;
 }
 
-#catBookInfo p {
+.catBookInfo p {
   color: var(--clr-secondary-100);
   font-family: var(--ff-body-bold);
   font-size: var(--fz-main-text);
   line-height: 1.5;
 }
 
-#catBookInfo p span {
+.catBookInfo p span {
   color: var(--clr-secondary-200);
   font-family: var(--ff-body-regular);
 }
 
-#catBookInfo button {
+.catBookInfo button {
   outline: none;
   border: none;
   font-size: var(--fz-main-text);
   font-family: var(--ff-body-regular);
 }
 
-#catBookCancel {
+.catBookCancel {
   background-color: transparent;
   color: var(--clr-secondary-400);
 }
 
-#catBookCancel:hover {
+.catBookCancel:hover {
   color: var(--clr-secondary-500);
 }
 
-#catBookSubmit {
+.catBookSubmit {
   background-color: var(--clr-secondary-100);
   color: var(--clr-primary-dark);
   border-radius: 0.5rem;
 }
 
-#catBookSubmit:hover {
+.catBookSubmit:hover {
   background-color: var(--clr-secondary-300);
-}
-
-.btn-modal {
-  padding: 10px 20px;
-  display: block;
-  margin: 100px auto 0;
-  font-size: 18px;
-}
-
-.modal,
-.overlay {
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  position: fixed;
-}
-
-.overlay {
-  background: rgba(49, 49, 49, 0.8);
-}
-.modalContent {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  line-height: 1.4;
-  background: #f1f1f1;
-  padding: 14px 28px;
-  border-radius: 3px;
-  max-width: 600px;
-  min-width: 300px;
-}
-
-.close-modal {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 5px 7px;
 }
