@@ -15,7 +15,7 @@
 .private-layout-login__content {
   color: var(--clr-primary-dark);
   z-index: 5;
-  margin-top: -5rem;
+  margin-top: -10rem;
 }
 
 .private-layout-login__content h1 {
@@ -25,7 +25,7 @@
 
 .private-layout-login__content h2 {
   font-family: var(--ff-body-bold);
-  font-size: var(--fz-main-p);
+  font-size: var(--fz-main-h1);
 }
 
 .private-layout-login__content a {

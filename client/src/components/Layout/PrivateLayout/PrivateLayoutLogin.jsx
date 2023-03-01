@@ -61,17 +61,25 @@ const PrivateLayoutLogin = () => {
         </svg>
       </div>
       <div className="private-layout-login__content row d-flex flex-column justify-content-center align-items-center text-center">
-        <div className="col-10">
-          <h2 className="mb-4">Oops.</h2>
+        <div className="col-12">
+          <h2 className="mb-5">Oops.</h2>
           <h1 className="mb-5">
-            You are trying to access a page you don't have access to.
+            You are trying to access a <br /> page you don't have access to.
           </h1>
           <div className="mb-3">
-            <button className="cta-dark m-3 rounded-pill px-4 py-3">
+            <button
+              className="cta-dark m-3 rounded-pill px-4 py-3"
+              data-bs-toggle="modal"
+              data-bs-target="#signUpModal"
+            >
               Log in
             </button>
             <span>or</span>
-            <button className="cta-dark m-3 rounded-pill px-4 py-3">
+            <button
+              className="cta-dark m-3 rounded-pill px-4 py-3"
+              data-bs-toggle="modal"
+              data-bs-target="#signUpModal"
+            >
               Sign Up
             </button>
           </div>
