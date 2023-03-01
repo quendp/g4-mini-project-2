@@ -15,11 +15,8 @@
     "chart.js": "^4.2.0",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
-<<<<<<< HEAD
     "react-countup": "^6.4.1",
     "react-intersection-observer": "^9.4.3",
-=======
->>>>>>> 25679d5 (#17-1 Create Component and Sections of Contact Page)
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.0",
     "react-table": "^7.8.0"
