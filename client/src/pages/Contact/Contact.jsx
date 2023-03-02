@@ -1,13 +1,12 @@
-import React from 'react';
-import './Contact.css';
-import ContactHeading from './ContactHeading';
-import ContactDetails from './ContactDetails';
-import ContactForm from './ContactForm';
+import React from "react";
+import "./Contact.css";
+import ContactHeading from "./ContactHeading";
+import ContactDetails from "./ContactDetails";
+import ContactForm from "./ContactForm";
+import SinglePage from "../../components/SinglePage/SinglePage";
 
 const Contact = () => {
-
-
-    /*
+  /*
 
     Feedback - Feb/23/2023 - Quen DP 
     
@@ -36,21 +35,22 @@ const Contact = () => {
     
     */
 
-  
   return (
-    <div className='contact-container'>
-      <div className='contact-heading'>
-        <ContactHeading/>
-      </div>
-      <div className='contact-body'>
-        <div className='contact-container__details details'>
-          <ContactDetails/>
+    <SinglePage>
+      <div className="contact-container">
+        <div className="contact-heading">
+          <ContactHeading />
         </div>
-        <div className='contact-container__form form'>
-          <ContactForm/>
+        <div className="contact-body">
+          <div className="contact-container__details details">
+            <ContactDetails />
+          </div>
+          <div className="contact-container__form form">
+            <ContactForm />
+          </div>
         </div>
       </div>
-    </div>
+    </SinglePage>
   );
 };
 

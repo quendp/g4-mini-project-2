@@ -1,17 +1,3 @@
-.private-layout-login__container {
-  background-color: rgb(19, 159, 214);
-}
-
-.private-layout-login__top {
-  top: 0vw;
-  height: auto;
-  transform: rotate(180deg);
-}
-
-.private-layout-login__bottom {
-  bottom: 0;
-}
-
 .private-layout-login__content {
   color: var(--clr-primary-dark);
   z-index: 5;
@@ -47,41 +33,8 @@
   display: block;
 }
 
-@media (min-width: 576px) {
-  .private-layout-login__top {
-    top: -10vw;
-  }
-  .private-layout-login__bottom {
-    bottom: -10vw;
-  }
-}
-
-@media (min-width: 768px) {
-  .private-layout-login__top {
-    top: -15vw;
-  }
-  .private-layout-login__bottom {
-    bottom: -15vw;
-  }
-}
-
 @media (min-width: 992px) {
-  .private-layout-login__top {
-    top: -20vw;
-  }
-  .private-layout-login__bottom {
-    bottom: -20vw;
-  }
   .private-layout-login__content span {
     display: inline-block;
-  }
-}
-
-@media (min-width: 1200px) {
-  .private-layout-login__top {
-    top: -25vw;
-  }
-  .private-layout-login__bottom {
-    bottom: -25vw;
   }
 }

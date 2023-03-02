@@ -59,7 +59,10 @@ const Categories = () => {
           currentCategory={currentCategory}
           currentDestination={currentDestination}
         />
-        <CategoriesDetails currentDestination={currentDestination} />
+        <CategoriesDetails
+          currentCategory={currentCategory}
+          currentDestination={currentDestination}
+        />
       </div>
     </main>
   );

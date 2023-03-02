@@ -120,8 +120,7 @@ const categoriesInfo = [
       },
       {
         id: 6,
-        destination:
-          "Cultural Center of the Philippines Complex Shows in Pasay City",
+        destination: "Cultural Center of the Philippines in Pasay City",
         path: "cultural-center-of-the-philippines",
         destinationImage: ccp,
         details:
