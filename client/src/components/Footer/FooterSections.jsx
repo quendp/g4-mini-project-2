@@ -110,27 +110,27 @@ const FooterSections = ({ currentTheme }) => {
                 <h3 className="footer-about__title mb-4 pt-5">Category</h3>
                 <ul className="px-3">
                   <li className="p-0">
-                    <Link to="/categories/cosmopolitan-lights">
+                    <Link to="/categories/cosmopolitan-lights/star-city">
                       Cosmopolitan Lights
                     </Link>
                   </li>
                   <li className="p-0">
-                    <Link to="/categories/dive-under-water">
+                    <Link to="/categories/dive-under-water/bantayan-island">
                       Dive Under Water
                     </Link>
                   </li>
                   <li className="p-0">
-                    <Link to="/categories/explore-the-summit">
+                    <Link to="/categories/explore-the-summit/mt-apo">
                       Explore the Summit
                     </Link>
                   </li>
                   <li className="p-0">
-                    <Link to="/categories/look-back-in-history">
+                    <Link to="/categories/look-back-in-history/calle-crisologo">
                       Look Back in History
                     </Link>
                   </li>
                   <li className="p-0">
-                    <Link to="/categories/nature-and-culture">
+                    <Link to="/categories/nature-and-culture/chocolate-hills">
                       Nature and Culture
                     </Link>
                   </li>
