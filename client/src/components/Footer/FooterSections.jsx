@@ -4,7 +4,7 @@ import FooterSearch from "./FooterSearch";
 import { Link } from "react-router-dom";
 import UserAuthContext from "../../context/UserAuthentication/UserAuthentication";
 
-const FooterSections = () => {
+const FooterSections = ({ currentTheme }) => {
   const userData = useContext(UserAuthContext);
 
   return (
@@ -12,8 +12,13 @@ const FooterSections = () => {
       <div className="row m-0 p-0">
         <div className="col-12 col-xl-5 m-0 px-0 pt-5">
           <div className="footer-section-mid__info footer-section__top px-1 py-4 p-sm-4 p-md-5 text-center">
-            <h2 className="footer-section-mid-info__title mb-3">LAKBAY</h2>
-            <FooterSearch />
+            <h2
+              className="footer-section-mid-info__title mb-3"
+              style={{ color: currentTheme }}
+            >
+              LAKBAY
+            </h2>
+            <FooterSearch currentTheme={currentTheme} />
             <div className="footer-section-mid-info__details text-break py-3">
               <p>18th Floor, W Fifth, 5th Avenue, Taguig</p>
               <p>(+63 65) 888-888</p>
@@ -22,22 +27,34 @@ const FooterSections = () => {
             <div className="footer-section-mid-info__social w-100">
               <ul className="d-flex justify-content-center p-0">
                 <li className="p-0 mx-3">
-                  <a href="https://www.facebook.com">
+                  <a
+                    href="https://www.facebook.com"
+                    style={{ color: currentTheme }}
+                  >
                     <i className="fa-brands fa-facebook"></i>
                   </a>
                 </li>
                 <li className="p-0 mx-3">
-                  <a href="https://www.twitter.com">
+                  <a
+                    href="https://www.twitter.com"
+                    style={{ color: currentTheme }}
+                  >
                     <i className="fa-brands fa-twitter"></i>
                   </a>
                 </li>
                 <li className="p-0 mx-3">
-                  <a href="https://www.instagram.com">
+                  <a
+                    href="https://www.instagram.com"
+                    style={{ color: currentTheme }}
+                  >
                     <i className="fa-brands fa-instagram"></i>
                   </a>
                 </li>
                 <li className="p-0 mx-3">
-                  <a href="https://www.tiktok.com">
+                  <a
+                    href="https://www.tiktok.com"
+                    style={{ color: currentTheme }}
+                  >
                     <i className="fa-brands fa-tiktok"></i>
                   </a>
                 </li>

@@ -1,8 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Categories.module.css";
 import { categoriesInfo } from "../../Data/CategoriesMockData";
+import { useOutletContext, useParams } from "react-router-dom";
 
 const Categories = () => {
+  const changeThemeHandler = useOutletContext();
+
+  const { category } = useParams();
+
+  useEffect(() => {
+    changeThemeHandler(
+      categoriesInfo.find((cat) => cat.categoryPath === category).accentLight
+    );
+  }, [category]);
+
   const [modal, setModal] = useState(false);
 
   const toggleModal = () => {

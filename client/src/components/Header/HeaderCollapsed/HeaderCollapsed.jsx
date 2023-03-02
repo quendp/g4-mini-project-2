@@ -72,7 +72,15 @@ const HeaderCollapsed = (props) => {
         </Link>
       </div>
       <div className={`${styles.title} position-relative col-6`}>
-        <span className="position-absolute top-50 start-50"> LAKBAY </span>
+        <span
+          className="position-absolute top-50 start-50"
+          style={{
+            color: props.currentTheme,
+          }}
+        >
+          {" "}
+          LAKBAY{" "}
+        </span>
         <h2 className="position-absolute top-50 start-50 w-100 text-center text-uppercase">
           Exploring The Philippines and Creating Stories
         </h2>

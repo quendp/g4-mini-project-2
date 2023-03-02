@@ -15,10 +15,6 @@
     -5px -5px 10px var(--clr-primary-dark-400);
 }
 
-.footer-section__top h2 > span {
-  color: var(--clr-accent-lights-100);
-}
-
 .footer-section-top__text {
   color: var(--clr-secondary-300);
   font-family: var(--ff-body-light);
@@ -27,7 +23,6 @@
 
 .cta-dark.footer-talk__btn {
   color: var(--clr-primary-dark);
-  background-color: var(--clr-accent-lights-100);
   box-shadow: 3px 3px 10px var(--clr-primary-dark);
   font-family: var(--ff-body-regular);
   font-size: var(--fz-main-text);
@@ -35,7 +30,7 @@
 
 .cta-dark.footer-talk__btn:hover,
 .cta-dark.footer-talk__btn:active {
-  background-color: var(--clr-accent-lights);
+  opacity: 0.7;
   box-shadow: 0px 0px 5px var(--clr-primary-dark);
 }
 
