@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./PrivateLayoutLogin.css";
 import cloudsImg from "../../../assets/images/clouds.png";
 import { Link } from "react-router-dom";
+import UserAuthContext from "../../../context/UserAuthentication/UserAuthentication";
 
 const PrivateLayoutLogin = () => {
+  const userData = useContext(UserAuthContext);
+
+  const openLoginModal = () => {
+    userData.handleLogInMode();
+  };
+
+  const openSignUpModal = () => {
+    userData.handleSignUpMode();
+  };
+
   return (
     <section className="private-layout-login__container container-fluid vh-100 overflow-hidden position-relative p-0 m-0 d-flex flex-column justify-content-center align-items-center">
       <img
@@ -64,13 +75,15 @@ const PrivateLayoutLogin = () => {
         <div className="col-12">
           <h2 className="mb-5">Oops.</h2>
           <h1 className="mb-5">
-            You are trying to access a <br /> page you don't have access to.
+            You are trying to access a page
+            <br /> you currently have no authorization to.
           </h1>
           <div className="mb-3">
             <button
               className="cta-dark m-3 rounded-pill px-4 py-3"
               data-bs-toggle="modal"
               data-bs-target="#signUpModal"
+              onClick={openLoginModal}
             >
               Log in
             </button>
@@ -79,6 +92,7 @@ const PrivateLayoutLogin = () => {
               className="cta-dark m-3 rounded-pill px-4 py-3"
               data-bs-toggle="modal"
               data-bs-target="#signUpModal"
+              onClick={openSignUpModal}
             >
               Sign Up
             </button>

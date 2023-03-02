@@ -56,6 +56,10 @@ const HeaderCollapsed = (props) => {
     }
   };
 
+  const openLoginModal = () => {
+    userData.handleLogInMode();
+  };
+
   return (
     <div className={`row navbar px-0 px-sm-2 px-md-2 px-lg-5`}>
       <div className="col-3">
@@ -81,8 +85,9 @@ const HeaderCollapsed = (props) => {
           className={`${styles.signupBtn} btn me-4 px-4 py-2 d-none d-md-block position-relative overflow-hidden rounded-pill`}
           data-bs-toggle="modal"
           data-bs-target="#signUpModal"
+          onClick={openLoginModal}
         >
-          {userData.token ? "LOG OUT" : "LOG IN"}
+          {userData.logInToken.token ? "LOG OUT" : "LOG IN"}
         </button>
         <div
           className={`${styles.hamBtn} position-relative`}

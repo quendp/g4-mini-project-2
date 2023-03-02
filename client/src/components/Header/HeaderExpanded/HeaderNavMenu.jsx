@@ -25,7 +25,7 @@ const HeaderNavMenu = ({ onCloseHeader }) => {
     {
       id: 4,
       page: "Dashboard",
-      path: `/${userData.username}`,
+      path: `/${userData.logInToken.username}`,
     },
   ];
 

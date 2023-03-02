@@ -13,16 +13,16 @@ const PrivateLayout = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!userData.token) {
+    if (!userData.logInToken.token) {
       setPrivateContent(<PrivateLayoutLogin />);
-    } else if (username !== userData.username) {
+    } else if (username !== userData.logInToken.username) {
       console.log(username);
       navigate("/");
-    } else if (userData.role === "user") {
+    } else if (userData.logInToken.role === "user") {
       setPrivateContent(<User />);
-    } else if (userData.role === "agent") {
+    } else if (userData.logInToken.role === "agent") {
       setPrivateContent(<Agent />);
-    } else if (userData.role === "admin") {
+    } else if (userData.logInToken.role === "admin") {
       setPrivateContent(<Admin />);
     }
   }, []);

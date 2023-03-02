@@ -36,7 +36,7 @@
 }
 
 .private-layout-login__content a:hover {
-  color: var(--clr-primary-dark-500);
+  color: var(--clr-primary-dark-400);
 }
 
 .private-layout-login__content button {

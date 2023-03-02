@@ -1,10 +1,4 @@
-import React, {
-  createContext,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import React, { createContext, useEffect, useMemo, useState } from "react";
 import LogInForm from "./LogInForm/LogInForm";
 import LogOutForm from "./LogOutForm/LogOutForm";
 import SignUpForm from "./SignUpForm/SignUpForm";
@@ -14,25 +8,25 @@ const UserAuthContext = createContext({});
 export const UserAuthentication = ({ children }) => {
   // For development purposes remove in production
 
-  const MOCK_LOGIN = {
+  const MOCK_LOGGED_IN = {
     token: "sampleToken",
     username: "sample@username",
     role: "user",
   };
 
-  const MOCK_LOGOUT = {
+  const MOCK_LOGGED_OUT = {
     token: false,
     username: "login",
     role: false,
   };
 
-  console.log("Mock data log in : ", MOCK_LOGIN);
-  console.log("Mock data log out : ", MOCK_LOGOUT);
+  console.log("Mock data log in : ", MOCK_LOGGED_IN);
+  console.log("Mock data log out : ", MOCK_LOGGED_OUT);
 
   // For development purposes remove in production
 
   const [hasAccount, setHasAccount] = useState(true);
-  const [logInToken, setLogInToken] = useState(MOCK_LOGOUT);
+  const [logInToken, setLogInToken] = useState(MOCK_LOGGED_OUT);
 
   const handleChangeMode = () => {
     hasAccount === true ? setHasAccount(false) : setHasAccount(true);
@@ -60,7 +54,10 @@ export const UserAuthentication = ({ children }) => {
     myModal.hide();
   }, [logInToken]);
 
-  const userData = useMemo(() => logInToken, [logInToken]);
+  const userData = useMemo(
+    () => ({ logInToken, handleLogInMode, handleSignUpMode }),
+    [logInToken]
+  );
 
   return (
     <UserAuthContext.Provider value={userData}>
@@ -73,22 +70,24 @@ export const UserAuthentication = ({ children }) => {
       >
         <div
           className={`modal-dialog ${
-            !userData.token && !hasAccount ? "modal-lg" : "modal-md"
+            !userData.logInToken.token && !hasAccount ? "modal-lg" : "modal-md"
           } modal-dialog-centered`}
         >
-          {!userData.token && hasAccount && (
+          {!userData.logInToken.token && hasAccount && (
             <LogInForm
               handleChangeMode={handleChangeMode}
               submitHandler={submitHandler}
             />
           )}
-          {!userData.token && !hasAccount && (
+          {!userData.logInToken.token && !hasAccount && (
             <SignUpForm
               handleChangeMode={handleChangeMode}
               submitHandler={submitHandler}
             />
           )}
-          {userData.token && <LogOutForm submitHandler={submitHandler} />}
+          {userData.logInToken.token && (
+            <LogOutForm submitHandler={submitHandler} />
+          )}
         </div>
       </div>
       {children}

@@ -77,7 +77,9 @@ const FooterSections = () => {
                     <Link to="/contact">Contact Us</Link>
                   </li>
                   <li className="p-0">
-                    <Link to={`/${userData.username}`}>Dashboard</Link>
+                    <Link to={`/${userData.logInToken.username}`}>
+                      Dashboard
+                    </Link>
                   </li>
 
                   <li className="p-0">
