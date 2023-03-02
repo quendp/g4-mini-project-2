@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import Footer from "../../Footer/Footer";
 import Header from "../../Header/Header";
+import PageTransition from "../../PageTransition/PageTransition";
 
 /*
 
@@ -21,6 +22,7 @@ const PublicLayout = () => {
 
   return (
     <>
+      {/* <PageTransition /> */}
       <Header currentTheme={currentTheme} />
       <div className="body-wrapper m-0 p-0">
         <main>

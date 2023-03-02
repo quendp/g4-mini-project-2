@@ -1,130 +1,80 @@
-import React, { useEffect, useState } from "react";
-import styles from "./Categories.module.css";
+import React, { useEffect, useRef, useState } from "react";
+import "./Categories.css";
 import { categoriesInfo } from "../../Data/CategoriesMockData";
 import { useOutletContext, useParams } from "react-router-dom";
 
 const Categories = () => {
   const changeThemeHandler = useOutletContext();
+  const { category, destination } = useParams();
 
-  const { category } = useParams();
+  const chosenCategory = useRef(categoriesInfo[0]);
+  const chosenDestination = useRef(chosenCategory.current.destinations[0]);
+
+  const [currentCategory, setCurrentCategory] = useState(
+    chosenCategory.current
+  );
+  const [currentDestination, setCurrentDestination] = useState(
+    chosenDestination.current
+  );
 
   useEffect(() => {
-    changeThemeHandler(
-      categoriesInfo.find((cat) => cat.categoryPath === category).accentLight
-    );
-  }, [category]);
+    if (!category) {
+      chosenCategory.current = categoriesInfo[0];
+    } else {
+      chosenCategory.current = categoriesInfo.find(
+        (cat) => cat.categoryPath === category
+      );
+    }
+    if (!destination) {
+      chosenDestination.current = chosenCategory.current.destinations[0];
+    } else {
+      chosenDestination.current = chosenCategory.current.destinations.find(
+        (dest) => dest.path === destination
+      );
+    }
+    changeThemeHandler(chosenCategory.current.accentLight);
+  }, [category, destination]);
 
-  const [modal, setModal] = useState(false);
-
-  const toggleModal = () => {
-    setModal(!modal);
-  };
-
-  if (modal) {
-    document.body.classList.add("catBookInfo");
-  } else {
-    document.body.classList.remove("catBookInfo");
-  }
-
-  const categoryItem = categoriesInfo.find((item) => item.categoryId === 1);
-  const destination = categoryItem.destinations;
+  useEffect(() => {
+    setCurrentCategory(chosenCategory.current);
+    setCurrentDestination(chosenDestination.current);
+  }, [chosenCategory.current, chosenDestination.current]);
 
   return (
-    <main className="container-fluid vh-100 m-0 p-0">
-      <section
-        className={`${styles.catHeroSection} m-0 vh-100`}
-        id="mHeroSection"
-      >
-        <video
-          className={`${styles.catHeroBg} m-0 p-0 position-fixed top-0 start-0 vh-100 w-100`}
-          id="mHeroBg"
-          poster={categoryItem.poster}
-          muted
-          loop
-          autoPlay
-        >
-          <source src={categoryItem.videoBg} />
-        </video>
-        <div className="container-fluid h-100 m-0 p-0 d-flex flex-column justify-content-evenly align-items-center">
-          <div className="row m-0 p-0 justify-content-center align-items-center">
-            <h1 className={`${styles.catHeroTitle} text-center`}>
-              {categoryItem.category}
+    <main
+      className="categories-page__wrapper container-fluid vh-100 vw-100 overflow-hidden m-0 position-relative debug-all"
+      style={{
+        backgroundImage: `url(${currentDestination.destinationImage})`,
+      }}
+    >
+      <div
+        className="categories-page__overlay position-absolute w-100 h-100 top-0 start-0"
+        style={{
+          backgroundColor: "transparent",
+          background: `linear-gradient(90deg, var(--clr-primary-dark) 0%, rgba(0, 0, 0, 0.5) 100%)`,
+        }}
+      ></div>
+      <div className="categories-page__content position-absolute">
+        <section className="categories-page__title row m-0 p-5">
+          <div className="col-12 m-0 p-0">
+            <h3
+              className="categories-page-title__category lh-1 mx-0 mb-0 text-center text-md-start"
+              style={{
+                color: currentCategory.accentLight,
+                textShadow: `2px 2px 5px rgba(0,0,0,0.6), 0 0 25px ${currentCategory.accent} `,
+              }}
+            >
+              {currentCategory.category}
+            </h3>
+            <h1 className="categories-page-title__destination lh-1 my-0 text-center text-md-start">
+              {currentDestination.destination}
             </h1>
           </div>
-          <div className="row m-0 p-0 justify-content-center">
-            <div className="col-10 col-xl-7 m-0 p-0 h-100 position-relative overflow-hidden">
-              <div
-                className={`${styles.catHeroImageWrapper} row m-0 p-0 justify-content-center h-100`}
-              >
-                {destination.map((destinationItem) => (
-                  <div
-                    type="button"
-                    onClick={toggleModal}
-                    key={destinationItem.id}
-                    className={`${styles.catImageHolder} col-6 col-sm-4 p-2 p-md-3 m-0`}
-                  >
-                    <img
-                      src={destinationItem.destinationImage}
-                      alt={destinationItem.destination}
-                    />
-                    {modal && (
-                      <div
-                        onClick={toggleModal}
-                        className="position-absolute top-0 start-0 h-100 w-100 p-3 p-md-4 p-lg-5"
-                      >
-                        <div
-                          className={`${styles.catBookInfo}  d-flex h-100 w-100 flex-column justify-content-between align-items-start`}
-                        >
-                          <div key={destinationItem.id}>
-                            <p className="mb-1 mb-sm-3 mb-md-4">
-                              DESTINATION :
-                              <span
-                                className={`${styles.catBookDestination} ms-2`}
-                              >
-                                {destinationItem.destination}
-                              </span>
-                            </p>
-                            <p className="mb-1 mb-sm-3 mb-md-4">
-                              TRIP DETAILS :
-                              <span className={`${styles.catBookDetails} ms-2`}>
-                                {destinationItem.details}
-                              </span>
-                            </p>
-                            <p className="mb-1 mb-sm-3 mb-md-4">
-                              DURATION :
-                              <span
-                                className={`${styles.catBookDuration} ms-2`}
-                              >
-                                {destinationItem.duration}
-                              </span>
-                            </p>
-                            <p>
-                              PRICE :
-                              <span className={`${styles.catBookPrice} ms-2`}>
-                                {destinationItem.price}
-                              </span>
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="row m-0 p-0 justify-content-center align-items-center">
-            <p
-              className="text-uppercase text-center"
-              id={`${styles.catHeroChosen}`}
-              styles={categoryItem.accentLight}
-            >
-              CHOOSE A MAIN DESTINATION
-            </p>
-          </div>
-        </div>
-      </section>
+        </section>
+        <section className="categories-page__details row m-0 p-5">
+          <div className="col-12 col-md-6"></div>
+        </section>
+      </div>
     </main>
   );
 };
