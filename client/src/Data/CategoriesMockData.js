@@ -146,7 +146,7 @@ const categoriesInfo = [
     accentLight: "var(--clr-accent-water-100)",
     destinations: [
       {
-        id: 1,
+        id: 7,
         destination: "Bantayan Island in Cebu",
         path: "bantayan-island",
         destinationImage: bantayan,
@@ -156,7 +156,7 @@ const categoriesInfo = [
         price: "Php 12,000.00 / person",
       },
       {
-        id: 2,
+        id: 8,
         destination: "Boracay Beach in Aklan",
         path: "boracay",
         destinationImage: boracay,
@@ -166,7 +166,7 @@ const categoriesInfo = [
         price: "Php 25,500.00 / person",
       },
       {
-        id: 3,
+        id: 9,
         destination: "El Nido in Palawan",
         path: "el-nido",
         destinationImage: waterImage,
@@ -176,7 +176,7 @@ const categoriesInfo = [
         price: "Php 28,500.00 / person",
       },
       {
-        id: 4,
+        id: 10,
         destination: "Palaui Island in Santa Ana",
         path: "palaui-island",
         destinationImage: palaui,
@@ -186,7 +186,7 @@ const categoriesInfo = [
         price: "Php 15,000.00 / person",
       },
       {
-        id: 5,
+        id: 11,
         destination: "Panglao Island in Bohol",
         path: "panglao-island",
         destinationImage: panglao,
@@ -196,7 +196,7 @@ const categoriesInfo = [
         price: "Php 17,500.00 / person",
       },
       {
-        id: 6,
+        id: 12,
         destination: "Siargao Island",
         path: "siargao-island",
         destinationImage: siargao,
@@ -223,7 +223,7 @@ const categoriesInfo = [
     accentLight: "var(--clr-accent-summit-100)",
     destinations: [
       {
-        id: 1,
+        id: 13,
         destination: "Mt. Apo in Davao City",
         path: "mt-apo",
         destinationImage: apo,
@@ -233,7 +233,7 @@ const categoriesInfo = [
         price: "Php 15,500.00 / person",
       },
       {
-        id: 2,
+        id: 14,
         destination: "Guiting-Guiting National Park in Sibuyan Island",
         path: "guiting-guiting",
         destinationImage: guiting,
@@ -243,7 +243,7 @@ const categoriesInfo = [
         price: "Php 12,500.00 / person",
       },
       {
-        id: 3,
+        id: 15,
         destination: "Mt. Pulag in Benguet",
         path: "mt-pulag",
         destinationImage: summitImage,
@@ -253,7 +253,7 @@ const categoriesInfo = [
         price: "Php 13,500.00 / person",
       },
       {
-        id: 4,
+        id: 16,
         destination: "Mt. Pinatubo in Zambales",
         path: "mt-pinatubo",
         destinationImage: pinatubo,
@@ -263,7 +263,7 @@ const categoriesInfo = [
         price: "Php 16,000.00 / person",
       },
       {
-        id: 5,
+        id: 17,
         destination: "Mt. Ugo in Nueva Viscaya",
         path: "mt-ugo",
         destinationImage: ugo,
@@ -273,7 +273,7 @@ const categoriesInfo = [
         price: "Php 15,500.00 / person",
       },
       {
-        id: 6,
+        id: 18,
         destination: "Mt. Ulap in Itogon, Benguet",
         path: "mt-ulap",
         destinationImage: ulap,
@@ -300,7 +300,7 @@ const categoriesInfo = [
     accentLight: "var(--clr-accent-history-100)",
     destinations: [
       {
-        id: 1,
+        id: 19,
         destination: "Calle Crisologo in Vigan, Ilocos Sur",
         path: "calle-crisologo",
         destinationImage: historyImage,
@@ -310,7 +310,7 @@ const categoriesInfo = [
         price: "Php 5,500.00 / person",
       },
       {
-        id: 2,
+        id: 20,
         destination: "Fort Santiago, Intramuros, Manila",
         path: "fort-santiago",
         destinationImage: fortSantiago,
@@ -320,7 +320,7 @@ const categoriesInfo = [
         price: "Php 3,500.00 / person",
       },
       {
-        id: 3,
+        id: 21,
         destination: "Magellan's Cross in Mactan, Cebu",
         path: "mactan",
         destinationImage: mactan,
@@ -330,7 +330,7 @@ const categoriesInfo = [
         price: "Php 5,500.00 / person",
       },
       {
-        id: 4,
+        id: 22,
         destination: "National Museum of Natural History in Manila",
         path: "national-museum",
         destinationImage: museum,
@@ -340,7 +340,7 @@ const categoriesInfo = [
         price: "Php 3,000.00 / person",
       },
       {
-        id: 5,
+        id: 23,
         destination: "Rizal park in Manila",
         path: "rizal-park",
         destinationImage: rizal,
@@ -350,7 +350,7 @@ const categoriesInfo = [
         price: "Php 2,000.00 / person",
       },
       {
-        id: 6,
+        id: 24,
         destination: "Rizal Shrine in Dapitan, Zamboanga del Norte",
         path: "rizal-shrine",
         destinationImage: rizalShrine,
@@ -377,7 +377,7 @@ const categoriesInfo = [
     accentLight: "var(--clr-accent-culture-100)",
     destinations: [
       {
-        id: 1,
+        id: 25,
         destination: "Chocolate Hills in Bohol",
         path: "chocolate-hills",
         destinationImage: bohol,
@@ -387,7 +387,7 @@ const categoriesInfo = [
         price: "Php 12,500.00 / person",
       },
       {
-        id: 2,
+        id: 26,
         destination: "Barracuda Lake in Coron Island, Palawan Province",
         path: "barracuda-lake",
         destinationImage: coron,
@@ -397,7 +397,7 @@ const categoriesInfo = [
         price: "Php 11,500.00 / person",
       },
       {
-        id: 3,
+        id: 27,
         destination: "Banaue Rice Terraces in Ifugao",
         path: "banaue-rice-terraces",
         destinationImage: natureImage,
@@ -407,7 +407,7 @@ const categoriesInfo = [
         price: "Php 10,500.00 / person",
       },
       {
-        id: 4,
+        id: 28,
         destination: "Puerto Galera in Mindoro oriental",
         path: "puerto-galera",
         destinationImage: puerto,
@@ -417,7 +417,7 @@ const categoriesInfo = [
         price: "Php 16,000.00 / person",
       },
       {
-        id: 5,
+        id: 29,
         destination: "The City Tagaytay in Cavite",
         path: "tagaytay",
         destinationImage: tagaytay,
@@ -427,7 +427,7 @@ const categoriesInfo = [
         price: "Php 9,500.00 / person",
       },
       {
-        id: 6,
+        id: 30,
         destination: "Masungi Georeserve in Tanay, Rizal",
         path: "masungi-georeserve",
         destinationImage: tanay,

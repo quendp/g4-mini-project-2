@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Categories.css";
 import { categoriesInfo } from "../../Data/CategoriesMockData";
 import { useOutletContext, useParams } from "react-router-dom";
+import packageData from "../../Data/PackagesMockData.json";
 import CategoriesTitle from "./CategoriesTitle";
 import CategoriesDetails from "./CategoriesDetails";
 import CategoriesMenu from "./CategoriesMenu";
@@ -18,6 +19,10 @@ const Categories = () => {
   );
   const [currentDestination, setCurrentDestination] = useState(
     chosenDestination.current
+  );
+
+  const destinationPackages = packageData.filter(
+    (cardPackages) => cardPackages.destination_id === currentDestination.id
   );
 
   useEffect(() => {
@@ -62,6 +67,7 @@ const Categories = () => {
         <CategoriesDetails
           currentCategory={currentCategory}
           currentDestination={currentDestination}
+          destinationPackages={destinationPackages}
         />
       </div>
     </main>
