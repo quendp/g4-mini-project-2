@@ -138,6 +138,7 @@
   outline: none;
   border: none;
   box-shadow: 1px 1px 5px var(--clr-primary-glass);
+  border-radius: 0.7rem;
 }
 
 .categories-page-card__button button:hover {

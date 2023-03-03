@@ -6,6 +6,7 @@ const CategoriesDetails = ({
   currentCategory,
   currentDestination,
   destinationPackages,
+  chosenPackageHandler,
 }) => {
   const [descriptionRef, descriptionInView] = useInView({ threshold: 0.3 });
 
@@ -25,6 +26,7 @@ const CategoriesDetails = ({
         currentCategory={currentCategory}
         currentDestination={currentDestination}
         destinationPackages={destinationPackages}
+        chosenPackageHandler={chosenPackageHandler}
       />
     </section>
   );

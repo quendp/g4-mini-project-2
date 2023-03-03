@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import UserAuthContext from "../../context/UserAuthentication/UserAuthentication";
 
 const CategoriesCardUI = ({
   isPackageClicked,
@@ -6,9 +7,21 @@ const CategoriesCardUI = ({
   onClickCard,
   currentCategory,
   packageType,
+  chosenPackageHandler,
 }) => {
-  const onClicBookHandler = () => {
-    console.log(packageData);
+  const userData = useContext(UserAuthContext);
+
+  const onClickBookHandler = () => {
+    if (!userData.logInToken.token) {
+      const signUpModalInst = document.getElementById("signUpModal");
+      const myModal = bootstrap.Modal.getOrCreateInstance(signUpModalInst);
+      myModal.show();
+    } else {
+      const bookingModalInst = document.getElementById("bookingModal");
+      const myModal = bootstrap.Modal.getOrCreateInstance(bookingModalInst);
+      myModal.show();
+    }
+    chosenPackageHandler(packageData);
   };
   return (
     <div
@@ -57,8 +70,8 @@ const CategoriesCardUI = ({
           </p>
           <div className="categories-page-card__button w-100 pt-5 d-flex justify-content-end">
             <button
-              className="rounded-pill px-4 px-xl-5 py-2 text-uppercase"
-              onClick={onClicBookHandler}
+              className="px-4 px-xl-5 py-2 text-uppercase"
+              onClick={onClickBookHandler}
               style={{ backgroundColor: currentCategory.accentLight }}
             >
               Book this tour

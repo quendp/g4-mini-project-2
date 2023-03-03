@@ -6,6 +6,7 @@ const CategoriesCard = ({
   currentCategory,
   currentDestination,
   destinationPackages,
+  chosenPackageHandler,
 }) => {
   const [cardsRef, cardsInView] = useInView({ threshold: 0 });
 
@@ -61,6 +62,7 @@ const CategoriesCard = ({
         onClickCard={onClickBasic}
         currentCategory={currentCategory}
         packageType={"basic package"}
+        chosenPackageHandler={chosenPackageHandler}
       />
       <CategoriesCardUI
         isPackageClicked={isStandardClicked}
@@ -68,6 +70,7 @@ const CategoriesCard = ({
         onClickCard={onClickStandard}
         currentCategory={currentCategory}
         packageType={"standard package"}
+        chosenPackageHandler={chosenPackageHandler}
       />
       <CategoriesCardUI
         isPackageClicked={isPremiumClicked}
@@ -75,6 +78,7 @@ const CategoriesCard = ({
         onClickCard={onClickPremium}
         currentCategory={currentCategory}
         packageType={"premium package"}
+        chosenPackageHandler={chosenPackageHandler}
       />
     </div>
   );

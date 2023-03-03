@@ -1,20 +1,8 @@
-.about-container {
+.about-page__container {
   z-index: 5;
-  text-align: center;
-  padding: 50px;
-  /* background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.3) 0%,
-    rgba(255, 255, 255, 0.1) 100%
-  ); */
 }
 
-h1 {
-  font-size: 36px;
-  margin-bottom: 20px;
-}
-
-p {
-  font-size: 18px;
-  margin-bottom: 20px;
+.about-page__container h1 {
+  font-family: var(--ff-heading-primary-2);
+  font-size: var(--fz-main-h1);
 }
