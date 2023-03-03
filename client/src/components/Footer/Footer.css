@@ -16,7 +16,7 @@
 }
 
 .footer-section-top__text {
-  color: var(--clr-secondary-300);
+  color: var(--clr-secondary-100);
   font-family: var(--ff-body-light);
   font-size: var(--fz-main-text);
 }
@@ -37,7 +37,7 @@
 .footer-section__bottom,
 .footer-section__bottom a {
   font-family: var(--ff-body-light);
-  color: var(--clr-secondary-300);
+  color: var(--clr-secondary-100);
   font-size: var(--fz-main-small);
   background-color: var(--clr-secondary-700);
   text-decoration: none;

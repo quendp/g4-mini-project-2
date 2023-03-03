@@ -114,7 +114,7 @@
 }
 
 .categories-page-card__details {
-  background-color: var(--clr-secondary-300);
+  background-color: var(--clr-secondary-100);
   width: 90%;
   border-radius: 1rem;
   box-shadow: 3px 3px 10px var(--clr-primary-glass);

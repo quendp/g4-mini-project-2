@@ -11,7 +11,7 @@ export const UserAuthentication = ({ children }) => {
   const MOCK_LOGGED_IN = {
     token: "sampleToken",
     username: "sample@username",
-    role: "agent",
+    role: "user",
   };
 
   const MOCK_LOGGED_OUT = {
