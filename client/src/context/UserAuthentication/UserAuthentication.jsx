@@ -28,7 +28,7 @@ export const UserAuthentication = ({ children }) => {
   // For development purposes remove in production
 
   const [hasAccount, setHasAccount] = useState(true);
-  const [logInToken, setLogInToken] = useState(MOCK_LOGGED_IN);
+  const [logInToken, setLogInToken] = useState("");
 
   const handleChangeMode = () => {
     hasAccount === true ? setHasAccount(false) : setHasAccount(true);
@@ -42,12 +42,23 @@ export const UserAuthentication = ({ children }) => {
     setHasAccount(false);
   };
 
-  const submitHandler = (jwtToken, username, role) => {
-    setLogInToken({ token: jwtToken, username: username, role: role });
+  const submitHandler = (jwtToken, username) => {
+    let userRole;
+    if (!jwtToken) {
+      userRole = "";
+    } else if (username == "admin_mark") {
+      userRole = "admin";
+    } else if (username == "agent_jane") {
+      userRole = "agent";
+    } else {
+      userRole = "user";
+    }
+
+    setLogInToken({ token: jwtToken, username: username, role: userRole });
 
     console.log("user logged in with token:", jwtToken);
     console.log("user logged in with username:", username);
-    console.log("user logged in with role:", role);
+    console.log("user logged in with role:", userRole);
   };
 
   useEffect(() => {
