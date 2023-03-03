@@ -30,7 +30,7 @@ const UserSidebar = ({ userData, changeComponentHandler, activeComponent }) => {
           onClick={() => changeComponentHandler("home")}
         >
           <p className="lh-1 p-0 m-0">
-            <i class="fa-solid fa-house me-2"></i> Home
+            <i className="fa-solid fa-house me-2"></i> Home
           </p>
         </div>
         <div
@@ -40,7 +40,7 @@ const UserSidebar = ({ userData, changeComponentHandler, activeComponent }) => {
           onClick={() => changeComponentHandler("bookings")}
         >
           <p className="lh-1 p-0 m-0">
-            <i class="fa-solid fa-book me-2"></i> Bookings
+            <i className="fa-solid fa-book me-2"></i> Bookings
           </p>
         </div>
         <div
@@ -50,7 +50,7 @@ const UserSidebar = ({ userData, changeComponentHandler, activeComponent }) => {
           onClick={() => changeComponentHandler("updates")}
         >
           <p className="lh-1 p-0 m-0">
-            <i class="fa-solid fa-clock me-2"></i> Updates
+            <i className="fa-solid fa-clock me-2"></i> Updates
           </p>
         </div>
       </div>

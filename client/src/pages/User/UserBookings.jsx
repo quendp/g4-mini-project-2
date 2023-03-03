@@ -11,7 +11,7 @@ const UserBookings = () => {
           </h2>
           <Link to="/categories/cosmopolitan-lights/star-city">
             <button className="user-page-bookings__button px-5 py-3">
-              Book Now <i class="m-0 ms-2 fa-solid fa-circle-plus"></i>
+              Book Now <i className="m-0 ms-2 fa-solid fa-circle-plus"></i>
             </button>
           </Link>
         </div>

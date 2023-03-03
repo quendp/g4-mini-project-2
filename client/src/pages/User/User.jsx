@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import { useParams } from "react-router-dom";
 import SinglePage from "../../components/SinglePage/SinglePage";
 import UserAuthContext from "../../context/UserAuthentication/UserAuthentication";
 import "./User.css";
@@ -10,7 +9,6 @@ import UserTopNavbar from "./UserTopNavbar";
 import UserUpdates from "./UserUpdates";
 
 const User = () => {
-  const { username } = useParams();
   const userData = useContext(UserAuthContext);
 
   const [activeComponent, setActiveComponent] = useState("home");

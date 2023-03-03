@@ -1,4 +1,5 @@
 import React from "react";
+import CountUp from "react-countup";
 
 const UserHome = () => {
   return (
@@ -6,19 +7,31 @@ const UserHome = () => {
       <div className="row m-0 px-5">
         <div className="col-4 px-4">
           <div className="user-page-home__card w-100 d-flex flex-column justify-content-center align-items-center p-3 py-4">
-            <h2 className="h2-dark">12</h2>
+            <h2 className="h2-dark">
+              <CountUp start={0} end={12} duration={1.5}>
+                {({ countUpRef }) => <span ref={countUpRef} />}
+              </CountUp>
+            </h2>
             <p>Destinations travelled</p>
           </div>
         </div>
         <div className="col-4 px-4">
           <div className="user-page-home__card w-100 d-flex flex-column justify-content-center align-items-center p-3 py-4">
-            <h2 className="h2-dark">4</h2>
+            <h2 className="h2-dark">
+              <CountUp start={0} end={10} duration={1.5}>
+                {({ countUpRef }) => <span ref={countUpRef} />}
+              </CountUp>
+            </h2>
             <p>Countries Visited</p>
           </div>
         </div>
         <div className="col-4 px-4">
           <div className="user-page-home__card w-100 d-flex flex-column justify-content-center align-items-center p-3 py-4">
-            <h2 className="h2-dark">25</h2>
+            <h2 className="h2-dark">
+              <CountUp start={0} end={25} duration={1.5}>
+                {({ countUpRef }) => <span ref={countUpRef} />}
+              </CountUp>
+            </h2>
             <p>Stories Shared</p>
           </div>
         </div>

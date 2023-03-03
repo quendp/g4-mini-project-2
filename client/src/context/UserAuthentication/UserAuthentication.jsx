@@ -20,8 +20,10 @@ export const UserAuthentication = ({ children }) => {
     role: false,
   };
 
-  console.log("Mock data log in : ", MOCK_LOGGED_IN);
-  console.log("Mock data log out : ", MOCK_LOGGED_OUT);
+  useEffect(() => {
+    console.log("Mock data log in : ", MOCK_LOGGED_IN);
+    console.log("Mock data log out : ", MOCK_LOGGED_OUT);
+  }, []);
 
   // For development purposes remove in production
 
