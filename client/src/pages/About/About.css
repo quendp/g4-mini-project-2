@@ -1,5 +1,6 @@
 .about-page__container {
   z-index: 5;
+  transition: opacity 400ms ease-in-out 200ms;
 }
 
 .about-page__container h1 {

@@ -1,17 +1,12 @@
-import React from 'react';
-import './ContactHeading.css';
+import React from "react";
+import "./ContactHeading.css";
 
 const ContactHeading = () => {
   return (
-    <div className='contact-heading__container'>
-      <div className='heading-logo'>
-        <img src="../../logo-svg/logo-outline-black.svg" alt="Lakbay Logo" />
-      </div>
-      <div className='brand-name'>
-        <p>LAKBAY</p>
-      </div>
+    <div className="contact-heading__container row px-0 px-md-3 px-lg-5">
+      <h1 className="text-center text-md-start px-0 px-md-5">Contact Us</h1>
     </div>
-  )
-}
+  );
+};
 
-export default ContactHeading
+export default ContactHeading;

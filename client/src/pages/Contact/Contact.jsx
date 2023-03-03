@@ -37,15 +37,13 @@ const Contact = () => {
 
   return (
     <SinglePage>
-      <div className="contact-container">
-        <div className="contact-heading">
-          <ContactHeading />
-        </div>
-        <div className="contact-body">
-          <div className="contact-container__details details">
+      <div className="contact-page__container container-fluid min-vh-100 pb-5 mb-5">
+        <ContactHeading />
+        <div className="row p-2 ps-md-3 ps-lg-5 justify-content-center align-items-start m-0">
+          <div className="col-12 col-md-6 p-2 p-md-5 m-0">
             <ContactDetails />
           </div>
-          <div className="contact-container__form form">
+          <div className="col-12 col-md-6 p-2 py-md-5 pe-md-3 pe-lg-5 m-0">
             <ContactForm />
           </div>
         </div>

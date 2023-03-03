@@ -5,21 +5,11 @@ import "./BookingForm.css";
 const BookingForm = ({ children, chosenPackage }) => {
   const [step, setStep] = useState(0);
 
-  const [isSubmitClicked, setIsSubmitClicked] = useState(false);
-  const [isNextClicked, setIsNextClicked] = useState(false);
-  const [errMsg, setErrMsg] = useState("");
-
   const [travelDate, setTravelDate] = useState("");
-  const [validtravelDate, setValidtravelDate] = useState();
-  const [travelDateClass, setTravelDateClass] = useState("");
 
   const [duration, setDuration] = useState("");
-  const [validDuration, setValidDuration] = useState(false);
-  const [durationClass, setDurationClass] = useState("");
 
   const [location, setLocation] = useState("");
-  const [validLocation, setValidLocation] = useState(false);
-  const [locationClass, setLocationClass] = useState("");
 
   const bookingData = {
     travel_date: travelDate,
@@ -29,7 +19,6 @@ const BookingForm = ({ children, chosenPackage }) => {
   };
   const onClickSubmit = (event) => {
     event.preventDefault();
-    setIsSubmitClicked(true);
     console.log(bookingData);
     const bookingModalInst = document.getElementById("bookingModal");
     const myModal = bootstrap.Modal.getOrCreateInstance(bookingModalInst);
@@ -37,7 +26,6 @@ const BookingForm = ({ children, chosenPackage }) => {
   };
 
   const onClickBtnRight = () => {
-    setIsNextClicked(true);
     setTimeout(() => {
       setStep(1);
     }, 100);
@@ -50,8 +38,6 @@ const BookingForm = ({ children, chosenPackage }) => {
           return prevStep - 1;
         }
       });
-      setIsNextClicked(false);
-      setIsSubmitClicked(false);
     }, 100);
   };
 
@@ -96,7 +82,7 @@ const BookingForm = ({ children, chosenPackage }) => {
                 <input
                   type="date"
                   id="bookingFormTravelDate"
-                  className={`form-control ${travelDateClass}`}
+                  className={`form-control`}
                   placeholder="Date of expected travel"
                   aria-label="Date of expected travel"
                   onChange={(e) => {
@@ -115,7 +101,7 @@ const BookingForm = ({ children, chosenPackage }) => {
                 <input
                   type="number"
                   id="bookingFormDuration"
-                  className={`form-control ${durationClass}`}
+                  className={`form-control`}
                   placeholder="Trip Duration"
                   aria-label="Trip Duration"
                   onChange={(e) => {
@@ -134,7 +120,7 @@ const BookingForm = ({ children, chosenPackage }) => {
             <div className="form-floating mb-3 mb-sm-4">
               <input
                 type="text"
-                className={`form-control ${locationClass}`}
+                className={`form-control`}
                 id="bookingFormLocation"
                 placeholder="Pick Up Location or Address"
                 onChange={(e) => {
@@ -192,7 +178,7 @@ const BookingForm = ({ children, chosenPackage }) => {
             btnRightType={btnRightType}
             onClickBtnRight={onClickBtnRight}
             btnRightText={btnRightText}
-            errMsg={errMsg}
+            errMsg={""}
           >
             <div className="mb-4">
               <h3>

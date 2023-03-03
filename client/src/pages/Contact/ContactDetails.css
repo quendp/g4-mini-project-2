@@ -1,49 +1,33 @@
-.contact-m-text {
-    font-family: var(--ff-body-light);
-    color: var(--clr-secondary-700);
-    font-size: var(--fz-main-text);
+.contact-details__description {
+  font-family: var(--ff-body-regular);
+  color: var(--clr-primary-dark-100);
+  font-size: var(--fz-main-p);
 }
 
-.contact-s-text {
-    font-family: var(--ff-body-light);
-    color: var(--clr-secondary-700);
-    font-size: var(--fz-main-small);
+.contact-details__description a {
+  color: var(--clr-primary-dark-100);
+  text-decoration: none;
+}
+.contact-details__description a:hover,
+.contact-details__description a:active {
+  color: var(--clr-primary-dark-400);
 }
 
-.contact-details__container {
-    padding: 3.5rem;
+.contact-page__social {
+  background-color: var(--clr-secondary-200);
+  border-radius: 1rem;
+  box-shadow: -2px -2px 5px var(--clr-secondary-100),
+    2px 2px 5px var(--clr-primary-dark-400);
 }
 
-.socials {
-    display: flex;
-    justify-content: space-between;
-    height: 3.2rem;
-    width: 15rem;
-    margin-top: 2rem;
+.contact-page__social:hover {
+  background-color: var(--clr-secondary-300);
+  border-radius: 1rem;
+  box-shadow: -2px -2px 5px var(--clr-secondary-100),
+    2px 2px 5px var(--clr-primary-dark-400);
 }
 
-.socials svg {
-    height: 2rem;
-    width: 2rem;
-}
-
-.socials svg:hover {
-    fill: var(--clr-accent-lights);
-}
-
-@media (max-width: 768px) {
-    .contact-details__container {
-        padding: 1.7rem;
-    }
-
-    .socials {
-        margin: 0 25vw;
-        width: auto;
-        justify-content: space-evenly;
-    }
-
-    .socials svg {
-        height: 1.2rem;
-        width: 1.2rem;
-    }
+.contact-page__social svg {
+  height: 1.5rem;
+  width: 1.5rem;
 }

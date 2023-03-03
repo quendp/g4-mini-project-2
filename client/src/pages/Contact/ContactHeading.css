@@ -1,20 +1,4 @@
-.contact-heading__container {
-    display: flex;
-    flex-direction: column;
-    width: auto;
-    align-items: center;
-    justify-content: center;
-}
-
-.heading-logo img {
-    width: 3rem;
-    height: 3rem;
-}
-
-.brand-name {
-    font-family: var(--ff-heading-primary);
-    color: var(--clr-primary-dark);
-    font-size: var(--fz--header-sub);
-    letter-spacing: calc(var(--fz--header-sub) / 3);
-    text-align: center;
+.contact-heading__container h1 {
+  font-family: var(--ff-heading-primary-2);
+  font-size: var(--fz-main-h1);
 }
