@@ -25,7 +25,7 @@ const PrivateLayout = () => {
     } else if (userData.logInToken.role === "admin") {
       setPrivateContent(<Admin />);
     }
-  }, []);
+  }, [userData]);
 
   return <main className="body-wrapper m-0 p-0">{privateContent}</main>;
 };

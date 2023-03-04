@@ -23,6 +23,10 @@ const BookingForm = ({ children, chosenPackage }) => {
     const bookingModalInst = document.getElementById("bookingModal");
     const myModal = bootstrap.Modal.getOrCreateInstance(bookingModalInst);
     myModal.hide();
+
+    setTravelDate("");
+    setDuration("");
+    setLocation("");
   };
 
   const onClickBtnRight = () => {
