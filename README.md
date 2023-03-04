@@ -1,6 +1,18 @@
 # Lakbay Travel Agency - Mini Project 2
 
-[VIEW LIVE WEBSITE](https://lakbay.quendp.com/)
+## <p align="center"> <a href="https://lakbay.quendp.com/"> <---------- VIEW LIVE WEBSITE ----------></a> </p>
+
+<br>
+
+## 📷 Preview Image
+
+<p align="center"> <img width="100%" src="./README/img1.jpg" /> </p>
+
+<br>
+
+<p align="center"> <img width="100%" src="./README/img2.jpg" /> </p>
+
+<br>
 
 ---
 
@@ -15,17 +27,25 @@
 - Has Travel Agent Dashboard (exclusive to travel agent account)
 - Has User Dashboard (exclusive to user account)
 
+<br>
+
 ---
+
+<br>
 
 ## 📝 Description
 
 This is our group's submisssion to our coding bootcamp's second mini project. The brand "Lakbay" as well as the website's brief and functions are created by the developers for the sole purpose of this project. It is not a real company and does not operate in the real world. For the front-end, we utilized ReactJS with Vite, and for the backend, we used nodejs, creating this fullstack website.
+
+<br>
 
 ### About the Brand
 
 Lakbay is a Filipino travel agency which showcases various tourist spots in the Philippines and offers transportation and guiding services to customers. Their tours which lasts from half - 3 days focus on one primary destination (e.g. Puerto Princesa Underground River) and some nearby locations as secondary.
 
 Their target audience is mainly young adventurous adults from both local and international. The clients want to have a website that feels modern, exquisite/elegant, trustworthy, safe, and emphasizes the beauty of the country.
+
+<br>
 
 ### Website Features
 
@@ -40,13 +60,21 @@ The website should have the following features/sections:
 - An admin-exclusive dashboard
 - A "Share your story" section in each destination showcasing the experiences of past customers instead of testimonials
 
+<br>
+
 ---
+
+<br>
 
 ## ⌛ Project Timeline
 
 v1.0.0 - January 21, 2023 - Initialized project repository
 
+<br>
+
 ---
+
+<br>
 
 ## ⚙️ Tools and Languages
 
@@ -68,7 +96,11 @@ Version Control
 
 - Git, GitHub,
 
+<br>
+
 ---
+
+<br>
 
 ## ❤️ Collaborators
 
@@ -80,7 +112,11 @@ Version Control
 - Roland Manalo
 - JM Baldonado (Bootcamp Adviser)
 
+<br>
+
 ---
+
+<br>
 
 ### ❓ What's Next?
 
@@ -88,7 +124,11 @@ Here are some features we are looking to add in this project in the near future
 
 - Share your story section - a sections for the community of members to interact and share their experiences in their tours
 
+<br>
+
 ---
+
+<br>
 
 ### 💛 Acknowledgement
 
