@@ -40,16 +40,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 10px;
 }
 
 .adminPackage-card__headerImage h2 {
   font-size: 16px;
   color: var(--clr-secondary-000);
-  text-shadow:
-  -1px -1px 0 var(--clr-primary-dark),
-  1px -1px 0 var(--clr-primary-dark),
-  -1px 1px 0 var(--clr-primary-dark),
-  1px 1px 0 var(--clr-primary-dark);
+  text-shadow: -1px -1px 0 var(--clr-primary-dark),
+    1px -1px 0 var(--clr-primary-dark), -1px 1px 0 var(--clr-primary-dark),
+    1px 1px 0 var(--clr-primary-dark);
   font-family: var(--ff-body-bold);
 }
 
@@ -147,7 +146,8 @@
   outline: none;
 }
 
-.admin-packagePage__buttonBack:hover, .admin-packagePage__buttonBack:active {
+.admin-packagePage__buttonBack:hover,
+.admin-packagePage__buttonBack:active {
   background-color: var(--clr-primary-dark-100);
 }
 

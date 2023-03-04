@@ -17,7 +17,13 @@ const Agent = () => {
   };
 
   return (
-    <div style={{ backgroundColor: "#ffffff" }}>
+    <div
+      className="agent-page__wrapper"
+      style={{
+        backgroundColor: "#ffffff",
+        fontFamily: "var(--ff-body-regular)",
+      }}
+    >
       <AgentNavbar
         travelDetails={travelDetails}
         transportationCost={travelDetails.transportationCost}

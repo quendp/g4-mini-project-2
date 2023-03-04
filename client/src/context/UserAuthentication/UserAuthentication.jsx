@@ -11,7 +11,7 @@ export const UserAuthentication = ({ children }) => {
   const MOCK_LOGGED_IN = {
     token: "sampleToken",
     username: "sample@username",
-    role: "user",
+    role: "admin",
   };
 
   const MOCK_LOGGED_OUT = {
@@ -28,7 +28,7 @@ export const UserAuthentication = ({ children }) => {
   // For development purposes remove in production
 
   const [hasAccount, setHasAccount] = useState(true);
-  const [logInToken, setLogInToken] = useState("");
+  const [logInToken, setLogInToken] = useState(MOCK_LOGGED_IN);
 
   const handleChangeMode = () => {
     hasAccount === true ? setHasAccount(false) : setHasAccount(true);

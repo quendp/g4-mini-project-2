@@ -11,6 +11,7 @@ const AdminDashboard = () => {
       style={{ backgroundColor: "var(--clr-secondary-000)", height: "100vh" }}
       className="col-xxl-10 col-xl-9 col-lg-9 ms-auto"
     >
+      <AdminChartSection />
       <AdminCardSection
         sectionTitle="General Overview"
         cardInfo={firstCardInfo}
@@ -21,7 +22,6 @@ const AdminDashboard = () => {
         cardInfo={secondCardInfo}
         cardType="SectionTwo"
       />
-      <AdminChartSection />
     </div>
   );
 };

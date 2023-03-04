@@ -13,7 +13,7 @@ import AgentAccountInformation from "../AgentAccountInformation/AgentAccountInfo
 const Navbar = (props) => {
   return (
     <>
-      <nav className="navbar navbar-expand navbar-light px-2">
+      <nav className="navbar navbar-expand navbar-light px-2 py-3">
         <button
           className="navbar-toggler ms-auto mb-2 bg-light"
           type="button"
