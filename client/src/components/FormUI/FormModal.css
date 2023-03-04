@@ -97,6 +97,10 @@
   border: none !important;
 }
 
+.modal-content input:-internal-autofill-selected ~ label {
+  color: fieldtext !important;
+}
+
 .modal-signup-btn {
   color: var(--clr-primary-dark);
   background-color: var(--clr-accent-lights-100);

@@ -15,7 +15,7 @@ const HomeServicesTitle = ({ categoryCurrent }) => {
       ref={serviceTiltleRef}
     >
       <div className="col-12 mx-auto text-center px-5">
-        <h2 className="home-services__title">
+        <h2 className="h2-light home-services__title">
           Do you want to travel?
           <span
             style={{

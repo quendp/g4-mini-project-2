@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import AdminModalUI from "../AdminModalUI/AdminModalUI";
 
 const AdminTopNav = (props) => {
@@ -10,7 +11,7 @@ const AdminTopNav = (props) => {
   };
 
   return (
-    <div className="col-xxl-10 col-xl-9 col-lg-9  ms-auto bg-dark fixed-top py-2 admin-top__navbar d-flex">
+    <div className="col-xxl-10 col-xl-9 col-lg-9  ms-auto bg-dark fixed-top py-2 admin-top__navbar d-flex py-3">
       <form
         className=" ms-auto me-0 me-md-3 me-3 my-2 my-md-0"
         onSubmit={onSubmitSearchValue}
@@ -35,16 +36,16 @@ const AdminTopNav = (props) => {
         </div>
       </form>
       <div className="d-flex align-items-center justify-content-center">
-        <a
-          href="#"
+        <Link
+          to="/"
           className="nav-link"
-          onClick={() => props.openModal("adminTopNavCloseModal")}
+          // onClick={() => props.openModal("adminTopNavCloseModal")}
         >
           <i
             role="button"
             className="fa-solid fa-right-from-bracket fa-fw text-secondary fa-xl "
           ></i>
-        </a>
+        </Link>
       </div>
       <AdminModalUI
         showModal={props.showModal.adminTopNavCloseModal}

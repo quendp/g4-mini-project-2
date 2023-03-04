@@ -1,0 +1,37 @@
+.l-loader-wrapper {
+  font-size: var(--fz-main-p);
+  font-family: var(--ff-body-light);
+  background-color: #000;
+  z-index: 100;
+  color: var(--clr-secondary-100);
+}
+
+#loaderTextSub p {
+  transform: translateY(50px);
+  opacity: 0;
+}
+
+#loaderSub {
+  opacity: 0;
+}
+
+#loaderBar {
+  background-color: var(--clr-secondary-100);
+  height: 2px;
+  width: 1px;
+}
+
+#loaderLogo {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  opacity: 0;
+  stroke: var(--clr-secondary-100);
+  filter: drop-shadow(0px 0px 3px var(--clr-secondary-100));
+  stroke-width: 2px;
+}
+
+#loaderText2Sub {
+  overflow: hidden;
+}

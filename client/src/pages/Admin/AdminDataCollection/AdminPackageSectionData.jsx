@@ -392,5 +392,3 @@ export const categoriesPick = [
   lookBackInHistory,
   natureAndCulture,
 ];
-
-console.log(categoriesPick[0][1].name);

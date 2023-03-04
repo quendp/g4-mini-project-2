@@ -1,0 +1,10 @@
+.booking-form__content p {
+  font-family: var(--ff-body-light);
+  font-size: var(--fz-main-text);
+  color: var(--clr-secondary-100);
+}
+
+.booking-form__content p span {
+  font-family: var(--ff-body-bold);
+  color: var(--clr-accent-lights-100);
+}

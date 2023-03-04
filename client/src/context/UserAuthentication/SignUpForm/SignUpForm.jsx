@@ -6,6 +6,7 @@ import FormModal from "../../../components/FormUI/FormModal";
 
 const SignUpForm = ({ handleChangeMode, submitHandler }) => {
   const REGISTER_URL = "/api/users/register";
+  const LOGIN_URL = "/api/users/login";
 
   const [step, setStep] = useState(0);
   const [isSubmitClicked, setIsSubmitClicked] = useState(false);
@@ -264,13 +265,32 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
           withCredentials: true,
         }
       );
+
       if (response.data.message) {
         setErrMsg(response.data.message);
         onClickBtnLeft();
       } else {
         console.log(response.data);
         console.log(JSON.stringify(response));
-        submitHandler("sampleTokenSignUp", username);
+
+        const logInData = {
+          usernameOrEmail: response.data.username,
+          password: response.data.password,
+        };
+
+        const logInResponse = await axios.post(
+          LOGIN_URL,
+          JSON.stringify(logInData),
+          {
+            headers: { "Content-Type": "application/json" },
+            withCredentials: true,
+          }
+        );
+        if (logInResponse.data.message) {
+          setErrMsg(logInResponse.data.message);
+        } else {
+          submitHandler(logInResponse.data.token, username);
+        }
       }
     } catch (err) {
       if (!err?.response) {
@@ -316,7 +336,8 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
     >
       <div className="mb-4">
         <h3>
-          <span>Step {step + 1} of 2 :</span> Account Details
+          <span>Step {step + 1} of 2 :</span>{" "}
+          {step == 0 ? "Account Details" : "Personal Details"}
         </h3>
       </div>
       {conditionalComponent()}

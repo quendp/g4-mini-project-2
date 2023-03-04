@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const AgentTopNav = () => {
   return (
-    <div className="col-xxl-10 col-xl-9 col-lg-9 bg-dark  ms-auto fixed-top px-3 py-2 agentTopNav d-flex">
+    <div className="col-xxl-10 col-xl-9 col-lg-9 bg-dark  ms-auto fixed-top px-3 py-3 agentTopNav d-flex">
       <form className=" ms-auto me-0 me-md-3 me-3 my-2 my-md-0">
         <div className="input-group">
           <input
@@ -22,12 +23,12 @@ const AgentTopNav = () => {
         </div>
       </form>
       <div className="d-flex align-items-center justify-content-center">
-        <a href="#" className="nav-link">
+        <Link to="/" className="nav-link">
           <i
             role="button"
             className="fa-solid fa-right-from-bracket fa-fw text-secondary fa-xl "
           ></i>
-        </a>
+        </Link>
       </div>
     </div>
   );

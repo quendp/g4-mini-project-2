@@ -5,6 +5,15 @@
   }
 }
 
+.admin,
+.admin button,
+.admin a,
+.admin li,
+.admin td,
+.admin canvas {
+  font-family: var(--ff-body-regular);
+}
+
 /* For AdminSidebar */
 .admin-sidebar {
   height: 100%;
@@ -82,5 +91,3 @@
     background-color: transparent;
   }
 }
-
-

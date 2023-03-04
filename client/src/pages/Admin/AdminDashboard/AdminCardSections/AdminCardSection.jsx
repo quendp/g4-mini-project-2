@@ -26,7 +26,10 @@ const AdminCardSection = (props) => {
   };
 
   return (
-    <section style={{ backgroundColor: "var(--clr-secondary-000)" }}>
+    <section
+      className="py-3"
+      style={{ backgroundColor: "var(--clr-secondary-000)" }}
+    >
       <div className="container-fluid">
         <div
           className={
@@ -36,9 +39,8 @@ const AdminCardSection = (props) => {
           }
         >
           <h4
-            className="mb-0 fw-bolder text-muted fs-2 pt-2"
+            className="mb-0 fw-bolder mb-3 fs-4 pt-2"
             style={{
-              backgroundColor: "var(--clr-secondary-000)",
               textAlign: "center",
             }}
           >
@@ -46,7 +48,7 @@ const AdminCardSection = (props) => {
           </h4>
           {props.cardInfo.map((info) => (
             <div
-              className="col-xxl-3 col-xl-3 col-lg-3 col-md-3 pt-2"
+              className="col-xxl-3 col-xl-3 col-lg-3 col-md-3 p-4"
               key={info.id}
             >
               <div

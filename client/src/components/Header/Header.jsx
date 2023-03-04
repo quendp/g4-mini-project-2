@@ -4,7 +4,7 @@ import HeaderCollapsed from "./HeaderCollapsed/HeaderCollapsed";
 import HeaderExpanded from "./HeaderExpanded/HeaderExpanded";
 import grainOverlay from "../../assets/images/grain.png";
 
-const Header = () => {
+const Header = ({ currentTheme }) => {
   const [isActiveClass, setIsActiveClass] = useState("");
   const [showExpanded, setShowExpanded] = useState("d-none");
   const [headerBgColor, setHeaderBgColor] = useState("transparent");
@@ -12,6 +12,7 @@ const Header = () => {
   const [headerBlur, setHeaderBlur] = useState("blur(0px)");
   const [headerTransform, setHeaderTransform] = useState("translateY(0)");
   const [lastScrollY, setLastScrollY] = useState(window.scrollY);
+  const [isHeaderClosed, setIsHeaderClosed] = useState(false);
 
   window.addEventListener("scroll", () => {
     adjustHeader();
@@ -21,6 +22,7 @@ const Header = () => {
   const headerClickHandler = () => {
     document.body.classList.toggle("disableScroll");
     if (isActiveClass == "") {
+      setIsHeaderClosed(false);
       setIsActiveClass(styles.expandHeader);
       setShowExpanded("");
       setHeaderBgColor("var(--clr-primary-dark)");
@@ -34,6 +36,7 @@ const Header = () => {
 
   const onCloseHeader = () => {
     document.body.classList.remove("disableScroll");
+    setIsHeaderClosed(true);
     setIsActiveClass("");
     setShowExpanded("d-none");
     adjustHeader();
@@ -72,6 +75,8 @@ const Header = () => {
         onBurgerClick={headerClickHandler}
         onCloseHeader={onCloseHeader}
         isActiveClass={isActiveClass}
+        isHeaderClosed={isHeaderClosed}
+        currentTheme={currentTheme}
       />
       <HeaderExpanded
         showExpanded={showExpanded}

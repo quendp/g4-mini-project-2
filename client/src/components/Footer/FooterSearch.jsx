@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./FooterSearch.css";
 
-const FooterSearch = () => {
+const FooterSearch = ({ currentTheme }) => {
   const [searchValue, setSearchValue] = useState("");
 
   const searchSubmitHandler = (e) => {
@@ -20,10 +20,12 @@ const FooterSearch = () => {
         placeholder="Search"
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
+        style={{ border: `1px solid ${currentTheme}` }}
       />
       <button
         className="footer-search__btn btn rounded-pill mb-3 px-4 py-2"
         type="submit"
+        style={{ backgroundColor: currentTheme }}
       >
         SEARCH
       </button>

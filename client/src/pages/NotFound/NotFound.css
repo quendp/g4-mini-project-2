@@ -1,0 +1,35 @@
+.not-found-page__container {
+  color: var(--clr-primary-dark);
+  z-index: 5;
+  margin-top: -10rem;
+}
+
+.not-found-page__container h1 {
+  font-family: var(--ff-body-bold);
+  font-size: var(--fz-main-h1);
+}
+
+.not-found-page__container a {
+  font-family: var(--ff-body-regular);
+  font-size: var(--fz-main-a);
+  color: var(--clr-primary-dark-300);
+  text-decoration: none;
+}
+
+.not-found-page__container a:hover {
+  color: var(--clr-primary-dark-400);
+}
+
+.not-found-page__container button {
+  width: 12rem;
+}
+
+.not-found-page__container span {
+  display: block;
+}
+
+@media (min-width: 992px) {
+  .not-found-page__container span {
+    display: inline-block;
+  }
+}

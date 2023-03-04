@@ -36,7 +36,7 @@ const AgentDashboard = (props) => {
           <div className="row mt-lg-2 mb-2">
             <div className="col-xxl-6 col-xl-6 col-12">
               <h4
-                className="mb-0 fw-bolder text-muted fs-3 mt-3 mb-1"
+                className="mb-0 fw-bolder fs-3 mt-3 mb-1"
                 style={{
                   backgroundColor: "var(--clr-secondary-000)",
                   textAlign: "center",
@@ -44,7 +44,7 @@ const AgentDashboard = (props) => {
               >
                 Latest Updates
               </h4>
-              <div className="d-flex justify-content-between align-items-center">
+              <div className="d-flex justify-content-between align-items-center my-3">
                 <AgentDashBoardStatusSortFilter
                   selectedStatus={selectedStatus}
                   setSelectedStatus={setSelectedStatus}
@@ -52,7 +52,7 @@ const AgentDashboard = (props) => {
                   setSortType={setSortType}
                 />
               </div>
-              <div className="overflow-auto agentDashboard-latest__updates p-1">
+              <div className="overflow-auto agentDashboard-latest__updates p-0 m-3 rounded">
                 {sortTravels(
                   filteredTravels(props.travelDetails, selectedStatus),
                   sortType
@@ -68,11 +68,11 @@ const AgentDashboard = (props) => {
               </div>
             </div>
             <div
-              className="col-xxl-6 col-xl-6 col-12"
+              className="col-xxl-6 col-xl-6 col-12 px-3"
               style={{ height: "50vh" }}
             >
               <h4
-                className="fw-bolder text-muted fs-3 mt-3 mb-5"
+                className="fw-bolder fs-3 mt-3 mb-5"
                 style={{
                   backgroundColor: "var(--clr-secondary-000)",
                   textAlign: "center",
@@ -91,9 +91,9 @@ const AgentDashboard = (props) => {
               />
             </div>
           </div>
-          <div className="mt-lg-2 mt-2 col-xxl-6 col-xl-6 col-12 mx-auto">
+          <div className="mt-lg-5 mt-2 col-xxl-6 col-xl-6 col-12 mx-auto">
             <h4
-              className="fw-bolder text-muted fs-3 mt-4 mb-3"
+              className="fw-bolder fs-3 mt-4 mb-3"
               style={{
                 backgroundColor: "var(--clr-secondary-000)",
                 textAlign: "center",

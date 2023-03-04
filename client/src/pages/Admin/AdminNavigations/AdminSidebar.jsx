@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import Image from "../../../assets/images/user-avatar/user1.jpg";
+import UserAuthContext from "../../../context/UserAuthentication/UserAuthentication";
 
 const navItems = [
   {
@@ -38,15 +40,17 @@ const navItemsBottom = [
 ];
 
 const AdminSidebar = (props) => {
+  const userData = useContext(UserAuthContext);
+
   return (
     <>
       <div className="col-xxl-2 col-xl-3 col-lg-3  admin-sidebar fixed-top">
-        <a
-          href="#"
-          className="navbar-brand text-white d-block mx-auto text-center py-3 mb-4 admin-bottom__border"
+        <Link
+          to="/"
+          className="navbar-brand text-white d-block mx-auto text-center py-3 mb-4 text-uppercase admin-bottom__border"
         >
-          LAKBAY
-        </a>
+          Lakbay Admin
+        </Link>
         <div className="admin-bottom__border pb-3">
           <img
             src={Image}
@@ -54,11 +58,11 @@ const AdminSidebar = (props) => {
             width="50"
             className="rounded-circle me-3"
           />
-          <a href="#" className="text-decoration-none text-white">
-            Juan Delacruz
-          </a>
+          <span className="text-decoration-none text-white">
+            {userData.logInToken.username}
+          </span>
         </div>
-        <ul className="navbar-nav flex-column mt-2">
+        <ul className="navbar-nav flex-column mt-5">
           {navItems.map((navItem) => (
             <li key={navItem.label} className="nav-item">
               <a
@@ -74,12 +78,12 @@ const AdminSidebar = (props) => {
             </li>
           ))}
         </ul>
-        <div className="admin-sidebar__settingsAndAccount">
+        <div className="admin-sidebar__settingsAndAccount mb-3">
           {navItemsBottom.map((navItem) => (
             <a
               key={navItem.label}
               href="#"
-              className="nav-link text-muted p-3 mb-2"
+              className="nav-link text-muted p-2 mb-0"
               onClick={() => navItem.onClick(props)}
             >
               <i

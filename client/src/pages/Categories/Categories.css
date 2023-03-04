@@ -1,0 +1,191 @@
+.categories-page__wrapper {
+  background-position: bottom;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  padding-bottom: 35vh !important;
+}
+
+.categories-page-menu__container {
+  top: 12vh;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 5rem;
+  width: 100%;
+  z-index: 3 !important;
+}
+
+.categories-page-menu__item {
+  border-radius: 0.5rem;
+  height: 100%;
+  width: 90%;
+  box-shadow: 0px 0px 10px var(--clr-primary-dark-100);
+  transition: transform 400ms ease-in-out, box-shadow 400ms ease-in-out;
+}
+
+.categories-page-menu__item:hover {
+  box-shadow: 0 0 20px var(--clr-secondary-500);
+}
+
+.categories-page-menu__item.active {
+  transform: translateY(-0.5rem) scale(1.1);
+}
+
+.categories-page-menu__img {
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform 400ms ease-in-out;
+}
+
+.categories-page-menu__img:hover {
+  transform: scale(1.2);
+}
+
+.categories-page__content {
+  z-index: 3 !important;
+  width: 100%;
+  top: 30vh;
+  left: 0;
+}
+
+.categories-page__overlay {
+  z-index: 1 !important;
+  background: var(--clr-primary-glass);
+  background: linear-gradient(
+    180deg,
+    var(--clr-primary-dark) 0%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+}
+
+.categories-page__title {
+  width: 100%;
+}
+
+.categories-page-title__category {
+  font-family: var(--ff-heading-secondary);
+  font-size: var(--fz-main-h2);
+}
+
+.categories-page-title__destination {
+  color: var(--clr-secondary-100);
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6), 0 0 20px var(--clr-secondary-400);
+  font-family: var(--ff-heading-primary);
+  font-size: var(--fz-main-h2);
+}
+
+.categories-page__details p {
+  font-size: var(--fz-main-text);
+  white-space: pre-line;
+}
+
+.categories-page__details h3 {
+  font-family: var(--ff-body-regular);
+  font-weight: 600;
+  font-size: var(--fz-main-p);
+}
+
+.categories-page__card {
+  backdrop-filter: blur(2px);
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.categories-page-card__background {
+  border-radius: 1rem;
+  z-index: -1;
+  opacity: 0.4;
+  transition: opacity 200ms ease-in-out;
+}
+
+.categories-page__card:hover .categories-page-card__background {
+  opacity: 0.6;
+}
+
+.categories-page-card__content {
+  width: 100%;
+}
+
+.categories-page-card__content h4 {
+  font-family: var(--ff-body-regular);
+  font-size: var(--fz-main-text);
+  color: var(--clr-secondary-100);
+  letter-spacing: 1.5px;
+}
+
+.categories-page-card__details {
+  background-color: var(--clr-secondary-100);
+  width: 90%;
+  border-radius: 1rem;
+  box-shadow: 3px 3px 10px var(--clr-primary-glass);
+}
+
+.categories-page-card__details p {
+  font-family: var(--ff-body-light);
+  font-size: var(--fz-main-text);
+  color: var(--clr-primary-dark-100);
+}
+
+.categories-page-card__details p span {
+  font-family: var(--ff-body-bold);
+}
+
+.categories-page-card__button button {
+  font-size: var(--fz-main-text) !important;
+  letter-spacing: 0.8px;
+  color: var(--clr-primary-dark-100);
+  font-family: var(--ff-body-regular);
+  outline: none;
+  border: none;
+  box-shadow: 1px 1px 5px var(--clr-primary-glass);
+  border-radius: 0.7rem;
+}
+
+.categories-page-card__button button:hover {
+  box-shadow: 1px 1px 4px var(--clr-primary-glass);
+  filter: brightness(93%);
+}
+
+@media (min-width: 768px) {
+  .categories-page__wrapper {
+    padding-bottom: 20vh !important;
+  }
+
+  .categories-page__overlay {
+    background: linear-gradient(
+      90deg,
+      var(--clr-primary-dark) 0%,
+      rgba(0, 0, 0, 0.5) 100%
+    );
+  }
+
+  .categories-page-menu__container {
+    top: 13vh;
+    left: 4vw;
+    transform: translateY(0%);
+    height: 85vh;
+    width: 10vw;
+    z-index: 3 !important;
+  }
+
+  .categories-page-menu__item.active {
+    transform: scale(1.15);
+  }
+
+  .categories-page__content {
+    top: 10vh;
+    width: 92%;
+    left: 12vw;
+  }
+
+  .categories-page__title {
+    width: 70%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .categories-page__content {
+    width: 85%;
+    left: 15vw;
+  }
+}

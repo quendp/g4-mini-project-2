@@ -1,0 +1,40 @@
+.private-layout-login__content {
+  color: var(--clr-primary-dark);
+  z-index: 5;
+  margin-top: -10rem;
+}
+
+.private-layout-login__content h1 {
+  font-family: var(--ff-body-bold);
+  font-size: var(--fz-main-h3);
+}
+
+.private-layout-login__content h2 {
+  font-family: var(--ff-body-bold);
+  font-size: var(--fz-main-h1);
+}
+
+.private-layout-login__content a {
+  font-family: var(--ff-body-regular);
+  font-size: var(--fz-main-p);
+  color: var(--clr-primary-dark);
+  text-decoration: none;
+}
+
+.private-layout-login__content a:hover {
+  color: var(--clr-primary-dark-400);
+}
+
+.private-layout-login__content button {
+  width: 12rem;
+}
+
+.private-layout-login__content span {
+  display: block;
+}
+
+@media (min-width: 992px) {
+  .private-layout-login__content span {
+    display: inline-block;
+  }
+}

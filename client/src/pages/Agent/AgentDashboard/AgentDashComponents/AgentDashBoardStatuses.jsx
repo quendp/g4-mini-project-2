@@ -9,7 +9,7 @@ const AgentDashBoardStatuses = (props) => {
       <div className="container-fluid">
         <div className="row pt-lg-5 mt-lg-3 mb-2">
           <h4
-            className="mb-0 fw-bolder text-muted fs-2"
+            className="mb-0 fw-bolder  fs-2"
             style={{
               backgroundColor: "var(--clr-secondary-000)",
               textAlign: "center",

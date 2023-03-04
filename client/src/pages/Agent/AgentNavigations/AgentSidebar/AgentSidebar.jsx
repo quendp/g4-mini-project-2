@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import user2 from "../../../../assets/images/user-avatar/user2.jpg";
+import UserAuthContext from "../../../../context/UserAuthentication/UserAuthentication";
 
 const AgentSidebar = (props) => {
+  const userData = useContext(UserAuthContext);
+
   const navItems = [
     {
       label: "Dashboard",
@@ -48,14 +51,14 @@ const AgentSidebar = (props) => {
         <div className="col-xxl-2 col-xl-3 col-lg-3  agentSidebar fixed-top">
           <a
             href="#"
-            className="navbar-brand text-white d-block mx-auto text-center py-3 mb-4 agentSidebar-bottom__border agentSidebar-brand__name"
+            className="navbar-brand text-white d-block mx-auto text-center py-3 mb-4 text-uppercase agentSidebar-bottom__border agentSidebar-brand__name"
           >
-            LAKBAY
+            Lakbay Agent
           </a>
           <div className="agentSidebar-bottom__border pb-3">
             <img src={user2} width="50" className="rounded-circle me-3" />
             <a href="#" className="text-decoration-none text-white agent-name">
-              Tyron Perez
+              {userData.logInToken.username}
             </a>
           </div>
           <ul className="navbar-nav flex-column mt-2">

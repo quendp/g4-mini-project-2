@@ -22,6 +22,7 @@
 .home-stories-quote__close {
   width: 8%;
   z-index: 9;
+  filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
 }
 
 .home-stories-quote__open {
@@ -54,6 +55,10 @@
   margin-top: 5rem;
 }
 
+.home-stories__top {
+  width: 85%;
+}
+
 .home-stories__description {
   font-family: var(--ff-body-light);
   color: var(--clr-primary-dark);
@@ -67,6 +72,7 @@
   object-position: center;
   transition: object-position 300ms ease-in-out, filter 300ms ease-in-out;
   padding: 0.3vw;
+  border-radius: 1rem;
 }
 
 .home-stories__gallery {
@@ -93,11 +99,12 @@
 }
 
 .home-stories-gallery__button {
-  box-shadow: 5px 5px 10px var(--clr-primary-dark);
+  box-shadow: 3px 3px 8px var(--clr-primary-glass);
 }
 
 .home-stories-gallery__button:hover {
-  box-shadow: 2px 2px 5px var(--clr-primary-dark);
+  box-shadow: 1px 1px 5px var(--clr-primary-glass);
+  filter: brightness(90%);
 }
 
 @media (min-width: 576px) {

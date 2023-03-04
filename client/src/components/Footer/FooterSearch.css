@@ -1,14 +1,12 @@
 .footer-search__input {
   font-family: var(--ff-body-regular);
   background-color: transparent;
-  border: 1px solid var(--clr-accent-lights-100);
   color: var(--clr-secondary-100);
   font-size: var(--fz-main-text);
 }
 
 .footer-search__input:focus {
   background-color: transparent;
-  border: 1px solid var(--clr-accent-lights);
   color: var(--clr-secondary-100);
 }
 
@@ -22,5 +20,5 @@
 .footer-search__btn:active {
   color: var(--clr-primary-dark);
   font-family: var(--ff-body-regular);
-  background-color: var(--clr-accent-lights) !important;
+  opacity: 0.7;
 }

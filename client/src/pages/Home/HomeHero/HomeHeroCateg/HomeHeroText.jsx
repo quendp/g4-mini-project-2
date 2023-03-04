@@ -26,7 +26,7 @@ const HomeHeroText = ({ categoryIndex }) => {
 
   const titleStyle = {
     color: holdCategory.accentLight,
-    textShadow: `0 0 20px ${holdCategory.accentLight}`,
+    textShadow: `2px 2px 5px rgba(0,0,0,0.6), 0 0 25px ${holdCategory.accent} `,
   };
 
   const buttonStyle = {
@@ -75,7 +75,7 @@ const HomeHeroText = ({ categoryIndex }) => {
           </p>
           <button className="btn p-0 m-0">
             <Link
-              to={`/categories/${holdCategory.categoryPath}`}
+              to={`/categories/${holdCategory.categoryPath}/${holdCategory.destinations[0].path}`}
               className="btn rounded-pill px-4 py-2 text-uppercase"
               style={buttonStyle}
               onMouseOver={hoverButton}

@@ -6,17 +6,59 @@ import SignUpForm from "./SignUpForm/SignUpForm";
 const UserAuthContext = createContext({});
 
 export const UserAuthentication = ({ children }) => {
+  // For development purposes remove in production
+
+  const MOCK_LOGGED_IN = {
+    token: "sampleToken",
+    username: "sample@username",
+    role: "admin",
+  };
+
+  const MOCK_LOGGED_OUT = {
+    token: false,
+    username: "login",
+    role: false,
+  };
+
+  useEffect(() => {
+    console.log("Mock data log in : ", MOCK_LOGGED_IN);
+    console.log("Mock data log out : ", MOCK_LOGGED_OUT);
+  }, []);
+
+  // For development purposes remove in production
+
   const [hasAccount, setHasAccount] = useState(true);
-  const [logInToken, setLogInToken] = useState({ token: "" });
+  const [logInToken, setLogInToken] = useState(MOCK_LOGGED_IN);
 
   const handleChangeMode = () => {
     hasAccount === true ? setHasAccount(false) : setHasAccount(true);
   };
 
+  const handleLogInMode = () => {
+    setHasAccount(true);
+  };
+
+  const handleSignUpMode = () => {
+    setHasAccount(false);
+  };
+
   const submitHandler = (jwtToken, username) => {
-    setLogInToken({ token: jwtToken, username: username });
+    let userRole;
+    if (!jwtToken) {
+      userRole = "";
+    } else if (username == "admin_mark") {
+      userRole = "admin";
+    } else if (username == "agent_jane") {
+      userRole = "agent";
+    } else {
+      userRole = "user";
+    }
+
+    setLogInToken({ token: jwtToken, username: username, role: userRole });
+
     console.log("user logged in with token:", jwtToken);
     console.log("user logged in with username:", username);
+    console.log("user logged in with role:", userRole);
   };
 
   useEffect(() => {
@@ -25,7 +67,10 @@ export const UserAuthentication = ({ children }) => {
     myModal.hide();
   }, [logInToken]);
 
-  const userData = useMemo(() => logInToken, [logInToken]);
+  const userData = useMemo(
+    () => ({ logInToken, handleLogInMode, handleSignUpMode }),
+    [logInToken]
+  );
 
   return (
     <UserAuthContext.Provider value={userData}>
@@ -38,22 +83,22 @@ export const UserAuthentication = ({ children }) => {
       >
         <div
           className={`modal-dialog ${
-            userData.token.length === 0 && !hasAccount ? "modal-lg" : "modal-md"
+            !userData.logInToken.token && !hasAccount ? "modal-lg" : "modal-md"
           } modal-dialog-centered`}
         >
-          {userData.token.length === 0 && hasAccount && (
+          {!userData.logInToken.token && hasAccount && (
             <LogInForm
               handleChangeMode={handleChangeMode}
               submitHandler={submitHandler}
             />
           )}
-          {userData.token.length === 0 && !hasAccount && (
+          {!userData.logInToken.token && !hasAccount && (
             <SignUpForm
               handleChangeMode={handleChangeMode}
               submitHandler={submitHandler}
             />
           )}
-          {userData.token.length > 0 && (
+          {userData.logInToken.token && (
             <LogOutForm submitHandler={submitHandler} />
           )}
         </div>

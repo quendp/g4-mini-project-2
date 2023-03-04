@@ -1,5 +1,5 @@
 import React from "react";
-import './FormModal.css'
+import "./FormModal.css";
 
 const FormModal = (props) => {
   return (
@@ -12,14 +12,16 @@ const FormModal = (props) => {
           {props.headerText}
           {props.headerLink}
         </p>
-        <p className={`p-light modal-header__errorMsg px-4 text-center py-1 rounded-pill ${props.errMsg == "" ? "d-none": ""}`}>
+        <p
+          className={`p-light modal-header__errorMsg px-4 text-center py-1 rounded-pill ${
+            props.errMsg == "" || !props.errMsg ? "d-none" : "d-block"
+          }`}
+        >
           {props.errMsg}
         </p>
       </div>
       <form action="#" onSubmit={props.submitHandler} noValidate>
-        <div className="modal-body py-3">
-          {props.children}
-        </div>
+        <div className="modal-body py-3">{props.children}</div>
         <div className={`modal-footer ${props.footerWrapperClass}`}>
           <button
             type="button"

@@ -12,7 +12,7 @@ const LogOutForm = ({ submitHandler }) => {
   const btnRightText = "log out";
 
   const onClickLogOut = () => {
-    submitHandler("", "");
+    submitHandler(false, "login");
   };
 
   return (

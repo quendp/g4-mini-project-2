@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "../Header.module.css";
 import headerLogo from "../../../assets/images/logo-svg/logo-outline-white.svg";
@@ -24,6 +24,19 @@ const HeaderCollapsed = (props) => {
     transform: `translate(-50%, -50%) rotate(-${burgerRotation}deg)`,
   };
 
+  useEffect(() => {
+    (async () => {
+      if (props.isHeaderClosed) {
+        setBurgerRotation("0");
+        await animationDelay(200);
+        setBurgerTopPos("40%");
+        setBurgerBotPos("60%");
+        await animationDelay(200);
+        setBurgerTopWidth("70%");
+      }
+    })();
+  }, [props.isHeaderClosed]);
+
   const burgerClickHandler = async () => {
     props.onBurgerClick();
     if (props.isActiveClass == "") {
@@ -43,6 +56,10 @@ const HeaderCollapsed = (props) => {
     }
   };
 
+  const openLoginModal = () => {
+    userData.handleLogInMode();
+  };
+
   return (
     <div className={`row navbar px-0 px-sm-2 px-md-2 px-lg-5`}>
       <div className="col-3">
@@ -55,7 +72,15 @@ const HeaderCollapsed = (props) => {
         </Link>
       </div>
       <div className={`${styles.title} position-relative col-6`}>
-        <span className="position-absolute top-50 start-50"> LAKBAY </span>
+        <span
+          className="position-absolute top-50 start-50"
+          style={{
+            color: props.currentTheme,
+          }}
+        >
+          {" "}
+          LAKBAY{" "}
+        </span>
         <h2 className="position-absolute top-50 start-50 w-100 text-center text-uppercase">
           Exploring The Philippines and Creating Stories
         </h2>
@@ -68,8 +93,9 @@ const HeaderCollapsed = (props) => {
           className={`${styles.signupBtn} btn me-4 px-4 py-2 d-none d-md-block position-relative overflow-hidden rounded-pill`}
           data-bs-toggle="modal"
           data-bs-target="#signUpModal"
+          onClick={openLoginModal}
         >
-          {userData.token.length > 0 ? "LOG OUT" : "LOG IN"}
+          {userData.logInToken.token ? "LOG OUT" : "LOG IN"}
         </button>
         <div
           className={`${styles.hamBtn} position-relative`}

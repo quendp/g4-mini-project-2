@@ -12,7 +12,7 @@
 }
 
 .admin-table tr:nth-child(even) {
-  background-color: var(--clr-secondary-300);
+  background-color: var(--clr-secondary-100);
 }
 
 .admin-table tr:hover {
@@ -144,11 +144,11 @@
 }
 
 .admin-pageSize__option:hover {
-  background-color: var(--clr-secondary-300);
+  background-color: var(--clr-secondary-100);
 }
 
 .admin-pageSize__option:selected {
-  background-color: var(--clr-secondary-300);
+  background-color: var(--clr-secondary-100);
 }
 
 /* For AdminTablesPagination */
@@ -180,7 +180,7 @@
 }
 
 .admin-pagination__button:hover {
-  background-color: var(--clr-secondary-300);
+  background-color: var(--clr-secondary-100);
 }
 
 .admin-pagination__button:disabled {
@@ -188,5 +188,3 @@
   cursor: default;
   color: #666;
 }
-
-

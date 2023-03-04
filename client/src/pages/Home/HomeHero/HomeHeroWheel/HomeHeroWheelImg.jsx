@@ -10,8 +10,16 @@ const HomeHeroWheelImg = ({
   hoverImageHandler,
   hoverOutImageHandler,
 }) => {
+  let calculatedId;
+
+  if (destination.id % 6 == 0) {
+    calculatedId = 6;
+  } else {
+    calculatedId = destination.id % 6;
+  }
+
   const mappedDestination =
-    categoriesInfo[categoryIndex].destinations[destination.id - 1];
+    categoriesInfo[categoryIndex].destinations[calculatedId - 1];
 
   const activeDestination =
     categoriesInfo[categoryIndex].destinations[currentDestination];
@@ -19,12 +27,12 @@ const HomeHeroWheelImg = ({
   return (
     <div
       className="m-hero-circle-sub position-absolute rounded-circle overflow-hidden d-flex justify-content-center align-items-center"
-      id={`circleImage${destination.id}Sub`}
+      id={`circleImage${calculatedId}Sub`}
       style={{
         transform: `translate(-50%, -50%) rotate(${subCircleRotation}deg) scale(${
           activeDestination == mappedDestination ? "1" : "0.8"
         })`,
-        boxShadow: `0 0 150px -50px ${
+        boxShadow: `1px 1px 30px var(--clr-primary-glass), 0 0 150px -50px ${
           activeDestination == mappedDestination
             ? categoriesInfo[categoryIndex].accentLight
             : "var(--clr-primary-dark)"

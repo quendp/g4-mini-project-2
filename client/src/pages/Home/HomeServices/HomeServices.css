@@ -19,13 +19,6 @@
   z-index: 99;
 }
 
-.home-services__title {
-  font-family: var(--ff-heading-primary);
-  color: var(--clr-secondary-100);
-  font-size: var(--fz-main-h2);
-  letter-spacing: 0.8px;
-}
-
 .home-services__card {
   backdrop-filter: blur(10px);
   background-color: rgba(0, 0, 0, 0.5);
@@ -85,7 +78,7 @@
 }
 
 .home-services-stats__numbers {
-  background-color: var(--clr-secondary-300);
+  background-color: var(--clr-secondary-100);
 }
 
 .home-services-stats__digit {
