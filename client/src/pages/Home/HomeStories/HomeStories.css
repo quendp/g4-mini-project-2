@@ -10,7 +10,7 @@
 
 .home-stories-quote {
   margin-top: 0rem;
-  margin-bottom: 0rem;
+  margin-bottom: -10rem;
 }
 
 .home-stories-quote img {
@@ -52,7 +52,14 @@
 
 .home-stories-content {
   min-height: 30rem;
-  margin-top: 5rem;
+  margin-top: 0rem;
+}
+
+.home-stories-content h3 {
+  color: var(--clr-secondary-500);
+  font-family: var(--ff-heading-secondary);
+  font-size: var(--fz-main-h1);
+  margin-bottom: -1vw;
 }
 
 .home-stories__top {
@@ -110,7 +117,6 @@
 @media (min-width: 576px) {
   .home-stories-content {
     min-height: 40rem;
-    margin-top: 7rem;
   }
   .home-stories__gallery {
     height: 60vh;
@@ -121,7 +127,6 @@
 @media (min-width: 768px) {
   .home-stories-content {
     min-height: 50rem;
-    margin-top: 13rem;
   }
   .home-stories__gallery {
     width: 90%;
@@ -140,7 +145,6 @@
 @media (min-width: 992px) {
   .home-stories-content {
     min-height: 60rem;
-    margin-top: 18rem;
   }
   .home-stories__gallery {
     width: 90%;
@@ -151,7 +155,6 @@
 @media (min-width: 1200px) {
   .home-stories-content {
     min-height: 70rem;
-    margin-top: 25rem;
   }
   .home-stories__gallery {
     width: 85%;

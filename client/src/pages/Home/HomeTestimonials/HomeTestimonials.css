@@ -1,5 +1,6 @@
 .home-testimonials__wrapper {
   background-color: var(--clr-secondary-000);
+  padding-top: 15rem !important;
 }
 
 .home-testimonials__wrapper > .row {

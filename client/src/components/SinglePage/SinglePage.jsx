@@ -1,5 +1,6 @@
 import React from "react";
 import cloudsImg from "../../assets/images/clouds.png";
+import mountainImg from "../../assets/images/mountain.png";
 import "./SinglePage.css";
 
 const SinglePage = ({ children }) => {
@@ -27,23 +28,9 @@ const SinglePage = ({ children }) => {
               />
             </g>
           </mask>
-          <image
-            xlinkHref="https://assets.codepen.io/721952/mountBg.png"
-            width="1200"
-            height="800"
-          />
-          <image
-            xlinkHref="https://assets.codepen.io/721952/mountMg.png"
-            width="1200"
-            height="800"
-          />
+          <image xlinkHref={mountainImg} width="1200" height="1040" />
           <image
             xlinkHref="https://assets.codepen.io/721952/cloud2.png"
-            width="1200"
-            height="800"
-          />
-          <image
-            xlinkHref="https://assets.codepen.io/721952/mountFg.png"
             width="1200"
             height="800"
           />
