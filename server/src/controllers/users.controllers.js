@@ -1,7 +1,6 @@
 const { UsersService } = require("../services/users.service");
 
 class UsersController {
-
   static async registerUser(req, res) {
     try {
       const {
@@ -32,10 +31,7 @@ class UsersController {
 
   static async loginUser(req, res) {
     try {
-      const {
-        usernameOrEmail,
-        password,
-      } = req.body;
+      const { usernameOrEmail, password } = req.body;
       const token = await UsersService.loginUser({
         usernameOrEmail,
         password,

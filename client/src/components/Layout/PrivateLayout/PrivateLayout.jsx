@@ -24,11 +24,11 @@ const PrivateLayout = () => {
       setPrivateContent(<NotFound />);
     } else {
       navigate(`/${userData.logInToken.username}`);
-      if (userData.logInToken.role === "user") {
+      if (userData.logInToken.role === 1) {
         setPrivateContent(<User />);
-      } else if (userData.logInToken.role === "agent") {
+      } else if (userData.logInToken.role === 2) {
         setPrivateContent(<Agent />);
-      } else if (userData.logInToken.role === "admin") {
+      } else if (userData.logInToken.role === 3) {
         setPrivateContent(<Admin />);
       }
     }

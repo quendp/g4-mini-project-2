@@ -251,6 +251,7 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
       !validAge ? setAgeClass("isInvalid") : setAgeClass("");
       !validAddress ? setAddressClass("isInvalid") : setAddressClass("");
     } else {
+      setErrMsg("Submitting...");
       submitToServer();
     }
   };
@@ -289,7 +290,11 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
         if (logInResponse.data.message) {
           setErrMsg(logInResponse.data.message);
         } else {
-          submitHandler(logInResponse.data.token, username);
+          submitHandler(
+            logInResponse.data.token,
+            logInResponse.data.username,
+            logInResponse.data.roleId
+          );
         }
       }
     } catch (err) {

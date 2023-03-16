@@ -16,6 +16,18 @@ const FormModal = (props) => {
           className={`p-light modal-header__errorMsg px-4 text-center py-1 rounded-pill ${
             props.errMsg == "" || !props.errMsg ? "d-none" : "d-block"
           }`}
+          style={{
+            backgroundColor: `${
+              props.errMsg == "Submitting..."
+                ? "var(--clr-accent-loading-100)"
+                : "var(--clr-accent-invalid-100)"
+            }`,
+            color: `${
+              props.errMsg == "Submitting..."
+                ? "var(--clr-primary-dark)"
+                : "var(--clr-secondary-100)"
+            }`,
+          }}
         >
           {props.errMsg}
         </p>
