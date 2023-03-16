@@ -1,20 +1,28 @@
-'use strict';
+"use strict";
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Packages', {
+    await queryInterface.createTable("Packages", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       package_type: {
-        type: Sequelize.ENUM("basic", "standard", "premium"),
+        type: Sequelize.ENUM("Basic", "Standard", "Premium"),
         allowNull: false,
       },
       destination: {
         type: Sequelize.STRING,
+        allowNull: false,
+      },
+      category: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      destination_id: {
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
       flight_class: {
@@ -39,15 +47,15 @@ module.exports = {
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Packages');
-  }
+    await queryInterface.dropTable("Packages");
+  },
 };
