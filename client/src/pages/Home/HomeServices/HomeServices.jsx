@@ -38,7 +38,7 @@ const HomeServices = ({ categoryCurrent }) => {
   return (
     <>
       <section className="home-services__wrapper w-100 container-fluid m-0 p-0 min-vh-100 ">
-        <div className="home-services__overlay container-fluid d-flex flex-column justify-content-center align-items-center pt-5 px-1 px-sm-3 px-md-5 min-vh-100 w-100">
+        <div className="home-services__overlay container-fluid d-flex flex-column justify-content-center align-items-center py-5 px-1 px-sm-3 px-md-5 min-vh-100 w-100">
           <HomeServicesTitle categoryCurrent={categoryCurrent} />
           <div
             className="row py-2 py-md-5 px-1 px-md-5 d-flex justify-content-center"

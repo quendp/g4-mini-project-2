@@ -116,7 +116,7 @@
 
 @media (min-width: 576px) {
   .home-stories-content {
-    min-height: 40rem;
+    min-height: 55rem;
   }
   .home-stories__gallery {
     height: 60vh;
@@ -126,7 +126,7 @@
 
 @media (min-width: 768px) {
   .home-stories-content {
-    min-height: 50rem;
+    min-height: 60rem;
   }
   .home-stories__gallery {
     width: 90%;
@@ -144,7 +144,7 @@
 
 @media (min-width: 992px) {
   .home-stories-content {
-    min-height: 60rem;
+    min-height: 70rem;
   }
   .home-stories__gallery {
     width: 90%;
@@ -154,7 +154,7 @@
 
 @media (min-width: 1200px) {
   .home-stories-content {
-    min-height: 70rem;
+    min-height: 80rem;
   }
   .home-stories__gallery {
     width: 85%;
