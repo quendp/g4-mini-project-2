@@ -293,7 +293,7 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
           submitHandler(
             logInResponse.data.token,
             logInResponse.data.username,
-            logInResponse.data.roleId
+            logInResponse.data.role
           );
         }
       }
