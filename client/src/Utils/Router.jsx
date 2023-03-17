@@ -9,7 +9,7 @@ import Home from "../pages/Home/Home";
 import NotFound from "../pages/NotFound/NotFound";
 
 // --- IMPORT OF TESTING AREA FOR DEVELOPMENT ---
-import { developers } from "../components/TestingArea";
+import { developers } from "./TestingArea/TestingArea";
 
 export const router = createBrowserRouter([
   {

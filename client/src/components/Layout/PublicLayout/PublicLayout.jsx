@@ -4,13 +4,6 @@ import Footer from "../../Footer/Footer";
 import Header from "../../Header/Header";
 import PageTransition from "../../PageTransition/PageTransition";
 
-/*
-
- --- IMPORT OF TESTING AREA FOR DEVELOPMENT ---
-import TestingArea from "../../TestingArea";
-
-*/
-
 const PublicLayout = () => {
   const [currentTheme, setCurrentTheme] = useState(
     "var(--clr-accent-lights-100)"

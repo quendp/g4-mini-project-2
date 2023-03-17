@@ -1,0 +1,53 @@
+.dashboarUI-main__wrapper {
+  background-color: var(--clr-secondary-000);
+}
+
+.dashboardUI-side__wrapper {
+  background-color: var(--clr-primary-dark-100);
+  z-index: 3;
+  position: fixed;
+  width: 100%;
+  transform: translateX(-110%);
+  transition: transform 300ms ease-in-out, width 300ms ease-in-out;
+}
+
+.dashboardUI-side__wrapper.isClicked {
+  transform: translateX(0%);
+  width: 100%;
+}
+
+.dashboardUI-main__content {
+  width: 100%;
+  z-index: 1;
+}
+
+.dashboardUI-top__wrapper {
+  background-color: var(--clr-primary-dark-400);
+  height: 10vh;
+}
+
+@media (min-width: 576px) {
+}
+
+@media (min-width: 768px) {
+  .dashboardUI-main__content {
+    width: 75%;
+  }
+  .dashboardUI-side__wrapper {
+    position: sticky;
+    width: 25% !important;
+    transform: translateX(0);
+  }
+}
+
+@media (min-width: 992px) {
+  .dashboardUI-side__wrapper {
+    width: 20% !important;
+  }
+  .dashboardUI-main__content {
+    width: 80%;
+  }
+}
+
+@media (min-width: 1200px) {
+}
