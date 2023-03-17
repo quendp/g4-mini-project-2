@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
+const cors = require("cors");
 const { sequelize } = require("./models");
 require("./auth/passport");
 
@@ -9,6 +10,15 @@ const bookingRoutes = require("./src/routes/bookingRoutes");
 const packageRoutes = require("./src/routes/packageRoutes");
 const paymentRoutes = require("./src/routes/paymentRoutes");
 const companionRoutes = require("./src/routes/companionRoutes");
+const credentials = require("./config/credentials");
+const corsOptions = require("./config/corsOptions");
+
+// Handle options credentials check - before CORS!
+// and fetch cookies credentials requirement
+app.use(credentials);
+
+// Cross Origin Resource Sharing
+app.use(cors(corsOptions));
 
 // parse application/json
 app.use(bodyParser.json());
