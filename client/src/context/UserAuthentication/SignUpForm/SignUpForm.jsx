@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../../../Utils/axios";
 import SignUpFormAccount from "./SignUpFormAccount";
 import SignUpFormPersonal from "./SignUpFormPersonal";
 import FormModal from "../../../components/FormUI/FormModal";
