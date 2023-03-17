@@ -1,62 +1,59 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class Payments extends Model {
+  class Packages extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate({ Bookings }) {
-      this.hasOne(Bookings, { foreignKey: "paymentId", as: "Bookings" });
+      this.hasMany(Bookings, { foreignKey: "packageId", as: "Bookings" });
     }
   }
-  Payments.init(
+  Packages.init(
     {
-      flight_company: {
+      package_type: {
+        type: DataTypes.ENUM("Basic", "Standard", "Premium"),
+        allowNull: false,
+      },
+      destination: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      flight_cost: {
-        type: DataTypes.FLOAT,
+      destination_id: {
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
-      transportation_cost: {
-        type: DataTypes.FLOAT,
-        allowNull: false,
-      },
-      accommodation_cost: {
-        type: DataTypes.FLOAT,
-        allowNull: false,
-      },
-      activities_cost: {
-        type: DataTypes.FLOAT,
-        allowNull: false,
-      },
-      total_cost: {
-        type: DataTypes.FLOAT,
-        allowNull: false,
-      },
-      payment_method: {
+      category: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      payment_status: {
-        type: DataTypes.ENUM(
-          "pending",
-          "complete",
-          "refunded",
-          "failed",
-          "cancelled"
-        ),
+      flight_class: {
+        type: DataTypes.STRING,
         allowNull: false,
-        defaultValue: "pending",
+      },
+      transportation: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      accommodation: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      activities: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      starting_price: {
+        type: DataTypes.FLOAT,
+        allowNull: false,
       },
     },
     {
       sequelize,
-      modelName: "Payments",
+      modelName: "Packages",
     }
   );
-  return Payments;
+  return Packages;
 };

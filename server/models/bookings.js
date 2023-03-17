@@ -1,61 +1,60 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class User extends Model {
+  class Bookings extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({ Booking, Roles }) {
+    static associate({ Users, Packages, Payments, Companions }) {
       // define association here
-      this.hasMany(Booking, { foreignKey: "userId", as: "Booking" });
-      this.belongsTo(Roles, { foreignKey: "roleId", as: "Roles" });
+      this.belongsTo(Users, { foreignKey: "userId", as: "Users" });
+      this.belongsTo(Packages, { foreignKey: "packageId", as: "Packages" });
+      this.belongsTo(Payments, { foreignKey: "paymentId", as: "Payments" });
+      this.hasMany(Companions, { foreignKey: "bookingId", as: "Companions" });
     }
   }
-  User.init(
+  Bookings.init(
     {
-      roleId: {
+      userId: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      username: {
+      travel_date: {
+        type: DataTypes.DATE,
+        allowNull: false,
+      },
+      duration: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      firstname: {
+      starting_location: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      lastname: {
-        type: DataTypes.STRING,
+      booking_status: {
+        type: DataTypes.ENUM("waitlist", "tentative", "confirmed", "cancelled"),
         allowNull: false,
+        defaultValue: "waitlist",
       },
-      email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      phone_number: {
+      agentId: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      age: {
+      packageId: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      address: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      password: {
-        type: DataTypes.STRING,
+      paymentId: {
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
     },
     {
       sequelize,
-      modelName: "User",
+      modelName: "Bookings",
     }
   );
-  return User;
+  return Bookings;
 };

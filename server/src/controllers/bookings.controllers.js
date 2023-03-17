@@ -1,4 +1,4 @@
-const { BookingService } = require("../services/booking.service");
+const { BookingService } = require("../services/bookings.service");
 
 class BookingController {
   static async createBooking(req, res) {
@@ -10,7 +10,7 @@ class BookingController {
         starting_location,
         agentId,
         packageId,
-        paymentId
+        paymentId,
       } = req.body;
       const booking = await BookingService.createBooking({
         userId,
@@ -19,7 +19,7 @@ class BookingController {
         starting_location,
         agentId,
         packageId,
-        paymentId
+        paymentId,
       });
       res.json(booking);
     } catch (e) {
@@ -49,12 +49,8 @@ class BookingController {
   static async updateBookingById(req, res) {
     try {
       const { id } = req.params;
-      const {
-        travel_date,
-        duration,
-        starting_location,
-        booking_status,
-      } = req.body;
+      const { travel_date, duration, starting_location, booking_status } =
+        req.body;
       const booking = await BookingService.updateBookingById(id, {
         travel_date,
         duration,

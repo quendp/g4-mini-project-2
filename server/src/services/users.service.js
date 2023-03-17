@@ -1,4 +1,4 @@
-const { User } = require("../../models");
+const { Users } = require("../../models");
 const { Op } = require("sequelize");
 const jwt = require("jsonwebtoken");
 const { jwtSecret } = require("../../config/secrets");
@@ -16,17 +16,17 @@ class UsersService {
   }) {
     try {
       // check if username already exists
-      const usernameExists = await User.findOne({ where: { username } });
+      const usernameExists = await Users.findOne({ where: { username } });
       if (usernameExists) {
         return { message: "Username is already taken." };
       }
       // check if email already exists
-      const emailExists = await User.findOne({ where: { email } });
+      const emailExists = await Users.findOne({ where: { email } });
       if (emailExists) {
         return { message: "Email address already have an account." };
       }
       // create user
-      const newUser = await User.create({
+      const newUser = await Users.create({
         roleId: 1,
         username,
         firstname,
@@ -46,7 +46,7 @@ class UsersService {
   static async loginUser({ usernameOrEmail, password }) {
     try {
       // check if username or email exists
-      const accountExists = await User.findOne({
+      const accountExists = await Users.findOne({
         where: {
           [Op.or]: [{ username: usernameOrEmail }, { email: usernameOrEmail }],
         },
@@ -78,9 +78,9 @@ class UsersService {
 
   static async getUserByUsername(username) {
     try {
-      const currentUser = await User.findOne({
+      const currentUser = await Users.findOne({
         where: { username },
-        include: "Booking",
+        include: "Bookings",
       });
       return currentUser;
     } catch (e) {
@@ -101,7 +101,7 @@ class UsersService {
     password,
   }) {
     try {
-      const newUser = await User.create({
+      const newUser = await Users.create({
         username,
         firstname,
         lastname,
@@ -120,7 +120,7 @@ class UsersService {
 
   static async getAllUsers() {
     try {
-      return User.findAll({ include: "Booking" });
+      return Users.findAll({ include: "Bookings" });
     } catch (e) {
       console.log(e);
       throw new Error();
@@ -141,7 +141,7 @@ class UsersService {
     }
   ) {
     try {
-      const userToUpdate = await User.findOne({ where: { id } });
+      const userToUpdate = await Users.findOne({ where: { id } });
       if (userToUpdate) {
         userToUpdate.username = username;
         userToUpdate.firstname = firstname;
@@ -163,7 +163,7 @@ class UsersService {
 
   static async deleteUserById(id) {
     try {
-      const userToDelete = await User.findOne({ where: { id } });
+      const userToDelete = await Users.findOne({ where: { id } });
       if (userToDelete) {
         await userToDelete.destroy();
         return true;
