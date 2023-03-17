@@ -1,4 +1,4 @@
-const { Package } = require("../../models");
+const { Packages } = require("../../models");
 
 class PackageService {
   static async createPackage({
@@ -11,7 +11,7 @@ class PackageService {
     starting_price,
   }) {
     try {
-      const packageToCreate = await Package.create({
+      const packageToCreate = await Packages.create({
         package_type,
         destination,
         flight_class,
@@ -29,7 +29,7 @@ class PackageService {
 
   static async getAllPackage() {
     try {
-      return Package.findAll();
+      return Packages.findAll();
     } catch (e) {
       console.log(e);
       throw new Error();
@@ -38,7 +38,7 @@ class PackageService {
 
   static async getPackageById(id) {
     try {
-      return Package.findOne({ where: { id }});
+      return Packages.findOne({ where: { id } });
     } catch (e) {
       console.log(e);
       throw new Error();
@@ -48,17 +48,17 @@ class PackageService {
   static async updatePackageById(
     id,
     {
-        package_type,
-        destination,
-        flight_class,
-        transportation,
-        accommodation,
-        activities,
-        starting_price,
+      package_type,
+      destination,
+      flight_class,
+      transportation,
+      accommodation,
+      activities,
+      starting_price,
     }
   ) {
     try {
-      const packageToUpdate = await Package.findOne({ where: { id } });
+      const packageToUpdate = await Packages.findOne({ where: { id } });
       if (packageToUpdate) {
         packageToUpdate.package_type = package_type;
         packageToUpdate.destination = destination;
@@ -79,7 +79,7 @@ class PackageService {
 
   static async deletePackageById(id) {
     try {
-      const packageToDelete = await Package.findOne({ where: { id } });
+      const packageToDelete = await Packages.findOne({ where: { id } });
       if (packageToDelete) {
         await packageToDelete.destroy();
         return true;

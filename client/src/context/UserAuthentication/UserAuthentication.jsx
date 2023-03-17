@@ -6,24 +6,7 @@ import SignUpForm from "./SignUpForm/SignUpForm";
 const UserAuthContext = createContext({});
 
 export const UserAuthentication = ({ children }) => {
-  // For development purposes remove in production
-
-  const MOCK_LOGGED_IN = {
-    token: "sampleToken",
-    username: "sample@username",
-    role: "admin",
-  };
-
-  const MOCK_LOGGED_OUT = {
-    token: false,
-    username: "login",
-    role: false,
-  };
-
-  useEffect(() => {
-    console.log("Mock data log in : ", MOCK_LOGGED_IN);
-    console.log("Mock data log out : ", MOCK_LOGGED_OUT);
-  }, []);
+  // For development purposes remove in production : const MOCK_LOGGED_IN = {token: "sampleToken",username: "sample@username",role: 1};
 
   // For development purposes remove in production
 
@@ -42,23 +25,12 @@ export const UserAuthentication = ({ children }) => {
     setHasAccount(false);
   };
 
-  const submitHandler = (jwtToken, username) => {
-    let userRole;
-    if (!jwtToken) {
-      userRole = "";
-    } else if (username == "admin_mark") {
-      userRole = "admin";
-    } else if (username == "agent_jane") {
-      userRole = "agent";
-    } else {
-      userRole = "user";
-    }
-
-    setLogInToken({ token: jwtToken, username: username, role: userRole });
+  const submitHandler = (jwtToken, username, role) => {
+    setLogInToken({ token: jwtToken, username: username, role: role });
 
     console.log("user logged in with token:", jwtToken);
     console.log("user logged in with username:", username);
-    console.log("user logged in with role:", userRole);
+    console.log("user logged in with role:", role);
   };
 
   useEffect(() => {

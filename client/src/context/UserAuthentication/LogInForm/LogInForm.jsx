@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../../../Utils/axios";
 
 import FormModal from "../../../components/FormUI/FormModal";
 import showPassImg from "../../../assets/images/showPass.png";
@@ -61,13 +61,8 @@ const LogInForm = ({ handleChangeMode, submitHandler }) => {
     if (!validUsername || !validPass) {
       !validUsername ? setUsernameClass("isInvalid") : setUsernameClass("");
       !validPass ? setPassClass("isInvalid") : setPassClass("");
-    } else if (
-      username == "admin_mark" ||
-      username == "agent_jane" ||
-      username == "user_john"
-    ) {
-      submitHandler("pseudoToken", username);
     } else {
+      setErrMsg("Submitting...");
       submitToServer();
     }
   };
@@ -85,7 +80,12 @@ const LogInForm = ({ handleChangeMode, submitHandler }) => {
       if (response.data.message) {
         setErrMsg(response.data.message);
       } else {
-        submitHandler(response.data.token, username);
+        submitHandler(
+          response.data.token,
+          response.data.username,
+          response.data.role
+        );
+        setErrMsg("");
       }
     } catch (err) {
       if (!err?.response) {

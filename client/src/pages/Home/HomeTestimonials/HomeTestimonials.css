@@ -1,5 +1,7 @@
 .home-testimonials__wrapper {
   background-color: var(--clr-secondary-000);
+  padding-top: 15rem !important;
+  padding-bottom: 5rem !important;
 }
 
 .home-testimonials__wrapper > .row {
@@ -107,5 +109,9 @@
   }
   .home-testimonials-card__container {
     padding: 0 3rem;
+  }
+  .home-testimonials__wrapper {
+    padding-top: 20rem !important;
+    padding-bottom: 10rem !important;
   }
 }

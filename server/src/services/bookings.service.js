@@ -1,4 +1,4 @@
-const { Booking } = require("../../models");
+const { Bookings } = require("../../models");
 
 class BookingService {
   static async createBooking({
@@ -8,17 +8,17 @@ class BookingService {
     starting_location,
     agentId,
     packageId,
-    paymentId
+    paymentId,
   }) {
     try {
-      const newBooking = await Booking.create({
+      const newBooking = await Bookings.create({
         userId,
         travel_date,
         duration,
         starting_location,
         agentId,
         packageId,
-        paymentId
+        paymentId,
       });
       return newBooking;
     } catch (err) {
@@ -29,7 +29,9 @@ class BookingService {
 
   static async getAllBooking() {
     try {
-      return Booking.findAll({ include: ["Package", "Payments", "Companions"] });
+      return Bookings.findAll({
+        include: ["Packages", "Payments", "Companions"],
+      });
     } catch (e) {
       console.log(e);
       throw new Error();
@@ -38,7 +40,10 @@ class BookingService {
 
   static async getBookingById(id) {
     try {
-      return Booking.findOne({ where: { id }, include: ["Package", "Payments", "Companions"] });
+      return Bookings.findOne({
+        where: { id },
+        include: ["Packages", "Payments", "Companions"],
+      });
     } catch (e) {
       console.log(e);
       throw new Error();
@@ -47,15 +52,10 @@ class BookingService {
 
   static async updateBookingById(
     id,
-    {
-        travel_date,
-        duration,
-        starting_location,
-        booking_status
-    }
+    { travel_date, duration, starting_location, booking_status }
   ) {
     try {
-      const bookingToUpdate = await Booking.findOne({ where: { id } });
+      const bookingToUpdate = await Bookings.findOne({ where: { id } });
       if (bookingToUpdate) {
         bookingToUpdate.travel_date = travel_date;
         bookingToUpdate.duration = duration;
@@ -73,7 +73,7 @@ class BookingService {
 
   static async deleteBookingById(id) {
     try {
-      const bookingToDelete = await Booking.findOne({ where: { id } });
+      const bookingToDelete = await Bookings.findOne({ where: { id } });
       if (bookingToDelete) {
         await bookingToDelete.destroy();
         return true;

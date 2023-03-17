@@ -1,10 +1,9 @@
-const { User } = require("../../models");
+const { Users } = require("../../models");
 const { Op } = require("sequelize");
 const jwt = require("jsonwebtoken");
-const {jwtSecret} = require("../../config/secrets");
+const { jwtSecret } = require("../../config/secrets");
 
 class UsersService {
-
   static async registerUser({
     username,
     firstname,
@@ -17,17 +16,18 @@ class UsersService {
   }) {
     try {
       // check if username already exists
-      const usernameExists = await User.findOne({where: {username}})
-      if(usernameExists){
-        return {message: "Username is already taken."}
+      const usernameExists = await Users.findOne({ where: { username } });
+      if (usernameExists) {
+        return { message: "Username is already taken." };
       }
       // check if email already exists
-      const emailExists = await User.findOne({where: {email}})
-      if(emailExists){
-        return {message: "Email address already have an account."}
+      const emailExists = await Users.findOne({ where: { email } });
+      if (emailExists) {
+        return { message: "Email address already have an account." };
       }
       // create user
-      const newUser = await User.create({
+      const newUser = await Users.create({
+        roleId: 1,
         username,
         firstname,
         lastname,
@@ -43,36 +43,45 @@ class UsersService {
     }
   }
 
-  static async loginUser({
-    usernameOrEmail,
-    password,
-  }) {
+  static async loginUser({ usernameOrEmail, password }) {
     try {
       // check if username or email exists
-      const accountExists = await User.findOne({where: {
-        [Op.or] : [
-          {username: usernameOrEmail},
-          {email: usernameOrEmail}
-        ]
-      }});
-      if(!accountExists){
-        return {message: "Email or username does not match an account."}
+      const accountExists = await Users.findOne({
+        where: {
+          [Op.or]: [{ username: usernameOrEmail }, { email: usernameOrEmail }],
+        },
+      });
+      if (!accountExists) {
+        return { message: "Email or username does not match an account." };
       }
       // check if password matches the account found
-      if(accountExists.password !== password){
-        return {message: "Incorrect password"}
+      if (accountExists.password !== password) {
+        return { message: "Incorrect password" };
       }
-      const jwtToken = jwt.sign({id: accountExists.id, email: accountExists.email }, jwtSecret );
-      return {token: jwtToken}
+      const jwtToken = jwt.sign(
+        {
+          id: accountExists.id,
+          email: accountExists.email,
+        },
+        jwtSecret
+      );
+      return {
+        token: jwtToken,
+        username: accountExists.username,
+        role: accountExists.roleId,
+      };
     } catch (err) {
       console.log("Registration failed: ", err);
-      return {message: "Error logging in. Try again later."}
+      return { message: "Error logging in. Try again later." };
     }
   }
 
   static async getUserByUsername(username) {
     try {
-      const currentUser = await User.findOne({ where: { username},  include: "Booking"  });
+      const currentUser = await Users.findOne({
+        where: { username },
+        include: "Bookings",
+      });
       return currentUser;
     } catch (e) {
       console.log(e);
@@ -92,7 +101,7 @@ class UsersService {
     password,
   }) {
     try {
-      const newUser = await User.create({
+      const newUser = await Users.create({
         username,
         firstname,
         lastname,
@@ -111,7 +120,7 @@ class UsersService {
 
   static async getAllUsers() {
     try {
-      return User.findAll({ include: "Booking" });
+      return Users.findAll({ include: "Bookings" });
     } catch (e) {
       console.log(e);
       throw new Error();
@@ -132,7 +141,7 @@ class UsersService {
     }
   ) {
     try {
-      const userToUpdate = await User.findOne({ where: { id } });
+      const userToUpdate = await Users.findOne({ where: { id } });
       if (userToUpdate) {
         userToUpdate.username = username;
         userToUpdate.firstname = firstname;
@@ -154,7 +163,7 @@ class UsersService {
 
   static async deleteUserById(id) {
     try {
-      const userToDelete = await User.findOne({ where: { id } });
+      const userToDelete = await Users.findOne({ where: { id } });
       if (userToDelete) {
         await userToDelete.destroy();
         return true;

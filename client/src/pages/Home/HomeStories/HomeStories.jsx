@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 import "./HomeStories.css";
 import cloudsImg from "../../../assets/images/clouds.png";
+import mountainImg from "../../../assets/images/mountain.png";
 import storyImage1 from "../../../assets/images/home-stories/story-1.jpg";
 import storyImage2 from "../../../assets/images/home-stories/story-2.jpg";
 import storyImage3 from "../../../assets/images/home-stories/story-3.jpg";
@@ -50,23 +51,9 @@ const HomeStories = ({ categoryCurrent }) => {
               />
             </g>
           </mask>
-          <image
-            xlinkHref="https://assets.codepen.io/721952/mountBg.png"
-            width="1200"
-            height="800"
-          />
-          <image
-            xlinkHref="https://assets.codepen.io/721952/mountMg.png"
-            width="1200"
-            height="800"
-          />
+          <image xlinkHref={mountainImg} width="1200" height="1040" />
           <image
             xlinkHref="https://assets.codepen.io/721952/cloud2.png"
-            width="1200"
-            height="800"
-          />
-          <image
-            xlinkHref="https://assets.codepen.io/721952/mountFg.png"
             width="1200"
             height="800"
           />
@@ -81,60 +68,6 @@ const HomeStories = ({ categoryCurrent }) => {
             height="800"
           />
         </svg>
-      </div>
-      <div
-        className="home-stories-quote d-flex flex-column justify-content-start align-items-center w-75"
-        ref={quoteRef}
-        style={{
-          opacity: quoteInView ? "1" : "0",
-          transition: "opacity 400ms ease-in-out 200ms",
-        }}
-      >
-        <div className="home-stories-quote__open align-self-start">
-          <svg
-            width="100%"
-            version="1.1"
-            id="Capa_1"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlnsXlink="http://www.w3.org/1999/xlink"
-            viewBox="0 0 191.029 191.029"
-            xmlSpace="preserve"
-          >
-            <path
-              style={{ fill: categoryCurrent.accentLight }}
-              d="M44.33,88.474v15.377h38.417v82.745H0v-82.745h0.002V88.474c0-31.225,8.984-54.411,26.704-68.918
-	C38.964,9.521,54.48,4.433,72.824,4.433v44.326C62.866,48.759,44.33,48.759,44.33,88.474z M181.107,48.759V4.433
-	c-18.343,0-33.859,5.088-46.117,15.123c-17.72,14.507-26.705,37.694-26.705,68.918v15.377h0v82.745h82.744v-82.745h-38.417V88.474
-	C152.613,48.759,171.149,48.759,181.107,48.759z"
-            />
-          </svg>
-        </div>
-        <p className="w-75 text-center m-0 p-0 position-relative">
-          Memories are created in memorable places. And here in Lakbay Travel
-          Agency, we will help you create those picture-perfect moments. <br />
-          <span className="position-absolute end-0 text-uppercase mt-4">
-            - John Doe, CEO
-          </span>
-        </p>
-        <div className="home-stories-quote__close align-self-end">
-          <svg
-            width="100%"
-            version="1.1"
-            id="Capa_1"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlnsXlink="http://www.w3.org/1999/xlink"
-            viewBox="0 0 191.029 191.029"
-            xmlSpace="preserve"
-          >
-            <path
-              style={{ fill: categoryCurrent.accentLight }}
-              d="M44.33,88.474v15.377h38.417v82.745H0v-82.745h0.002V88.474c0-31.225,8.984-54.411,26.704-68.918
-	C38.964,9.521,54.48,4.433,72.824,4.433v44.326C62.866,48.759,44.33,48.759,44.33,88.474z M181.107,48.759V4.433
-	c-18.343,0-33.859,5.088-46.117,15.123c-17.72,14.507-26.705,37.694-26.705,68.918v15.377h0v82.745h82.744v-82.745h-38.417V88.474
-	C152.613,48.759,171.149,48.759,181.107,48.759z"
-            />
-          </svg>
-        </div>
       </div>
       <div
         className="container-fluid m-0 px-0 px-md-5"
@@ -152,20 +85,18 @@ const HomeStories = ({ categoryCurrent }) => {
                   "opacity 400ms ease-in-out 200ms, transform 400ms ease-in-out 200ms",
               }}
             >
-              <h3
-                className="text-center text-md-start"
-                style={{
-                  color: categoryCurrent.accentLight,
-                  textShadow: `2px 2px 5px rgba(0,0,0,0.55), 0 0 25px ${categoryCurrent.accent} `,
-                  fontFamily: "var(--ff-heading-secondary)",
-                  fontSize: "var(--fz-main-h1)",
-                  marginBottom: "-1vw",
-                }}
-              >
+              <h3 className="text-center text-md-start">
                 Inspiring Fellow Travelers
               </h3>
-              <h2 className="text-center text-md-start h2-dark">
-                A Continuously Growing Community
+              <h2 className="text-center text-md-start h2-dark ps-0 ps-md-2">
+                A Continuously Growing{" "}
+                <span
+                  style={{
+                    color: categoryCurrent.accent,
+                  }}
+                >
+                  Community
+                </span>
               </h2>
             </div>
           </div>
@@ -275,6 +206,60 @@ const HomeStories = ({ categoryCurrent }) => {
               </Link>
             </div>
           </div>
+        </div>
+      </div>
+      <div
+        className="home-stories-quote d-flex flex-column justify-content-start align-items-center w-75"
+        ref={quoteRef}
+        style={{
+          opacity: quoteInView ? "1" : "0",
+          transition: "opacity 400ms ease-in-out 200ms",
+        }}
+      >
+        <div className="home-stories-quote__open align-self-start">
+          <svg
+            width="100%"
+            version="1.1"
+            id="Capa_1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+            viewBox="0 0 191.029 191.029"
+            xmlSpace="preserve"
+          >
+            <path
+              style={{ fill: categoryCurrent.accentLight }}
+              d="M44.33,88.474v15.377h38.417v82.745H0v-82.745h0.002V88.474c0-31.225,8.984-54.411,26.704-68.918
+	C38.964,9.521,54.48,4.433,72.824,4.433v44.326C62.866,48.759,44.33,48.759,44.33,88.474z M181.107,48.759V4.433
+	c-18.343,0-33.859,5.088-46.117,15.123c-17.72,14.507-26.705,37.694-26.705,68.918v15.377h0v82.745h82.744v-82.745h-38.417V88.474
+	C152.613,48.759,171.149,48.759,181.107,48.759z"
+            />
+          </svg>
+        </div>
+        <p className="w-75 text-center m-0 p-0 position-relative">
+          Memories are created in memorable places. And here in Lakbay Travel
+          Agency, we will help you create those picture-perfect moments. <br />
+          <span className="position-absolute end-0 text-uppercase mt-4">
+            - John Doe, CEO
+          </span>
+        </p>
+        <div className="home-stories-quote__close align-self-end">
+          <svg
+            width="100%"
+            version="1.1"
+            id="Capa_1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+            viewBox="0 0 191.029 191.029"
+            xmlSpace="preserve"
+          >
+            <path
+              style={{ fill: categoryCurrent.accentLight }}
+              d="M44.33,88.474v15.377h38.417v82.745H0v-82.745h0.002V88.474c0-31.225,8.984-54.411,26.704-68.918
+	C38.964,9.521,54.48,4.433,72.824,4.433v44.326C62.866,48.759,44.33,48.759,44.33,88.474z M181.107,48.759V4.433
+	c-18.343,0-33.859,5.088-46.117,15.123c-17.72,14.507-26.705,37.694-26.705,68.918v15.377h0v82.745h82.744v-82.745h-38.417V88.474
+	C152.613,48.759,171.149,48.759,181.107,48.759z"
+            />
+          </svg>
         </div>
       </div>
     </section>

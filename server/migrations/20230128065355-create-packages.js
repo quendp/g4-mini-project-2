@@ -1,57 +1,61 @@
-'use strict';
+"use strict";
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('users', {
+    await queryInterface.createTable("Packages", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
-      username: {
+      package_type: {
+        type: Sequelize.ENUM("Basic", "Standard", "Premium"),
+        allowNull: false,
+      },
+      destination: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      firstname: {
+      category: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      lastname: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      email: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      phone_number: {
+      destination_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      age: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
-      address: {
+      flight_class: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      password: {
+      transportation: {
         type: Sequelize.STRING,
+        allowNull: false,
+      },
+      accommodation: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      activities: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      starting_price: {
+        type: Sequelize.FLOAT,
         allowNull: false,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('users');
-  }
+    await queryInterface.dropTable("Packages");
+  },
 };
