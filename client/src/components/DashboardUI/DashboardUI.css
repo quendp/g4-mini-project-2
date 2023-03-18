@@ -4,6 +4,7 @@
 
 .dashboardUI-side__wrapper {
   background-color: var(--clr-primary-dark-100);
+  font-family: var(--ff-body-light);
   z-index: 3;
   position: fixed;
   width: 100%;
@@ -21,9 +22,121 @@
   z-index: 1;
 }
 
+.dashboardUI-side__wrapper .dashboardUI-nav__burger {
+  margin-bottom: -10rem;
+}
+
+.dashboardUI-nav__burger,
+.dashboardUI-nav__burger:hover,
+.dashboardUI-nav__burger:active {
+  z-index: 5;
+  background: transparent;
+  color: var(--clr-secondary-000);
+  border: none;
+  outline: none;
+}
+
+.dashboardUI-nav__burger i {
+  font-size: var(--fz-main-h2);
+}
+
+.dashboardUI-side__title {
+  border-bottom: 1px solid var(--clr-secondary-500);
+}
+
+.dashboardUI-side__title img {
+  width: 2rem;
+}
+
+.dashboardUI-side__title h3 {
+  font-family: var(--ff-heading-primary);
+  letter-spacing: 4px;
+}
+
+.dashboardUI-side__avatar {
+  font-family: var(--ff-body-bold);
+  font-size: var(--fz-main-text);
+  letter-spacing: 2px;
+  background-color: var(--clr-accent-lights);
+  color: var(--clr-secondary-100);
+  width: 2rem;
+  height: 2rem;
+}
+
+.dashboardUI-side__username,
+.dashboardUI-side__bottom {
+  background-color: var(--clr-primary-dark-200);
+  color: var(--clr-secondary-100);
+  border-radius: 1rem;
+  font-size: var(--fz-main-text);
+}
+
+.dashboardUI-side__navitem {
+  font-size: var(--fz-main-text);
+  color: var(--clr-secondary-100);
+  cursor: pointer;
+  transition: border 200ms ease-in-out, padding 200ms ease-in-out;
+}
+
+.dashboardUI-side__navitem:hover {
+  border-left: 5px solid var(--clr-secondary-100);
+  color: var(--clr-secondary-200);
+}
+
+.dashboardUI-side__navitem.active {
+  border-left: 5px solid var(--clr-secondary-100);
+  padding-left: 0.5rem !important;
+}
+
+.dashboardUI-side__bottom > div {
+  background-color: var(--clr-secondary-700);
+  color: var(--clr-secondary-100);
+  font-size: var(--fz-main-small);
+  border-radius: 0.7rem;
+  cursor: pointer;
+  transition: background-color 200ms ease-in-out;
+}
+
+.dashboardUI-side__bottom > div:hover {
+  background-color: var(--clr-secondary-600);
+}
+
 .dashboardUI-top__wrapper {
   background-color: var(--clr-primary-dark-400);
   height: 10vh;
+  font-family: var(--ff-body-light);
+}
+
+.dashboardUI-top__logout {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  font-size: var(--fz-main-h2);
+  color: var(--clr-secondary-100);
+  cursor: pointer;
+}
+
+.dashboardUI-top__logout:hover {
+  color: var(--clr-secondary-300);
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
+.dashboardUI-top__search input {
+  font-size: var(--fz-main-small);
+}
+
+.dashboardUI-top__search button {
+  background-color: var(--clr-primary-glass);
+  color: var(--clr-secondary-100);
+  font-size: var(--fz-main-small);
+}
+
+.dashboardUI-top__search button:hover,
+.dashboardUI-top__search button:active {
+  background-color: var(--clr-primary-dark-300) !important;
+  color: var(--clr-secondary-100) !important;
 }
 
 @media (min-width: 576px) {
@@ -37,6 +150,16 @@
     position: sticky;
     width: 25% !important;
     transform: translateX(0);
+  }
+  .dashboardUI-top__logout {
+    font-size: var(--fz-main-p);
+  }
+  .dashboardUI-side__title img {
+    width: 3rem;
+  }
+  .dashboardUI-side__avatar {
+    width: 3rem;
+    height: 3rem;
   }
 }
 

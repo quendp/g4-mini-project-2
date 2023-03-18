@@ -3,7 +3,7 @@ import "./DashboardUI.css";
 import DashboardUISide from "./DashboardUISide";
 import DashboardUITop from "./DashboardUITop";
 
-const DashboardUI = ({ children }) => {
+const DashboardUI = ({ children, userData, sidebarMenu }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const openSideBar = () => {
@@ -20,9 +20,11 @@ const DashboardUI = ({ children }) => {
         <DashboardUISide
           closeSideBar={closeSideBar}
           isSidebarOpen={isSidebarOpen}
+          userData={userData}
+          sidebarMenu={sidebarMenu}
         />
         <div className="dashboardUI-main__content m-0 p-0">
-          <DashboardUITop openSideBar={openSideBar} />
+          <DashboardUITop openSideBar={openSideBar} userData={userData} />
           <div className="p-2 p-sm-3 px-md-5 py-md-4">{children}</div>
         </div>
       </div>

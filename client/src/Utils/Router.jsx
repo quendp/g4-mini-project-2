@@ -53,6 +53,20 @@ export const router = createBrowserRouter([
       {
         path: "/:username",
         element: <PrivateLayout />,
+        children: [
+          {
+            path: "/:username/dashboard",
+            element: <PrivateLayout />,
+          },
+          {
+            path: "/:username/bookings",
+            element: <PrivateLayout />,
+          },
+          {
+            path: "/:username/updates",
+            element: <PrivateLayout />,
+          },
+        ],
       },
 
       // --- START OF TESTING AREA ROUTER ---
