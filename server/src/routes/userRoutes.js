@@ -10,6 +10,15 @@ router.delete("/:id", UsersController.deleteUserById);
 
 router.post("/register", UsersController.registerUser);
 router.post("/login", UsersController.loginUser);
-router.get("/:username", passport.authenticate("jwt", { session: false }), UsersController.getUserByUsername);
+router.get(
+  "/:username",
+  passport.authenticate("jwt", { session: false }),
+  UsersController.getUserByUsername
+);
+router.put(
+  "/agent/:agentName",
+  passport.authenticate("jwt", { session: false }),
+  UsersController.updateAgent
+);
 
 module.exports = router;
