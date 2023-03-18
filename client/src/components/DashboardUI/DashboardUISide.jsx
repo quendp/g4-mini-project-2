@@ -7,17 +7,20 @@ const DashboardUISide = ({
   closeSideBar,
   userData,
   sidebarMenu,
+  userInfo,
 }) => {
   const navigate = useNavigate();
 
   const openLogOutModal = () => {
     userData.handleLogInMode();
   };
+
   useEffect(() => {
     if (userData.logInToken.role === 0) {
       navigate("/");
     }
   }, [userData]);
+
   return (
     <div
       className={`${
@@ -40,11 +43,15 @@ const DashboardUISide = ({
         </Link>
 
         <div className="dashboardUI-side__username d-flex flex-row w-100 p-3 mb-4 justify-content-center justify-content-md-start justify-self-start">
-          <div className="dashboardUI-side__avatar me-4 p-2 rounded-circle d-flex align-items-center justify-content-center">
-            <span className="p-0 m-0">JD</span>
+          <div className="dashboardUI-side__avatar me-4 p-0 rounded-circle d-flex align-items-center justify-content-center">
+            <span className="p-0 m-0">
+              {userInfo ? userInfo.firstname[0] + userInfo.lastname[0] : "..."}
+            </span>
           </div>
           <div className="d-flex flex-column align-items-start justify-content-center">
-            <p className="m-0 p-0">John Doe</p>
+            <p className="m-0 p-0">
+              {userInfo ? userInfo.firstname + " " + userInfo.lastname : "..."}
+            </p>
             <p className="m-0 p-0">@{userData.logInToken.username}</p>
           </div>
         </div>
@@ -65,8 +72,13 @@ const DashboardUISide = ({
       </div>
 
       <div className="dashboardUI-side__bottom py-2 px-3 text-uppercase">
-        <div className="text-center m-0 p-0">
-          <p className="lh-1 p-2 py-3 m-2">My Account</p>
+        <div className="m-0 p-0">
+          <NavLink
+            to={`/${userData.logInToken.username}/account`}
+            className="text-center m-0 p-0 text-decoration-none"
+          >
+            <p className="lh-1 p-2 py-3 m-2">My Account</p>
+          </NavLink>
         </div>
         <div
           className="text-center m-0 p-0"

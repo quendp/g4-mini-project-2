@@ -61,6 +61,7 @@
   color: var(--clr-secondary-100);
   width: 2rem;
   height: 2rem;
+  line-height: 0;
 }
 
 .dashboardUI-side__username,
@@ -88,7 +89,8 @@
   padding-left: 0.5rem !important;
 }
 
-.dashboardUI-side__bottom > div {
+.dashboardUI-side__bottom > div,
+.dashboardUI-side__bottom > div > a {
   background-color: var(--clr-secondary-700);
   color: var(--clr-secondary-100);
   font-size: var(--fz-main-small);
@@ -97,7 +99,8 @@
   transition: background-color 200ms ease-in-out;
 }
 
-.dashboardUI-side__bottom > div:hover {
+.dashboardUI-side__bottom > div:hover,
+.dashboardUI-side__bottom > div:has(.active) {
   background-color: var(--clr-secondary-600);
 }
 
@@ -139,9 +142,6 @@
   color: var(--clr-secondary-100) !important;
 }
 
-@media (min-width: 576px) {
-}
-
 @media (min-width: 768px) {
   .dashboardUI-main__content {
     width: 75%;
@@ -170,7 +170,4 @@
   .dashboardUI-main__content {
     width: 80%;
   }
-}
-
-@media (min-width: 1200px) {
 }

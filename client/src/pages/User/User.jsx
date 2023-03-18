@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import DashboardUI from "../../components/DashboardUI/DashboardUI";
+import DashboardUIAccount from "../../components/DashboardUI/DashboardUIAccount";
 import UserAuthContext from "../../context/UserAuthentication/UserAuthentication";
+import fetchUserInfo from "../../Utils/fetchUserInfo";
 import UserBookings from "./UserBookings";
 import UserDashboard from "./UserDashboard";
 import UserUpdates from "./UserUpdates";
@@ -10,6 +12,33 @@ const User = () => {
   const userData = useContext(UserAuthContext);
   const location = useLocation();
   const navigate = useNavigate();
+
+  const [userInfo, setUserInfo] = useState(false);
+  const FETCH_API = `/api/users/${userData.logInToken.username}`;
+
+  useEffect(() => {
+    let isLoggedIn = true;
+
+    const controller = new AbortController();
+
+    const getUserInfo = async () => {
+      try {
+        const info = await fetchUserInfo(
+          userData.logInToken.token,
+          FETCH_API,
+          controller
+        );
+        isLoggedIn && setUserInfo(info.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getUserInfo();
+    return () => {
+      isLoggedIn = false;
+      controller.abort();
+    };
+  }, [userData]);
 
   const sidebarMenu = [
     {
@@ -44,14 +73,29 @@ const User = () => {
       setCurrentContent(<UserBookings />);
     } else if (location.pathname === sidebarMenu[2].path) {
       setCurrentContent(<UserUpdates />);
+    } else if (
+      location.pathname === `/${userData.logInToken.username}/account`
+    ) {
+      setCurrentContent(<DashboardUIAccount />);
     } else {
       navigate("not-found");
     }
   }, [location]);
 
   return (
-    <DashboardUI userData={userData} sidebarMenu={sidebarMenu}>
+    <DashboardUI
+      userData={userData}
+      sidebarMenu={sidebarMenu}
+      userInfo={userInfo}
+    >
       {currentContent}
+      <h1 className="h2-dark">
+        Fullname: {userInfo ? userInfo.firstname : "loading"}{" "}
+        {userInfo ? userInfo.lastname : ""}
+      </h1>
+      <h1 className="h2-dark">
+        Email: {userInfo ? userInfo.email : "Loading"}
+      </h1>
     </DashboardUI>
   );
 };

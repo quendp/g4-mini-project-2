@@ -66,6 +66,10 @@ export const router = createBrowserRouter([
             path: "/:username/updates",
             element: <PrivateLayout />,
           },
+          {
+            path: "/:username/account",
+            element: <PrivateLayout />,
+          },
         ],
       },
 
@@ -80,7 +84,7 @@ export const router = createBrowserRouter([
         element: developers.nherwin,
       },
       {
-        path: "/radi",
+        path: "/radilyn",
         element: developers.radilyn,
       },
       {
