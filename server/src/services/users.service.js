@@ -102,6 +102,46 @@ class UsersService {
     }
   }
 
+  static async updateAgent(
+    agentName,
+    {
+      username,
+      firstname,
+      lastname,
+      email,
+      phone_number,
+      age,
+      address,
+      password,
+    }
+  ) {
+    try {
+      const agentToUpdate = await Users.findOne({
+        where: { username: agentName },
+      });
+      if (agentToUpdate && agentToUpdate.roleId === 2) {
+        agentToUpdate.username = username ? username : agentToUpdate.username;
+        agentToUpdate.firstname = firstname
+          ? firstname
+          : agentToUpdate.firstname;
+        agentToUpdate.lastname = lastname ? lastname : agentToUpdate.lastname;
+        agentToUpdate.email = email ? email : agentToUpdate.email;
+        agentToUpdate.phone_number = phone_number
+          ? phone_number
+          : agentToUpdate.phone_number;
+        agentToUpdate.age = age ? age : agentToUpdate.age;
+        agentToUpdate.address = address ? address : agentToUpdate.address;
+        agentToUpdate.password = password ? password : agentToUpdate.password;
+        await agentToUpdate.save();
+        return agentToUpdate;
+      }
+      return null;
+    } catch (e) {
+      console.log(e);
+      throw new Error();
+    }
+  }
+
   // for testing purposes only
   static async createUser({
     username,
