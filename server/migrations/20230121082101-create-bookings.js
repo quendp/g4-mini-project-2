@@ -27,7 +27,13 @@ module.exports = {
       },
       booking_status: {
         allowNull: false,
-        type: Sequelize.ENUM("waitlist", "tentative", "confirmed", "cancelled"),
+        type: Sequelize.ENUM(
+          "waitlist",
+          "tentative",
+          "confirmed",
+          "cancelled",
+          "successful"
+        ),
         defaultValue: "waitlist",
       },
       agentId: {

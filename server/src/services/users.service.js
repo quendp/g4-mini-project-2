@@ -1,4 +1,4 @@
-const { Users } = require("../../models");
+const { Users, Bookings, Companions } = require("../../models");
 const { Op } = require("sequelize");
 const jwt = require("jsonwebtoken");
 const { jwtSecret } = require("../../config/secrets");
@@ -79,10 +79,23 @@ class UsersService {
   static async getUserByUsername(username) {
     try {
       const currentUser = await Users.findOne({
-        where: { username },
-        include: "Bookings",
+        where: {
+          [Op.and]: [{ username }, { roleId: 1 }],
+        },
+        include: [
+          {
+            model: Bookings,
+            as: "Bookings",
+            include: [
+              {
+                model: Companions,
+                as: "Companions",
+              },
+            ],
+          },
+        ],
       });
-      return currentUser;
+      return currentUser ? currentUser : { message: "User does not exist." };
     } catch (e) {
       console.log(e);
       throw new Error();
