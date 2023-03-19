@@ -20,5 +20,10 @@ router.put(
   passport.authenticate("jwt", { session: false }),
   UsersController.updateAgent
 );
+router.get(
+  "/agent/:agentName",
+  passport.authenticate("jwt", { session: false }),
+  UsersController.getAgent
+);
 
 module.exports = router;

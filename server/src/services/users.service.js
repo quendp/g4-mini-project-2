@@ -142,6 +142,20 @@ class UsersService {
     }
   }
 
+  static async getAgent(agentName) {
+    try {
+      const agent = await Users.findOne({
+        where: {
+          [Op.and]: [{ username : agentName }, { roleId: 2 }],
+        },
+      });
+      return agent ? agent : { message: "Agent does not exist." };
+    } catch (e) {
+      console.log(e);
+      throw new Error();
+    }
+  }
+
   // for testing purposes only
   static async createUser({
     username,
