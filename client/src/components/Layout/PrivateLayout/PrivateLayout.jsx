@@ -17,13 +17,10 @@ const PrivateLayout = () => {
     if (!userData.logInToken.token) {
       setPrivateContent(<PrivateLayoutLogin />);
     } else if (
-      username !== "login" &&
-      username !== userData.logInToken.username
+      username === userData.logInToken.username ||
+      username === "login"
     ) {
-      navigate(`/not-found`);
-      setPrivateContent(<NotFound />);
-    } else {
-      navigate(`/${userData.logInToken.username}`);
+      navigate(`/${userData.logInToken.username}/dashboard`);
       if (userData.logInToken.role === 1) {
         setPrivateContent(<User />);
       } else if (userData.logInToken.role === 2) {
@@ -31,6 +28,9 @@ const PrivateLayout = () => {
       } else if (userData.logInToken.role === 3) {
         setPrivateContent(<Admin />);
       }
+    } else {
+      navigate(`/not-found`);
+      setPrivateContent(<NotFound />);
     }
   }, [userData]);
 
