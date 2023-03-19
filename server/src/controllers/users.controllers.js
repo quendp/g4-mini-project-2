@@ -67,6 +67,17 @@ class UsersController {
     }
   }
 
+  static async getAgent(req, res) {
+    try {
+      const { agentName } = req.params;
+      const agent = await UsersService.getAgent(agentName);
+      res.json(agent);
+    }
+    catch (err) {
+      res.status(404).json({ message: "Agent not Found" });
+    }
+  }
+
   // for tesing purposes only
   static async createUser(req, res) {
     try {
