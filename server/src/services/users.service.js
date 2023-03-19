@@ -126,16 +126,18 @@ class UsersService {
     try {
       const agent = await Users.findOne({
         where: {
-          [Op.and]: [{ username : agentName }, { roleId: 2 }],
+          [Op.and]: [{ username: agentName }, { roleId: 2 }],
         },
       });
 
-      const bookings = await Bookings.findOne({
+      const bookings = await Bookings.findAll({
         where: {
-          agentId : agent.id
-        }
-      })
-      return agent ? [agent,bookings] : { message: "Agent does not exist." };
+          agentId: agent.id,
+        },
+      });
+
+      const agentData = { agent: agent, assignedBookings: bookings };
+      return agent ? agentData : { message: "Agent does not exist." };
     } catch (e) {
       console.log(e);
       throw new Error();
