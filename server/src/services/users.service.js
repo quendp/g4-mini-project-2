@@ -129,7 +129,13 @@ class UsersService {
           [Op.and]: [{ username : agentName }, { roleId: 2 }],
         },
       });
-      return agent ? agent : { message: "Agent does not exist." };
+
+      const bookings = await Bookings.findOne({
+        where: {
+          agentId : agent.id
+        }
+      })
+      return agent ? [agent,bookings] : { message: "Agent does not exist." };
     } catch (e) {
       console.log(e);
       throw new Error();
