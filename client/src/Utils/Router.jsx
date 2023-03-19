@@ -9,7 +9,7 @@ import Home from "../pages/Home/Home";
 import NotFound from "../pages/NotFound/NotFound";
 
 // --- IMPORT OF TESTING AREA FOR DEVELOPMENT ---
-import { developers } from "../components/TestingArea";
+import { developers } from "./TestingArea/TestingArea";
 
 export const router = createBrowserRouter([
   {
@@ -53,6 +53,24 @@ export const router = createBrowserRouter([
       {
         path: "/:username",
         element: <PrivateLayout />,
+        children: [
+          {
+            path: "/:username/dashboard",
+            element: <PrivateLayout />,
+          },
+          {
+            path: "/:username/bookings",
+            element: <PrivateLayout />,
+          },
+          {
+            path: "/:username/updates",
+            element: <PrivateLayout />,
+          },
+          {
+            path: "/:username/account",
+            element: <PrivateLayout />,
+          },
+        ],
       },
 
       // --- START OF TESTING AREA ROUTER ---
@@ -66,7 +84,7 @@ export const router = createBrowserRouter([
         element: developers.nherwin,
       },
       {
-        path: "/radi",
+        path: "/radilyn",
         element: developers.radilyn,
       },
       {

@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import LogInForm from "./LogInForm/LogInForm";
 import LogOutForm from "./LogOutForm/LogOutForm";
 import SignUpForm from "./SignUpForm/SignUpForm";
@@ -6,12 +7,12 @@ import SignUpForm from "./SignUpForm/SignUpForm";
 const UserAuthContext = createContext({});
 
 export const UserAuthentication = ({ children }) => {
-  // For development purposes remove in production : const MOCK_LOGGED_IN = {token: "sampleToken",username: "sample@username",role: 1};
-
-  // For development purposes remove in production
-
   const [hasAccount, setHasAccount] = useState(true);
-  const [logInToken, setLogInToken] = useState("");
+  const [logInToken, setLogInToken] = useState({
+    token: false,
+    username: "login",
+    role: 0,
+  });
 
   const handleChangeMode = () => {
     hasAccount === true ? setHasAccount(false) : setHasAccount(true);
@@ -27,10 +28,6 @@ export const UserAuthentication = ({ children }) => {
 
   const submitHandler = (jwtToken, username, role) => {
     setLogInToken({ token: jwtToken, username: username, role: role });
-
-    console.log("user logged in with token:", jwtToken);
-    console.log("user logged in with username:", username);
-    console.log("user logged in with role:", role);
   };
 
   useEffect(() => {
