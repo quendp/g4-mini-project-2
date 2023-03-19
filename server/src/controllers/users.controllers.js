@@ -55,29 +55,15 @@ class UsersController {
   static async updateAgent(req, res) {
     try {
       const { agentName } = req.params;
-      const {
-        username,
-        firstname,
-        lastname,
-        email,
-        phone_number,
-        age,
-        address,
-        password,
-      } = req.body;
-      const user = await UsersService.updateAgent(agentName, {
-        username,
-        firstname,
-        lastname,
-        email,
-        phone_number,
-        age,
-        address,
-        password,
-      });
-      res.json(user);
+      const fieldsToUpdate = req.body;
+      const user = await UsersService.updateAgent(agentName, fieldsToUpdate);
+      user
+        ? res.json(user)
+        : res.status(404).json({ message: "Agent not found." });
     } catch (e) {
-      res.status(404).json({ message: "User not Found" });
+      res
+        .status(400)
+        .json({ message: "An error occured. Cannot update agent." });
     }
   }
 
