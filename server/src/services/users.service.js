@@ -39,7 +39,9 @@ class UsersService {
         password,
       });
 
-      const createdUser = await Users.findOne({ where: { username } });
+      const createdUser = await Users.findOne({
+        where: { username: newUser.username },
+      });
       if (!createdUser) {
         return { message: "Failed to create user." };
       }
