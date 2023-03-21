@@ -4,7 +4,7 @@ import Image from "../../../assets/images/user-avatar/user1.jpg";
 import useAuth from "../../../hooks/useAuth";
 
 const AdminSidebar = (props) => {
-  const { logInToken } = useAuth();
+  const { accessData } = useAuth();
 
   const navItems = [
     {
@@ -59,7 +59,7 @@ const AdminSidebar = (props) => {
             className="rounded-circle me-3"
           />
           <span className="text-decoration-none text-white">
-            {logInToken.username}
+            {accessData.username}
           </span>
         </div>
         <ul className="navbar-nav flex-column mt-5">

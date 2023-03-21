@@ -4,7 +4,7 @@ import useAuth from "../../../hooks/useAuth";
 import styles from "../Header.module.css";
 
 const HeaderNavMenu = ({ onCloseHeader }) => {
-  const { logInToken } = useAuth();
+  const { accessData } = useAuth();
 
   const headerLinks = [
     {
@@ -25,7 +25,7 @@ const HeaderNavMenu = ({ onCloseHeader }) => {
     {
       id: 4,
       page: "Dashboard",
-      path: `/${logInToken.username}`,
+      path: `/${accessData.username}`,
     },
   ];
 

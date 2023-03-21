@@ -4,15 +4,15 @@ const UserAuthContext = createContext({});
 
 export const UserAuthentication = ({ children }) => {
   const [hasAccount, setHasAccount] = useState(true);
-  const [logInToken, setLogInToken] = useState({
+  const [accessData, setAccessData] = useState({
     token: false,
     username: "login",
     role: 0,
   });
 
   const userData = useMemo(
-    () => ({ logInToken, setLogInToken, hasAccount, setHasAccount }),
-    [logInToken, hasAccount]
+    () => ({ accessData, setAccessData, hasAccount, setHasAccount }),
+    [accessData, hasAccount]
   );
 
   return (

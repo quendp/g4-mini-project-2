@@ -3,7 +3,7 @@ import user2 from "../../../../assets/images/user-avatar/user2.jpg";
 import useAuth from "../../../../hooks/useAuth";
 
 const AgentSidebar = (props) => {
-  const { logInToken } = useAuth();
+  const { accessData } = useAuth();
 
   const navItems = [
     {
@@ -58,7 +58,7 @@ const AgentSidebar = (props) => {
           <div className="agentSidebar-bottom__border pb-3">
             <img src={user2} width="50" className="rounded-circle me-3" />
             <a href="#" className="text-decoration-none text-white agent-name">
-              {logInToken.username}
+              {accessData.username}
             </a>
           </div>
           <ul className="navbar-nav flex-column mt-2">

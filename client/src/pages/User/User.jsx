@@ -9,12 +9,12 @@ import UserDashboard from "./UserDashboard";
 import UserUpdates from "./UserUpdates";
 
 const User = () => {
-  const { logInToken } = useAuth();
+  const { accessData } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
 
   const [userInfo, setUserInfo] = useState(false);
-  const FETCH_API = `/api/users/${logInToken.username}`;
+  const FETCH_API = `/api/users/${accessData.username}`;
 
   useEffect(() => {
     let isLoggedIn = true;
@@ -24,7 +24,7 @@ const User = () => {
     const getUserInfo = async () => {
       try {
         const info = await fetchUserInfo(
-          logInToken.token,
+          accessData.token,
           FETCH_API,
           controller
         );
@@ -38,26 +38,26 @@ const User = () => {
       isLoggedIn = false;
       controller.abort();
     };
-  }, [logInToken]);
+  }, [accessData]);
 
   const sidebarMenu = [
     {
       id: 1,
       title: "Dashboard",
       icon: "house",
-      path: `/${logInToken.username}/dashboard`,
+      path: `/${accessData.username}/dashboard`,
     },
     {
       id: 2,
       title: "Bookings",
       icon: "book",
-      path: `/${logInToken.username}/bookings`,
+      path: `/${accessData.username}/bookings`,
     },
     {
       id: 3,
       title: "Updates",
       icon: "clock",
-      path: `/${logInToken.username}/updates`,
+      path: `/${accessData.username}/updates`,
     },
   ];
 
@@ -66,14 +66,14 @@ const User = () => {
   useEffect(() => {
     if (
       location.pathname === sidebarMenu[0].path ||
-      location.pathname === `/${logInToken.username}`
+      location.pathname === `/${accessData.username}`
     ) {
       setCurrentContent(<UserDashboard />);
     } else if (location.pathname === sidebarMenu[1].path) {
       setCurrentContent(<UserBookings />);
     } else if (location.pathname === sidebarMenu[2].path) {
       setCurrentContent(<UserUpdates />);
-    } else if (location.pathname === `/${logInToken.username}/account`) {
+    } else if (location.pathname === `/${accessData.username}/account`) {
       setCurrentContent(<DashboardUIAccount />);
     } else if (location.pathname === "/login") {
       navigate(-1);

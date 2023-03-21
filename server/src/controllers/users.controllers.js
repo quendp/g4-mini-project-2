@@ -14,7 +14,7 @@ class UsersController {
         password,
       } = req.body;
       const { roleId } = req.params;
-      const user = await UsersService.registerUser({
+      const accessData = await UsersService.registerUser({
         roleId,
         username,
         firstname,
@@ -25,7 +25,14 @@ class UsersController {
         address,
         password,
       });
-      res.json(user);
+      // Creates Secure Cookie with refresh token
+      res.cookie("accessData", accessData, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "None",
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+      });
+      res.json(accessData);
     } catch (e) {
       res.status(400).json({ message: "Error creating user" });
     }
@@ -34,14 +41,31 @@ class UsersController {
   static async loginUser(req, res) {
     try {
       const { usernameOrEmail, password } = req.body;
-      const token = await UsersService.loginUser({
+      const accessData = await UsersService.loginUser({
         usernameOrEmail,
         password,
       });
-      res.json(token);
+      // Creates Secure Cookie with refresh token
+      res.cookie("accessData", accessData, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "None",
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+      });
+      res.json(accessData);
     } catch (e) {
       res.status(400).json({ message: "Error logging in. Try again later." });
     }
+  }
+
+  static async logoutUser(req, res) {
+    res.clearCookie("accessData", {
+      httpOnly: true,
+      sameSite: "None",
+      secure: true,
+    });
+    res.json({ token: false, username: "login", role: 0 });
+    res.status(204);
   }
 
   static async getUserByUsername(req, res) {

@@ -6,7 +6,6 @@ import FormModal from "../../FormUI/FormModal";
 
 const SignUpForm = ({ handleChangeMode, submitHandler }) => {
   const REGISTER_URL = "/api/users/register/1";
-  const LOGIN_URL = "/api/users/login";
 
   const [step, setStep] = useState(0);
   const [isSubmitClicked, setIsSubmitClicked] = useState(false);
@@ -271,28 +270,11 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
         setErrMsg(response.data.message);
         onClickBtnLeft();
       } else {
-        const logInData = {
-          usernameOrEmail: response.data.username,
-          password: response.data.password,
-        };
-
-        const logInResponse = await axios.post(
-          LOGIN_URL,
-          JSON.stringify(logInData),
-          {
-            headers: { "Content-Type": "application/json" },
-            withCredentials: true,
-          }
+        submitHandler(
+          response.data.token,
+          response.data.username,
+          response.data.role
         );
-        if (logInResponse.data.message) {
-          setErrMsg(logInResponse.data.message);
-        } else {
-          submitHandler(
-            logInResponse.data.token,
-            logInResponse.data.username,
-            logInResponse.data.role
-          );
-        }
       }
     } catch (err) {
       if (!err?.response) {

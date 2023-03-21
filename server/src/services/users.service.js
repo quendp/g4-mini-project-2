@@ -38,9 +38,27 @@ class UsersService {
         address,
         password,
       });
-      return newUser;
+
+      const createdUser = await Users.findOne({ where: { username } });
+      if (!createdUser) {
+        return { message: "Failed to create user." };
+      }
+      const jwtToken = jwt.sign(
+        {
+          id: createdUser.id,
+          email: createdUser.email,
+        },
+        jwtSecret,
+        { expiresIn: "7d" }
+      );
+      return {
+        token: jwtToken,
+        username: createdUser.username,
+        role: createdUser.roleId,
+      };
     } catch (err) {
       console.log("Registration failed: ", err);
+      return { message: "Registration failed. Try again later." };
     }
   }
 
@@ -73,7 +91,7 @@ class UsersService {
         role: accountExists.roleId,
       };
     } catch (err) {
-      console.log("Registration failed: ", err);
+      console.log("Login failed: ", err);
       return { message: "Error logging in. Try again later." };
     }
   }

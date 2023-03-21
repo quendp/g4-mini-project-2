@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 const FooterSections = ({ currentTheme }) => {
-  const { logInToken } = useAuth();
+  const { accessData } = useAuth();
 
   return (
     <div className="footer-section__mid col-12 col-md-10 p-0 pb-5">
@@ -94,7 +94,7 @@ const FooterSections = ({ currentTheme }) => {
                     <Link to="/contact">Contact Us</Link>
                   </li>
                   <li className="p-0">
-                    <Link to={`/${logInToken.username}`}>Dashboard</Link>
+                    <Link to={`/${accessData.username}`}>Dashboard</Link>
                   </li>
 
                   <li className="p-0">

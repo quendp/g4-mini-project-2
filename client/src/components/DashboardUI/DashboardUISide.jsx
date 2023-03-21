@@ -9,7 +9,7 @@ const DashboardUISide = ({
   sidebarMenu,
   userInfo,
 }) => {
-  const { logInToken, setHasAccount } = useAuth();
+  const { accessData, setHasAccount } = useAuth();
   const navigate = useNavigate();
 
   const openLogOutModal = () => {
@@ -17,10 +17,10 @@ const DashboardUISide = ({
   };
 
   useEffect(() => {
-    if (logInToken.role === 0) {
+    if (accessData.role === 0) {
       navigate("/");
     }
-  }, [logInToken]);
+  }, [accessData]);
 
   return (
     <div
@@ -53,7 +53,7 @@ const DashboardUISide = ({
             <p className="m-0 p-0">
               {userInfo ? userInfo.firstname + " " + userInfo.lastname : "..."}
             </p>
-            <p className="m-0 p-0">@{logInToken.username}</p>
+            <p className="m-0 p-0">@{accessData.username}</p>
           </div>
         </div>
         <div className="row p-0 m-0">
@@ -75,7 +75,7 @@ const DashboardUISide = ({
       <div className="dashboardUI-side__bottom py-2 px-3 text-uppercase">
         <div className="m-0 p-0">
           <NavLink
-            to={`/${logInToken.username}/account`}
+            to={`/${accessData.username}/account`}
             className="text-center m-0 p-0 text-decoration-none"
           >
             <p className="lh-1 p-2 py-3 m-2">My Account</p>

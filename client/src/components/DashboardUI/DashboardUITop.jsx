@@ -3,17 +3,17 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 const DashboardUITop = ({ openSideBar }) => {
-  const { logInToken, setHasAccount } = useAuth();
+  const { accessData, setHasAccount } = useAuth();
   const navigate = useNavigate();
 
   const openLogOutModal = () => {
     setHasAccount(true);
   };
   useEffect(() => {
-    if (logInToken.role === 0) {
+    if (accessData.role === 0) {
       navigate("/");
     }
-  }, [logInToken]);
+  }, [accessData]);
 
   return (
     <div className="dashboardUI-top__wrapper w-100 position-sticky top-0 start-0 d-flex align-items-center px-3">

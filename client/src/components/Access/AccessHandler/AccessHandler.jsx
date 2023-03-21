@@ -5,26 +5,21 @@ import LogOutForm from "../LogOutForm/LogOutForm";
 import SignUpForm from "../SignUpForm/SignUpForm";
 
 const AccessHandler = ({ children }) => {
-  const { logInToken, setLogInToken, hasAccount, setHasAccount } = useAuth();
+  const { accessData, setAccessData, hasAccount, setHasAccount } = useAuth();
 
   const handleChangeMode = () => {
-    console.log("has account before : ", hasAccount);
     setHasAccount(!hasAccount);
-    setTimeout(() => {
-      console.log("has account after : ", hasAccount);
-    }, 3000);
   };
 
   const submitHandler = (jwtToken, username, role) => {
-    setLogInToken({ token: jwtToken, username: username, role: role });
-    console.log(jwtToken);
+    setAccessData({ token: jwtToken, username: username, role: role });
   };
 
   useEffect(() => {
     const signUpModalInst = document.getElementById("signUpModal");
     const myModal = bootstrap.Modal.getOrCreateInstance(signUpModalInst);
     myModal.hide();
-  }, [logInToken]);
+  }, [accessData]);
 
   return (
     <>
@@ -37,22 +32,22 @@ const AccessHandler = ({ children }) => {
       >
         <div
           className={`modal-dialog ${
-            !logInToken.token && !hasAccount ? "modal-lg" : "modal-md"
+            !accessData.token && !hasAccount ? "modal-lg" : "modal-md"
           } modal-dialog-centered`}
         >
-          {!logInToken.token && hasAccount && (
+          {!accessData.token && hasAccount && (
             <LogInForm
               handleChangeMode={handleChangeMode}
               submitHandler={submitHandler}
             />
           )}
-          {!logInToken.token && !hasAccount && (
+          {!accessData.token && !hasAccount && (
             <SignUpForm
               handleChangeMode={handleChangeMode}
               submitHandler={submitHandler}
             />
           )}
-          {logInToken.token && <LogOutForm submitHandler={submitHandler} />}
+          {accessData.token && <LogOutForm submitHandler={submitHandler} />}
         </div>
       </div>
       {children}

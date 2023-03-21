@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 
 const HomeServicesCard = ({ service, categoryCurrent }) => {
-  const { logInToken } = useAuth();
+  const { accessData } = useAuth();
   return (
     <Link
-      to={`/${!logInToken.token ? "login" : logInToken.username}`}
+      to={`/${!accessData.token ? "login" : accessData.username}`}
       className="text-decoration-none col-12 col-sm-6 col-xl-3 p-4 flex-1"
     >
       <div className="home-services__card overflow-hidden h-100 d-flex justify-content-start flex-column">

@@ -6,7 +6,7 @@ import { animationDelay } from "../../../Utils/AnimationDelay";
 import styles from "../Header.module.css";
 
 const HeaderCollapsed = (props) => {
-  const { logInToken, setHasAccount } = useAuth();
+  const { accessData, setHasAccount } = useAuth();
 
   const [burgerTopWidth, setBurgerTopWidth] = useState("70%");
   const [burgerTopPos, setBurgerTopPos] = useState("40%");
@@ -95,7 +95,7 @@ const HeaderCollapsed = (props) => {
           data-bs-target="#signUpModal"
           onClick={openLoginModal}
         >
-          {logInToken.token ? "LOG OUT" : "LOG IN"}
+          {accessData.token ? "LOG OUT" : "LOG IN"}
         </button>
         <div
           className={`${styles.hamBtn} position-relative`}
