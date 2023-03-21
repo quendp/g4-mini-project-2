@@ -72,8 +72,7 @@ class UsersController {
       const { agentName } = req.params;
       const agent = await UsersService.getAgent(agentName);
       res.json(agent);
-    }
-    catch (err) {
+    } catch (err) {
       res.status(404).json({ message: "Agent not Found" });
     }
   }

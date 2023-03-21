@@ -13,6 +13,12 @@ const PrivateLayout = () => {
   const [privateContent, setPrivateContent] = useState();
   const navigate = useNavigate();
 
+  const handleTokenExpire = () => {
+    setPrivateContent(<PrivateLayoutLogin />);
+    userData.submitHandler(false, "login", 0);
+    console.log("handle token expire FUNCTION IS CALLED");
+  };
+
   useEffect(() => {
     if (!userData.logInToken.token) {
       setPrivateContent(<PrivateLayoutLogin />);
@@ -22,11 +28,11 @@ const PrivateLayout = () => {
     ) {
       navigate(`/${userData.logInToken.username}/dashboard`);
       if (userData.logInToken.role === 1) {
-        setPrivateContent(<User />);
+        setPrivateContent(<User onTokenExpire={handleTokenExpire} />);
       } else if (userData.logInToken.role === 2) {
-        setPrivateContent(<Agent />);
+        setPrivateContent(<Agent onTokenExpire={handleTokenExpire} />);
       } else if (userData.logInToken.role === 3) {
-        setPrivateContent(<Admin />);
+        setPrivateContent(<Admin onTokenExpire={handleTokenExpire} />);
       }
     } else {
       navigate(`/not-found`);
