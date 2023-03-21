@@ -1,14 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import UserAuthContext from "../../../context/UserAuthentication/UserAuthentication";
+import useAuth from "../../../hooks/useAuth";
 
 const HomeServicesCard = ({ service, categoryCurrent }) => {
-  const userData = useContext(UserAuthContext);
+  const { logInToken } = useAuth();
   return (
     <Link
-      to={`/${
-        !userData.logInToken.token ? "login" : userData.logInToken.username
-      }`}
+      to={`/${!logInToken.token ? "login" : logInToken.username}`}
       className="text-decoration-none col-12 col-sm-6 col-xl-3 p-4 flex-1"
     >
       <div className="home-services__card overflow-hidden h-100 d-flex justify-content-start flex-column">

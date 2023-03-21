@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import "./PrivateLayoutLogin.css";
+import "./Unauthorized.css";
 import { Link } from "react-router-dom";
 import UserAuthContext from "../../../context/UserAuthentication/UserAuthentication";
-import SinglePage from "../../../components/SinglePage/SinglePage";
+import SinglePage from "../../SinglePage/SinglePage";
 
-const PrivateLayoutLogin = () => {
+const Unauthorized = () => {
   const userData = useContext(UserAuthContext);
 
   const openLoginModal = () => {
@@ -50,4 +50,4 @@ const PrivateLayoutLogin = () => {
   );
 };
 
-export default PrivateLayoutLogin;
+export default Unauthorized;

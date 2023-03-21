@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useDebugValue } from "react";
 import UserAuthContext from "../context/UserAuthentication/UserAuthentication";
 
 const useAuth = () => {
-  const userData = useContext(UserAuthContext);
-
-  return userData;
+  const { logInToken } = useContext(UserAuthContext);
+  useDebugValue(logInToken, (logInToken) =>
+    logInToken?.token ? "Logged In" : "Logged Out"
+  );
+  return useContext(UserAuthContext);
 };
 
 export default useAuth;

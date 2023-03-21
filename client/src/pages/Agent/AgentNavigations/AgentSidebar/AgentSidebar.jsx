@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import user2 from "../../../../assets/images/user-avatar/user2.jpg";
-import UserAuthContext from "../../../../context/UserAuthentication/UserAuthentication";
+import useAuth from "../../../../hooks/useAuth";
 
 const AgentSidebar = (props) => {
-  const userData = useContext(UserAuthContext);
+  const { logInToken } = useAuth();
 
   const navItems = [
     {
@@ -58,7 +58,7 @@ const AgentSidebar = (props) => {
           <div className="agentSidebar-bottom__border pb-3">
             <img src={user2} width="50" className="rounded-circle me-3" />
             <a href="#" className="text-decoration-none text-white agent-name">
-              {userData.logInToken.username}
+              {logInToken.username}
             </a>
           </div>
           <ul className="navbar-nav flex-column mt-2">

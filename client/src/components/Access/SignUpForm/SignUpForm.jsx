@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "../../../Utils/axios";
 import SignUpFormAccount from "./SignUpFormAccount";
 import SignUpFormPersonal from "./SignUpFormPersonal";
-import FormModal from "../../../components/FormUI/FormModal";
+import FormModal from "../../FormUI/FormModal";
 
 const SignUpForm = ({ handleChangeMode, submitHandler }) => {
   const REGISTER_URL = "/api/users/register/1";

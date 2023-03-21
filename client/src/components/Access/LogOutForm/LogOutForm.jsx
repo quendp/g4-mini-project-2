@@ -1,5 +1,5 @@
 import React from "react";
-import FormModal from "../../../components/FormUI/FormModal";
+import FormModal from "../../FormUI/FormModal";
 
 const LogOutForm = ({ submitHandler }) => {
   const headerTitle = "Confirm log out";

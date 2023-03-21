@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import UserAuthContext from "../../context/UserAuthentication/UserAuthentication";
+import useAuth from "../../hooks/useAuth";
 
 const CategoriesCardUI = ({
   isPackageClicked,
@@ -9,10 +10,10 @@ const CategoriesCardUI = ({
   packageType,
   chosenPackageHandler,
 }) => {
-  const userData = useContext(UserAuthContext);
+  const { logInToken } = useAuth();
 
   const onClickBookHandler = () => {
-    if (!userData.logInToken.token) {
+    if (!logInToken.token) {
       const signUpModalInst = document.getElementById("signUpModal");
       const myModal = bootstrap.Modal.getOrCreateInstance(signUpModalInst);
       myModal.show();

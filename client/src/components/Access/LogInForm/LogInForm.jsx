@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../../Utils/axios";
 
-import FormModal from "../../../components/FormUI/FormModal";
+import FormModal from "../../FormUI/FormModal";
 import showPassImg from "../../../assets/images/showPass.png";
 import hidePassImg from "../../../assets/images/hidePass.png";
 

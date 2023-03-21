@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import styles from "../Header.module.css";
 import headerLogo from "../../../assets/images/logo-svg/logo-outline-white.svg";
-import UserAuthContext from "../../../context/UserAuthentication/UserAuthentication";
+import useAuth from "../../../hooks/useAuth";
 import { animationDelay } from "../../../Utils/AnimationDelay";
+import styles from "../Header.module.css";
 
 const HeaderCollapsed = (props) => {
-  const userData = useContext(UserAuthContext);
+  const { logInToken, setHasAccount } = useAuth();
 
   const [burgerTopWidth, setBurgerTopWidth] = useState("70%");
   const [burgerTopPos, setBurgerTopPos] = useState("40%");
@@ -57,7 +57,7 @@ const HeaderCollapsed = (props) => {
   };
 
   const openLoginModal = () => {
-    userData.handleLogInMode();
+    setHasAccount(true);
   };
 
   return (
@@ -95,7 +95,7 @@ const HeaderCollapsed = (props) => {
           data-bs-target="#signUpModal"
           onClick={openLoginModal}
         >
-          {userData.logInToken.token ? "LOG OUT" : "LOG IN"}
+          {logInToken.token ? "LOG OUT" : "LOG IN"}
         </button>
         <div
           className={`${styles.hamBtn} position-relative`}

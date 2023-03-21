@@ -1,17 +1,19 @@
 import React, { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
-const DashboardUITop = ({ openSideBar, userData }) => {
+const DashboardUITop = ({ openSideBar }) => {
+  const { logInToken, setHasAccount } = useAuth();
   const navigate = useNavigate();
 
   const openLogOutModal = () => {
-    userData.handleLogInMode();
+    setHasAccount(true);
   };
   useEffect(() => {
-    if (userData.logInToken.role === 0) {
+    if (logInToken.role === 0) {
       navigate("/");
     }
-  }, [userData]);
+  }, [logInToken]);
 
   return (
     <div className="dashboardUI-top__wrapper w-100 position-sticky top-0 start-0 d-flex align-items-center px-3">
