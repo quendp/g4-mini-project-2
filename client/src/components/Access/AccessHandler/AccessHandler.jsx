@@ -8,11 +8,16 @@ const AccessHandler = ({ children }) => {
   const { logInToken, setLogInToken, hasAccount, setHasAccount } = useAuth();
 
   const handleChangeMode = () => {
-    hasAccount === true ? setHasAccount(false) : setHasAccount(true);
+    console.log("has account before : ", hasAccount);
+    setHasAccount(!hasAccount);
+    setTimeout(() => {
+      console.log("has account after : ", hasAccount);
+    }, 3000);
   };
 
   const submitHandler = (jwtToken, username, role) => {
     setLogInToken({ token: jwtToken, username: username, role: role });
+    console.log(jwtToken);
   };
 
   useEffect(() => {

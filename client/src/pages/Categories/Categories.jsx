@@ -47,7 +47,10 @@ const Categories = () => {
         (dest) => dest.path === destination
       );
     }
-    changeThemeHandler(chosenCategory.current.accentLight);
+    changeThemeHandler(
+      chosenCategory.current.accentLight,
+      chosenCategory.current.categoryPath
+    );
   }, [category, destination]);
 
   useEffect(() => {

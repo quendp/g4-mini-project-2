@@ -14,7 +14,6 @@ const HomeTestimonials = ({ categoryCurrent }) => {
 
   const onPrevCard = () => {
     setCurrentTransform((prevTrasform) => {
-      console.log(prevTrasform);
       if (prevTrasform == 0) {
         return 0;
       }
@@ -24,7 +23,6 @@ const HomeTestimonials = ({ categoryCurrent }) => {
 
   const onNextCard = () => {
     setCurrentTransform((prevTrasform) => {
-      console.log(prevTrasform);
       if (prevTrasform == -7) {
         return -7;
       }

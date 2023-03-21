@@ -38,7 +38,6 @@ const FormModal = (props) => {
           <button
             type="button"
             className={`btn ${props.btnLeftClass}`}
-            id="modal-cancel-btn"
             data-bs-dismiss={props.dataDismiss}
             onClick={props.onClickBtnLeft}
           >

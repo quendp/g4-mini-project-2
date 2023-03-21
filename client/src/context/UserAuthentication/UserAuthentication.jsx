@@ -12,7 +12,7 @@ export const UserAuthentication = ({ children }) => {
 
   const userData = useMemo(
     () => ({ logInToken, setLogInToken, hasAccount, setHasAccount }),
-    [logInToken]
+    [logInToken, hasAccount]
   );
 
   return (
