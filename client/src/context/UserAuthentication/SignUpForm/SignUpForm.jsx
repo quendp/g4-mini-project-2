@@ -5,7 +5,7 @@ import SignUpFormPersonal from "./SignUpFormPersonal";
 import FormModal from "../../../components/FormUI/FormModal";
 
 const SignUpForm = ({ handleChangeMode, submitHandler }) => {
-  const REGISTER_URL = "/api/users/register";
+  const REGISTER_URL = "/api/users/register/1";
   const LOGIN_URL = "/api/users/login";
 
   const [step, setStep] = useState(0);

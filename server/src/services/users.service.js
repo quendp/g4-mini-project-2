@@ -5,6 +5,7 @@ const { jwtSecret } = require("../../config/secrets");
 
 class UsersService {
   static async registerUser({
+    roleId,
     username,
     firstname,
     lastname,
@@ -27,7 +28,7 @@ class UsersService {
       }
       // create user
       const newUser = await Users.create({
-        roleId: 1,
+        roleId,
         username,
         firstname,
         lastname,
