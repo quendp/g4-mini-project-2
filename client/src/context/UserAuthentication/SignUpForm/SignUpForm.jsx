@@ -271,9 +271,6 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
         setErrMsg(response.data.message);
         onClickBtnLeft();
       } else {
-        console.log(response.data);
-        console.log(JSON.stringify(response));
-
         const logInData = {
           usernameOrEmail: response.data.username,
           password: response.data.password,

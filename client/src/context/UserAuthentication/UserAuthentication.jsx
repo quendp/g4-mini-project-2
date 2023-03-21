@@ -1,5 +1,4 @@
 import React, { createContext, useEffect, useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import LogInForm from "./LogInForm/LogInForm";
 import LogOutForm from "./LogOutForm/LogOutForm";
 import SignUpForm from "./SignUpForm/SignUpForm";
@@ -28,6 +27,7 @@ export const UserAuthentication = ({ children }) => {
 
   const submitHandler = (jwtToken, username, role) => {
     setLogInToken({ token: jwtToken, username: username, role: role });
+    console.log(jwtToken);
   };
 
   useEffect(() => {
@@ -37,7 +37,7 @@ export const UserAuthentication = ({ children }) => {
   }, [logInToken]);
 
   const userData = useMemo(
-    () => ({ logInToken, handleLogInMode, handleSignUpMode }),
+    () => ({ logInToken, submitHandler, handleLogInMode, handleSignUpMode }),
     [logInToken]
   );
 

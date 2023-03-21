@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import DashboardUI from "../../components/DashboardUI/DashboardUI";
 import DashboardUIAccount from "../../components/DashboardUI/DashboardUIAccount";
@@ -8,7 +8,7 @@ import UserBookings from "./UserBookings";
 import UserDashboard from "./UserDashboard";
 import UserUpdates from "./UserUpdates";
 
-const User = () => {
+const User = ({ onTokenExpire }) => {
   const userData = useContext(UserAuthContext);
   const location = useLocation();
   const navigate = useNavigate();
@@ -77,6 +77,8 @@ const User = () => {
       location.pathname === `/${userData.logInToken.username}/account`
     ) {
       setCurrentContent(<DashboardUIAccount />);
+    } else if (location.pathname === "/login") {
+      navigate(-1);
     } else {
       navigate("not-found");
     }

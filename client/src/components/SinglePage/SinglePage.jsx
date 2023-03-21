@@ -10,6 +10,7 @@ const SinglePage = ({ children }) => {
         className="single-page__top position-absolute start-0 w-100"
         src={cloudsImg}
         alt="clouds"
+        loading="lazy"
       />
 
       <div className="single-page__bottom position-absolute w-100 ">
