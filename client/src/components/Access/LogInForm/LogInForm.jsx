@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../../Utils/axios";
 
-import FormModal from "../../../components/FormUI/FormModal";
+import FormModal from "../../FormUI/FormModal";
 import showPassImg from "../../../assets/images/showPass.png";
 import hidePassImg from "../../../assets/images/hidePass.png";
 
 const LogInForm = ({ handleChangeMode, submitHandler }) => {
-  const REGISTER_URL = "/api/users/login";
+  const LOGIN_URL = "/api/users/login";
   const [isSubmitClicked, setIsSubmitClicked] = useState(false);
   const [errMsg, setErrMsg] = useState("");
   const [showPass, setShowPass] = useState(false);
@@ -69,14 +69,10 @@ const LogInForm = ({ handleChangeMode, submitHandler }) => {
 
   const submitToServer = async () => {
     try {
-      const response = await axios.post(
-        REGISTER_URL,
-        JSON.stringify(logInData),
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        }
-      );
+      const response = await axios.post(LOGIN_URL, JSON.stringify(logInData), {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      });
       if (response.data.message) {
         setErrMsg(response.data.message);
       } else {

@@ -1,7 +1,10 @@
-import React from "react";
-import FormModal from "../../../components/FormUI/FormModal";
+import React, { useState } from "react";
+import axios from "../../../Utils/axios";
+import FormModal from "../../FormUI/FormModal";
 
 const LogOutForm = ({ submitHandler }) => {
+  const LOGOUT_URL = "/api/users/logout";
+
   const headerTitle = "Confirm log out";
   const headerText = "Are you sure you want to log out?";
   const footerWrapperClass = "justify-content-center";
@@ -11,8 +14,25 @@ const LogOutForm = ({ submitHandler }) => {
   const btnRightType = "button";
   const btnRightText = "log out";
 
-  const onClickLogOut = () => {
-    submitHandler(false, "login", 0);
+  const [errMsg, setErrMsg] = useState("");
+
+  const onClickLogOut = async () => {
+    try {
+      setErrMsg("Submitting...");
+      const response = await axios.post(LOGOUT_URL, {
+        withCredentials: true,
+      });
+      submitHandler(
+        response.data.token,
+        response.data.username,
+        response.data.role
+      );
+      setErrMsg("");
+      console.log(response.data);
+    } catch (err) {
+      setErrMsg("Failed to log out. Try again later.");
+      console.log(err);
+    }
   };
 
   return (
@@ -26,6 +46,7 @@ const LogOutForm = ({ submitHandler }) => {
       btnLeftText={btnLeftText}
       btnRightType={btnRightType}
       btnRightText={btnRightText}
+      errMsg={errMsg}
     />
   );
 };

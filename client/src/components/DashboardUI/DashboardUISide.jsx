@@ -1,25 +1,26 @@
 import React, { useEffect } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import lakbayLogo from "../../assets/images/logo-svg/logo-outline-white.svg";
+import useAuth from "../../hooks/useAuth";
 
 const DashboardUISide = ({
   isSidebarOpen,
   closeSideBar,
-  userData,
   sidebarMenu,
   userInfo,
 }) => {
+  const { accessData, setHasAccount } = useAuth();
   const navigate = useNavigate();
 
   const openLogOutModal = () => {
-    userData.handleLogInMode();
+    setHasAccount(true);
   };
 
   useEffect(() => {
-    if (userData.logInToken.role === 0) {
+    if (accessData.role === 0) {
       navigate("/");
     }
-  }, [userData]);
+  }, [accessData]);
 
   return (
     <div
@@ -52,7 +53,7 @@ const DashboardUISide = ({
             <p className="m-0 p-0">
               {userInfo ? userInfo.firstname + " " + userInfo.lastname : "..."}
             </p>
-            <p className="m-0 p-0">@{userData.logInToken.username}</p>
+            <p className="m-0 p-0">@{accessData.username}</p>
           </div>
         </div>
         <div className="row p-0 m-0">
@@ -74,7 +75,7 @@ const DashboardUISide = ({
       <div className="dashboardUI-side__bottom py-2 px-3 text-uppercase">
         <div className="m-0 p-0">
           <NavLink
-            to={`/${userData.logInToken.username}/account`}
+            to={`/${accessData.username}/account`}
             className="text-center m-0 p-0 text-decoration-none"
           >
             <p className="lh-1 p-2 py-3 m-2">My Account</p>

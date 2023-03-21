@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./FooterSections.css";
 import FooterSearch from "./FooterSearch";
 import { Link } from "react-router-dom";
-import UserAuthContext from "../../context/UserAuthentication/UserAuthentication";
+import useAuth from "../../hooks/useAuth";
 
 const FooterSections = ({ currentTheme }) => {
-  const userData = useContext(UserAuthContext);
+  const { accessData } = useAuth();
 
   return (
     <div className="footer-section__mid col-12 col-md-10 p-0 pb-5">
@@ -94,9 +94,7 @@ const FooterSections = ({ currentTheme }) => {
                     <Link to="/contact">Contact Us</Link>
                   </li>
                   <li className="p-0">
-                    <Link to={`/${userData.logInToken.username}`}>
-                      Dashboard
-                    </Link>
+                    <Link to={`/${accessData.username}`}>Dashboard</Link>
                   </li>
 
                   <li className="p-0">

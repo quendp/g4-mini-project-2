@@ -8,9 +8,11 @@ const PublicLayout = () => {
   const [currentTheme, setCurrentTheme] = useState(
     "var(--clr-accent-lights-100)"
   );
+  const [currentPath, setCurrentPath] = useState("cosmopolitan-lights");
 
-  const changeThemeHandler = (newTheme) => {
+  const changeThemeHandler = (newTheme, newPath) => {
     setCurrentTheme(newTheme);
+    setCurrentPath(newPath);
   };
 
   return (
@@ -21,7 +23,7 @@ const PublicLayout = () => {
         <main>
           <Outlet context={changeThemeHandler} />
         </main>
-        <Footer currentTheme={currentTheme} />
+        <Footer currentTheme={currentTheme} currentPath={currentPath} />
       </div>
 
       {/* <TestingArea /> */}

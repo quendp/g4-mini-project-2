@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import HomeHero from "./HomeHero/HomeHero";
 import HomeServices from "./HomeServices/HomeServices";
 import HomeStories from "./HomeStories/HomeStories";
@@ -12,13 +12,23 @@ const Home = () => {
   const [categoryIndex, setCategoryIndex] = useState(0);
   const [categoryCurrent, setCategoryCurrent] = useState(categoriesInfo[0]);
 
-  const currentTheme = useOutletContext();
+  const changeThemeHandler = useOutletContext();
 
   const onChangeCategory = (categoryId) => {
     setCategoryIndex(categoryId);
     setCategoryCurrent(categoriesInfo[categoryId]);
-    currentTheme(categoriesInfo[categoryId].accentLight);
+    changeThemeHandler(
+      categoriesInfo[categoryId].accentLight,
+      categoriesInfo[categoryId].categoryPath
+    );
   };
+
+  useEffect(() => {
+    changeThemeHandler(
+      categoriesInfo[0].accentLight,
+      categoriesInfo[0].categoryPath
+    );
+  }, []);
 
   return (
     <section className="overflow-hidden">

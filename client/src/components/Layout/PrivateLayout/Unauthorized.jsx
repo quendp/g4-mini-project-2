@@ -1,18 +1,19 @@
-import React, { useContext } from "react";
-import "./PrivateLayoutLogin.css";
+import React from "react";
 import { Link } from "react-router-dom";
-import UserAuthContext from "../../../context/UserAuthentication/UserAuthentication";
-import SinglePage from "../../../components/SinglePage/SinglePage";
+import useAuth from "../../../hooks/useAuth";
+import SinglePage from "../../SinglePage/SinglePage";
+import "./Unauthorized.css";
 
-const PrivateLayoutLogin = () => {
-  const userData = useContext(UserAuthContext);
+const Unauthorized = () => {
+  const { setHasAccount } = useAuth();
 
   const openLoginModal = () => {
-    userData.handleLogInMode();
+    setHasAccount(true);
   };
 
   const openSignUpModal = () => {
-    userData.handleSignUpMode();
+    console.log("sign up");
+    setHasAccount(false);
   };
 
   return (
@@ -50,4 +51,4 @@ const PrivateLayoutLogin = () => {
   );
 };
 
-export default PrivateLayoutLogin;
+export default Unauthorized;

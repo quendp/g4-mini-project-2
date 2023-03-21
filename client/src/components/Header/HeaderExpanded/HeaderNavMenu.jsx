@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
-import UserAuthContext from "../../../context/UserAuthentication/UserAuthentication";
+import useAuth from "../../../hooks/useAuth";
 import styles from "../Header.module.css";
 
 const HeaderNavMenu = ({ onCloseHeader }) => {
-  const userData = useContext(UserAuthContext);
+  const { accessData } = useAuth();
 
   const headerLinks = [
     {
@@ -25,7 +25,7 @@ const HeaderNavMenu = ({ onCloseHeader }) => {
     {
       id: 4,
       page: "Dashboard",
-      path: `/${userData.logInToken.username}`,
+      path: `/${accessData.username}`,
     },
   ];
 

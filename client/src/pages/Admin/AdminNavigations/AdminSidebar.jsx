@@ -1,46 +1,46 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import Image from "../../../assets/images/user-avatar/user1.jpg";
-import UserAuthContext from "../../../context/UserAuthentication/UserAuthentication";
-
-const navItems = [
-  {
-    label: "Dashboard",
-    icon: "fa-house-user",
-    onClick: (props) => props.startShowing("Dashboard"),
-  },
-  {
-    label: "Bookings",
-    icon: "fa-list",
-    onClick: (props) => props.startShowing("Bookings"),
-  },
-  {
-    label: "Agents",
-    icon: "fa-user-tie",
-    onClick: (props) => props.startShowing("Agents"),
-  },
-  {
-    label: "Package",
-    icon: "fa-box",
-    onClick: (props) => props.startShowing("Package"),
-  },
-];
-
-const navItemsBottom = [
-  {
-    label: "Settings",
-    icon: "fa-cog",
-    onClick: (props) => props.startShowing("Settings"),
-  },
-  {
-    label: "Account Information",
-    icon: "fa-user-circle",
-    onClick: (props) => props.startShowing("Account Information"),
-  },
-];
+import useAuth from "../../../hooks/useAuth";
 
 const AdminSidebar = (props) => {
-  const userData = useContext(UserAuthContext);
+  const { accessData } = useAuth();
+
+  const navItems = [
+    {
+      label: "Dashboard",
+      icon: "fa-house-user",
+      onClick: (props) => props.startShowing("Dashboard"),
+    },
+    {
+      label: "Bookings",
+      icon: "fa-list",
+      onClick: (props) => props.startShowing("Bookings"),
+    },
+    {
+      label: "Agents",
+      icon: "fa-user-tie",
+      onClick: (props) => props.startShowing("Agents"),
+    },
+    {
+      label: "Package",
+      icon: "fa-box",
+      onClick: (props) => props.startShowing("Package"),
+    },
+  ];
+
+  const navItemsBottom = [
+    {
+      label: "Settings",
+      icon: "fa-cog",
+      onClick: (props) => props.startShowing("Settings"),
+    },
+    {
+      label: "Account Information",
+      icon: "fa-user-circle",
+      onClick: (props) => props.startShowing("Account Information"),
+    },
+  ];
 
   return (
     <>
@@ -59,7 +59,7 @@ const AdminSidebar = (props) => {
             className="rounded-circle me-3"
           />
           <span className="text-decoration-none text-white">
-            {userData.logInToken.username}
+            {accessData.username}
           </span>
         </div>
         <ul className="navbar-nav flex-column mt-5">
