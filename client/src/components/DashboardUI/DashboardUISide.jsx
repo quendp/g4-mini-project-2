@@ -46,12 +46,12 @@ const DashboardUISide = ({
         <div className="dashboardUI-side__username d-flex flex-row w-100 p-3 mb-4 justify-content-center justify-content-md-start justify-self-start">
           <div className="dashboardUI-side__avatar me-4 p-0 rounded-circle d-flex align-items-center justify-content-center">
             <span className="p-0 m-0">
-              {userInfo ? userInfo.firstname[0] + userInfo.lastname[0] : "..."}
+              {userInfo ? userInfo.firstname[0] + userInfo.lastname[0] : ""}
             </span>
           </div>
           <div className="d-flex flex-column align-items-start justify-content-center">
             <p className="m-0 p-0">
-              {userInfo ? userInfo.firstname + " " + userInfo.lastname : "..."}
+              {userInfo ? userInfo.firstname + " " + userInfo.lastname : ""}
             </p>
             <p className="m-0 p-0">@{accessData.username}</p>
           </div>

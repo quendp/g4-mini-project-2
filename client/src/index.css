@@ -302,6 +302,7 @@ main {
 
 /* --- FOR DEBUGGING --- */
 .debug-this,
+.debug-all,
 .debug-all *,
 .debug-child > * {
   border: 0.5px solid red;

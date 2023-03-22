@@ -1,9 +1,20 @@
 import React from "react";
 
-const DashboardUIAccount = () => {
+const DashboardUIAccount = ({ userInfo }) => {
   return (
     <div>
-      <h1>This is the user User Account</h1>
+      <p className="p-dark">
+        Fullname: {userInfo ? userInfo.firstname : "loading"}{" "}
+        {userInfo ? userInfo.lastname : ""}
+      </p>
+      <p className="p-dark">Email: {userInfo ? userInfo.email : "Loading"}</p>
+      <p className="p-dark">
+        Phone Number: {userInfo ? userInfo.phone_number : "Loading"}
+      </p>
+      <p className="p-dark">Age: {userInfo ? userInfo.age : "Loading"}</p>
+      <p className="p-dark">
+        Adress: {userInfo ? userInfo.address : "Loading"}
+      </p>
     </div>
   );
 };

@@ -1,7 +1,9 @@
+/* DASHBOARD MAIN WRAPPER */
 .dashboarUI-main__wrapper {
-  background-color: var(--clr-secondary-000);
+  background-color: var(--clr-secondary-100);
 }
 
+/* DASHBOARD SIDEBAR */
 .dashboardUI-side__wrapper {
   background-color: var(--clr-primary-dark-100);
   font-family: var(--ff-body-light);
@@ -104,6 +106,7 @@
   background-color: var(--clr-secondary-600);
 }
 
+/* DASHBOARD TOP NAVIGATION HEADER WRAPPER */
 .dashboardUI-top__wrapper {
   background-color: var(--clr-primary-dark-400);
   height: 10vh;
@@ -142,6 +145,42 @@
   color: var(--clr-secondary-100) !important;
 }
 
+/* DASHBOARD NUMBER CARDS */
+.dashboardUI-number__wrapper {
+  background-color: var(--clr-secondary-100);
+  box-shadow: 0px 0px 3px 1px var(--clr-secondary-300),
+    -2px -2px 5px 0px var(--clr-secondary-000);
+  border-radius: 1.5rem;
+}
+
+.dashboardUI-number__wrapper > h2 {
+  font-size: var(--fz-main-p);
+  font-family: var(--ff-body-regular);
+}
+
+.dashboardUI-number__card {
+  font-size: var(--fz-main-text);
+  font-family: var(--ff-body-light);
+  background-color: var(--clr-secondary-100);
+  box-shadow: 6px 6px 7px var(--clr-secondary-300),
+    -6px -6px 7px var(--clr-secondary-000);
+  border-radius: 1.5rem;
+  color: var(--clr-primary-dark-100);
+}
+
+.dashboardUI-number__card:hover {
+  color: var(--clr-primary-dark-100);
+  box-shadow: 3px 3px 4px var(--clr-secondary-300),
+    -3px -3px 4px var(--clr-secondary-000);
+}
+
+.dashboardUI-number__card h2 {
+  font-size: calc(var(--fz-main-p) * 2.5);
+  border-bottom: 0.1px solid var(--clr-secondary-300);
+  width: 100%;
+}
+
+/* DASHBOARD MEDIA QUERIES */
 @media (min-width: 768px) {
   .dashboardUI-main__content {
     width: 75%;

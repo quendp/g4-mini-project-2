@@ -63,6 +63,7 @@ class UsersController {
     try {
       const { username } = req.params;
       const user = await UsersService.getUserByUsername(username);
+      if (user) user.password = "********";
       res.json(user);
     } catch (e) {
       res.status(404).json({ message: "User not Found" });
