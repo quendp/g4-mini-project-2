@@ -13,6 +13,9 @@ const AccessHandler = ({ children }) => {
 
   const submitHandler = (jwtToken, username, role) => {
     setAccessData({ token: jwtToken, username: username, role: role });
+    jwtToken
+      ? localStorage.setItem("accessToken", jwtToken)
+      : localStorage.removeItem("accessToken");
   };
 
   useEffect(() => {

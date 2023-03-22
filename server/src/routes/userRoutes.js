@@ -15,6 +15,11 @@ router.post("/login", UsersController.loginUser);
 router.post("/logout", UsersController.logoutUser);
 
 // Routers for users
+router.post(
+  "/persist",
+  passport.authenticate("jwt", { session: false }),
+  UsersController.persistUser
+);
 router.get(
   "/:username",
   passport.authenticate("jwt", { session: false }),

@@ -1,6 +1,16 @@
 const { UsersService } = require("../services/users.service");
 
 class UsersController {
+  static async persistUser(req, res) {
+    try {
+      const { token } = req.body;
+      const accessData = await UsersService.persistUser({ token });
+      res.json(accessData);
+    } catch (err) {
+      res.status(400).json({ message: "Error logging in. Try again later." });
+    }
+  }
+
   static async registerUser(req, res) {
     try {
       const {
@@ -25,13 +35,6 @@ class UsersController {
         address,
         password,
       });
-      // Creates Secure Cookie with refresh token
-      res.cookie("accessData", accessData, {
-        httpOnly: true,
-        secure: true,
-        sameSite: "None",
-        maxAge: 7 * 24 * 60 * 60 * 1000,
-      });
       res.json(accessData);
     } catch (e) {
       res.status(400).json({ message: "Error creating user" });
@@ -45,13 +48,6 @@ class UsersController {
         usernameOrEmail,
         password,
       });
-      // Creates Secure Cookie with refresh token
-      res.cookie("accessData", accessData, {
-        httpOnly: true,
-        secure: true,
-        sameSite: "None",
-        maxAge: 7 * 24 * 60 * 60 * 1000,
-      });
       res.json(accessData);
     } catch (e) {
       res.status(400).json({ message: "Error logging in. Try again later." });
@@ -59,11 +55,6 @@ class UsersController {
   }
 
   static async logoutUser(req, res) {
-    res.clearCookie("accessData", {
-      httpOnly: true,
-      sameSite: "None",
-      secure: true,
-    });
     res.json({ token: false, username: "login", role: 0 });
     res.status(204);
   }

@@ -2,8 +2,47 @@ const { Users, Bookings, Companions } = require("../../models");
 const { Op } = require("sequelize");
 const jwt = require("jsonwebtoken");
 const { jwtSecret } = require("../../config/secrets");
+const jwt_decode = require("jwt-decode");
 
 class UsersService {
+  static async persistUser({ token }) {
+    try {
+      const payload = jwt_decode(token);
+
+      // check if username roleId exists and matches
+      const accountExists = await Users.findOne({
+        where: {
+          [Op.and]: [
+            { username: payload.username },
+            { roleId: payload.roleId },
+          ],
+        },
+      });
+      if (!accountExists) {
+        return null;
+      }
+
+      //replace old token with new token
+      const jwtToken = jwt.sign(
+        {
+          username: accountExists.username,
+          roleId: accountExists.roleId,
+        },
+        jwtSecret,
+        { expiresIn: "7d" }
+      );
+
+      return {
+        token: jwtToken,
+        username: accountExists.username,
+        role: accountExists.roleId,
+      };
+    } catch (err) {
+      console.log("Login failed: ", err);
+      return null;
+    }
+  }
+
   static async registerUser({
     roleId,
     username,
@@ -47,8 +86,8 @@ class UsersService {
       }
       const jwtToken = jwt.sign(
         {
-          id: createdUser.id,
-          email: createdUser.email,
+          username: createdUser.username,
+          roleId: createdUser.roleId,
         },
         jwtSecret,
         { expiresIn: "7d" }
@@ -81,8 +120,8 @@ class UsersService {
       }
       const jwtToken = jwt.sign(
         {
-          id: accountExists.id,
-          email: accountExists.email,
+          username: accountExists.username,
+          roleId: accountExists.roleId,
         },
         jwtSecret,
         { expiresIn: "7d" }
