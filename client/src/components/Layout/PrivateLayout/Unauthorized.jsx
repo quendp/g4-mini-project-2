@@ -12,7 +12,6 @@ const Unauthorized = () => {
   };
 
   const openSignUpModal = () => {
-    console.log("sign up");
     setHasAccount(false);
   };
 

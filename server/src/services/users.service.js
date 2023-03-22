@@ -137,7 +137,7 @@ class UsersService {
     }
   }
 
-  static async getUserByUsername(username) {
+  static async getUser(username) {
     try {
       const currentUser = await Users.findOne({
         where: {

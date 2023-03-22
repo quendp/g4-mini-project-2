@@ -23,7 +23,7 @@ router.post(
 router.get(
   "/:username",
   passport.authenticate("jwt", { session: false }),
-  UsersController.getUserByUsername
+  UsersController.getUser
 );
 
 // Routers for agents

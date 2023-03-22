@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const DashboardUINumbers = ({ bookingsByStatus, accessData }) => {
   return (
-    <section className="dashboardUI-number__wrapper row w-100 m-0 py-4 justify-content-center align-items-center align-content-start text-center">
+    <section className="dashboardUI-sections__wrapper row w-100 m-0 py-4 justify-content-center align-items-center align-content-start text-center">
       <h2 className="p-dark text-sm-start ps-sm-5">I. Booking Statistics</h2>
       {bookingsByStatus.map((booking) => (
         <Link

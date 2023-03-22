@@ -146,18 +146,6 @@
 }
 
 /* DASHBOARD NUMBER CARDS */
-.dashboardUI-number__wrapper {
-  background-color: var(--clr-secondary-100);
-  box-shadow: 0px 0px 3px 1px var(--clr-secondary-300),
-    -2px -2px 5px 0px var(--clr-secondary-000);
-  border-radius: 1.5rem;
-}
-
-.dashboardUI-number__wrapper > h2 {
-  font-size: var(--fz-main-p);
-  font-family: var(--ff-body-regular);
-}
-
 .dashboardUI-number__card {
   font-size: var(--fz-main-text);
   font-family: var(--ff-body-light);
@@ -178,6 +166,26 @@
   font-size: calc(var(--fz-main-p) * 2.5);
   border-bottom: 0.1px solid var(--clr-secondary-300);
   width: 100%;
+}
+
+/* DASHBOARD GENERAL SECTIONS STYLING */
+.dashboardUI-sections__wrapper {
+  background-color: var(--clr-secondary-100);
+  box-shadow: 0px 0px 3px 1px var(--clr-secondary-300),
+    -2px -2px 5px 0px var(--clr-secondary-000);
+  border-radius: 1.5rem;
+}
+
+.dashboardUI-sections__wrapper > h2 {
+  font-size: calc(var(--fz-main-p) * 1.15);
+  font-family: var(--ff-body-regular);
+  font-weight: 600;
+}
+
+.dashboardUI-sections__wrapper > p > span {
+  font-size: var(--fz-main-p);
+  font-family: var(--ff-body-regular);
+  font-weight: 600;
 }
 
 /* DASHBOARD MEDIA QUERIES */

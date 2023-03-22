@@ -59,11 +59,11 @@ class UsersController {
     res.status(204);
   }
 
-  static async getUserByUsername(req, res) {
+  static async getUser(req, res) {
     try {
       const { username } = req.params;
-      const user = await UsersService.getUserByUsername(username);
-      if (user) user.password = "********";
+      const user = await UsersService.getUser(username);
+      if (user.username) user.password = "********";
       res.json(user);
     } catch (e) {
       res.status(404).json({ message: "User not Found" });
@@ -89,6 +89,7 @@ class UsersController {
     try {
       const { agentName } = req.params;
       const agent = await UsersService.getAgent(agentName);
+      if (agent.agent.username) agent.agent.password = "********";
       res.json(agent);
     } catch (err) {
       res.status(404).json({ message: "Agent not Found" });
