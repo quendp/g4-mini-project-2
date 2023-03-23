@@ -6,7 +6,7 @@ const FormModal = (props) => {
   const { currentTheme } = useTheme();
   return (
     <div
-      className="modal-content p-3 p-md-4"
+      className="formUI-modal__wrapper modal-content p-3 p-md-4"
       style={{ boxShadow: `0 0 2px ${currentTheme}` }}
     >
       <div className="modal-header pt-4 pb-0 flex-column justify-content-center">

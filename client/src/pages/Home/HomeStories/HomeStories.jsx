@@ -35,7 +35,11 @@ const HomeStories = ({ categoryCurrent }) => {
         alt="clouds"
       />
 
-      <div className="position-absolute w-100 bottom-0">
+      {/* Mountain svg foreground */}
+      <div
+        style={{ zIndex: "2", pointerEvents: "none" }}
+        className="position-absolute w-100 bottom-0"
+      >
         <svg
           className="w-100"
           viewBox="0 0 1200 800"
@@ -69,14 +73,13 @@ const HomeStories = ({ categoryCurrent }) => {
           />
         </svg>
       </div>
-      <div
-        className="container-fluid m-0 px-0 px-md-5"
-        style={{ zIndex: "99" }}
-      >
+
+      {/* Home stories content with gallery and description */}
+      <div style={{ zIndex: "1" }} className="container-fluid m-0 px-0 px-md-5">
         <div className="home-stories-content row px-3 px-lg-5 py-5 align-content-start">
           <div className="row m-0 mb-4 p-0 px-md-5 justify-content-center justify-content-md-start">
             <div
-              className="col-10 px-md-5"
+              className="col-12 px-md-5"
               ref={titleRef}
               style={{
                 opacity: titleInView ? "1" : "0",
@@ -101,9 +104,8 @@ const HomeStories = ({ categoryCurrent }) => {
             </div>
           </div>
           <div className="home-stories__top row m-auto p-0">
-            <div className="col-md-4 d-none d-md-block"></div>
             <div
-              className="col-12 col-md-4 px-2 px-sm-5 p-md-3 text-center text-md-start"
+              className="col-12 col-md-6 px-2 px-sm-5 p-md-3 text-center text-md-start"
               ref={descriptionLeftRef}
               style={{
                 opacity: descriptionLeftInView ? "1" : "0",
@@ -123,7 +125,7 @@ const HomeStories = ({ categoryCurrent }) => {
               </p>
             </div>
             <div
-              className="col-12 col-md-4 px-2 px-sm-5 p-md-3 text-center text-md-start"
+              className="col-12 col-md-6 px-2 px-sm-5 p-md-3 text-center text-md-start"
               ref={descriptionRightRef}
               style={{
                 opacity: descriptionRightInView ? "1" : "0",
@@ -194,7 +196,11 @@ const HomeStories = ({ categoryCurrent }) => {
               </div>
             </div>
             <div className="home-stories-gallery__overlay position-absolute h-100 w-100 start-0 top-0 d-flex justify-content-center align-items-center">
-              <Link to="/categories">
+              <Link
+                to="https://www.facebook.com/groups/892518778651643/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <button
                   className="cta-light home-stories-gallery__button text-uppercase px-4 py-3 rounded-pill"
                   style={{
@@ -208,13 +214,16 @@ const HomeStories = ({ categoryCurrent }) => {
           </div>
         </div>
       </div>
+
+      {/* Quotation by the CEO */}
       <div
-        className="home-stories-quote d-flex flex-column justify-content-start align-items-center w-75"
-        ref={quoteRef}
         style={{
+          zIndex: "99",
           opacity: quoteInView ? "1" : "0",
           transition: "opacity 400ms ease-in-out 200ms",
         }}
+        className="home-stories-quote d-flex flex-column justify-content-start align-items-center w-75"
+        ref={quoteRef}
       >
         <div className="home-stories-quote__open align-self-start">
           <svg
@@ -236,11 +245,9 @@ const HomeStories = ({ categoryCurrent }) => {
           </svg>
         </div>
         <p className="w-75 text-center m-0 p-0 position-relative">
-          Memories are created in memorable places. And here in Lakbay Travel
-          Agency, we will help you create those picture-perfect moments. <br />
-          <span className="position-absolute end-0 text-uppercase mt-4">
-            - John Doe, CEO
-          </span>
+          Whether you are looking for a vacation, an adventurous journey, or a
+          cultural immersion, we have something for everyone. <br />
+          <span className="position-absolute end-0 mt-4">- John Doe, CEO</span>
         </p>
         <div className="home-stories-quote__close align-self-end">
           <svg

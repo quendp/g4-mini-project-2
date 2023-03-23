@@ -22,7 +22,7 @@ const CategoriesMenu = ({ currentCategory }) => {
           return (
             <NavLink
               to={`/categories/${currentCategory.categoryPath}/${destination.path}`}
-              className="categories-page-menu__item m-1 m-sm-2 m-md-3 mb-3 p-0 overflow-hidden d-flex flex-row justify-content-center align-items-center"
+              className="categories-page-menu__item m-1 m-sm-2 m-md-3 mb-3 p-0 d-flex flex-row justify-content-center align-items-center position-relative"
               key={destination.id}
               style={({ isActive }) => {
                 let activeStyle = {
@@ -37,6 +37,9 @@ const CategoriesMenu = ({ currentCategory }) => {
                 src={destination.destinationImage}
                 className="categories-page-menu__img w-100 h-100"
               />
+              <span className="position-absolute p-2 start-0 text-center">
+                {destination.destination}
+              </span>
             </NavLink>
           );
         })}

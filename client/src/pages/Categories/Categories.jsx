@@ -28,13 +28,12 @@ const Categories = () => {
   );
 
   // Stores packages fetched from the database
+  const [allPackages, setAllPackages] = useState([]);
   const [packagesData, setPackagesData] = useState([]);
   const FETCH_API = "/api/packages";
 
   // Updates the current category and destination based on the URL
   useEffect(() => {
-    let isMounted = true;
-
     if (!category) {
       // will execute if URL is "/categories" only
       chosenCategory.current = categoriesInfo[0];
@@ -54,7 +53,30 @@ const Categories = () => {
       );
     }
 
-    // Gets the package from the database with destination equal to the selected destination
+    // If fetching packages succeeded, filter those packages to match URL
+    console.log("all packages : ", allPackages);
+    if (allPackages && !allPackages?.message) {
+      const packages = allPackages.filter(
+        (cardPackages) =>
+          cardPackages.destination_id === chosenDestination.current.id
+      );
+      setPackagesData(packages);
+    }
+
+    // Change current theme based on category in URL
+    changeThemeHandler(
+      chosenCategory.current.accentLight,
+      chosenCategory.current.categoryPath
+    );
+
+    // Change state of current category and destination
+    setCurrentCategory(chosenCategory.current);
+    setCurrentDestination(chosenDestination.current);
+  }, [category, destination, allPackages]);
+
+  // Gets all the package from the database
+  useEffect(() => {
+    let isMounted = true;
     const controller = new AbortController();
     const getPackageInfo = async () => {
       try {
@@ -66,37 +88,21 @@ const Categories = () => {
           signal: controller.signal,
         });
         if (isMounted && response.data) {
-          const packages = response.data.filter(
-            (cardPackages) =>
-              cardPackages.destination_id === chosenDestination.current.id
-          );
-          setPackagesData(packages);
+          setAllPackages(response.data);
         }
       } catch (err) {
         console.log(err);
       }
     };
-
     // Call fetch function to get packages data
     getPackageInfo();
-
-    // Change current theme based on category in URL
-    changeThemeHandler(
-      chosenCategory.current.accentLight,
-      chosenCategory.current.categoryPath
-    );
-
-    // Change state of current category and destination
-    setCurrentCategory(chosenCategory.current);
-    setCurrentDestination(chosenDestination.current);
-
     return () => {
       isMounted = false;
       controller.abort();
     };
-  }, [category, destination]);
+  }, []);
 
-  // Gets the details of the selected package
+  // Handles the change in package chosen by the user
   const [chosenPackage, setChosenPackage] = useState({});
   const chosenPackageHandler = (destPackage) => {
     setChosenPackage(destPackage);
