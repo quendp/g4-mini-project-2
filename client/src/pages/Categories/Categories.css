@@ -141,7 +141,8 @@
   border-radius: 0.7rem;
 }
 
-.categories-page-card__button button:hover {
+.categories-page-card__button button:hover,
+.categories-page-card__button button.disabled {
   box-shadow: 1px 1px 4px var(--clr-primary-glass);
   filter: brightness(93%);
 }

@@ -4,8 +4,11 @@ import axios from "../../../Utils/axios";
 import FormModal from "../../FormUI/FormModal";
 import showPassImg from "../../../assets/images/showPass.png";
 import hidePassImg from "../../../assets/images/hidePass.png";
+import useTheme from "../../../hooks/useTheme";
 
 const LogInForm = ({ handleChangeMode, submitHandler }) => {
+  const { currentTheme } = useTheme();
+
   const LOGIN_URL = "/api/users/login";
   const [isSubmitClicked, setIsSubmitClicked] = useState(false);
   const [errMsg, setErrMsg] = useState("");
@@ -101,7 +104,13 @@ const LogInForm = ({ handleChangeMode, submitHandler }) => {
   const headerTitle = "Log in to your Lakbay Account";
   const headerText = "Doesn't have an account? ";
   const headerLink = (
-    <a href="#" onClick={handleChangeMode}>
+    <a
+      href="#"
+      onClick={handleChangeMode}
+      style={{
+        color: currentTheme,
+      }}
+    >
       Sign up here.
     </a>
   );

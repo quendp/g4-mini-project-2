@@ -1,6 +1,7 @@
 import React from "react";
 import useAuth from "../../hooks/useAuth";
 
+// * Component called by CategoriesCard.jsx
 const CategoriesCardUI = ({
   isPackageClicked,
   packageData,
@@ -70,11 +71,14 @@ const CategoriesCardUI = ({
           </p>
           <div className="categories-page-card__button w-100 pt-5 d-flex justify-content-end">
             <button
-              className="px-4 px-xl-5 py-2 text-uppercase"
+              className={`px-4 px-xl-5 py-2 text-uppercase ${
+                packageData ? "" : "disabled opacity-50"
+              }`}
               onClick={onClickBookHandler}
               style={{ backgroundColor: currentCategory.accentLight }}
+              disabled={packageData ? false : true}
             >
-              Book this tour
+              {packageData ? "Book this tour" : "Unavailable"}
             </button>
           </div>
         </div>

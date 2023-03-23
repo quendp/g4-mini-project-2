@@ -2,36 +2,32 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Categories.css";
 import { categoriesInfo } from "../../Data/CategoriesMockData";
 import { useOutletContext, useParams } from "react-router-dom";
-import packageData from "../../Data/PackagesMockData.json";
 import CategoriesTitle from "./CategoriesTitle";
 import CategoriesDetails from "./CategoriesDetails";
 import CategoriesMenu from "./CategoriesMenu";
 import BookingForm from "../../components/Booking/BookingForm";
+import axios from "../../Utils/axios";
 
 const Categories = () => {
+  // Changes color scheme of footer and header
   const changeThemeHandler = useOutletContext();
+
+  // Gets the category and destination from the URL
   const { category, destination } = useParams();
 
+  // Gets the category from CategoriesMockData file with default to cosmopolitan-lights
   const chosenCategory = useRef(categoriesInfo[0]);
-  const chosenDestination = useRef(chosenCategory.current.destinations[0]);
-
   const [currentCategory, setCurrentCategory] = useState(
     chosenCategory.current
   );
+
+  // Gets the destination from CategoriesMockData with default value to star-city
+  const chosenDestination = useRef(chosenCategory.current.destinations[0]);
   const [currentDestination, setCurrentDestination] = useState(
     chosenDestination.current
   );
 
-  const [chosenPackage, setChosenPackage] = useState({});
-
-  const destinationPackages = packageData.filter(
-    (cardPackages) => cardPackages.destination_id === currentDestination.id
-  );
-
-  const chosenPackageHandler = (destPackage) => {
-    setChosenPackage(destPackage);
-  };
-
+  // Updates the current category and destination based on the URL
   useEffect(() => {
     if (!category) {
       chosenCategory.current = categoriesInfo[0];
@@ -57,6 +53,47 @@ const Categories = () => {
     setCurrentCategory(chosenCategory.current);
     setCurrentDestination(chosenDestination.current);
   });
+
+  // Gets the package from the database with destination equal to the selected destination
+  const [packagesData, setPackagesData] = useState([]);
+  const FETCH_API = "/api/packages";
+  useEffect(() => {
+    let isMounted = true;
+    const controller = new AbortController();
+    const getPackageInfo = async () => {
+      try {
+        const response = await axios.get(FETCH_API, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+          signal: controller.signal,
+        });
+        if (isMounted && response.data) {
+          const packages = response.data.filter(
+            (cardPackages) =>
+              cardPackages.destination_id === currentDestination.id
+          );
+          setPackagesData(packages);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getPackageInfo();
+
+    return () => {
+      isMounted = false;
+      controller.abort();
+    };
+  }, []);
+
+  // Gets the details of the selected package
+  const [chosenPackage, setChosenPackage] = useState({});
+  const chosenPackageHandler = (destPackage) => {
+    setChosenPackage(destPackage);
+  };
+
   return (
     <>
       <BookingForm chosenPackage={chosenPackage} />
@@ -79,7 +116,7 @@ const Categories = () => {
           <CategoriesDetails
             currentCategory={currentCategory}
             currentDestination={currentDestination}
-            destinationPackages={destinationPackages}
+            packagesData={packagesData}
             chosenPackageHandler={chosenPackageHandler}
           />
         </div>

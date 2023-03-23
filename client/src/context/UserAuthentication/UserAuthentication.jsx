@@ -12,6 +12,7 @@ export const UserAuthentication = ({ children }) => {
     role: 0,
   });
 
+  // Check local storage for tokens and persist user login
   useEffect(() => {
     let isMounted = true;
     const controller = new AbortController();
@@ -53,7 +54,12 @@ export const UserAuthentication = ({ children }) => {
   }, []);
 
   const userData = useMemo(
-    () => ({ accessData, setAccessData, hasAccount, setHasAccount }),
+    () => ({
+      accessData,
+      setAccessData,
+      hasAccount,
+      setHasAccount,
+    }),
     [accessData, hasAccount]
   );
 

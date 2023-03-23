@@ -3,8 +3,11 @@ import axios from "../../../Utils/axios";
 import SignUpFormAccount from "./SignUpFormAccount";
 import SignUpFormPersonal from "./SignUpFormPersonal";
 import FormModal from "../../FormUI/FormModal";
+import useTheme from "../../../hooks/useTheme";
 
 const SignUpForm = ({ handleChangeMode, submitHandler }) => {
+  const { currentTheme } = useTheme();
+
   const REGISTER_URL = "/api/users/register/1";
 
   const [step, setStep] = useState(0);
@@ -293,7 +296,13 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
   const headerTitle = "Create a Lakbay Account";
   const headerText = "Already have an account? ";
   const headerLink = (
-    <a href="#" onClick={handleChangeMode}>
+    <a
+      href="#"
+      onClick={handleChangeMode}
+      style={{
+        color: currentTheme,
+      }}
+    >
       Log in here.
     </a>
   );

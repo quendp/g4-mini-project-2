@@ -5,6 +5,10 @@
 }
 
 .booking-form__content p span {
-  font-family: var(--ff-body-bold);
-  color: var(--clr-accent-lights-100);
+  font-family: var(--ff-body-regular);
+  font-weight: 600;
+}
+
+.booking-form-details__container {
+  border-radius: 1rem;
 }

@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useTheme from "../../hooks/useTheme";
 import "./Footer.css";
 import FooterSections from "./FooterSections";
 
-const Footer = ({ currentTheme, currentPath }) => {
+const Footer = ({ currentPath }) => {
+  const { currentTheme } = useTheme();
   return (
     <footer className="footer-section__wrapper container-fluid m-0 p-0 pt-5 overflow-hidden">
       <section className="row px-5 pt-5 justify-content-center">
@@ -27,7 +29,7 @@ const Footer = ({ currentTheme, currentPath }) => {
       </section>
 
       <section className="row px-5 justify-content-center">
-        <FooterSections currentTheme={currentTheme} />
+        <FooterSections />
       </section>
 
       <section className="row m-0 p-0">

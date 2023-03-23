@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { useLocation } from "react-router-dom";
 import CategoriesCardUI from "./CategoriesCardUI";
 
+// * Component called by CategoriesDetails.jsx
 const CategoriesCard = ({
   currentCategory,
-  currentDestination,
-  destinationPackages,
+  packagesData,
   chosenPackageHandler,
 }) => {
   const [cardsRef, cardsInView] = useInView({ threshold: 0 });
@@ -14,15 +15,15 @@ const CategoriesCard = ({
   const [isStandardClicked, setIsStandardClicked] = useState(false);
   const [isPremiumClicked, setIsPremiumClicked] = useState(false);
 
-  const basicPackage = destinationPackages.find(
+  const basicPackage = packagesData.find(
     (cardPackage) => cardPackage.package_type.toLowerCase() === "basic"
   );
 
-  const standardPackage = destinationPackages.find(
+  const standardPackage = packagesData.find(
     (cardPackage) => cardPackage.package_type.toLowerCase() === "standard"
   );
 
-  const premiumPackage = destinationPackages.find(
+  const premiumPackage = packagesData.find(
     (cardPackage) => cardPackage.package_type.toLowerCase() === "premium"
   );
 
@@ -41,6 +42,13 @@ const CategoriesCard = ({
     setIsStandardClicked(false);
     setIsPremiumClicked(!isPremiumClicked);
   };
+
+  const location = useLocation().pathname;
+  useEffect(() => {
+    setIsBasicClicked(false);
+    setIsStandardClicked(false);
+    setIsPremiumClicked(false);
+  }, [location]);
 
   return (
     <div

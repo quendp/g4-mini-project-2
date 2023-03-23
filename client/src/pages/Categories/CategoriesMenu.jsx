@@ -2,7 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 
-const CategoriesMenu = ({ currentCategory, currentDestination }) => {
+// * Component called by Categories.jsx
+const CategoriesMenu = ({ currentCategory }) => {
   const [menuRef, menuInView] = useInView({ threshold: 0.1 });
 
   return (

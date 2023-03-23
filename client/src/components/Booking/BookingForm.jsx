@@ -1,8 +1,15 @@
 import React, { useState } from "react";
+import useTheme from "../../hooks/useTheme";
 import FormModal from "../FormUI/FormModal";
 import "./BookingForm.css";
 
 const BookingForm = ({ children, chosenPackage }) => {
+  const { currentTheme } = useTheme();
+
+  const packageDetails = {
+    color: currentTheme,
+  };
+
   const [step, setStep] = useState(0);
 
   const [travelDate, setTravelDate] = useState("");
@@ -49,33 +56,50 @@ const BookingForm = ({ children, chosenPackage }) => {
     switch (step) {
       case 0:
         return (
-          <div>
-            <p className="text-start p-2 m-0 my-2">
-              <span className="me-2">Destination : </span>
-              {!chosenPackage ? "Unavailable" : chosenPackage.destination}
-            </p>
-            <p className="text-start p-2 m-0 my-2">
-              <span className="me-2">Transportation : </span>
-              {!chosenPackage ? "Unavailable" : chosenPackage.transportation}
-            </p>
-            <p className="text-start p-2 m-0 my-2">
-              <span className="me-2">Flight Class : </span>
-              {!chosenPackage ? "Unavailable" : chosenPackage.flight_class}
-            </p>
-            <p className="text-start p-2 m-0 my-2">
-              <span className="me-2">Accommodation : </span>
-              {!chosenPackage ? "Unavailable" : chosenPackage.accommodation}
-            </p>
-            <p className="text-start p-2 m-0 my-2">
-              <span className="me-2">Activities : </span>
-              {!chosenPackage ? "Unavailable" : chosenPackage.activities}
-            </p>
-            <p className="text-start p-2 m-0 my-2">
-              <span className="me-2">Starting Price : </span>
-              {!chosenPackage
-                ? "Unavailable"
-                : `Php ${chosenPackage.starting_price}.00`}
-            </p>
+          <div
+            className="booking-form-details__container p-3 p-sm-4"
+            style={{ boxShadow: `0 0 2px ${currentTheme}` }}
+          >
+            <div>
+              <p className="text-start p-2 m-0 my-2">
+                <span style={packageDetails} className="me-2">
+                  Destination :{" "}
+                </span>
+                {!chosenPackage ? "Unavailable" : chosenPackage.destination}
+              </p>
+              <p className="text-start p-2 m-0 my-2">
+                <span style={packageDetails} className="me-2">
+                  Transportation :{" "}
+                </span>
+                {!chosenPackage ? "Unavailable" : chosenPackage.transportation}
+              </p>
+              <p className="text-start p-2 m-0 my-2">
+                <span style={packageDetails} className="me-2">
+                  Flight Class :{" "}
+                </span>
+                {!chosenPackage ? "Unavailable" : chosenPackage.flight_class}
+              </p>
+              <p className="text-start p-2 m-0 my-2">
+                <span style={packageDetails} className="me-2">
+                  Accommodation :{" "}
+                </span>
+                {!chosenPackage ? "Unavailable" : chosenPackage.accommodation}
+              </p>
+              <p className="text-start p-2 m-0 my-2">
+                <span style={packageDetails} className="me-2">
+                  Activities :{" "}
+                </span>
+                {!chosenPackage ? "Unavailable" : chosenPackage.activities}
+              </p>
+              <p className="text-start p-2 m-0 my-2">
+                <span style={packageDetails} className="me-2">
+                  Starting Price :{" "}
+                </span>
+                {!chosenPackage
+                  ? "Unavailable"
+                  : `Php ${chosenPackage.starting_price}.00`}
+              </p>
+            </div>
           </div>
         );
       case 1:

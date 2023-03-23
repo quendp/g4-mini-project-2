@@ -2,9 +2,8 @@
 .modal-title {
   font-size: var(--fz-main-p);
   font-family: var(--ff-body-bold);
-  color: var(--clr-accent-lights-100);
-  text-shadow: 0 0 10px var(--clr-accent-lights-100);
   text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .signUpCreateLink {
@@ -14,19 +13,23 @@
 }
 
 .signUpCreateLink a {
-  color: var(--clr-accent-lights-100);
   text-decoration: none;
 }
 
 .signUpCreateLink a:hover,
 .signUpCreateLink a:active {
-  color: var(--clr-accent-lights);
+  filter: brightness(80%);
 }
 
 .modal-content h3 {
   color: var(--clr-secondary-100);
-  font-size: var(--fz-main-p);
+  font-size: var(--fz-main-text);
   font-family: var(--ff-body-regular);
+}
+
+.modal-content h3 span {
+  margin-right: 0.4rem;
+  text-transform: uppercase;
 }
 
 .modal-content label,
@@ -38,8 +41,10 @@
 }
 
 .form-control:focus {
-  border-color: var(--clr-accent-lights-100);
-  box-shadow: 0 0 5px var(--clr-accent-lights);
+  border: 1px solid var(--clr-secondary-300);
+  outline: 1px solid var(--clr-secondary-300);
+  box-shadow: 0 0 5px var(--clr-secondary-000);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .form-control.isValid {
@@ -102,17 +107,14 @@
 
 .modal-signup-btn {
   color: var(--clr-primary-dark);
-  background-color: var(--clr-accent-lights-100);
-  box-shadow: 0 0 20px var(--clr-accent-lights-100);
   border-radius: 0.7rem;
-  transition: background-color 300ms ease-in-out, box-shadow 300ms ease-in-out;
+  transition: filter 300ms ease-in-out;
 }
 
 .modal-signup-btn:hover,
 .modal-signup-btn:active,
 .modal-signup-btn:focus-visible {
-  background-color: var(--clr-accent-lights) !important;
-  box-shadow: 0 0 20px var(--clr-accent-lights);
+  filter: brightness(70%);
 }
 
 .modal-cancel-btn {
