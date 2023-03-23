@@ -27,38 +27,34 @@ const Categories = () => {
     chosenDestination.current
   );
 
+  // Stores packages fetched from the database
+  const [packagesData, setPackagesData] = useState([]);
+  const FETCH_API = "/api/packages";
+
   // Updates the current category and destination based on the URL
   useEffect(() => {
+    let isMounted = true;
+
     if (!category) {
+      // will execute if URL is "/categories" only
       chosenCategory.current = categoriesInfo[0];
     } else {
+      // will execute if URL has a category specified
       chosenCategory.current = categoriesInfo.find(
         (cat) => cat.categoryPath === category
       );
     }
     if (!destination) {
+      // will execute if URL is "/categories/:category" only
       chosenDestination.current = chosenCategory.current.destinations[0];
     } else {
+      // will execute if URL has a destination specified
       chosenDestination.current = chosenCategory.current.destinations.find(
         (dest) => dest.path === destination
       );
     }
-    changeThemeHandler(
-      chosenCategory.current.accentLight,
-      chosenCategory.current.categoryPath
-    );
-  }, [category, destination]);
 
-  useEffect(() => {
-    setCurrentCategory(chosenCategory.current);
-    setCurrentDestination(chosenDestination.current);
-  });
-
-  // Gets the package from the database with destination equal to the selected destination
-  const [packagesData, setPackagesData] = useState([]);
-  const FETCH_API = "/api/packages";
-  useEffect(() => {
-    let isMounted = true;
+    // Gets the package from the database with destination equal to the selected destination
     const controller = new AbortController();
     const getPackageInfo = async () => {
       try {
@@ -72,7 +68,7 @@ const Categories = () => {
         if (isMounted && response.data) {
           const packages = response.data.filter(
             (cardPackages) =>
-              cardPackages.destination_id === currentDestination.id
+              cardPackages.destination_id === chosenDestination.current.id
           );
           setPackagesData(packages);
         }
@@ -80,13 +76,25 @@ const Categories = () => {
         console.log(err);
       }
     };
+
+    // Call fetch function to get packages data
     getPackageInfo();
+
+    // Change current theme based on category in URL
+    changeThemeHandler(
+      chosenCategory.current.accentLight,
+      chosenCategory.current.categoryPath
+    );
+
+    // Change state of current category and destination
+    setCurrentCategory(chosenCategory.current);
+    setCurrentDestination(chosenDestination.current);
 
     return () => {
       isMounted = false;
       controller.abort();
     };
-  }, []);
+  }, [category, destination]);
 
   // Gets the details of the selected package
   const [chosenPackage, setChosenPackage] = useState({});

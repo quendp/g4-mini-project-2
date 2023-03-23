@@ -7,9 +7,9 @@ const CategoriesMenu = ({ currentCategory }) => {
   const [menuRef, menuInView] = useInView({ threshold: 0.1 });
 
   return (
-    <div className="categories-page-menu__container position-absolute d-flex flex-row flex-md-column justify-content-center align-items-center p-3">
+    <div className="categories-page-menu__container container-fluid position-absolute d-flex flex-row flex-md-column justify-content-center align-items-center p-3">
       <div
-        className="d-flex flex-row flex-md-column justify-content-center align-items-center"
+        className="d-flex p-0 m-0 flex-row flex-md-column justify-content-center align-items-center"
         ref={menuRef}
         style={{
           opacity: menuInView ? "1" : "0",
@@ -22,7 +22,7 @@ const CategoriesMenu = ({ currentCategory }) => {
           return (
             <NavLink
               to={`/categories/${currentCategory.categoryPath}/${destination.path}`}
-              className="categories-page-menu__item m-3 mb-3 p-0 overflow-hidden d-flex flex-row justify-content-center align-items-center"
+              className="categories-page-menu__item m-1 m-sm-2 m-md-3 mb-3 p-0 overflow-hidden d-flex flex-row justify-content-center align-items-center"
               key={destination.id}
               style={({ isActive }) => {
                 let activeStyle = {

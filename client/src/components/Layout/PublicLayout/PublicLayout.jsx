@@ -10,7 +10,6 @@ const PublicLayout = () => {
   const [currentPath, setCurrentPath] = useState("cosmopolitan-lights");
 
   const changeThemeHandler = (newTheme, newPath) => {
-    console.log(newTheme);
     setCurrentTheme(newTheme);
     setCurrentPath(newPath);
   };
