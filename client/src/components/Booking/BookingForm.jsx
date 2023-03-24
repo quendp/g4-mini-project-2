@@ -54,14 +54,14 @@ const BookingForm = ({ children, chosenPackage }) => {
       !validLocation ? setLocationClass("isInvalid") : setNumberClass("");
     } else if (companions) {
       // Validate companion fields
-      for (let i of companions) {
-        const values = Object.values(i);
-        for (let j of values) {
-          if (!j) {
-            setErrMsg("Companion fields cannot be empty.");
-            return;
-          }
-        }
+
+      const isCompanionsValid = companions.every((comp) => {
+        return comp.firstname && comp.lastname && comp.age;
+      });
+
+      if (!isCompanionsValid) {
+        setErrMsg("Companion fields cannot be empty.");
+        return;
       }
       setErrMsg("Submitting...");
       submitToServer();
