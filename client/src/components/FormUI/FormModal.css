@@ -35,7 +35,7 @@
 .formUI-modal__wrapper.modal-content label,
 .formUI-modal__wrapper.modal-content .form-control {
   font-size: var(--fz-main-text);
-  font-family: var(--ff-body-regular);
+  font-family: var(--ff-body-light);
   background-color: transparent;
   color: var(--clr-secondary-100);
 }

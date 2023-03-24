@@ -1,4 +1,5 @@
-.booking-form__content p {
+.booking-form__content p,
+.booking-form__content span {
   font-family: var(--ff-body-light);
   font-size: var(--fz-main-text);
   color: var(--clr-secondary-100);
@@ -11,4 +12,18 @@
 
 .booking-form-details__container {
   border-radius: 1rem;
+}
+
+.booking-form-companions__wrapper {
+  border-radius: 1rem;
+}
+
+.booking-form-companions__wrapper .fa-circle-xmark {
+  color: var(--clr-secondary-100);
+  font-size: calc(var(--fz-main-p) * 1.5);
+  transform: translate(-55%, 55%);
+}
+
+.booking-form-companions__wrapper .fa-circle-xmark:hover {
+  color: var(--clr-secondary-300);
 }

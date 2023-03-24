@@ -54,7 +54,6 @@ const Categories = () => {
     }
 
     // If fetching packages succeeded, filter those packages to match URL
-    console.log("all packages : ", allPackages);
     if (allPackages && !allPackages?.message) {
       const packages = allPackages.filter(
         (cardPackages) =>

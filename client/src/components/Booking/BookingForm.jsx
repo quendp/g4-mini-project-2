@@ -1,173 +1,183 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useTheme from "../../hooks/useTheme";
 import FormModal from "../FormUI/FormModal";
 import "./BookingForm.css";
+import BookingFormPackage from "./BookingFormPackage";
+import BookingFormTravel from "./BookingFormTravel";
 
 const BookingForm = ({ children, chosenPackage }) => {
   const { currentTheme } = useTheme();
 
-  const packageDetails = {
-    color: currentTheme,
-  };
+  // Regex patterns for input validation
+  const DURATION_REGEX = /^\d{1,2}$/;
+  const LOCATION_REGEX = /^[\w'\-,.][^_!¡÷?¿/\\+=@#$%^&*{}|~<>;:[\]]{1,200}$/;
 
+  //  Setting up general form states
   const [step, setStep] = useState(0);
+  const [isSubmitClicked, setIsSubmitClicked] = useState(false);
+  const [errMsg, setErrMsg] = useState("");
 
+  // Setting up input specific form states
   const [travelDate, setTravelDate] = useState("");
+  const [validTravelDate, setValidTravelDate] = useState();
+  const [travelDateClass, setTravelDateClass] = useState("");
 
   const [duration, setDuration] = useState("");
+  const [validDuration, setValidDuration] = useState();
+  const [durationClass, setDurationClass] = useState("");
 
   const [location, setLocation] = useState("");
+  const [validLocation, setValidLocation] = useState();
+  const [locationClass, setLocationClass] = useState("");
 
+  const [companions, setCompanions] = useState([]);
+
+  // Stores all the booking information
   const bookingData = {
     travel_date: travelDate,
     duration: duration,
     starting_location: location,
     package_id: chosenPackage.id,
+    companions: companions,
   };
+
+  // Validate user input before sending data to the server
   const onClickSubmit = (event) => {
     event.preventDefault();
+    setIsSubmitClicked(true);
+    setErrMsg("");
+    if (!validTravelDate || !validDuration || !validLocation) {
+      !validTravelDate
+        ? setTravelDateClass("isInvalid")
+        : setTravelDateClass("");
+      !validDuration ? setDurationClass("isInvalid") : setDurationClass("");
+      !validLocation ? setLocationClass("isInvalid") : setNumberClass("");
+    } else if (companions) {
+      // Validate companion fields
+      for (let i of companions) {
+        const values = Object.values(i);
+        for (let j of values) {
+          if (!j) {
+            setErrMsg("Companion fields cannot be empty.");
+            return;
+          }
+        }
+      }
+      setErrMsg("Submitting...");
+      submitToServer();
+    } else {
+      setErrMsg("Submitting...");
+      submitToServer();
+    }
+  };
+
+  const submitToServer = async () => {
     console.log(bookingData);
+    console.log("Submitted to server");
     const bookingModalInst = document.getElementById("bookingModal");
     const myModal = bootstrap.Modal.getOrCreateInstance(bookingModalInst);
     myModal.hide();
 
-    setTravelDate("");
-    setDuration("");
-    setLocation("");
+    resetForm();
   };
 
+  // Resets the booking form when the user switched to another package
+  useEffect(() => {
+    resetForm();
+  }, [chosenPackage]);
+
+  // Function for resetting form
+  const resetForm = () => {
+    setStep(0);
+    setTravelDate("");
+    setTravelDateClass("");
+    setDuration("");
+    setDurationClass("");
+    setLocation("");
+    setLocationClass("");
+    setCompanions([]);
+    setIsSubmitClicked(false);
+    setErrMsg("");
+  };
+
+  // Validates the user input
+  useEffect(() => {
+    const result = travelDate ? true : false;
+    setValidTravelDate(result);
+    if (!result && isSubmitClicked) {
+      setTravelDateClass("isInvalid");
+    } else if (result && isSubmitClicked) {
+      setTravelDateClass("isValid");
+    }
+  }, [travelDate]);
+
+  useEffect(() => {
+    const result = DURATION_REGEX.test(duration) && duration >= 0;
+    setValidDuration(result);
+    if (!result && isSubmitClicked) {
+      setDurationClass("isInvalid");
+    } else if (result && isSubmitClicked) {
+      setDurationClass("isValid");
+    }
+  }, [duration]);
+
+  useEffect(() => {
+    const result = LOCATION_REGEX.test(location);
+    setValidLocation(result);
+    if (!result && isSubmitClicked) {
+      setLocationClass("isInvalid");
+    } else if (result && isSubmitClicked) {
+      setLocationClass("isValid");
+    }
+  }, [location]);
+
+  // Handle next and previous buttons
   const onClickBtnRight = () => {
     setTimeout(() => {
       setStep(1);
     }, 100);
   };
+
   const onClickBtnLeft = () => {
     setTimeout(() => {
-      setStep((prevStep) => {
-        if (prevStep == 0) return 0;
-        else {
-          return prevStep - 1;
-        }
-      });
+      setStep(0);
+      setIsNextClicked(false);
+      setIsSubmitClicked(false);
     }, 100);
   };
 
+  // Conditional rendering of components based on the current step value
   const conditionalComponent = () => {
     switch (step) {
       case 0:
         return (
-          <div
-            className="booking-form-details__container p-3 p-sm-4"
-            style={{ boxShadow: `0 0 2px ${currentTheme}` }}
-          >
-            <div>
-              <p className="text-start p-2 m-0 my-2">
-                <span style={packageDetails} className="me-2">
-                  Destination :{" "}
-                </span>
-                {!chosenPackage ? "Unavailable" : chosenPackage.destination}
-              </p>
-              <p className="text-start p-2 m-0 my-2">
-                <span style={packageDetails} className="me-2">
-                  Transportation :{" "}
-                </span>
-                {!chosenPackage ? "Unavailable" : chosenPackage.transportation}
-              </p>
-              <p className="text-start p-2 m-0 my-2">
-                <span style={packageDetails} className="me-2">
-                  Flight Class :{" "}
-                </span>
-                {!chosenPackage ? "Unavailable" : chosenPackage.flight_class}
-              </p>
-              <p className="text-start p-2 m-0 my-2">
-                <span style={packageDetails} className="me-2">
-                  Accommodation :{" "}
-                </span>
-                {!chosenPackage ? "Unavailable" : chosenPackage.accommodation}
-              </p>
-              <p className="text-start p-2 m-0 my-2">
-                <span style={packageDetails} className="me-2">
-                  Activities :{" "}
-                </span>
-                {!chosenPackage ? "Unavailable" : chosenPackage.activities}
-              </p>
-              <p className="text-start p-2 m-0 my-2">
-                <span style={packageDetails} className="me-2">
-                  Starting Price :{" "}
-                </span>
-                {!chosenPackage
-                  ? "Unavailable"
-                  : `Php ${chosenPackage.starting_price}.00`}
-              </p>
-            </div>
-          </div>
+          <BookingFormPackage
+            chosenPackage={chosenPackage}
+            currentTheme={currentTheme}
+          />
         );
       case 1:
         return (
-          <div>
-            <div className="row g-0 g-sm-4 my-3">
-              <div className="form-floating mb-3 mb-sm-4 col-12 col-sm-6">
-                <input
-                  type="date"
-                  id="bookingFormTravelDate"
-                  className={`form-control`}
-                  placeholder="Date of expected travel"
-                  aria-label="Date of expected travel"
-                  onChange={(e) => {
-                    setTravelDate(e.target.value);
-                  }}
-                  value={travelDate}
-                />
-                <label htmlFor="bookingFormTravelDate" className="ps-3 ps-sm-4">
-                  Expected Date of Travel
-                </label>
-                <div className="invalid-feedback">
-                  Please enter a valid date.{" "}
-                </div>
-              </div>
-              <div className="form-floating mb-3 mb-sm-4 col-12 col-sm-6">
-                <input
-                  type="number"
-                  id="bookingFormDuration"
-                  className={`form-control`}
-                  placeholder="Trip Duration"
-                  aria-label="Trip Duration"
-                  onChange={(e) => {
-                    setDuration(e.target.value);
-                  }}
-                  value={duration}
-                />
-                <label htmlFor="bookingFormDuration" className="ps-3 ps-sm-4">
-                  Trip Duration (in Days)
-                </label>
-                <div className="invalid-feedback">
-                  Please enter a valid number. Could be 0.5-30 days.
-                </div>
-              </div>
-            </div>
-            <div className="form-floating mb-3 mb-sm-4">
-              <input
-                type="text"
-                className={`form-control`}
-                id="bookingFormLocation"
-                placeholder="Pick Up Location or Address"
-                onChange={(e) => {
-                  setLocation(e.target.value);
-                }}
-                value={location}
-              />
-              <label htmlFor="bookingFormLocation">
-                Pick Up Location or Address
-              </label>
-              <div className="invalid-feedback">
-                Please enter a valid address.
-              </div>
-            </div>
-          </div>
+          <BookingFormTravel
+            currentTheme={currentTheme}
+            travelDate={travelDate}
+            setTravelDate={setTravelDate}
+            travelDateClass={travelDateClass}
+            duration={duration}
+            setDuration={setDuration}
+            durationClass={durationClass}
+            location={location}
+            setLocation={setLocation}
+            locationClass={locationClass}
+            companions={companions}
+            setCompanions={setCompanions}
+          />
         );
       default:
     }
   };
+
+  // Parameters used for the FormUI component
   const headerTitle = `Book a trip to ${chosenPackage.destination}`;
   const headerText = "Fill up this form to proceed to your booking.";
   const btnLeftClass = "modal-cancel-btn";
@@ -206,7 +216,7 @@ const BookingForm = ({ children, chosenPackage }) => {
             btnRightType={btnRightType}
             onClickBtnRight={onClickBtnRight}
             btnRightText={btnRightText}
-            errMsg={""}
+            errMsg={errMsg}
           >
             <div className="mb-4">
               <h3>
