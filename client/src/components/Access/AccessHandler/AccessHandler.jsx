@@ -1,11 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import LogInForm from "../LogInForm/LogInForm";
 import LogOutForm from "../LogOutForm/LogOutForm";
+import ResetPassword from "../ResetPassword/ResetPassword";
 import SignUpForm from "../SignUpForm/SignUpForm";
 
 const AccessHandler = ({ children }) => {
   const { accessData, setAccessData, hasAccount, setHasAccount } = useAuth();
+
+  const [isResetPass, setIsResetPass] = useState(false);
+
+  const cancelResetPass = () => {
+    setIsResetPass(false);
+  };
+
+  const resetPassHandler = () => {
+    setIsResetPass(true);
+    console.log("Im Working: ", isResetPass);
+  };
 
   const handleChangeMode = () => {
     setHasAccount(!hasAccount);
@@ -35,19 +47,28 @@ const AccessHandler = ({ children }) => {
             !accessData.token && !hasAccount ? "modal-lg" : "modal-md"
           } modal-dialog-centered`}
         >
-          {!accessData.token && hasAccount && (
+          {isResetPass && (
+            <ResetPassword
+              cancelResetPass={cancelResetPass}
+              setIsResetPass={setIsResetPass}
+            />
+          )}
+          {!isResetPass && !accessData.token && hasAccount && (
             <LogInForm
               handleChangeMode={handleChangeMode}
               submitHandler={submitHandler}
+              resetPassHandler={resetPassHandler}
             />
           )}
-          {!accessData.token && !hasAccount && (
+          {!isResetPass && !accessData.token && !hasAccount && (
             <SignUpForm
               handleChangeMode={handleChangeMode}
               submitHandler={submitHandler}
             />
           )}
-          {accessData.token && <LogOutForm submitHandler={submitHandler} />}
+          {!isResetPass && accessData.token && (
+            <LogOutForm submitHandler={submitHandler} />
+          )}
         </div>
       </div>
       {children}

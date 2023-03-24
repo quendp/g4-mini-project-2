@@ -5,7 +5,7 @@ import FormModal from "../../FormUI/FormModal";
 import showPassImg from "../../../assets/images/showPass.png";
 import hidePassImg from "../../../assets/images/hidePass.png";
 
-const LogInForm = ({ handleChangeMode, submitHandler }) => {
+const LogInForm = ({ handleChangeMode, submitHandler, resetPassHandler }) => {
   const LOGIN_URL = "/api/users/login";
   const [isSubmitClicked, setIsSubmitClicked] = useState(false);
   const [errMsg, setErrMsg] = useState("");
@@ -160,7 +160,7 @@ const LogInForm = ({ handleChangeMode, submitHandler }) => {
           The password you’ve enterred is invalid, try again.
         </div>
         <div className="mt-2">
-          <a href="#" className="forgot-password">
+          <a href="#" className="forgot-password" onClick={resetPassHandler}>
             Forgot Password?
           </a>
         </div>
