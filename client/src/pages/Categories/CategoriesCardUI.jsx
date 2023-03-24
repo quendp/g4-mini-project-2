@@ -24,11 +24,9 @@ const CategoriesCardUI = ({
     }
     chosenPackageHandler(packageData);
   };
+
   return (
-    <div
-      className="categories-page__card m-3 mb-4 p-3 p-md-4 w-100 position-relative d-flex flex-column justify-content-start align-items-center"
-      onClick={onClickCard}
-    >
+    <div className="categories-page__card m-3 mb-4 p-3 p-md-4 py-0 py-md-0 w-100 position-relative d-flex flex-column justify-content-start align-items-center">
       <div
         className="position-absolute categories-page-card__background top-0 start-0 w-100 h-100"
         style={{
@@ -37,9 +35,11 @@ const CategoriesCardUI = ({
         }}
       ></div>
       <div className="categories-page-card__content">
-        <h4 className="p-0 lh-1 m-0 text-uppercase">{packageType}</h4>
+        <h4 className="p-0 py-4 lh-1 m-0 text-uppercase" onClick={onClickCard}>
+          {packageType}
+        </h4>
         <div
-          className={`categories-page-card__details flex-column justify-content-center align-items-start w-100 p-3 p-lg-5 mt-4 ${
+          className={`categories-page-card__details flex-column justify-content-center align-items-start w-100 p-3 p-lg-5 mb-4 ${
             !isPackageClicked ? "d-none" : "d-flex"
           }`}
         >

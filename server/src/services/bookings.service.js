@@ -1,86 +1,77 @@
-const { Bookings } = require("../../models");
+const { Bookings, Users, Payments, Companions } = require("../../models");
 
 class BookingService {
-  static async createBooking({
-    userId,
+  static async addBooking({
+    username,
     travel_date,
     duration,
     starting_location,
-    agentId,
-    packageId,
-    paymentId,
+    package_id,
+    companions,
   }) {
     try {
+      // Check if user exists
+      const user = await Users.findOne({ where: { username } });
+      if (!user)
+        return { message: "Failed to submit booking. Try again later." };
+      // get userId
+      const userId = user.id;
+
+      // Automatically assign least occupied agent to the booking
+      const agents = await Users.findAll({
+        where: { roleId: 2 },
+        attributes: ["id"],
+      });
+      let agentsArr = [];
+      for (const agent of agents) {
+        const bookings = await Bookings.count({
+          where: { agentId: agent.id },
+        });
+        agentsArr = [...agentsArr, { id: agent.id, bookings: bookings }];
+      }
+      agentsArr.sort((a, b) => a.bookings - b.bookings);
+      // Get agentId
+      const agentId = agentsArr[0].id;
+
+      // Create new payment instance
+      const payment = await Payments.create({
+        flight_company: "pending",
+        flight_cost: 0,
+        transportation_cost: 0,
+        accommodation_cost: 0,
+        activities_cost: 0,
+        total_cost: 0,
+        payment_method: "pending",
+      });
+      // Get paymentId
+      const paymentId = payment.id;
+
+      // Create new booking instance
       const newBooking = await Bookings.create({
         userId,
         travel_date,
         duration,
         starting_location,
         agentId,
-        packageId,
+        packageId: package_id,
         paymentId,
       });
-      return newBooking;
+
+      // Create companions instance
+      if (companions) {
+        const companionsWithIds = companions.map((comp) => ({
+          ...comp,
+          bookingId: newBooking.id,
+        }));
+        const bookCompanions = await Companions.bulkCreate(companionsWithIds, {
+          fields: ["firstname", "lastname", "age", "bookingId"],
+        });
+        return { Booking: newBooking, Companions: bookCompanions };
+      }
+
+      return { Booking: newBooking, Companions: [] };
     } catch (err) {
       console.log(err);
-      throw new Error();
-    }
-  }
-
-  static async getAllBooking() {
-    try {
-      return Bookings.findAll({
-        include: ["Packages", "Payments", "Companions"],
-      });
-    } catch (e) {
-      console.log(e);
-      throw new Error();
-    }
-  }
-
-  static async getBookingById(id) {
-    try {
-      return Bookings.findOne({
-        where: { id },
-        include: ["Packages", "Payments", "Companions"],
-      });
-    } catch (e) {
-      console.log(e);
-      throw new Error();
-    }
-  }
-
-  static async updateBookingById(
-    id,
-    { travel_date, duration, starting_location, booking_status }
-  ) {
-    try {
-      const bookingToUpdate = await Bookings.findOne({ where: { id } });
-      if (bookingToUpdate) {
-        bookingToUpdate.travel_date = travel_date;
-        bookingToUpdate.duration = duration;
-        bookingToUpdate.starting_location = starting_location;
-        bookingToUpdate.booking_status = booking_status;
-        await bookingToUpdate.save();
-        return bookingToUpdate;
-      }
-      return null;
-    } catch (e) {
-      console.log(e);
-      throw new Error();
-    }
-  }
-
-  static async deleteBookingById(id) {
-    try {
-      const bookingToDelete = await Bookings.findOne({ where: { id } });
-      if (bookingToDelete) {
-        await bookingToDelete.destroy();
-        return true;
-      }
-      return false;
-    } catch (e) {
-      console.log(e);
       throw new Error();
     }
   }

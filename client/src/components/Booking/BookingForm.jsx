@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import useAuth from "../../hooks/useAuth";
 import useTheme from "../../hooks/useTheme";
+import axios from "../../Utils/axios";
 import FormModal from "../FormUI/FormModal";
 import "./BookingForm.css";
 import BookingFormPackage from "./BookingFormPackage";
@@ -7,6 +9,8 @@ import BookingFormTravel from "./BookingFormTravel";
 
 const BookingForm = ({ children, chosenPackage }) => {
   const { currentTheme } = useTheme();
+  const { accessData } = useAuth();
+  const BOOKING_URL = "/api/bookings/addBooking";
 
   // Regex patterns for input validation
   const DURATION_REGEX = /^\d{1,2}$/;
@@ -34,6 +38,7 @@ const BookingForm = ({ children, chosenPackage }) => {
 
   // Stores all the booking information
   const bookingData = {
+    username: accessData.username,
     travel_date: travelDate,
     duration: duration,
     starting_location: location,
@@ -51,14 +56,12 @@ const BookingForm = ({ children, chosenPackage }) => {
         ? setTravelDateClass("isInvalid")
         : setTravelDateClass("");
       !validDuration ? setDurationClass("isInvalid") : setDurationClass("");
-      !validLocation ? setLocationClass("isInvalid") : setNumberClass("");
+      !validLocation ? setLocationClass("isInvalid") : setLocationClass("");
     } else if (companions) {
       // Validate companion fields
-
       const isCompanionsValid = companions.every((comp) => {
         return comp.firstname && comp.lastname && comp.age;
       });
-
       if (!isCompanionsValid) {
         setErrMsg("Companion fields cannot be empty.");
         return;
@@ -71,14 +74,33 @@ const BookingForm = ({ children, chosenPackage }) => {
     }
   };
 
+  // Submit the booking data to the server
   const submitToServer = async () => {
-    console.log(bookingData);
-    console.log("Submitted to server");
-    const bookingModalInst = document.getElementById("bookingModal");
-    const myModal = bootstrap.Modal.getOrCreateInstance(bookingModalInst);
-    myModal.hide();
-
-    resetForm();
+    try {
+      const response = await axios.post(
+        BOOKING_URL,
+        JSON.stringify(bookingData),
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessData.token}`,
+          },
+          withCredentials: true,
+        }
+      );
+      console.log(response.data);
+      if (response.data.message) {
+        setErrMsg(response.data.message);
+      } else {
+        setErrMsg("");
+        const bookingModalInst = document.getElementById("bookingModal");
+        const myModal = bootstrap.Modal.getOrCreateInstance(bookingModalInst);
+        myModal.hide();
+        resetForm();
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   // Resets the booking form when the user switched to another package
@@ -141,7 +163,6 @@ const BookingForm = ({ children, chosenPackage }) => {
   const onClickBtnLeft = () => {
     setTimeout(() => {
       setStep(0);
-      setIsNextClicked(false);
       setIsSubmitClicked(false);
     }, 100);
   };

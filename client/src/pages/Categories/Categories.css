@@ -133,6 +133,7 @@
   width: 90%;
   border-radius: 1rem;
   box-shadow: 3px 3px 10px var(--clr-primary-glass);
+  cursor: text;
 }
 
 .categories-page-card__details p {

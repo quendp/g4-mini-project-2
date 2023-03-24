@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import BookingFormCompanions from "./BookingFormCompanions";
 
 const BookingFormTravel = (props) => {
@@ -38,6 +38,7 @@ const BookingFormTravel = (props) => {
               props.setTravelDate(e.target.value);
             }}
             value={props.travelDate}
+            min={new Date().toISOString().split("T")[0]}
           />
           <label htmlFor="bookingFormTravelDate" className="ps-3 ps-sm-4">
             Expected Date of Travel
@@ -55,12 +56,14 @@ const BookingFormTravel = (props) => {
               props.setDuration(e.target.value);
             }}
             value={props.duration}
+            min="1"
+            max="99"
           />
           <label htmlFor="bookingFormDuration" className="ps-3 ps-sm-4">
             Trip Duration (in Days)
           </label>
           <div className="invalid-feedback">
-            Please enter a valid number. Could be 0.5-30 days.
+            Please enter a valid number. Could be 1-99 days.
           </div>
         </div>
       </div>
