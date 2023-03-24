@@ -20,6 +20,7 @@ const BookingForm = ({ children, chosenPackage }) => {
   const [step, setStep] = useState(0);
   const [isSubmitClicked, setIsSubmitClicked] = useState(false);
   const [errMsg, setErrMsg] = useState("");
+  const [isSuccessful, setIsSuccessful] = useState(false);
 
   // Setting up input specific form states
   const [travelDate, setTravelDate] = useState("");
@@ -88,15 +89,11 @@ const BookingForm = ({ children, chosenPackage }) => {
           withCredentials: true,
         }
       );
-      console.log(response.data);
       if (response.data.message) {
         setErrMsg(response.data.message);
       } else {
         setErrMsg("");
-        const bookingModalInst = document.getElementById("bookingModal");
-        const myModal = bootstrap.Modal.getOrCreateInstance(bookingModalInst);
-        myModal.hide();
-        resetForm();
+        setIsSuccessful(true);
       }
     } catch (err) {
       console.log(err);
@@ -105,6 +102,10 @@ const BookingForm = ({ children, chosenPackage }) => {
 
   // Resets the booking form when the user switched to another package
   useEffect(() => {
+    const bookingModal = document.getElementById("bookingModal");
+    bookingModal.addEventListener("hidden.bs.modal", () => {
+      setIsSuccessful(false);
+    });
     resetForm();
   }, [chosenPackage]);
 
@@ -167,6 +168,18 @@ const BookingForm = ({ children, chosenPackage }) => {
     }, 100);
   };
 
+  // Handle press OK after successful submission
+  const onClickOk = (e) => {
+    e.preventDefault();
+    const bookingModalInst = document.getElementById("bookingModal");
+    const myModal = bootstrap.Modal.getOrCreateInstance(bookingModalInst);
+    myModal.hide();
+    setTimeout(() => {
+      setIsSuccessful(false);
+      resetForm();
+    }, 400);
+  };
+
   // Conditional rendering of components based on the current step value
   const conditionalComponent = () => {
     switch (step) {
@@ -225,27 +238,48 @@ const BookingForm = ({ children, chosenPackage }) => {
         aria-labelledby="bookingModalLabel"
         aria-hidden="true"
       >
-        <div className="booking-form__content modal-dialog modal-lg modal-dialog-centered">
-          <FormModal
-            submitHandler={onClickSubmit}
-            headerTitle={headerTitle}
-            headerText={headerText}
-            btnLeftClass={btnLeftClass}
-            dataDismiss={dataDismiss}
-            onClickBtnLeft={onClickBtnLeft}
-            btnLeftText={btnLeftText}
-            btnRightType={btnRightType}
-            onClickBtnRight={onClickBtnRight}
-            btnRightText={btnRightText}
-            errMsg={errMsg}
-          >
-            <div className="mb-4">
-              <h3>
-                <span>Step {step + 1} of 2 :</span> {bookingFormTitle()}
-              </h3>
-            </div>
-            {conditionalComponent()}
-          </FormModal>
+        <div
+          className={`booking-form__content modal-dialog ${
+            isSuccessful ? "modal-md" : "modal-lg"
+          } modal-dialog-centered`}
+        >
+          {!isSuccessful && (
+            <FormModal
+              submitHandler={onClickSubmit}
+              headerTitle={headerTitle}
+              headerText={headerText}
+              btnLeftClass={btnLeftClass}
+              dataDismiss={dataDismiss}
+              onClickBtnLeft={onClickBtnLeft}
+              btnLeftText={btnLeftText}
+              btnRightType={btnRightType}
+              onClickBtnRight={onClickBtnRight}
+              btnRightText={btnRightText}
+              errMsg={errMsg}
+            >
+              <div className="mb-4">
+                <h3>
+                  <span>Step {step + 1} of 2 :</span> {bookingFormTitle()}
+                </h3>
+              </div>
+              {conditionalComponent()}
+            </FormModal>
+          )}
+          {isSuccessful && (
+            <FormModal
+              submitHandler={onClickOk}
+              headerTitle={headerTitle}
+              btnLeftClass={"d-none"}
+              btnRightText={"ok"}
+            >
+              <div className="text-center">
+                <p className="px-4">
+                  Booking successful! You can view the updates on your request
+                  through our dashboard.
+                </p>
+              </div>
+            </FormModal>
+          )}
         </div>
       </div>
       {children}

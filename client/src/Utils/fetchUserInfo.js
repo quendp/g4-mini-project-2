@@ -2,7 +2,7 @@ import axios from "./axios";
 
 const fetchUserInfo = async (token, api, controller) => {
   try {
-    const response = await axios.post(api, {
+    const response = await axios.get(api, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,

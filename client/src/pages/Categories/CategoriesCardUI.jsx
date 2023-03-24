@@ -72,13 +72,17 @@ const CategoriesCardUI = ({
           <div className="categories-page-card__button w-100 pt-5 d-flex justify-content-end">
             <button
               className={`px-4 px-xl-5 py-2 text-uppercase ${
-                packageData ? "" : "disabled opacity-50"
+                packageData && accessData.roleId === 1
+                  ? ""
+                  : "disabled opacity-50"
               }`}
               onClick={onClickBookHandler}
               style={{ backgroundColor: currentCategory.accentLight }}
-              disabled={packageData ? false : true}
+              disabled={packageData && accessData.roleId === 1 ? false : true}
             >
-              {packageData ? "Book this tour" : "Unavailable"}
+              {packageData && accessData.roleId === 1
+                ? "Book this tour"
+                : "Unavailable"}
             </button>
           </div>
         </div>
