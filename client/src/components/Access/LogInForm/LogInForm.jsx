@@ -6,7 +6,7 @@ import showPassImg from "../../../assets/images/showPass.png";
 import hidePassImg from "../../../assets/images/hidePass.png";
 import useTheme from "../../../hooks/useTheme";
 
-const LogInForm = ({ handleChangeMode, submitHandler }) => {
+const LogInForm = ({ handleChangeMode, submitHandler, resetPassHandler }) => {
   const { currentTheme } = useTheme();
 
   const LOGIN_URL = "/api/users/login";
@@ -169,7 +169,7 @@ const LogInForm = ({ handleChangeMode, submitHandler }) => {
           The password you’ve enterred is invalid, try again.
         </div>
         <div className="mt-2">
-          <a href="#" className="forgot-password">
+          <a href="#" className="forgot-password" onClick={resetPassHandler}>
             Forgot Password?
           </a>
         </div>
