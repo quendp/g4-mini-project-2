@@ -4,16 +4,16 @@ import axios from "../../../Utils/axios";
 import FormModal from "../../FormUI/FormModal";
 import showPassImg from "../../../assets/images/showPass.png";
 import hidePassImg from "../../../assets/images/hidePass.png";
+import useTheme from "../../../hooks/useTheme";
+import regEx from "../../../Utils/regEx";
 
-const LogInForm = ({ handleChangeMode, submitHandler, resetPassHandler }) => {
+const LogInForm = ({ handleChangeMode, submitHandler, setIsResetPass }) => {
+  const { currentTheme } = useTheme();
+
   const LOGIN_URL = "/api/users/login";
   const [isSubmitClicked, setIsSubmitClicked] = useState(false);
   const [errMsg, setErrMsg] = useState("");
   const [showPass, setShowPass] = useState(false);
-
-  const USERNAME_REGEX = /^[A-z][A-Za-z0-9-_]{3,16}$/;
-  const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  const PWD_REGEX = /^(?=.*[A-Za-z\d])[A-Za-z\d@$!%*#?&^_-]{8,32}$/;
 
   const [username, setUsername] = useState("");
   const [validUsername, setValidUsername] = useState();
@@ -28,8 +28,14 @@ const LogInForm = ({ handleChangeMode, submitHandler, resetPassHandler }) => {
     password: password,
   };
 
+  // Open password modal
+  const resetPassHandler = () => {
+    setIsResetPass(true);
+  };
+
   useEffect(() => {
-    const result = USERNAME_REGEX.test(username) || EMAIL_REGEX.test(username);
+    const result =
+      regEx.USERNAME_REGEX.test(username) || regEx.EMAIL_REGEX.test(username);
     setValidUsername(result);
     if (!result && isSubmitClicked) {
       setUsernameClass("isInvalid");
@@ -39,7 +45,7 @@ const LogInForm = ({ handleChangeMode, submitHandler, resetPassHandler }) => {
   }, [username]);
 
   useEffect(() => {
-    const result = PWD_REGEX.test(password);
+    const result = regEx.PWD_REGEX.test(password);
     setValidPass(result);
     if (!result && isSubmitClicked) {
       setPassClass("isInvalid");
@@ -101,7 +107,13 @@ const LogInForm = ({ handleChangeMode, submitHandler, resetPassHandler }) => {
   const headerTitle = "Log in to your Lakbay Account";
   const headerText = "Doesn't have an account? ";
   const headerLink = (
-    <a href="#" onClick={handleChangeMode}>
+    <a
+      href="#"
+      onClick={handleChangeMode}
+      style={{
+        color: currentTheme,
+      }}
+    >
       Sign up here.
     </a>
   );

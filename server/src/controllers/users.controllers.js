@@ -1,6 +1,16 @@
 const { UsersService } = require("../services/users.service");
 
 class UsersController {
+  static async persistUser(req, res) {
+    try {
+      const { token } = req.body;
+      const accessData = await UsersService.persistUser({ token });
+      res.json(accessData);
+    } catch (err) {
+      res.status(400).json({ message: "Error logging in. Try again later." });
+    }
+  }
+
   static async registerUser(req, res) {
     try {
       const {
@@ -25,13 +35,6 @@ class UsersController {
         address,
         password,
       });
-      // Creates Secure Cookie with refresh token
-      res.cookie("accessData", accessData, {
-        httpOnly: true,
-        secure: true,
-        sameSite: "None",
-        maxAge: 7 * 24 * 60 * 60 * 1000,
-      });
       res.json(accessData);
     } catch (e) {
       res.status(400).json({ message: "Error creating user" });
@@ -45,13 +48,6 @@ class UsersController {
         usernameOrEmail,
         password,
       });
-      // Creates Secure Cookie with refresh token
-      res.cookie("accessData", accessData, {
-        httpOnly: true,
-        secure: true,
-        sameSite: "None",
-        maxAge: 7 * 24 * 60 * 60 * 1000,
-      });
       res.json(accessData);
     } catch (e) {
       res.status(400).json({ message: "Error logging in. Try again later." });
@@ -59,19 +55,15 @@ class UsersController {
   }
 
   static async logoutUser(req, res) {
-    res.clearCookie("accessData", {
-      httpOnly: true,
-      sameSite: "None",
-      secure: true,
-    });
     res.json({ token: false, username: "login", role: 0 });
     res.status(204);
   }
 
-  static async getUserByUsername(req, res) {
+  static async getUser(req, res) {
     try {
       const { username } = req.params;
-      const user = await UsersService.getUserByUsername(username);
+      const user = await UsersService.getUser(username);
+      if (user.username) user.password = "********";
       res.json(user);
     } catch (e) {
       res.status(404).json({ message: "User not Found" });
@@ -97,6 +89,7 @@ class UsersController {
     try {
       const { agentName } = req.params;
       const agent = await UsersService.getAgent(agentName);
+      if (agent.agent.username) agent.agent.password = "********";
       res.json(agent);
     } catch (err) {
       res.status(404).json({ message: "Agent not Found" });

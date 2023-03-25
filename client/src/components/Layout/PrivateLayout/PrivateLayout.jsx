@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import Admin from "../../../pages/Admin/Admin";
 import Agent from "../../../pages/Agent/Agent";
@@ -8,6 +8,7 @@ import User from "../../../pages/User/User";
 import Unauthorized from "./Unauthorized";
 
 const PrivateLayout = () => {
+  const location = useLocation();
   const { accessData } = useAuth();
   const { username } = useParams();
   const [privateContent, setPrivateContent] = useState();
@@ -17,7 +18,11 @@ const PrivateLayout = () => {
     if (!accessData.token) {
       setPrivateContent(<Unauthorized />);
     } else if (username === accessData.username || username === "login") {
-      navigate(`/${accessData.username}/dashboard`);
+      navigate(
+        username === "login"
+          ? `/${accessData.username}/dashboard`
+          : location.pathname
+      );
       if (accessData.role === 1) {
         setPrivateContent(<User />);
       } else if (accessData.role === 2) {

@@ -1,75 +1,28 @@
 const { BookingService } = require("../services/bookings.service");
 
 class BookingController {
-  static async createBooking(req, res) {
+  static async addBooking(req, res) {
     try {
       const {
-        userId,
+        username,
         travel_date,
         duration,
         starting_location,
-        agentId,
-        packageId,
-        paymentId,
+        package_id,
+        companions,
       } = req.body;
-      const booking = await BookingService.createBooking({
-        userId,
+      console.log(username);
+      const booking = await BookingService.addBooking({
+        username,
         travel_date,
         duration,
         starting_location,
-        agentId,
-        packageId,
-        paymentId,
+        package_id,
+        companions,
       });
       res.json(booking);
     } catch (e) {
       res.status(400).json({ message: "Error booking tour" });
-    }
-  }
-
-  static async getAllBooking(_req, res) {
-    try {
-      const bookings = await BookingService.getAllBooking();
-      res.json(bookings);
-    } catch (e) {
-      res.status(404).json({ message: "Booking not Found" });
-    }
-  }
-
-  static async getBookingById(req, res) {
-    try {
-      const { id } = req.params;
-      const booking = await BookingService.getBookingById(id);
-      res.json(booking);
-    } catch (e) {
-      res.status(404).json({ message: "Booking not Found" });
-    }
-  }
-
-  static async updateBookingById(req, res) {
-    try {
-      const { id } = req.params;
-      const { travel_date, duration, starting_location, booking_status } =
-        req.body;
-      const booking = await BookingService.updateBookingById(id, {
-        travel_date,
-        duration,
-        starting_location,
-        booking_status,
-      });
-      res.json(booking);
-    } catch (e) {
-      res.status(404).json({ message: "Booking not Found" });
-    }
-  }
-
-  static async deleteBookingById(req, res) {
-    try {
-      const { id } = req.params;
-      const booking = await BookingService.deleteBookingById(id);
-      res.json(booking);
-    } catch (e) {
-      res.status(404).json({ message: "Booking not Found" });
     }
   }
 }

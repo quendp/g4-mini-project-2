@@ -2,10 +2,11 @@ import React from "react";
 import { useInView } from "react-intersection-observer";
 import CategoriesCard from "./CategoriesCard";
 
+// * Component called by Categories.jsx
 const CategoriesDetails = ({
   currentCategory,
   currentDestination,
-  destinationPackages,
+  packagesData,
   chosenPackageHandler,
 }) => {
   const [descriptionRef, descriptionInView] = useInView({ threshold: 0.3 });
@@ -24,8 +25,7 @@ const CategoriesDetails = ({
       </div>
       <CategoriesCard
         currentCategory={currentCategory}
-        currentDestination={currentDestination}
-        destinationPackages={destinationPackages}
+        packagesData={packagesData}
         chosenPackageHandler={chosenPackageHandler}
       />
     </section>

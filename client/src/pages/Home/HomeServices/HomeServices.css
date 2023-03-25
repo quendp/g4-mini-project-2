@@ -58,12 +58,12 @@
 }
 
 .home-services__spacer {
-  height: 20rem;
+  height: 30rem;
 }
 
 .home-services__spacer img {
   margin-bottom: 0;
-  height: 40vw;
+  height: 70vw;
 }
 
 .home-services-stats__wrapper {
@@ -92,4 +92,14 @@
   color: var(--clr-primary-dark);
   font-family: var(--ff-body-light);
   font-size: var(--fz-main-text);
+}
+
+@media (min-width: 1200px) {
+  .home-services__spacer {
+    height: 30rem;
+  }
+  .home-services__spacer img {
+    margin-bottom: 0;
+    height: 50vw;
+  }
 }

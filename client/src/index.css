@@ -300,8 +300,43 @@ main {
   color: var(--clr-secondary-300);
 }
 
+/* CUSTOM SCROLLBAR FOR OVERFLOWING MODAL */
+div.modal {
+  overflow-y: scroll;
+}
+
+/* width */
+div.modal::-webkit-scrollbar {
+  width: 1px;
+}
+
+/* Track */
+div.modal::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+div.modal::-webkit-scrollbar-thumb {
+  background: var(--clr-secondary-200);
+}
+
+/* Handle on hover */
+div.modal::-webkit-scrollbar-thumb:hover {
+  background: var(--clr-secondary-300);
+}
+
+/* Style calender icon on date inpur fields */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  font-size: 1rem;
+  background-color: var(--clr-secondary-100);
+  border-radius: 3px;
+  padding: 1px;
+  margin-top: -15px;
+}
+
 /* --- FOR DEBUGGING --- */
 .debug-this,
+.debug-all,
 .debug-all *,
 .debug-child > * {
   border: 0.5px solid red;

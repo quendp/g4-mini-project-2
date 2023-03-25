@@ -12,7 +12,6 @@ const paymentRoutes = require("./src/routes/paymentRoutes");
 const companionRoutes = require("./src/routes/companionRoutes");
 const credentials = require("./config/credentials");
 const corsOptions = require("./config/corsOptions");
-const cookieParser = require("cookie-parser");
 
 // Handle options credentials check - before CORS!
 // and fetch cookies credentials requirement
@@ -20,9 +19,6 @@ app.use(credentials);
 
 // Cross Origin Resource Sharing
 app.use(cors(corsOptions));
-
-// Middleware for cookies
-app.use(cookieParser());
 
 // parse application/json
 app.use(bodyParser.json());

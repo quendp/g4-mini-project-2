@@ -3,8 +3,9 @@ import styles from "./Header.module.css";
 import HeaderCollapsed from "./HeaderCollapsed/HeaderCollapsed";
 import HeaderExpanded from "./HeaderExpanded/HeaderExpanded";
 import grainOverlay from "../../assets/images/grain.png";
+import useTheme from "../../hooks/useTheme";
 
-const Header = ({ currentTheme }) => {
+const Header = () => {
   const [isActiveClass, setIsActiveClass] = useState("");
   const [showExpanded, setShowExpanded] = useState("d-none");
   const [headerBgColor, setHeaderBgColor] = useState("transparent");
@@ -76,7 +77,6 @@ const Header = ({ currentTheme }) => {
         onCloseHeader={onCloseHeader}
         isActiveClass={isActiveClass}
         isHeaderClosed={isHeaderClosed}
-        currentTheme={currentTheme}
       />
       <HeaderExpanded
         showExpanded={showExpanded}

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import lakbayLogo from "../../assets/images/logo-svg/logo-outline-white.svg";
 import useAuth from "../../hooks/useAuth";
 
@@ -11,6 +11,7 @@ const DashboardUISide = ({
 }) => {
   const { accessData, setHasAccount } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const openLogOutModal = () => {
     setHasAccount(true);
@@ -46,12 +47,12 @@ const DashboardUISide = ({
         <div className="dashboardUI-side__username d-flex flex-row w-100 p-3 mb-4 justify-content-center justify-content-md-start justify-self-start">
           <div className="dashboardUI-side__avatar me-4 p-0 rounded-circle d-flex align-items-center justify-content-center">
             <span className="p-0 m-0">
-              {userInfo ? userInfo.firstname[0] + userInfo.lastname[0] : "..."}
+              {userInfo ? userInfo.firstname[0] + userInfo.lastname[0] : ""}
             </span>
           </div>
           <div className="d-flex flex-column align-items-start justify-content-center">
             <p className="m-0 p-0">
-              {userInfo ? userInfo.firstname + " " + userInfo.lastname : "..."}
+              {userInfo ? userInfo.firstname + " " + userInfo.lastname : ""}
             </p>
             <p className="m-0 p-0">@{accessData.username}</p>
           </div>
@@ -59,9 +60,14 @@ const DashboardUISide = ({
         <div className="row p-0 m-0">
           {sidebarMenu.map((item) => (
             <NavLink
-              className={`dashboardUI-side__navitem col-12 p-2 ps-4 m-0 my-3 ms-4 d-flex justify-content-start align-items-center text-decoration-none`}
+              className={`${
+                item.id === 1 && location.pathname === `/${accessData.username}`
+                  ? "active"
+                  : ""
+              } dashboardUI-side__navitem col-12 p-2 ps-4 m-0 my-3 ms-4 d-flex justify-content-start align-items-center text-decoration-none`}
               key={item.id}
               to={item.path}
+              onClick={closeSideBar}
             >
               <p className="lh-1 p-0 m-0">
                 <i className={`fa-solid fa-${item.icon} ms-2 me-3`}></i>{" "}
@@ -71,12 +77,12 @@ const DashboardUISide = ({
           ))}
         </div>
       </div>
-
       <div className="dashboardUI-side__bottom py-2 px-3 text-uppercase">
         <div className="m-0 p-0">
           <NavLink
             to={`/${accessData.username}/account`}
             className="text-center m-0 p-0 text-decoration-none"
+            onClick={closeSideBar}
           >
             <p className="lh-1 p-2 py-3 m-2">My Account</p>
           </NavLink>

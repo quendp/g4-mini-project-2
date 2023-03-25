@@ -49,7 +49,7 @@ const AgentDashBoardLineChart = (props) => {
       data={chartData}
       options={{
         maintainAspectRatio: false,
-        aspectRatio: 2,
+        aspectRatio: 10,
         elements: {
           line: {
             tension: 0,
@@ -60,6 +60,27 @@ const AgentDashBoardLineChart = (props) => {
             borderJoinStyle: "round",
             cubicInterpolationMode: "monotone",
             spanGaps: false,
+          },
+        },
+        options: {
+          plugins: {
+            legend: {
+              display: true,
+              labels: {
+                color: "rgb(255, 99, 132)",
+                font: {
+                  family: "serif", // Add your font here to change the font of your legend label
+                },
+              },
+              tooltip: {
+                bodyFont: {
+                  family: "serif", // Add your font here to change the font of your tooltip body
+                },
+                titleFont: {
+                  family: "serif", // Add your font here to change the font of your tooltip title
+                },
+              },
+            },
           },
         },
       }}

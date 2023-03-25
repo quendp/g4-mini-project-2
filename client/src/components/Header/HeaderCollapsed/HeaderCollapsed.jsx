@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import headerLogo from "../../../assets/images/logo-svg/logo-outline-white.svg";
 import useAuth from "../../../hooks/useAuth";
+import useTheme from "../../../hooks/useTheme";
 import { animationDelay } from "../../../Utils/AnimationDelay";
 import styles from "../Header.module.css";
 
 const HeaderCollapsed = (props) => {
+  const { currentTheme } = useTheme();
   const { accessData, setHasAccount } = useAuth();
 
   const [burgerTopWidth, setBurgerTopWidth] = useState("70%");
@@ -75,7 +77,7 @@ const HeaderCollapsed = (props) => {
         <span
           className="position-absolute top-50 start-50"
           style={{
-            color: props.currentTheme,
+            color: currentTheme,
           }}
         >
           {" "}

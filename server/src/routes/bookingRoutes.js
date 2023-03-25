@@ -1,11 +1,12 @@
 const express = require("express");
 const { BookingController } = require("../controllers/bookings.controllers");
 const router = express.Router();
+const passport = require("passport");
 
-router.post("/", BookingController.createBooking);
-router.get("/", BookingController.getAllBooking);
-router.get("/:id", BookingController.getBookingById);
-router.put("/:id", BookingController.updateBookingById);
-router.delete("/:id", BookingController.deleteBookingById);
+router.post(
+  "/addBooking",
+  passport.authenticate("jwt", { session: false }),
+  BookingController.addBooking
+);
 
 module.exports = router;

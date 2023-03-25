@@ -1,6 +1,7 @@
 import React from "react";
 import { useInView } from "react-intersection-observer";
 
+// * Component called by Categories.jsx
 const CategoriesTitle = ({ currentCategory, currentDestination }) => {
   const [titleRef, titleInView] = useInView({ threshold: 0.3 });
 

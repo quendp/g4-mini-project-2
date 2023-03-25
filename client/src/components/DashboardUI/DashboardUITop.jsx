@@ -16,7 +16,7 @@ const DashboardUITop = ({ openSideBar }) => {
   }, [accessData]);
 
   return (
-    <div className="dashboardUI-top__wrapper w-100 position-sticky top-0 start-0 d-flex align-items-center px-3">
+    <header className="dashboardUI-top__wrapper w-100 position-sticky top-0 start-0 d-flex align-items-center px-3">
       <button
         className="d-block d-md-none dashboardUI-nav__burger me-3"
         onClick={openSideBar}
@@ -48,7 +48,7 @@ const DashboardUITop = ({ openSideBar }) => {
           </button>
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 

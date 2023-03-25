@@ -12,7 +12,7 @@ passport.use(
       secretOrKey: jwtSecret,
     },
     function (jwtPayload, done) {
-      return models.Users.findOne({ where: { id: jwtPayload.id } })
+      return models.Users.findOne({ where: { username: jwtPayload.username } })
         .then((user) => {
           return done(null, user);
         })

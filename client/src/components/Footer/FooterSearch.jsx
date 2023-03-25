@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import useTheme from "../../hooks/useTheme";
 import "./FooterSearch.css";
 
-const FooterSearch = ({ currentTheme }) => {
+const FooterSearch = () => {
+  const { currentTheme } = useTheme();
+
   const [searchValue, setSearchValue] = useState("");
 
   const searchSubmitHandler = (e) => {

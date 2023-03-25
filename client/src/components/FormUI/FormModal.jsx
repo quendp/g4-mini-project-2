@@ -1,11 +1,22 @@
 import React from "react";
+import useTheme from "../../hooks/useTheme";
 import "./FormModal.css";
 
 const FormModal = (props) => {
+  const { currentTheme } = useTheme();
   return (
-    <div className="modal-content p-3 p-md-4">
+    <div
+      className="formUI-modal__wrapper modal-content p-3 p-md-4"
+      style={{ boxShadow: `0 0 2px ${currentTheme}` }}
+    >
       <div className="modal-header pt-4 pb-0 flex-column justify-content-center">
-        <h1 className="modal-title mb-2" id="signUpModalLabel">
+        <h1
+          className="modal-title mb-2 text-center"
+          id="signUpModalLabel"
+          style={{
+            color: currentTheme,
+          }}
+        >
           {props.headerTitle}
         </h1>
         <p className="signUpCreateLink">
@@ -47,6 +58,10 @@ const FormModal = (props) => {
             type={props.btnRightType}
             className="btn modal-signup-btn py-2 px-3"
             onClick={props.onClickBtnRight}
+            style={{
+              backgroundColor: currentTheme,
+              boxShadow: `0 0 10px ${currentTheme}`,
+            }}
           >
             {props.btnRightText}
           </button>

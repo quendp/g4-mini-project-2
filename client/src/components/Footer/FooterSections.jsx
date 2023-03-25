@@ -3,8 +3,11 @@ import "./FooterSections.css";
 import FooterSearch from "./FooterSearch";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import useTheme from "../../hooks/useTheme";
 
-const FooterSections = ({ currentTheme }) => {
+const FooterSections = () => {
+  const { currentTheme } = useTheme();
+
   const { accessData } = useAuth();
 
   return (
@@ -18,7 +21,7 @@ const FooterSections = ({ currentTheme }) => {
             >
               LAKBAY
             </h2>
-            <FooterSearch currentTheme={currentTheme} />
+            <FooterSearch />
             <div className="footer-section-mid-info__details text-break py-3">
               <p>18th Floor, W Fifth, 5th Avenue, Taguig</p>
               <p>(+63 65) 888-888</p>
