@@ -278,6 +278,7 @@ main {
   border: none;
   outline: none;
   text-decoration: none;
+  background-color: transparent;
 }
 
 .anchor-dark:hover,

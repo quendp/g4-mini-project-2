@@ -133,16 +133,20 @@
   font-size: var(--fz-main-small);
 }
 
-.dashboardUI-top__search button {
-  background-color: var(--clr-primary-glass);
+.dashboardUI-main__btn {
+  background-color: var(--clr-primary-dark-100);
   color: var(--clr-secondary-100);
+  font-family: var(--ff-body-light);
   font-size: var(--fz-main-small);
+  outline: none;
+  border: none;
+  border-radius: 0.5rem;
 }
 
-.dashboardUI-top__search button:hover,
-.dashboardUI-top__search button:active {
-  background-color: var(--clr-primary-dark-300) !important;
-  color: var(--clr-secondary-100) !important;
+.dashboardUI-main__btn:hover,
+.dashboardUI-main__btn:active {
+  background-color: var(--clr-primary-dark-300);
+  color: var(--clr-secondary-100);
 }
 
 /* DASHBOARD NUMBER CARDS */
@@ -174,6 +178,7 @@
   box-shadow: 0px 0px 3px 1px var(--clr-secondary-300),
     -2px -2px 5px 0px var(--clr-secondary-000);
   border-radius: 1.5rem;
+  overflow: hidden;
 }
 
 .dashboardUI-sections__wrapper > h2 {
@@ -186,6 +191,15 @@
   font-size: var(--fz-main-p);
   font-family: var(--ff-body-regular);
   font-weight: 600;
+}
+
+.dashboardUI-sections__wrapper input {
+  background-color: transparent;
+  border: 1px solid var(--clr-primary-dark-100);
+  outline: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  font-size: var(--fz-main-text);
 }
 
 /* DASHBOARD MEDIA QUERIES */
