@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 
 // * Component called by CategoriesCard.jsx
@@ -25,6 +25,14 @@ const CategoriesCardUI = ({
     chosenPackageHandler(packageData);
   };
 
+  let btnText = "";
+  if (accessData.role > 1) {
+    btnText = "For users only";
+  } else if (packageData) {
+    btnText = "Book this tour";
+  } else {
+    btnText = "Unavailable";
+  }
   return (
     <div className="categories-page__card m-3 mb-4 p-3 p-md-4 py-0 py-md-0 w-100 position-relative d-flex flex-column justify-content-start align-items-center">
       <div
@@ -72,17 +80,13 @@ const CategoriesCardUI = ({
           <div className="categories-page-card__button w-100 pt-5 d-flex justify-content-end">
             <button
               className={`px-4 px-xl-5 py-2 text-uppercase ${
-                packageData && accessData.roleId === 1
-                  ? ""
-                  : "disabled opacity-50"
+                !packageData || accessData.role > 1 ? "disabled opacity-50" : ""
               }`}
               onClick={onClickBookHandler}
               style={{ backgroundColor: currentCategory.accentLight }}
-              disabled={packageData && accessData.roleId === 1 ? false : true}
+              disabled={!packageData || accessData.role > 1 ? true : false}
             >
-              {packageData && accessData.roleId === 1
-                ? "Book this tour"
-                : "Unavailable"}
+              {btnText}
             </button>
           </div>
         </div>

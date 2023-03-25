@@ -28,7 +28,6 @@ const LogOutForm = ({ submitHandler }) => {
         response.data.role
       );
       setErrMsg("");
-      console.log(response.data);
     } catch (err) {
       setErrMsg("Failed to log out. Try again later.");
       console.log(err);
