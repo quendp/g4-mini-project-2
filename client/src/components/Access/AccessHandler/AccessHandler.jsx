@@ -7,17 +7,7 @@ import SignUpForm from "../SignUpForm/SignUpForm";
 
 const AccessHandler = ({ children }) => {
   const { accessData, setAccessData, hasAccount, setHasAccount } = useAuth();
-
   const [isResetPass, setIsResetPass] = useState(false);
-
-  const cancelResetPass = () => {
-    setIsResetPass(false);
-  };
-
-  const resetPassHandler = () => {
-    setIsResetPass(true);
-    console.log("Im Working: ", isResetPass);
-  };
 
   const handleChangeMode = () => {
     setHasAccount(!hasAccount);
@@ -50,17 +40,12 @@ const AccessHandler = ({ children }) => {
             !accessData.token && !hasAccount ? "modal-lg" : "modal-md"
           } modal-dialog-centered`}
         >
-          {isResetPass && (
-            <ResetPassword
-              cancelResetPass={cancelResetPass}
-              setIsResetPass={setIsResetPass}
-            />
-          )}
+          {isResetPass && <ResetPassword setIsResetPass={setIsResetPass} />}
           {!isResetPass && !accessData.token && hasAccount && (
             <LogInForm
               handleChangeMode={handleChangeMode}
               submitHandler={submitHandler}
-              resetPassHandler={resetPassHandler}
+              setIsResetPass={setIsResetPass}
             />
           )}
           {!isResetPass && !accessData.token && !hasAccount && (

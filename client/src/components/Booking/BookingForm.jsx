@@ -6,15 +6,12 @@ import FormModal from "../FormUI/FormModal";
 import "./BookingForm.css";
 import BookingFormPackage from "./BookingFormPackage";
 import BookingFormTravel from "./BookingFormTravel";
+import regEx from "../../Utils/regEx";
 
 const BookingForm = ({ children, chosenPackage }) => {
   const { currentTheme } = useTheme();
   const { accessData } = useAuth();
   const BOOKING_URL = "/api/bookings/addBooking";
-
-  // Regex patterns for input validation
-  const DURATION_REGEX = /^\d{1,2}$/;
-  const LOCATION_REGEX = /^[\w'\-,.][^_!¡÷?¿/\\+=@#$%^&*{}|~<>;:[\]]{1,200}$/;
 
   //  Setting up general form states
   const [step, setStep] = useState(0);
@@ -135,7 +132,7 @@ const BookingForm = ({ children, chosenPackage }) => {
   }, [travelDate]);
 
   useEffect(() => {
-    const result = DURATION_REGEX.test(duration) && duration >= 0;
+    const result = regEx.AGE_REGEX.test(duration) && duration >= 0;
     setValidDuration(result);
     if (!result && isSubmitClicked) {
       setDurationClass("isInvalid");
@@ -145,7 +142,7 @@ const BookingForm = ({ children, chosenPackage }) => {
   }, [duration]);
 
   useEffect(() => {
-    const result = LOCATION_REGEX.test(location);
+    const result = regEx.ADDRESS_REGEX.test(location);
     setValidLocation(result);
     if (!result && isSubmitClicked) {
       setLocationClass("isInvalid");

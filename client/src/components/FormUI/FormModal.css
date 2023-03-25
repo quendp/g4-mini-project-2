@@ -3,7 +3,6 @@
   font-size: var(--fz-main-p);
   font-family: var(--ff-body-bold);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
 .signUpCreateLink {

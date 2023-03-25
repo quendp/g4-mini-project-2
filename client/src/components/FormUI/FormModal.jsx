@@ -11,7 +11,7 @@ const FormModal = (props) => {
     >
       <div className="modal-header pt-4 pb-0 flex-column justify-content-center">
         <h1
-          className="modal-title mb-2"
+          className="modal-title mb-2 text-center"
           id="signUpModalLabel"
           style={{
             color: currentTheme,

@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import FormModal from "../../FormUI/FormModal";
+import regEx from "../../../Utils/regEx";
 
 const ChangePassword = ({ cancelChangePassword, onContinueLogin }) => {
   const [isSubmitClicked, setIsSubmitClicked] = useState(false);
-  const [errMsg, setErrMsg] = useState("");
-  const PWD_REGEX = /^(?=.*[A-Za-z\d])[A-Za-z\d@$!%*#?&^_-]{8,32}$/;
 
   const [password, setPassword] = useState("");
   const [validPass, setValidPass] = useState();
@@ -15,7 +14,7 @@ const ChangePassword = ({ cancelChangePassword, onContinueLogin }) => {
   const [passMatchClass, setPassMatchClass] = useState("");
 
   useEffect(() => {
-    const result = PWD_REGEX.test(password);
+    const result = regEx.PWD_REGEX.test(password);
     setValidPass(result);
     if (!result && isSubmitClicked) {
       setPassClass("isInvalid");
@@ -43,18 +42,11 @@ const ChangePassword = ({ cancelChangePassword, onContinueLogin }) => {
         ? setPassMatchClass("")
         : setPassMatchClass("isInvalid");
     } else {
-      console.log(password);
       setPassClass("");
       setPassMatchClass("");
       onContinueLogin();
-      alert("Password Changed Please Continue to Login");
+      alert("Password changed successfully. Please proceed to login.");
     }
-  };
-
-  const onClickBtnLeft = () => {
-    setErrMsg("");
-    setIsSubmitClicked(false);
-    cancelChangePassword();
   };
 
   const headerTitle = "Change Password";
@@ -70,13 +62,12 @@ const ChangePassword = ({ cancelChangePassword, onContinueLogin }) => {
       submitHandler={onSubmit}
       headerTitle={headerTitle}
       headerText={headerText}
-      onClickBtnLeft={onClickBtnLeft}
+      onClickBtnLeft={onContinueLogin}
       btnLeftClass={btnLeftClass}
       dataDismiss={dataDismiss}
       btnLeftText={btnLeftText}
       btnRightType={btnRightType}
       btnRightText={btnRightText}
-      errMsg={errMsg}
     >
       <div className="form-floating mb-3 mb-sm-4 col-12">
         <input

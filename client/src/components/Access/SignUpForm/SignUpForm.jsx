@@ -4,6 +4,7 @@ import SignUpFormAccount from "./SignUpFormAccount";
 import SignUpFormPersonal from "./SignUpFormPersonal";
 import FormModal from "../../FormUI/FormModal";
 import useTheme from "../../../hooks/useTheme";
+import regEx from "../../../Utils/regEx";
 
 const SignUpForm = ({ handleChangeMode, submitHandler }) => {
   const { currentTheme } = useTheme();
@@ -14,14 +15,6 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
   const [isSubmitClicked, setIsSubmitClicked] = useState(false);
   const [isNextClicked, setIsNextClicked] = useState(false);
   const [errMsg, setErrMsg] = useState("");
-
-  const USERNAME_REGEX = /^[A-z][A-Za-z0-9-_]{3,16}$/;
-  const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  const PWD_REGEX = /^(?=.*[A-Za-z\d])[A-Za-z\d@$!%*#?&^_-]{8,32}$/;
-  const NAME_REGEX = /^[\w'\-,.][^0-9_!¡÷?¿/\\+=@#$%^&*(){}|~<>;:[\]]{1,30}$/;
-  const NUMBER_REGEX = /^\d{10,12}$/;
-  const AGE_REGEX = /^\d{1,3}$/;
-  const ADDRESS_REGEX = /^[\w'\-,.][^_!¡÷?¿/\\+=@#$%^&*{}|~<>;:[\]]{1,200}$/;
 
   const [username, setUsername] = useState("");
   const [validUsername, setValidUsername] = useState();
@@ -71,7 +64,8 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
   };
 
   useEffect(() => {
-    const result = USERNAME_REGEX.test(username);
+    setErrMsg("");
+    const result = regEx.USERNAME_REGEX.test(username);
     setValidUsername(result);
     if (!result && isNextClicked) {
       setUsernameClass("isInvalid");
@@ -81,7 +75,8 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
   }, [username]);
 
   useEffect(() => {
-    const result = EMAIL_REGEX.test(email);
+    setErrMsg("");
+    const result = regEx.EMAIL_REGEX.test(email);
     setValidEmail(result);
     if (!result && isNextClicked) {
       setEmailClass("isInvalid");
@@ -91,7 +86,7 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
   }, [email]);
 
   useEffect(() => {
-    const result = PWD_REGEX.test(password);
+    const result = regEx.PWD_REGEX.test(password);
     setValidPass(result);
     if (!result && isNextClicked) {
       setPassClass("isInvalid");
@@ -111,7 +106,7 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
   }, [passMatch]);
 
   useEffect(() => {
-    const result = NAME_REGEX.test(firstName);
+    const result = regEx.NAME_REGEX.test(firstName);
     setValidFirstName(result);
     if (!result && isSubmitClicked) {
       setFirstNameClass("isInvalid");
@@ -121,7 +116,7 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
   }, [firstName]);
 
   useEffect(() => {
-    const result = NAME_REGEX.test(lastName);
+    const result = regEx.NAME_REGEX.test(lastName);
     setValidLastName(result);
     if (!result && isSubmitClicked) {
       setLastNameClass("isInvalid");
@@ -131,7 +126,7 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
   }, [lastName]);
 
   useEffect(() => {
-    const result = NUMBER_REGEX.test(phoneNumber);
+    const result = regEx.NUMBER_REGEX.test(phoneNumber);
     setValidNumber(result);
     if (!result && isSubmitClicked) {
       setNumberClass("isInvalid");
@@ -141,7 +136,7 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
   }, [phoneNumber]);
 
   useEffect(() => {
-    const result = AGE_REGEX.test(age) && age >= 16;
+    const result = regEx.AGE_REGEX.test(age) && age >= 16;
     setValidAge(result);
     if (!result && isSubmitClicked) {
       setAgeClass("isInvalid");
@@ -151,7 +146,7 @@ const SignUpForm = ({ handleChangeMode, submitHandler }) => {
   }, [age]);
 
   useEffect(() => {
-    const result = ADDRESS_REGEX.test(address);
+    const result = regEx.ADDRESS_REGEX.test(address);
     setValidAddress(result);
     if (!result && isSubmitClicked) {
       setAddressClass("isInvalid");

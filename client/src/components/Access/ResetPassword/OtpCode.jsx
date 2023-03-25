@@ -10,17 +10,14 @@ const OtpCode = ({ cancelOtpCode, email, onVerify }) => {
     e.preventDefault();
     setIsSubmitClicked(true);
 
-    if (otpCode.length !== 4) {
-      setErrMsg("Please enter a valid 4-digit OTP code");
-    } else {
-      console.log(otpCode);
+    if (otpCode.length === 4) {
       setOtpCode("");
       onVerify();
     }
   };
 
   const onClickBtnLeft = () => {
-    setErrMsg(null);
+    setErrMsg("");
     setIsSubmitClicked(false);
     cancelOtpCode();
   };
@@ -28,8 +25,7 @@ const OtpCode = ({ cancelOtpCode, email, onVerify }) => {
   const headerTitle = "OTP Code Verification";
   const headerText = `We sent a verification code to ${email}. Please enter the 4-digit code below.`;
   const btnLeftClass = "modal-cancel-btn";
-  const dataDismiss = "modal";
-  const btnLeftText = "Cancel";
+  const btnLeftText = "Previous";
   const btnRightType = "submit";
   const btnRightText = "Verify Code";
 
@@ -40,7 +36,6 @@ const OtpCode = ({ cancelOtpCode, email, onVerify }) => {
       headerText={headerText}
       onClickBtnLeft={onClickBtnLeft}
       btnLeftClass={btnLeftClass}
-      dataDismiss={dataDismiss}
       btnLeftText={btnLeftText}
       btnRightType={btnRightType}
       btnRightText={btnRightText}
