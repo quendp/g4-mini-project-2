@@ -1,0 +1,190 @@
+/* For TableItself */
+.admin-table {
+  font-family: var(--ff-body-regular);
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.admin-table td,
+.admin-table th {
+  border: 1px solid var(--clr-secondary-200);
+  padding: 8px;
+}
+
+.admin-table tr:nth-child(even) {
+  background-color: var(--clr-secondary-100);
+}
+
+.admin-table tr:hover {
+  background-color: var(--clr-secondary-200);
+  cursor: pointer;
+}
+
+.agent-cell__orange {
+  background-color: orangered;
+}
+
+.bookings-table_filteringAndSearch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bookings-header__sorter {
+  opacity: 0.7;
+}
+
+.bookings-header__sortfull {
+  opacity: 0.3;
+}
+
+/* For BookingsFilterByStatus */
+
+.bookings-filter__status {
+  margin: 10px 0;
+}
+
+.bookings-filterStatus__label {
+  display: inline-block;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.bookings-filterStatus__select {
+  padding: 5px;
+  border: 1px solid var(--clr-secondary-200);
+  border-radius: 3px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.bookings-filterStatus__options {
+  font-size: 16px;
+}
+
+.bookings-filterStatus__select:hover,
+.bookings-filterStatus__select:focus {
+  border-color: var(--clr-secondary-500);
+  outline: none;
+}
+
+/* For BookingsFilterByCategory */
+
+.bookings-filter__category {
+  margin: 10px 0;
+}
+
+.bookings-filterCategory__label {
+  display: inline-block;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.bookings-filterCategory__select {
+  padding: 5px;
+  border: 1px solid var(--clr-secondary-200);
+  border-radius: 3px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.bookings-filterCategory__options {
+  font-size: 16px;
+}
+
+.bookings-filterCategory__select:hover,
+.bookings-filterCategory__select:focus {
+  border-color: var(--clr-secondary-500);
+  outline: none;
+}
+
+/* For AdminGlocalFiltering */
+.global-filter__span {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+.global-filter__search {
+  font-weight: bold;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-right: 10px;
+  font-family: var(--ff-body-regular);
+}
+
+.global-filter__input {
+  font-family: var(--ff-body-regular);
+  border: 2px solid var(--clr-secondary-200);
+  border-radius: 4px;
+  padding: 8px;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.global-filter__input:focus,
+.global-filter__input:hover {
+  border-color: var(--clr-secondary-500);
+  outline: none;
+}
+
+/* For AdminTablePageSize */
+
+.admin-pageSize__select {
+  font-size: 14px;
+  padding: 5px;
+  margin-right: 10px;
+  border-radius: 3px;
+  border: 1px solid var(--clr-secondary-200);
+  outline: none;
+}
+
+.admin-pageSize__option {
+  font-size: 14px;
+}
+
+.admin-pageSize__option:hover {
+  background-color: var(--clr-secondary-100);
+}
+
+.admin-pageSize__option:selected {
+  background-color: var(--clr-secondary-100);
+}
+
+/* For AdminTablesPagination */
+.admin-table__pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.admin-pagination__whatPage {
+  margin-right: 10px;
+}
+
+.admin-pagination__numberPage {
+  font-weight: bold;
+}
+
+.admin-pagination__button {
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 5px 10px;
+  font-weight: bold;
+  border-radius: 3px;
+  border: 1px solid var(--clr-secondary-200);
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+.admin-pagination__button:hover {
+  background-color: var(--clr-secondary-100);
+}
+
+.admin-pagination__button:disabled {
+  background-color: var(--clr-secondary-200);
+  cursor: default;
+  color: #666;
+}
