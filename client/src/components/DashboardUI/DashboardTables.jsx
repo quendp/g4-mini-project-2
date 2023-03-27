@@ -1,15 +1,18 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import {
-  useTable,
-  useSortBy,
   useGlobalFilter,
   usePagination,
+  useSortBy,
+  useTable,
 } from "react-table";
 
-const DashboardTables = ({ tableData, tableColumns, filterByStatus }) => {
-  const onClickRow = (row) => {
-    console.log("Row clicked", row.original);
-  };
+const DashboardTables = ({
+  tableData,
+  tableColumns,
+  filterByStatus,
+  onClickRow,
+}) => {
   const [statusFilter, setStatusFilter] = useState("all");
   const columns = useMemo(() => (tableColumns ? tableColumns : []), []);
   const data = useMemo(() => {
@@ -48,13 +51,19 @@ const DashboardTables = ({ tableData, tableColumns, filterByStatus }) => {
 
   const { globalFilter, pageIndex, pageSize } = state;
 
+  const [searchParams] = useSearchParams();
+  useEffect(() => {
+    const sortParams = searchParams.get("sort");
+    sortParams && setStatusFilter(sortParams);
+  }, [searchParams]);
+
   return (
     <div className="my-3">
       <div className="row mb-4 px-3">
         {/* Search bar */}
-        <div className="dashboardUI-table__search col-6">
+        <div className="dashboardUI-table__search col-12 col-md-6 pe-0 pe-md-5 mb-4 mb-md-0">
           <input
-            className="w-75"
+            className="w-100"
             placeholder="Search..."
             value={globalFilter || ""}
             onChange={(e) => setGlobalFilter(e.target.value)}
@@ -62,7 +71,7 @@ const DashboardTables = ({ tableData, tableColumns, filterByStatus }) => {
         </div>
         {/* Filter by status */}
         {filterByStatus && (
-          <div className="dashboardUI-table__filter d-flex justify-content-end align-items-center col-6">
+          <div className="dashboardUI-table__filter d-flex justify-content-end align-items-center col-12 col-md-6">
             <label htmlFor="filter-select" className="me-3">
               Filter by status :
             </label>

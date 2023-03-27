@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import axios from "../../Utils/axios";
 import regEx from "../../Utils/regEx";
@@ -8,7 +7,6 @@ import DashboardUIPersonalForm from "./DashboardUIPersonalForm";
 
 const DashboardUIAccount = ({ userInfo, setUpdateUserInfo }) => {
   const { accessData } = useAuth();
-  const navigate = useNavigate();
 
   const [isEditing, setIsEditing] = useState(false);
   const [errMsg, setErrMsg] = useState("");

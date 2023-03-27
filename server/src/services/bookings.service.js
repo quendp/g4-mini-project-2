@@ -1,3 +1,4 @@
+const { Op } = require("sequelize");
 const { Bookings, Users, Payments, Companions } = require("../../models");
 
 class BookingService {
@@ -73,6 +74,34 @@ class BookingService {
     } catch (err) {
       console.log(err);
       throw new Error();
+    }
+  }
+
+  // Confirm user booking
+  static async confirmBooking({ id }) {
+    try {
+      const booking = await Bookings.findOne({
+        where: { [Op.and]: [{ id: id }, { booking_status: "tentative" }] },
+      });
+      if (!booking) {
+        return null;
+      }
+      const payment = await Payments.findOne({
+        where: { id: booking.paymentId },
+      });
+      if (!payment) {
+        return null;
+      }
+
+      booking.booking_status = "confirmed";
+      payment.payment_status = "complete";
+
+      await booking.save();
+      await payment.save();
+
+      return { success: true };
+    } catch (error) {
+      console.log(err);
     }
   }
 }

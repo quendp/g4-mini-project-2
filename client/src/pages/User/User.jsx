@@ -79,7 +79,13 @@ const User = () => {
         );
         break;
       case sidebarMenu[1].path:
-        setCurrentContent(<UserBookings bookings={userInfo.Bookings} />);
+        setCurrentContent(
+          <UserBookings
+            bookings={userInfo.Bookings}
+            accessData={accessData}
+            setUpdateUserInfo={setUpdateUserInfo}
+          />
+        );
         break;
       case sidebarMenu[2].path:
         setCurrentContent(<UserUpdates bookings={userInfo.Bookings} />);

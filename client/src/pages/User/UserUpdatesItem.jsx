@@ -41,7 +41,7 @@ const UserUpdatesItem = ({ booking }) => {
   return (
     <div className="col-12 col-sm-6 col-lg-4 m-0 p-2">
       <Link
-        to={`/${accessData.username}/bookings`}
+        to={`/${accessData.username}/bookings?id=${booking.id}`}
         className="dashboardUI-number__card text-decoration-none m-3 row p-3 p-lg-4 d-flex flex-column justify-content-center"
       >
         <h3 className="user-card__title m-0 p-0 mb-4 p-dark">{updateTitle}</h3>

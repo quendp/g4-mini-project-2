@@ -5,31 +5,37 @@ const UserDashboard = ({ bookings, accessData }) => {
   const [bookingsByStatus, setBookingsByStatus] = useState([
     {
       id: 1,
+      path: "waitlist",
       status: "Waitlisted Bookings",
       bookings: [],
     },
     {
       id: 2,
+      path: "tentative",
       status: "Tentative Bookings",
       bookings: [],
     },
     {
       id: 3,
+      path: "confirmed",
       status: "Confirmed Bookings",
       bookings: [],
     },
     {
       id: 4,
+      path: "successful",
       status: "Successful Bookings",
       bookings: [],
     },
     {
       id: 5,
+      path: "cancelled",
       status: "Cancelled Bookings",
       bookings: [],
     },
     {
       id: 6,
+      path: "",
       status: "Total Bookings",
       bookings: [],
     },
@@ -39,6 +45,7 @@ const UserDashboard = ({ bookings, accessData }) => {
     setBookingsByStatus([
       {
         id: 1,
+        path: "waitlist",
         status: "Waitlisted Bookings",
         bookings: bookings.filter(
           (booking) => booking.booking_status === "waitlist"
@@ -46,6 +53,7 @@ const UserDashboard = ({ bookings, accessData }) => {
       },
       {
         id: 2,
+        path: "tentative",
         status: "Tentative Bookings",
         bookings: bookings.filter(
           (booking) => booking.booking_status === "tentative"
@@ -53,6 +61,7 @@ const UserDashboard = ({ bookings, accessData }) => {
       },
       {
         id: 3,
+        path: "confirmed",
         status: "Confirmed Bookings",
         bookings: bookings.filter(
           (booking) => booking.booking_status === "confirmed"
@@ -60,6 +69,7 @@ const UserDashboard = ({ bookings, accessData }) => {
       },
       {
         id: 4,
+        path: "successful",
         status: "Successful Bookings",
         bookings: bookings.filter(
           (booking) => booking.booking_status === "successful"
@@ -67,6 +77,7 @@ const UserDashboard = ({ bookings, accessData }) => {
       },
       {
         id: 5,
+        path: "cancelled",
         status: "Cancelled Bookings",
         bookings: bookings.filter(
           (booking) => booking.booking_status === "cancelled"
@@ -74,6 +85,7 @@ const UserDashboard = ({ bookings, accessData }) => {
       },
       {
         id: 6,
+        path: "",
         status: "Total Bookings",
         bookings: bookings,
       },

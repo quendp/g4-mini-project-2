@@ -8,7 +8,9 @@ const DashboardUINumbers = ({ bookingsByStatus, accessData }) => {
       <h2 className="p-dark text-sm-start ps-sm-5">I. Booking Statistics</h2>
       {bookingsByStatus.map((booking) => (
         <Link
-          to={`/${accessData.username}/bookings`}
+          to={`/${accessData.username}/bookings${
+            booking.path ? "?sort=" + booking.path : ""
+          }`}
           className="dashboardUI-number__card text-decoration-none col-8 col-sm-3 d-flex flex-column justify-content-between p-3 py-2 m-4"
           key={booking.id}
         >
