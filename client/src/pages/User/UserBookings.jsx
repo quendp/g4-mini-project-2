@@ -3,7 +3,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import DashboardTables from "../../components/DashboardUI/DashboardTables";
 import DashboardUIBookingInfo from "../../components/DashboardUI/DashboardUIBookingInfo";
 import LoaderSpinner from "../../components/Loader/LoaderSpinner";
-const UserBookings = ({ bookings, accessData, setUpdateUserInfo }) => {
+const UserBookings = ({ userInfo, accessData, setUpdateUserInfo }) => {
   const navigate = useNavigate();
 
   const onClickBooking = (row) => {
@@ -11,12 +11,6 @@ const UserBookings = ({ bookings, accessData, setUpdateUserInfo }) => {
       pathname: `/${accessData.username}/bookings`,
       search: `?id=${row.original.id}`,
     });
-  };
-
-  const sortByUpdateAt = (a, b) => {
-    const aDate = a.updatedAt.split(/[-A-Z:.]/).join("");
-    const bDate = b.updatedAt.split(/[-A-Z:.]/).join("");
-    return +bDate - +aDate;
   };
 
   const tableColumns = [
@@ -71,14 +65,17 @@ const UserBookings = ({ bookings, accessData, setUpdateUserInfo }) => {
 
   const [chosenBooking, setChosenBooking] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
+
   useEffect(() => {
-    if (bookings) {
+    if (userInfo.Bookings) {
       const newIdParams = searchParams.get("id");
-      const clickedBooking = bookings.find((item) => item.id == newIdParams);
+      const clickedBooking = userInfo.Bookings.find(
+        (item) => item.id == newIdParams
+      );
       console.log("clicked : ", clickedBooking);
       newIdParams && setChosenBooking(clickedBooking);
     }
-  }, [searchParams]);
+  }, [searchParams, userInfo]);
 
   return (
     <div className="container-fluid p-0 py-3 m-0">
@@ -94,15 +91,15 @@ const UserBookings = ({ bookings, accessData, setUpdateUserInfo }) => {
           />
         )}
         <div className="row m-0 px-2 px-md-3 px-lg-5">
-          {bookings && (
+          {userInfo.Bookings && (
             <DashboardTables
-              tableData={bookings.sort(sortByUpdateAt)}
+              tableData={userInfo}
               tableColumns={tableColumns}
               filterByStatus={filterByStatus}
               onClickRow={onClickBooking}
             />
           )}
-          {!bookings && <LoaderSpinner />}
+          {!userInfo.Bookings && <LoaderSpinner />}
         </div>
       </section>
     </div>

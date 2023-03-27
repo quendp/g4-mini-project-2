@@ -13,17 +13,24 @@ const DashboardTables = ({
   filterByStatus,
   onClickRow,
 }) => {
+  const sortByUpdateAt = (a, b) => {
+    const aDate = a.updatedAt.split(/[-A-Z:.]/).join("");
+    const bDate = b.updatedAt.split(/[-A-Z:.]/).join("");
+    return +bDate - +aDate;
+  };
   const [statusFilter, setStatusFilter] = useState("all");
   const columns = useMemo(() => (tableColumns ? tableColumns : []), []);
   const data = useMemo(() => {
-    let filteredData = tableData ? tableData : [];
+    let filteredData = tableData.Bookings
+      ? tableData.Bookings.sort(sortByUpdateAt)
+      : [];
     if (statusFilter !== "all") {
       filteredData = filteredData.filter(
         (row) => row.booking_status === statusFilter
       );
     }
     return filteredData;
-  }, [statusFilter]);
+  }, [statusFilter, tableData]);
 
   const {
     getTableProps,

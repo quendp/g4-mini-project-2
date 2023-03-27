@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import axios from "../../Utils/axios";
 
@@ -8,11 +9,17 @@ const DashboardUIBookingInfo = ({
   setUpdateUserInfo,
 }) => {
   const { accessData } = useAuth();
+  const [searchParams] = useSearchParams();
+  const chosenRef = useRef(chosenBooking.id);
 
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    setMessage("");
+    const newIdParams = searchParams.get("id");
+    if (chosenRef.current !== newIdParams) {
+      setMessage("");
+      chosenRef.current = newIdParams;
+    }
   }, [chosenBooking]);
 
   // Confirm booking from the API
@@ -168,7 +175,9 @@ const DashboardUIBookingInfo = ({
         </div>
       </div>
       <p
-        className={`text-center mt-5 px-0 px-md-5 ${!message ? "d-none" : ""}`}
+        className={`dashboardUI-booking__msg col-11 col-md-8 col-lg-6 p-3 px-5 py-sm-3 p-md-4 text-center mt-5 px-0 px-md-5 ${
+          !message ? "d-none" : ""
+        }`}
       >
         {message}
       </p>

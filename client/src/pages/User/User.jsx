@@ -81,7 +81,7 @@ const User = () => {
       case sidebarMenu[1].path:
         setCurrentContent(
           <UserBookings
-            bookings={userInfo.Bookings}
+            userInfo={userInfo}
             accessData={accessData}
             setUpdateUserInfo={setUpdateUserInfo}
           />

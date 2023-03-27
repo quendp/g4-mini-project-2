@@ -326,6 +326,11 @@
   background-color: var(--clr-primary-dark-400);
 }
 
+.dashboardUI-booking__msg {
+  background-color: var(--clr-secondary-200);
+  border-radius: 1rem;
+}
+
 /* DASHBOARD MEDIA QUERIES */
 @media (min-width: 768px) {
   .dashboardUI-main__content {
