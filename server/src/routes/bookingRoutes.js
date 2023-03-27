@@ -15,4 +15,10 @@ router.put(
   BookingController.confirmBooking
 );
 
+router.put(
+  "/updateCost",
+  passport.authenticate("jwt", { session: false }),
+  BookingController.updateCost
+);
+
 module.exports = router;

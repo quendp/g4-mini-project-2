@@ -36,6 +36,31 @@ class BookingController {
       res.status(400);
     }
   }
+
+  static async updateCost(req, res) {
+    try {
+      const {
+        id,
+        flight_company,
+        accommodation_cost,
+        activities_cost,
+        flight_cost,
+        transportation_cost,
+      } = req.body;
+      const booking = await BookingService.updateCost({
+        id,
+        flight_company,
+        accommodation_cost,
+        activities_cost,
+        flight_cost,
+        transportation_cost,
+      });
+      res.json(booking);
+    } catch (error) {
+      console.log(error);
+      res.status(400);
+    }
+  }
 }
 
 module.exports = { BookingController };

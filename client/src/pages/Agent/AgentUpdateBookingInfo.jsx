@@ -2,8 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import axios from "../../Utils/axios";
+import regEx from "../../Utils/regEx";
 
-const DashboardUIBookingInfo = ({
+const AgentUpdateBookingInfo = ({
   chosenBooking,
   setSearchParams,
   setUpdateUserInfo,
@@ -12,7 +13,33 @@ const DashboardUIBookingInfo = ({
   const [searchParams] = useSearchParams();
   const chosenRef = useRef(chosenBooking.id);
 
+  const [company, setCompany] = useState(chosenBooking.Payments.flight_company);
+  const [accommodation, setAccommodation] = useState(
+    chosenBooking.Payments.accommodation_cost
+  );
+  const [activities, setActivities] = useState(
+    chosenBooking.Payments.activities_cost
+  );
+  const [flight, setFlight] = useState(chosenBooking.Payments.flight_cost);
+  const [transportation, setTransportation] = useState(
+    chosenBooking.Payments.transportation_cost
+  );
+
+  const updatedData = {
+    id: chosenBooking.id,
+    flight_company: company,
+    accommodation_cost: Number(accommodation),
+    activities_cost: Number(activities),
+    flight_cost: Number(flight),
+    transportation_cost: Number(transportation),
+  };
+
   const [message, setMessage] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
+
+  const startEditing = () => {
+    setIsEditing(true);
+  };
 
   useEffect(() => {
     const newIdParams = searchParams.get("id");
@@ -24,11 +51,21 @@ const DashboardUIBookingInfo = ({
 
   // Confirm booking from the API
   const submitToServer = async () => {
+    if (
+      !regEx.NAME_REGEX.test(company) ||
+      !regEx.COST_REGEX.test(accommodation) ||
+      !regEx.COST_REGEX.test(activities) ||
+      !regEx.COST_REGEX.test(flight) ||
+      !regEx.COST_REGEX.test(transportation)
+    ) {
+      setMessage("Input invalid. Please try again.");
+      return;
+    }
     try {
       setMessage("Submitting...");
       const response = await axios.put(
-        "/api/bookings/confirm",
-        JSON.stringify({ id: chosenBooking.id }),
+        "/api/bookings/updateCost",
+        JSON.stringify(updatedData),
         {
           headers: {
             "Content-Type": "application/json",
@@ -37,7 +74,9 @@ const DashboardUIBookingInfo = ({
           withCredentials: true,
         }
       );
+      console.log(response.data);
       if (response.data) {
+        setIsEditing(false);
         setMessage(
           "Booking Successfully Confirmed. We'll send you further details about your booking as soon as possible."
         );
@@ -78,12 +117,12 @@ const DashboardUIBookingInfo = ({
           </p>
           <p>
             {" "}
-            <span>Assigned Agent : </span> {chosenBooking.Agent.firstname}{" "}
-            {chosenBooking.Agent.lastname}
+            <span>User : </span> {chosenBooking.Users.firstname}{" "}
+            {chosenBooking.Users.lastname}
           </p>
           <p>
             {" "}
-            <span>Agent Email : </span> {chosenBooking.Agent.email}{" "}
+            <span>User Email : </span> {chosenBooking.Users.email}{" "}
           </p>
         </div>
       </div>
@@ -127,11 +166,6 @@ const DashboardUIBookingInfo = ({
           </p>
           <p>
             {" "}
-            <span>Flight Company : </span>{" "}
-            {chosenBooking.Payments.flight_company}{" "}
-          </p>
-          <p>
-            {" "}
             <span>Transportation : </span>{" "}
             {chosenBooking.Packages.transportation}{" "}
           </p>
@@ -146,23 +180,83 @@ const DashboardUIBookingInfo = ({
         <div>
           <p>
             {" "}
-            <span>Accommodation Cost : </span> Php{" "}
-            {chosenBooking.Payments.accommodation_cost.toLocaleString()}.00{" "}
+            <span>Flight Company : </span>{" "}
+            {!isEditing && chosenBooking.Payments.flight_company}
+            {isEditing && (
+              <input
+                type="text"
+                placeholder="Company Name"
+                required
+                onChange={(e) => {
+                  setCompany(e.target.value);
+                }}
+                value={company}
+              />
+            )}
           </p>
           <p>
             {" "}
-            <span>Activities Cost : </span>Php{" "}
-            {chosenBooking.Payments.activities_cost.toLocaleString()}.00{" "}
+            <span>Accommodation Cost : </span>{" "}
+            {!isEditing && chosenBooking.Payments.accommodation_cost}{" "}
+            {isEditing && (
+              <input
+                type="number"
+                placeholder="0.00"
+                required
+                onChange={(e) => {
+                  setAccommodation(e.target.value);
+                }}
+                value={accommodation}
+              />
+            )}
           </p>
           <p>
             {" "}
-            <span>Flight Cost : </span>Php{" "}
-            {chosenBooking.Payments.flight_cost.toLocaleString()}.00{" "}
+            <span>Activities Cost : </span>{" "}
+            {!isEditing && chosenBooking.Payments.activities_cost}{" "}
+            {isEditing && (
+              <input
+                type="number"
+                placeholder="0.00"
+                required
+                onChange={(e) => {
+                  setActivities(e.target.value);
+                }}
+                value={activities}
+              />
+            )}
           </p>
           <p>
             {" "}
-            <span>Transportation Cost : </span>Php{" "}
-            {chosenBooking.Payments.transportation_cost.toLocaleString()}.00{" "}
+            <span>Flight Cost : </span>{" "}
+            {!isEditing && chosenBooking.Payments.flight_cost}{" "}
+            {isEditing && (
+              <input
+                type="number"
+                placeholder="0.00"
+                required
+                onChange={(e) => {
+                  setFlight(e.target.value);
+                }}
+                value={flight}
+              />
+            )}
+          </p>
+          <p>
+            {" "}
+            <span>Transportation Cost : </span>{" "}
+            {!isEditing && chosenBooking.Payments.transportation_cost}{" "}
+            {isEditing && (
+              <input
+                type="number"
+                placeholder="0.00"
+                required
+                onChange={(e) => {
+                  setTransportation(e.target.value);
+                }}
+                value={transportation}
+              />
+            )}
           </p>
           <p>
             {" "}
@@ -171,8 +265,16 @@ const DashboardUIBookingInfo = ({
           </p>
           <p>
             {" "}
-            <span>Total Cost : </span>Php{" "}
-            {chosenBooking.Payments.total_cost.toLocaleString()}.00{" "}
+            <span>Total Cost : </span>{" "}
+            {!isEditing && chosenBooking.Payments.total_cost}{" "}
+            {isEditing &&
+              `${
+                Number(0.0) +
+                Number(accommodation) +
+                Number(activities) +
+                Number(flight) +
+                Number(transportation)
+              }`}
           </p>
         </div>
       </div>
@@ -188,13 +290,18 @@ const DashboardUIBookingInfo = ({
           className="py-3 px-4 mt-4 mx-2"
           onClick={() => {
             setSearchParams({ id: "" });
+            setIsEditing(false);
           }}
         >
           Close
         </button>
-        {chosenBooking.booking_status === "tentative" && (
-          <button className="py-3 px-4 mt-4 mx-2" onClick={submitToServer}>
-            Confirm Booking
+        {(chosenBooking.booking_status === "waitlist" ||
+          chosenBooking.booking_status === "tentative") && (
+          <button
+            className="py-3 px-4 mt-4 mx-2"
+            onClick={!isEditing ? startEditing : submitToServer}
+          >
+            {!isEditing ? "Update Booking" : "Submit Update"}
           </button>
         )}
       </div>
@@ -202,4 +309,4 @@ const DashboardUIBookingInfo = ({
   );
 };
 
-export default DashboardUIBookingInfo;
+export default AgentUpdateBookingInfo;

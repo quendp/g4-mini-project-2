@@ -7,6 +7,7 @@ const regEx = {
   AGE_REGEX: /^\d{1,3}$/,
   ADDRESS_REGEX: /^[\w'\-,.][^_!¡÷?¿/\\+=@#$%^&*{}|~<>;:[\]]{1,200}$/,
   MESSAGE_REGEX: /^[\w\n '\-,.!¡÷?¿/\\+=@#$%^&*{}|~<>;:[\]]{1,2000}$/,
+  COST_REGEX: /^\d{1,6}$/,
 };
 
 export default regEx;

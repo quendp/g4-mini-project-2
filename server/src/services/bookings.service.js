@@ -104,6 +104,46 @@ class BookingService {
       console.log(err);
     }
   }
+
+  // Confirm user booking
+  static async updateCost({
+    id,
+    flight_company,
+    accommodation_cost,
+    activities_cost,
+    flight_cost,
+    transportation_cost,
+  }) {
+    try {
+      const booking = await Bookings.findOne({
+        where: { id: id },
+      });
+      if (!booking) {
+        return null;
+      }
+      const payment = await Payments.findOne({
+        where: { id: booking.paymentId },
+      });
+      if (!payment) {
+        return null;
+      }
+
+      booking.booking_status = "tentative";
+      payment.payment_status = "pending";
+      payment.flight_company = flight_company;
+      payment.accommodation_cost = accommodation_cost;
+      payment.activities_cost = activities_cost;
+      payment.flight_cost = flight_cost;
+      payment.transportation_cost = transportation_cost;
+
+      await booking.save();
+      await payment.save();
+
+      return { success: true };
+    } catch (error) {
+      console.log(err);
+    }
+  }
 }
 
 module.exports = { BookingService };

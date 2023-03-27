@@ -244,9 +244,27 @@ class UsersService {
         where: {
           agentId: agent.id,
         },
+        include: [
+          {
+            model: Companions,
+            as: "Companions",
+          },
+          {
+            model: Packages,
+            as: "Packages",
+          },
+          {
+            model: Payments,
+            as: "Payments",
+          },
+          {
+            model: Users,
+            as: "Users",
+          },
+        ],
       });
 
-      const agentData = { agent: agent, assignedBookings: bookings };
+      const agentData = { ...agent.dataValues, Bookings: bookings };
       return agent ? agentData : { message: "Agent does not exist." };
     } catch (e) {
       console.log(e);
