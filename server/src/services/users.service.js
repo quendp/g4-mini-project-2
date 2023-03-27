@@ -1,4 +1,10 @@
-const { Users, Bookings, Companions } = require("../../models");
+const {
+  Users,
+  Bookings,
+  Companions,
+  Packages,
+  Payments,
+} = require("../../models");
 const { Op } = require("sequelize");
 const jwt = require("jsonwebtoken");
 const { jwtSecret } = require("../../config/secrets");
@@ -152,6 +158,19 @@ class UsersService {
                 model: Companions,
                 as: "Companions",
               },
+              {
+                model: Users,
+                as: "Agent",
+                attributes: ["firstname", "lastname", "email"],
+              },
+              {
+                model: Packages,
+                as: "Packages",
+              },
+              {
+                model: Payments,
+                as: "Payments",
+              },
             ],
           },
         ],
@@ -163,20 +182,50 @@ class UsersService {
     }
   }
 
-  static async updateAgent(agentName, fieldsToUpdate) {
+  static async updateUser(roleId, username, fieldsToUpdate) {
     try {
-      const agentToUpdate = await Users.findOne({
-        where: { username: agentName },
+      // check if the api call is from a valid user
+      const userToUpdate = await Users.findOne({
+        where: {
+          [Op.and]: [{ username: username }, { roleId: roleId }],
+        },
       });
-      if (agentToUpdate && agentToUpdate.roleId === 2) {
-        const fields = Object.keys(fieldsToUpdate);
-        fields.forEach((field) => {
-          agentToUpdate[field] = fieldsToUpdate[field];
-        });
-        await agentToUpdate.save();
-        return agentToUpdate;
+
+      if (!userToUpdate) {
+        return { message: "Cannot change information. Try again later." };
       }
-      return null;
+
+      // Check if username already exists
+      if (fieldsToUpdate.username) {
+        const verifyUsername = await Users.findOne({
+          where: { username: fieldsToUpdate.username },
+        });
+        if (verifyUsername) {
+          {
+            return { message: "Username is taken." };
+          }
+        }
+      }
+
+      // Check if email already exists
+      if (fieldsToUpdate.email) {
+        const verifyEmail = await Users.findOne({
+          where: { email: fieldsToUpdate.email },
+        });
+        if (verifyEmail) {
+          {
+            return { message: "Email is taken." };
+          }
+        }
+      }
+
+      // loop through the object to save the information
+      const fields = Object.keys(fieldsToUpdate);
+      fields.forEach((field) => {
+        userToUpdate[field] = fieldsToUpdate[field];
+      });
+      await userToUpdate.save();
+      return userToUpdate;
     } catch (e) {
       console.log(e);
       throw new Error();
@@ -195,9 +244,27 @@ class UsersService {
         where: {
           agentId: agent.id,
         },
+        include: [
+          {
+            model: Companions,
+            as: "Companions",
+          },
+          {
+            model: Packages,
+            as: "Packages",
+          },
+          {
+            model: Payments,
+            as: "Payments",
+          },
+          {
+            model: Users,
+            as: "Users",
+          },
+        ],
       });
 
-      const agentData = { agent: agent, assignedBookings: bookings };
+      const agentData = { ...agent.dataValues, Bookings: bookings };
       return agent ? agentData : { message: "Agent does not exist." };
     } catch (e) {
       console.log(e);

@@ -88,13 +88,19 @@ const Categories = () => {
         });
         if (isMounted && response.data) {
           setAllPackages(response.data);
+          sessionStorage.setItem("packages", JSON.stringify(response.data));
         }
       } catch (err) {
         console.log(err);
       }
     };
-    // Call fetch function to get packages data
-    getPackageInfo();
+    // Check session storage for packages and Call fetch function to get packages data
+    const sessionPackages = JSON.parse(sessionStorage.getItem("packages"));
+    if (sessionPackages) {
+      setAllPackages(sessionPackages);
+    } else {
+      getPackageInfo();
+    }
     return () => {
       isMounted = false;
       controller.abort();

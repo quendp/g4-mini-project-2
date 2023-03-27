@@ -25,13 +25,13 @@ router.get(
   passport.authenticate("jwt", { session: false }),
   UsersController.getUser
 );
+router.put(
+  "/update/:roleId/:username",
+  passport.authenticate("jwt", { session: false }),
+  UsersController.updateUser
+);
 
 // Routers for agents
-router.put(
-  "/agent/:agentName",
-  passport.authenticate("jwt", { session: false }),
-  UsersController.updateAgent
-);
 router.get(
   "/agent/:agentName",
   passport.authenticate("jwt", { session: false }),

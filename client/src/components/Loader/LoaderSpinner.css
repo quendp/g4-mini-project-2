@@ -1,0 +1,4 @@
+.loaderSpinner-loader__icon {
+  min-height: 70vh;
+  font-size: var(--fz-main-h3);
+}

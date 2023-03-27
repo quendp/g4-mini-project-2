@@ -25,7 +25,7 @@ const HomeTestimonialsTitle = ({ categoryCurrent }) => {
         Testimonials
       </h3>
       <h2 className="home-testimonials-title__h2 text-center text-md-start mb-4">
-        What Our Clients are Saying About Our Service
+        said
       </h2>
       <p
         className="home-testimonials-title__description p-3 p-md-5"

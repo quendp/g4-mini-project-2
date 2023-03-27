@@ -62,12 +62,14 @@ const ContactDetails = () => {
           </a>
         </div>
       </div>
-      <div className="contact-details__description text-center text-md-start my-3">
-        Email us:{" "}
-        <a href="mailto:support@lakbay.agency">support@lakbay.agency</a>
-      </div>
-      <div className="contact-details__description text-center text-md-start my-3">
-        Or visit us at: 18th Floor, W Fifth, 5th Avenue, Taguig
+      <div className="contact-details__description contact-details__links px-2 px-md-4 px-lg-5 py-3 mb-5">
+        <div className=" text-center text-md-start my-3">
+          Email us:{" "}
+          <a href="mailto:support@lakbay.agency">support@lakbay.agency</a>
+        </div>
+        <div className=" text-center text-md-start my-3">
+          Or visit us at: 18th Floor, W Fifth, 5th Avenue, Taguig
+        </div>
       </div>
     </div>
   );

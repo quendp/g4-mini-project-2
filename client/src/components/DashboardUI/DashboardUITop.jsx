@@ -33,7 +33,7 @@ const DashboardUITop = ({ openSideBar }) => {
                 placeholder="Search"
                 aria-label="Search"
               />
-              <button className="btn px-3" type="submit">
+              <button className="dashboardUI-main__btn px-3" type="submit">
                 Search
               </button>
             </form>
