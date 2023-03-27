@@ -1,4 +1,10 @@
-const { Users, Bookings, Companions } = require("../../models");
+const {
+  Users,
+  Bookings,
+  Companions,
+  Packages,
+  Payments,
+} = require("../../models");
 const { Op } = require("sequelize");
 const jwt = require("jsonwebtoken");
 const { jwtSecret } = require("../../config/secrets");
@@ -151,6 +157,19 @@ class UsersService {
               {
                 model: Companions,
                 as: "Companions",
+              },
+              {
+                model: Users,
+                as: "Agent",
+                attributes: ["firstname", "lastname", "email"],
+              },
+              {
+                model: Packages,
+                as: "Packages",
+              },
+              {
+                model: Payments,
+                as: "Payments",
               },
             ],
           },

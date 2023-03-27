@@ -6,7 +6,7 @@ import regEx from "../../Utils/regEx";
 import DashboardUIAccountForm from "./DashboardUIAccountForm";
 import DashboardUIPersonalForm from "./DashboardUIPersonalForm";
 
-const DashboardUIAccount = ({ userInfo }) => {
+const DashboardUIAccount = ({ userInfo, setUpdateUserInfo }) => {
   const { accessData } = useAuth();
   const navigate = useNavigate();
 
@@ -92,7 +92,9 @@ const DashboardUIAccount = ({ userInfo }) => {
       } else {
         setIsEditing(false);
         resetData();
-        navigate(0);
+        setUpdateUserInfo((prev) => {
+          return !prev;
+        });
       }
     } catch (err) {
       console.log(err);
@@ -160,12 +162,14 @@ const DashboardUIAccount = ({ userInfo }) => {
             <button
               className="anchor-dark text-uppercase py-3 col-3 col-md-2 col-lg-1"
               onClick={cancelEditing}
+              type="button"
             >
               cancel
             </button>
             <button
               className="dashboardUI-main__btn text-uppercase py-3 px-4"
               onClick={submitHandler}
+              type="submit"
             >
               Update
             </button>

@@ -31,3 +31,15 @@
   height: 1.5rem;
   width: 1.5rem;
 }
+
+.contact-details__links,
+.contact-details__links a {
+  color: var(--clr-secondary-100);
+}
+
+.contact-details__links {
+  background-color: var(--clr-primary-dark-200);
+  border-radius: 1rem;
+  box-shadow: 5px 5px 8px var(--clr-primary-dark),
+    -5px -5px 8px var(--clr-secondary-300);
+}

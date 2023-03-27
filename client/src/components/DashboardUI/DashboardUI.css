@@ -161,6 +161,7 @@
 }
 
 .dashboardUI-number__card:hover {
+  background-color: #e4e8ec;
   color: var(--clr-primary-dark-100);
   box-shadow: 3px 3px 4px var(--clr-secondary-300),
     -3px -3px 4px var(--clr-secondary-000);
@@ -200,6 +201,80 @@
   border-radius: 0.5rem;
   padding: 0.5rem;
   font-size: var(--fz-main-text);
+}
+
+/* DASHBOARD TABLES */
+.dashboardUI-table__wrapper {
+  border-collapse: collapse;
+  font-family: var(--ff-body-light);
+  width: 100%;
+  margin-bottom: 3rem;
+  box-shadow: 0px 0px 2px var(--clr-secondary-300);
+  font-size: var(--fz-main-text);
+}
+
+.dashboardUI-table__wrapper th {
+  background-color: var(--clr-primary-dark-300);
+  color: var(--clr-secondary-100);
+}
+
+.dashboardUI-table__wrapper th,
+.dashboardUI-table__wrapper td {
+  border: 1px solid var(--clr-secondary-200);
+  padding: 12px 15px;
+  white-space: pre-line;
+}
+
+.dashboardUI-table__wrapper .dashboardUI-table__status {
+  border-radius: 10px;
+  border: 0.1px solid var(--clr-secondary-500);
+}
+
+.dashboardUI-table__wrapper tr:nth-child(even) {
+  background-color: #e4e8ec;
+}
+
+.dashboardUI-table__wrapper tr:hover {
+  background-color: var(--clr-secondary-200);
+  cursor: pointer;
+}
+
+.dashboardUI-table__search {
+  font-family: var(--ff-body-light);
+}
+
+.dashboardUI-table__filter {
+  font-family: var(--ff-body-light);
+}
+
+.dashboardUI-table__filter select {
+  border: none;
+  outline: none;
+  color: var(--clr-secondary-100);
+  background-color: var(--clr-primary-dark-300);
+  border-radius: 0.5rem;
+}
+
+.dashboardUI-table__pagination {
+  font-family: var(--ff-body-light);
+}
+
+.dashboardUI-table__pagination button,
+.dashboardUI-table__pagination select {
+  width: 7rem;
+  outline: none;
+  border: none;
+  background-color: var(--clr-primary-dark-300);
+  color: var(--clr-secondary-100);
+  border-radius: 0.5rem;
+}
+
+.dashboardUI-table__pagination button:hover {
+  background-color: var(--clr-primary-dark-500);
+}
+
+.dashboardUI-table__pagination button:disabled {
+  background-color: var(--clr-primary-dark-400);
 }
 
 /* DASHBOARD MEDIA QUERIES */

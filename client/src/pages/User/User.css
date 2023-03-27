@@ -1,0 +1,16 @@
+.user-card__description {
+  border: 1px solid var(--clr-secondary-500);
+  border-radius: 1rem;
+}
+
+.user-card__description span {
+  font-family: var(--ff-body-regular);
+  font-weight: bold;
+}
+
+.user-card__status {
+  font-family: var(--ff-body-light) !important;
+  font-weight: normal !important;
+  box-shadow: 0px 0px 1px var(--clr-primary-glass);
+  border-radius: 0.5rem;
+}

@@ -127,6 +127,12 @@
   --clr-accent-invalid: #bd0000;
   --clr-accent-invalid-100: #b81c1c;
 
+  --clr-status-waitlist: rgba(255, 231, 126, 0.8);
+  --clr-status-confirmed: rgba(126, 240, 255, 0.8);
+  --clr-status-successful: rgba(141, 255, 126, 0.8);
+  --clr-status-tentative: rgba(227, 255, 126, 0.8);
+  --clr-status-cancelled: rgba(255, 181, 181, 0.8);
+
   /* Font Size */
   --fz--header-title: clamp(0.5rem, 0.9vw, 0.7rem);
   --fz--header-sub: clamp(2rem, 10vw, 3rem);

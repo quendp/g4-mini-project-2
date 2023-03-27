@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useMemo, useState } from "react";
 import axios from "../../Utils/axios";
+import LoaderSpinner from "../../components/Loader/LoaderSpinner";
 
 const UserAuthContext = createContext({});
 
@@ -66,13 +67,15 @@ export const UserAuthentication = ({ children }) => {
   return (
     <UserAuthContext.Provider value={userData}>
       {isLoading && (
-        <div>
-          <p
-            className="p-light position-fixed start-0 top-0 px-4 py-1 rounded-pill"
-            style={{ backgroundColor: "black" }}
-          >
-            Checking account...
-          </p>
+        <div
+          className="vh-100 vw-100 position-fixed row"
+          style={{
+            backgroundColor: "#00000055",
+            zIndex: "9999999",
+            color: "white",
+          }}
+        >
+          <LoaderSpinner />
         </div>
       )}
       {children}

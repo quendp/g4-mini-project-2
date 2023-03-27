@@ -7,93 +7,19 @@ import fetchUserInfo from "../../Utils/fetchUserInfo";
 import UserBookings from "./UserBookings";
 import UserDashboard from "./UserDashboard";
 import UserUpdates from "./UserUpdates";
+import "./User.css";
 
 const User = () => {
   const { accessData } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
 
+  // Store user information
   const [userInfo, setUserInfo] = useState(false);
+  const [updateUserInfo, setUpdateUserInfo] = useState(false);
   const FETCH_API = `/api/users/${accessData.username}`;
 
-  const [bookingsByStatus, setBookingsByStatus] = useState([
-    {
-      id: 1,
-      status: "Waitlisted Bookings",
-      bookings: [],
-    },
-    {
-      id: 2,
-      status: "Tentative Bookings",
-      bookings: [],
-    },
-    {
-      id: 3,
-      status: "Confirmed Bookings",
-      bookings: [],
-    },
-    {
-      id: 4,
-      status: "Successful Bookings",
-      bookings: [],
-    },
-    {
-      id: 5,
-      status: "Cancelled Bookings",
-      bookings: [],
-    },
-    {
-      id: 6,
-      status: "Total Bookings",
-      bookings: [],
-    },
-  ]);
-
-  const getBookingsByStatus = (bookings) => {
-    setBookingsByStatus([
-      {
-        id: 1,
-        status: "Waitlisted Bookings",
-        bookings: bookings.filter(
-          (booking) => booking.booking_status === "waitlist"
-        ),
-      },
-      {
-        id: 2,
-        status: "Tentative Bookings",
-        bookings: bookings.filter(
-          (booking) => booking.booking_status === "tentative"
-        ),
-      },
-      {
-        id: 3,
-        status: "Confirmed Bookings",
-        bookings: bookings.filter(
-          (booking) => booking.booking_status === "confirmed"
-        ),
-      },
-      {
-        id: 4,
-        status: "Successful Bookings",
-        bookings: bookings.filter(
-          (booking) => booking.booking_status === "successful"
-        ),
-      },
-      {
-        id: 5,
-        status: "Cancelled Bookings",
-        bookings: bookings.filter(
-          (booking) => booking.booking_status === "cancelled"
-        ),
-      },
-      {
-        id: 6,
-        status: "Total Bookings",
-        bookings: bookings,
-      },
-    ]);
-  };
-
+  // Get user information from the API
   useEffect(() => {
     let isLoggedIn = true;
     const controller = new AbortController();
@@ -104,8 +30,10 @@ const User = () => {
           FETCH_API,
           controller
         );
-        isLoggedIn && setUserInfo(info.data);
-        if (info.data.Bookings) getBookingsByStatus(info.data.Bookings);
+        if (isLoggedIn) {
+          setUserInfo(info.data);
+          console.log("userInfo : ", info.data);
+        }
       } catch (err) {
         console.log(err);
       }
@@ -116,7 +44,7 @@ const User = () => {
       isLoggedIn = false;
       controller.abort();
     };
-  }, [accessData]);
+  }, [accessData, updateUserInfo]);
 
   const sidebarMenu = [
     {
@@ -141,27 +69,34 @@ const User = () => {
 
   const [currentContent, setCurrentContent] = useState();
 
+  // Conditionally render content based on the URL pathname
   useEffect(() => {
-    if (
-      location.pathname === sidebarMenu[0].path ||
-      location.pathname === `/${accessData.username}`
-    ) {
-      setCurrentContent(
-        <UserDashboard
-          bookingsByStatus={bookingsByStatus}
-          accessData={accessData}
-        />
-      );
-    } else if (location.pathname === sidebarMenu[1].path) {
-      setCurrentContent(<UserBookings />);
-    } else if (location.pathname === sidebarMenu[2].path) {
-      setCurrentContent(<UserUpdates />);
-    } else if (location.pathname === `/${accessData.username}/account`) {
-      setCurrentContent(<DashboardUIAccount userInfo={userInfo} />);
-    } else if (location.pathname === "/login") {
-      navigate(-1);
-    } else {
-      navigate("not-found");
+    switch (location.pathname) {
+      case sidebarMenu[0].path:
+      case `/${accessData.username}`:
+        setCurrentContent(
+          <UserDashboard bookings={userInfo.Bookings} accessData={accessData} />
+        );
+        break;
+      case sidebarMenu[1].path:
+        setCurrentContent(<UserBookings bookings={userInfo.Bookings} />);
+        break;
+      case sidebarMenu[2].path:
+        setCurrentContent(<UserUpdates bookings={userInfo.Bookings} />);
+        break;
+      case `/${accessData.username}/account`:
+        setCurrentContent(
+          <DashboardUIAccount
+            userInfo={userInfo}
+            setUpdateUserInfo={setUpdateUserInfo}
+          />
+        );
+        break;
+      case "/login":
+        navigate(-1);
+        break;
+      default:
+        navigate("not-found");
     }
   }, [location, userInfo]);
 
