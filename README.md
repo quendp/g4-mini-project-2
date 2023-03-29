@@ -14,6 +14,14 @@
 
 <br>
 
+<p align="center"> <img width="100%" src="./README/img3.jpg" /> </p>
+
+<br>
+
+<p align="center"> <img width="100%" src="./README/img4.jpg" /> </p>
+
+<br>
+
 ---
 
 ## 📌 Key Features
@@ -23,6 +31,8 @@
 - Modern and Interactive UI
 - Booking system
 - Membership system (log in/log out)
+- Role-based Authentication
+- Form Validation on all forms
 - Has Admin Dashboard (exclusive to admin account)
 - Has Travel Agent Dashboard (exclusive to travel agent account)
 - Has User Dashboard (exclusive to user account)
@@ -35,7 +45,7 @@
 
 ## 📝 Description
 
-This is our group's submisssion to our coding bootcamp's second mini project. The brand "Lakbay" as well as the website's brief and functions are created by the developers for the sole purpose of this project. It is not a real company and does not operate in the real world. For the front-end, we utilized ReactJS with Vite, and for the backend, we used nodejs, creating this fullstack website.
+This is our group's submisssion to our coding bootcamp's capstone project. The brand "Lakbay" as well as the website's brief and functions are created by the developers for the sole purpose of this project. It is not a real company and does not operate in the real world. For the front-end, we utilized ReactJS with Vite, and for the backend, we used nodejs, creating this fullstack website.
 
 <br>
 
@@ -69,6 +79,8 @@ The website should have the following features/sections:
 ## ⌛ Project Timeline
 
 v1.0.0 - January 21, 2023 - Initialized project repository
+v2.0.0 - March 4, 2023 - Finished front-end
+v3.0.0 - March 27, 2023 - Finished back-end
 
 <br>
 
@@ -122,7 +134,8 @@ Version Control
 
 Here are some features we are looking to add in this project in the near future
 
-- Share your story section - a sections for the community of members to interact and share their experiences in their tours
+- Bug fixes for Safari browsers
+- Deactive animations option for low-end devices
 
 <br>
 
